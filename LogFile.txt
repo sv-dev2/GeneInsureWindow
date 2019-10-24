@@ -1,0 +1,17 @@
+﻿Error Time: 2019/02/04 16:03:17transactionid: 100016-----------------------------------------------------------
+
+Error Time: 2019/02/04 16:03:36responseData: b<?xml version="1.0" encoding="UTF-8"?>
+<Esp:Interface Version="1.0" xmlns:Esp="http://www.mosaicsoftware.com/Postilion/eSocket.POS/"><Esp:Transaction Account="00" ActionCode="APPROVE" AmountTransactionFee="C0" AuthorizationProfile="11" BusinessDate="0204" CardNumber="601704*********0735" CardProductName="LocalCard" CurrencyCode="840" DateTime="0204140325" ExpiryDate="9999" LocalDate="0204" LocalTime="140325" MerchantId="000000010000170" MessageReasonCode="9790" PanEntryMode="90" PosCondition="00" ResponseCode="00" RetrievalRefNr="000007000638" TerminalId="17000014" Track2="601704*********0735=9999*************" TransactionAmount="10" TransactionId="100016" Type="PURCHASE"><Esp:Balance AccountType="40" Amount="10000" AmountType="02" CurrencyCode="840" Sign="C-----------------------------------------------------------
+
+Error Time: 2019/02/04 16:03:36InitializeTermianl :Cannot read keys when either application does not have a console or when console input has been redirected from a file. Try Console.Read.-----------------------------------------------------------
+
+Error Time: 2/6/2019 5:16:59 PMtransactionid: 100016-----------------------------------------------------------
+
+Error Time: 2/6/2019 5:18:47 PMInitializeTermianl :Cannot read keys when either application does not have a console or when console input has been redirected from a file. Try Console.Read.-----------------------------------------------------------
+
+Error Time: 2/11/2019 1:51:51 PMtransactionid: 100019-----------------------------------------------------------
+
+Error Time: 2/11/2019 1:51:55 PMInitializeTermianl :Cannot read keys when either application does not have a console or when console input has been redirected from a file. Try Console.Read.-----------------------------------------------------------
+
+Error Time: 2/15/2019 5:23:04 PMtransactionid: 100060-----------------------------------------------------------
+

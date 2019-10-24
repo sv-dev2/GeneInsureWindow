@@ -1,0 +1,328 @@
+﻿using GensureAPIv2.Models;
+using Insurance.Service;
+using Newtonsoft.Json;
+using RestSharp;
+using Spire.Pdf;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+
+
+namespace Gene
+{
+    public partial class CertificateSerialForm : Form
+    {
+        public RiskDetailModel RiskDetailModel;
+        public string ParternToken { get; set; }
+
+        ICEcashTokenResponse ObjToken;
+        ICEcashService IcServiceobj;
+
+        public string _base64Data = "";
+        // static String ApiURL = "http://windowsapi.gene.co.zw/api/Account/";
+        static String ApiURL = "http://geneinsureclaim2.kindlebit.com/api/Account/";
+
+
+        [System.ComponentModel.Browsable(false)]
+        public event EventHandler GotFocus;
+
+        public CertificateSerialForm(RiskDetailModel objRiskDetail, string Partnertoken, string base64Data)
+        {
+            InitializeComponent();
+            this.ActiveControl = txtCertificateSerialNumber;
+            txtCertificateSerialNumber.Focus();
+            RiskDetailModel = objRiskDetail;
+            ParternToken = Partnertoken;
+            IcServiceobj = new ICEcashService();
+            _base64Data = base64Data;
+        }
+
+
+        private void txtCertificateSerialNumber_GotFocus(Object sender, EventArgs e)
+        {
+            //  MessageBox.Show("You are in the Control.GotFocus event.");
+        }
+
+
+        private void txtCertificateSerialNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    frmLicenceQuote quotObj = new frmLicenceQuote();
+                    quotObj.CertificateNumber = txtCertificateSerialNumber.Text;
+                    var response = ICEcashService.LICCertConf(RiskDetailModel, ParternToken, txtCertificateSerialNumber.Text);
+
+
+                    if (response != null && response.Response.Message.Contains("Partner Token has expired"))
+                    {
+                        ObjToken = IcServiceobj.getToken();
+                        ParternToken = ObjToken.Response.PartnerToken;
+
+                        Service_db.UpdateToken(ObjToken);
+
+                        response = ICEcashService.LICCertConf(RiskDetailModel, ParternToken, txtCertificateSerialNumber.Text);
+                    }
+
+
+                    MessageBox.Show(response.Response.Message);
+                    this.Close();
+                    Form1 obj = new Form1();
+                    obj.Show();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void CertificateSerialForm_Load(object sender, EventArgs e)
+        {
+
+
+            //MessageBox.Show("Confirm printing.");
+
+
+            // pictureBox2.Visible = true;
+            //pictureBox2.WaitOnLoad = true;
+
+            //   btnScan.Click += new System.EventHandler(this.btnScan_Click);
+
+             btnScan_Click(sender, e); // commented for now
+
+            txtCertificateSerialNumber.Focus();
+
+
+        }
+
+
+        public void printPDFWithAcrobat(string Filepath)
+        {
+            // string Filepath = @"D:\Certificate120190724174642.pdf";
+            try
+            {
+
+                //  string raderPath = ConfigurationManager.AppSettings["adobeReaderPath"];
+
+                //  Thread.Sleep(1000);
+
+                Process proc = new Process();
+                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                proc.StartInfo.Verb = "print";
+
+                //Define location of adobe reader/command line
+                //switches to launch adobe in "print" mode
+                proc.StartInfo.FileName =
+                  @"C:\Program Files (x86)\Adobe\Acrobat Reader DC\Reader\AcroRd32.exe";
+
+                //proc.StartInfo.FileName = raderPath;
+
+
+                proc.StartInfo.Arguments = String.Format(@"/p /h {0}", Filepath);
+                proc.StartInfo.UseShellExecute = false;
+                proc.StartInfo.CreateNoWindow = true;
+
+                proc.Start();
+                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+
+
+                if (proc.HasExited == false)
+                {
+                    proc.WaitForExit(6000);
+                }
+
+                proc.EnableRaisingEvents = true;
+
+                proc.Close();
+                KillAdobe("AcroRd32");
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private static bool KillAdobe(string name)
+        {
+            foreach (Process clsProcess in Process.GetProcesses().Where(
+                         clsProcess => clsProcess.ProcessName.StartsWith(name)))
+            {
+                clsProcess.Kill();
+                return true;
+            }
+            return false;
+        }
+
+        public void CreateLicenseFile(string base64data)
+        {
+            try
+            {
+
+                byte[] bytes = Encoding.ASCII.GetBytes(base64data);
+
+                PdfModel objPlanModel = new PdfModel();
+                objPlanModel.Base64String = base64data;
+                var client = new RestClient(ApiURL + "SaveCertificate");
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/json");
+                request.AddHeader("password", "Geninsure@123");
+                request.AddHeader("username", "ameyoApi@geneinsure.com");
+                request.RequestFormat = DataFormat.Json;
+                request.AddJsonBody(objPlanModel);
+                IRestResponse response = client.Execute(request);
+                var pdfPath = JsonConvert.DeserializeObject<string>(response.Content);
+
+
+
+
+
+                //using (WebClient webClient = new WebClient())
+                //{
+                //    byte[] data = webClient.DownloadData(pdfPath);
+
+
+                //    //   using (MemoryStream stream = new MemoryStream(data))
+                //    using (MemoryStream stream = new MemoryStream(bytes))
+                //    {
+                //        PdfDocument doc = new PdfDocument(stream);
+                //        doc.Pages.Insert(0);
+                //        doc.Pages.Add();
+                //        doc.Pages.RemoveAt(0);//Since First page have always Red Text if use Free Version.
+                //        doc.PrintDocument.Print();
+                //    }
+
+
+                //}
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+
+        private string SavePdf(string base64data)
+        {
+            string destinationFileName = "";
+
+            try
+            {
+                /// https://svgvijay.blogspot.com/2013/02/how-to-save-image-into-folder-in-c.html
+                //string imagepath = pictureBox1.ImageLocation.ToString();
+                //string picname = imagepath.Substring(imagepath.LastIndexOf('\\'));
+                //string path = Application.StartupPath.Substring(0, Application.StartupPath.LastIndexOf("bin"));
+                //Bitmap imgImage = new Bitmap(pictureBox1.Image);    //Create an object of Bitmap class/
+                //imgImage.Save(path + "\\Image\\" + picname + ".pdf");
+                //MessageBox.Show("image svaed in :" + path + "'\'Image'\'" + picname);
+
+
+                //   string certificatePath = Application.StartupPath.Substring(0, Application.StartupPath.LastIndexOf("bin")) + "\\Certificate" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+                //string certificatePath = HttpContext.Current.Server.MapPath("~/CertificatePDF");
+                //string fileFullPath = certificatePath + "\\Certificate" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+                //string FinalCertificatePath = ConfigurationManager.AppSettings["CerificatePathBase"] + "/CertificatePDF/Certificate" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf"; ;
+
+
+                List<string> pdfFiles = new List<string>();
+                //   byte[] bytes = Encoding.ASCII.GetBytes(base64data);
+
+                byte[] pdfbytes = Convert.FromBase64String(base64data);
+
+
+                //string installedPath = Application.StartupPath + "/pdf";
+                //string fileName = "Certificate1" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+
+
+                // string installedPath = @"C:\";
+                string installedPath = @"C:\Users\Public\";
+                string fileName = "Certificate" + ".pdf";
+
+                //Check whether folder path is exist
+                //if (!System.IO.Directory.Exists(installedPath))
+                //{
+                //    // If not create new folder
+                //    System.IO.Directory.CreateDirectory(installedPath);
+                //}
+                //Save pdf files in installedPath
+
+                destinationFileName = System.IO.Path.Combine(installedPath, System.IO.Path.GetFileName(fileName));
+                File.WriteAllBytes(destinationFileName, pdfbytes);
+
+
+                //    using (System.IO.StreamWriter file =
+                //new System.IO.StreamWriter(@"C:\Certificate.pdf"))
+                //    {                 
+                //                file.WriteLine(pdfbytes);                                      
+                //    }
+
+            }
+            catch (Exception ex)
+            {
+                // MessageBox.Show(ex.Message);
+                MyMessageBox.ShowBox(ex.Message, "Modal error message");
+            }
+            return destinationFileName;
+        }
+
+
+        private void btnScan_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+
+                pictureBox2.Visible = true;
+                pictureBox2.WaitOnLoad = true;
+                var pdfPath = SavePdf(_base64Data);
+                // var pdfPath = @"F:\sample.pdf";
+                PdfDocument doc = new PdfDocument();
+                doc.LoadFromFile(pdfPath);
+                doc.Pages.Insert(0);
+                doc.Pages.Add();
+                doc.Pages.RemoveAt(0);//Since First page have always Red Text if use Free Version.
+                doc.SaveToFile(pdfPath);
+
+                //MessageBox.Show("Please Print Licence Disk.                                                                       ", "Print License Disk");
+
+                MyMessageBox.ShowBox("Please Print Licence Disk. ", "Print License Disk");
+
+                printPDFWithAcrobat(pdfPath);
+                CreateLicenseFile(_base64Data);
+
+                //  pictureBox2.WaitOnLoad = false;
+                pictureBox2.Visible = false;
+                txtCertificateSerialNumber.ForeColor = Color.Gray;
+
+
+                txtCertificateSerialNumber.Focus();
+
+
+            }
+            catch (Exception ex)
+            {
+
+                pictureBox2.WaitOnLoad = false;
+                pictureBox2.Visible = false;
+                // MessageBox.Show(ex.Message);
+                MyMessageBox.ShowBox(ex.Message, "Modal error message");
+            }
+
+
+
+        }
+    }
+}
