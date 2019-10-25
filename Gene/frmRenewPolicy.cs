@@ -1965,6 +1965,9 @@ namespace Gene
                                             objRiskModel.ZTSCLevy = Convert.ToDecimal(quoteresponse.Response.Quotes[0].Policy.GovernmentLevy, System.Globalization.CultureInfo.InvariantCulture);
                                             objRiskModel.StampDuty = Convert.ToDecimal(quoteresponse.Response.Quotes[0].Policy.StampDuty, System.Globalization.CultureInfo.InvariantCulture);
 
+                                            objRiskModel.InsuranceId = quoteresponse.Response.Quotes[0].InsuranceID;
+
+
                                             var discount = GetDiscount(Convert.ToDecimal(quoteresponse.Response.Quotes[0] == null ? "0.00" : quoteresponse.Response.Quotes[0].Policy.CoverAmount), Convert.ToInt32(cmbPaymentTerm.SelectedValue));
                                             objRiskModel.Discount = discount;
                                         }
@@ -1976,6 +1979,7 @@ namespace Gene
                                             objlistRisk[VehicalIndex].Premium = Convert.ToDecimal(quoteresponse.Response.Quotes[0].Policy.CoverAmount, System.Globalization.CultureInfo.InvariantCulture);
                                             objlistRisk[VehicalIndex].ZTSCLevy = Convert.ToDecimal(quoteresponse.Response.Quotes[0].Policy.GovernmentLevy, System.Globalization.CultureInfo.InvariantCulture);
                                             objlistRisk[VehicalIndex].StampDuty = Convert.ToDecimal(quoteresponse.Response.Quotes[0].Policy.StampDuty, System.Globalization.CultureInfo.InvariantCulture);
+                                            objlistRisk[VehicalIndex].InsuranceId = quoteresponse.Response.Quotes[0].InsuranceID;
 
                                             var discount = GetDiscount(Convert.ToDecimal(quoteresponse.Response.Quotes[0] == null ? "0.00" : quoteresponse.Response.Quotes[0].Policy.CoverAmount), Convert.ToInt32(cmbPaymentTerm.SelectedValue));
                                             objlistRisk[VehicalIndex].Discount = discount;
@@ -2032,7 +2036,7 @@ namespace Gene
 
                                 // for zinara license 
 
-
+                                GetZinraLiceenseFee(Convert.ToString(cmbPaymentTerm.SelectedValue));
 
 
 
@@ -2069,6 +2073,8 @@ namespace Gene
                 if (resObject != null && resObject.Message.Contains("Partner Token has expired"))
                 {
                     ObjToken = IcServiceobj.getToken();
+
+                    parternToken = ObjToken.Response.PartnerToken;
 
                     Service_db.UpdateToken(ObjToken);
                     //if (ObjToken != null)
@@ -2156,6 +2162,8 @@ namespace Gene
                 if (resObject != null && resObject.Message.Contains("Partner Token has expired"))
                 {
                     ObjToken = IcServiceobj.getToken();
+
+                    parternToken = ObjToken.Response.PartnerToken;
 
                     Service_db.UpdateToken(ObjToken);
                     //if (ObjToken != null)
@@ -4464,7 +4472,6 @@ namespace Gene
         {
             if (chkRadioLicence.Checked)
             {
-
                 pnlReRadio.Visible = true;
                 pnlReZinara.Visible = false;
                 objRiskModel.IncludeRadioLicenseCost = true;

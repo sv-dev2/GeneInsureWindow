@@ -267,9 +267,9 @@
             this.PnlRenewVrn.Controls.Add(this.txtRenewVrn);
             this.PnlRenewVrn.Controls.Add(this.btnSave);
             this.PnlRenewVrn.Controls.Add(this.PnlVrn);
-            this.PnlRenewVrn.Location = new System.Drawing.Point(29, 34);
+            this.PnlRenewVrn.Location = new System.Drawing.Point(249, 208);
             this.PnlRenewVrn.Name = "PnlRenewVrn";
-            this.PnlRenewVrn.Size = new System.Drawing.Size(44, 53);
+            this.PnlRenewVrn.Size = new System.Drawing.Size(1475, 435);
             this.PnlRenewVrn.TabIndex = 4;
             this.PnlRenewVrn.Paint += new System.Windows.Forms.PaintEventHandler(this.PnlVrn_Paint);
             // 
@@ -2139,9 +2139,9 @@
             this.pnlRenewThankyou.Controls.Add(this.lblRepayment);
             this.pnlRenewThankyou.Controls.Add(this.btnHome);
             this.pnlRenewThankyou.Controls.Add(this.lblThankyou1);
-            this.pnlRenewThankyou.Location = new System.Drawing.Point(411, 220);
+            this.pnlRenewThankyou.Location = new System.Drawing.Point(29, 193);
             this.pnlRenewThankyou.Name = "pnlRenewThankyou";
-            this.pnlRenewThankyou.Size = new System.Drawing.Size(767, 408);
+            this.pnlRenewThankyou.Size = new System.Drawing.Size(54, 105);
             this.pnlRenewThankyou.TabIndex = 75;
             this.pnlRenewThankyou.Visible = false;
             this.pnlRenewThankyou.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlRenewThankyou_Paint);
