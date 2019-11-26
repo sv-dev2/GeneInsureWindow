@@ -116,6 +116,12 @@ namespace Insurance.Service
                 IRestResponse response = client.Execute(request);
 
                 json = JsonConvert.DeserializeObject<ICEcashTokenResponse>(response.Content);
+
+                Service_db.WriteIceCashLog(data, response.Content, "PartnerToken");
+
+
+
+
             }
             catch (Exception ex)
             {
@@ -273,6 +279,10 @@ namespace Insurance.Service
 
             ResultRootObject json = JsonConvert.DeserializeObject<ResultRootObject>(response.Content);
 
+            string branchId = CustomerInfo == null ? "" : Convert.ToString(CustomerInfo.BranchId);
+
+            Service_db.WriteIceCashLog(data, response.Content, "TPIQuote", item.RegistrationNo, branchId);
+
             return json;
         }
 
@@ -371,7 +381,9 @@ namespace Insurance.Service
 
             ResultRootObject json = JsonConvert.DeserializeObject<ResultRootObject>(response.Content);
 
+            string branchId = CustomerInfo == null ? "" : Convert.ToString(CustomerInfo.BranchId);
 
+            Service_db.WriteIceCashLog(data, response.Content, "TPIQuote", riskDetail.RegistrationNo, branchId);
 
 
             //if (json.Response.Quotes != null && json.Response.Quotes.Count > 0)
@@ -460,6 +472,10 @@ namespace Insurance.Service
             request.AddParameter("application/x-www-form-urlencoded", jsonobject, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
             ResultRootObject json = JsonConvert.DeserializeObject<ResultRootObject>(response.Content);
+
+
+            Service_db.WriteIceCashLog(data, response.Content, "TPILICQuote", listVehicleLic[0].VRN);
+
             return json;
 
         }
@@ -538,6 +554,8 @@ namespace Insurance.Service
 
             ResultRootObject json = JsonConvert.DeserializeObject<ResultRootObject>(response.Content);
 
+            Service_db.WriteIceCashLog(data, response.Content, "LICQuote", listVehicleLic[0].VRN);
+
             return json;
 
         }
@@ -561,7 +579,7 @@ namespace Insurance.Service
                 {
                     VRN = item.VRN,
                     //EntityType= "",
-                    ClientIDType = item.ClientIDType,
+                    ClientIDType = "1",
                     IDNumber = item.IDNumber,
                     DurationMonths = item.DurationMonths,
                     LicFrequency = item.LicFrequency
@@ -617,6 +635,10 @@ namespace Insurance.Service
             request.AddParameter("application/x-www-form-urlencoded", jsonobject, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
             ResultRootObject json = JsonConvert.DeserializeObject<ResultRootObject>(response.Content);
+
+            Service_db.WriteIceCashLog(data, response.Content, "LICQuote", listVehicleLic[0].VRN);
+
+
             return json;
         }
 
@@ -689,6 +711,9 @@ namespace Insurance.Service
 
             ResultRootObject json = JsonConvert.DeserializeObject<ResultRootObject>(response.Content);
 
+
+            Service_db.WriteIceCashLog(data, response.Content, "LicQuoteUpdate");
+
             return json;
         }
 
@@ -746,7 +771,7 @@ namespace Insurance.Service
             IRestResponse response = client.Execute(request);
             ResultLicenceIDRootObject json = JsonConvert.DeserializeObject<ResultLicenceIDRootObject>(response.Content);
 
-
+            Service_db.WriteIceCashLog(data, json.Response.Message, "LICResult");
 
 
             return json;
@@ -813,6 +838,11 @@ namespace Insurance.Service
             IRestResponse response = client.Execute(request);
 
             ResultRootObject json = JsonConvert.DeserializeObject<ResultRootObject>(response.Content);
+
+            Service_db.WriteIceCashLog(data, response.Content, "TPIQuoteUpdate");
+            
+
+
             return json;
         }
 
@@ -873,6 +903,9 @@ namespace Insurance.Service
             IRestResponse response = client.Execute(request);
 
             ResultRootObject json = JsonConvert.DeserializeObject<ResultRootObject>(response.Content);
+
+            Service_db.WriteIceCashLog(data, response.Content, "TPIPolicy");
+
             return json;
         }
 
@@ -964,14 +997,13 @@ namespace Insurance.Service
             IRestResponse response = client.Execute(request);
 
             ResultRootObject json = JsonConvert.DeserializeObject<ResultRootObject>(response.Content);
+
+            Service_db.WriteIceCashLog(data, response.Content, "LICCertConf", vehicleDetails.RegistrationNo);
             return json;
         }
 
-
-
         public static string GetMachineId()
         {
-
             string cpuInfo = string.Empty;
             ManagementClass mc = new ManagementClass("win32_processor");
             ManagementObjectCollection moc = mc.GetInstances();
@@ -990,8 +1022,14 @@ namespace Insurance.Service
 
         //14-Feb-2019
 
-        public ResultRootObject ZineraLICQuote(string RegistrationNo, string parternToken, string IDsNumber, string PaymentTermId, string ProductId)
+        public ResultRootObject ZineraLICQuote(string RegistrationNo, string parternToken, string _clientIdType,  string PaymentTermId, string ProductId, string IDsNumber, CustomerModel CustomerInfo)
         {
+            var requestToken = Service_db.GetLatestToken();
+
+            if (requestToken!=null)
+            {
+                parternToken = requestToken.Token;
+            }
 
             int RadioTVUsage = 1; // for private car
 
@@ -1004,6 +1042,7 @@ namespace Insurance.Service
             {
                 RadioTVUsage = 2;
             }
+
 
 
             int licenseFreequency = GetMonthKey(Convert.ToInt32(PaymentTermId));
@@ -1020,17 +1059,15 @@ namespace Insurance.Service
             {
                 VRN = RegistrationNo,
                 IDNumber = IDsNumber,
-                ClientIDType = 1,
-                //FirstName = CustomerInfo.FirstName,
-                //LastName = CustomerInfo.LastName,
-                //Address1 = CustomerInfo.AddressLine1,
-                //Address2 = CustomerInfo.AddressLine2,
-                //  SuburbID = "2",
-                // LicFrequency = licenseFreequency,
-                //  SuburbID = "2",
+                ClientIDType = _clientIdType,
+                FirstName = CustomerInfo.FirstName,
+                LastName = CustomerInfo.LastName,
+                Address1 = CustomerInfo.AddressLine1,
+                Address2 = CustomerInfo.AddressLine2,
+                SuburbID = "2",
                 LicFrequency = licenseFreequency,
                RadioTVUsage = RadioTVUsage,
-                RadioTVFrequency = licenseFreequency
+               RadioTVFrequency = licenseFreequency
             });
             //}
 
@@ -1081,9 +1118,15 @@ namespace Insurance.Service
             request.AddParameter("application/x-www-form-urlencoded", jsonobject, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
             ResultRootObject json = JsonConvert.DeserializeObject<ResultRootObject>(response.Content);
+
+            string branchId = CustomerInfo == null ? "" : Convert.ToString(CustomerInfo.BranchId);
+
+            Service_db.WriteIceCashLog(data, response.Content, "LICQuote", RegistrationNo, branchId);
+
+
             return json;
         }
-
+        
 
         public int GetMonthKey(int monthId)
         {
@@ -1740,12 +1783,12 @@ namespace Insurance.Service
     {
         public string VRN { get; set; }
         public string IDNumber { get; set; }
-        public int ClientIDType { get; set; }
-        //public string FirstName { get; set; }
-        //public string LastName { get; set; }
-        //public string Address1 { get; set; }
-        //public string Address2 { get; set; }
-        //public int SuburbID { get; set; }
+        public string ClientIDType { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
+        public string SuburbID { get; set; }
         public int LicFrequency { get; set; }
        public int RadioTVUsage { get; set; }
         public int RadioTVFrequency { get; set; }

@@ -205,12 +205,17 @@ namespace Gene
             this.lblErrMessage = new System.Windows.Forms.Label();
             this.NewerrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnlconfimpaymeny = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.RadioSwipe = new System.Windows.Forms.RadioButton();
+            this.RadioMobile = new System.Windows.Forms.RadioButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.rdBtnFullPayment = new System.Windows.Forms.RadioButton();
+            this.rdBtnPartialPayment = new System.Windows.Forms.RadioButton();
+            this.txtPartialAmount = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnConfirmPayment = new System.Windows.Forms.Button();
             this.btnhomePay = new System.Windows.Forms.Button();
             this.btnconformpayBack = new System.Windows.Forms.Button();
-            this.RadioMobile = new System.Windows.Forms.RadioButton();
-            this.RadioSwipe = new System.Windows.Forms.RadioButton();
             this.txttotalamuntc = new System.Windows.Forms.TextBox();
             this.label47 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
@@ -317,6 +322,8 @@ namespace Gene
             this.pnlErrormessage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NewerrorProvider)).BeginInit();
             this.pnlconfimpaymeny.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnlRiskDetails.SuspendLayout();
             this.pnlTBAPersonalDetails.SuspendLayout();
@@ -341,9 +348,9 @@ namespace Gene
             this.PnlVrn.Controls.Add(this.txtVrn);
             this.PnlVrn.Controls.Add(this.btnSave);
             this.PnlVrn.Controls.Add(this.label1);
-            this.PnlVrn.Location = new System.Drawing.Point(27, 642);
+            this.PnlVrn.Location = new System.Drawing.Point(1285, 27);
             this.PnlVrn.Name = "PnlVrn";
-            this.PnlVrn.Size = new System.Drawing.Size(44, 56);
+            this.PnlVrn.Size = new System.Drawing.Size(51, 69);
             this.PnlVrn.TabIndex = 4;
             // 
             // rdCorporate
@@ -767,7 +774,7 @@ namespace Gene
             this.pnlPersonalDetails.Controls.Add(this.lblPhone);
             this.pnlPersonalDetails.Controls.Add(this.lblEmail);
             this.pnlPersonalDetails.Controls.Add(this.lblPName);
-            this.pnlPersonalDetails.Location = new System.Drawing.Point(1101, 20);
+            this.pnlPersonalDetails.Location = new System.Drawing.Point(705, 12);
             this.pnlPersonalDetails.Name = "pnlPersonalDetails";
             this.pnlPersonalDetails.Size = new System.Drawing.Size(57, 92);
             this.pnlPersonalDetails.TabIndex = 60;
@@ -1101,9 +1108,9 @@ namespace Gene
             this.pnlPersonalDetails2.Controls.Add(this.label17);
             this.pnlPersonalDetails2.Controls.Add(this.label18);
             this.pnlPersonalDetails2.Controls.Add(this.label19);
-            this.pnlPersonalDetails2.Location = new System.Drawing.Point(406, 197);
+            this.pnlPersonalDetails2.Location = new System.Drawing.Point(32, 47);
             this.pnlPersonalDetails2.Name = "pnlPersonalDetails2";
-            this.pnlPersonalDetails2.Size = new System.Drawing.Size(1429, 504);
+            this.pnlPersonalDetails2.Size = new System.Drawing.Size(73, 97);
             this.pnlPersonalDetails2.TabIndex = 69;
             this.pnlPersonalDetails2.Visible = false;
             this.pnlPersonalDetails2.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSummery_Paint);
@@ -1356,9 +1363,9 @@ namespace Gene
             this.pnlOptionalCover.Controls.Add(this.label23);
             this.pnlOptionalCover.Controls.Add(this.btnOptionCoverBack);
             this.pnlOptionalCover.Controls.Add(this.btnContionOptionalCover);
-            this.pnlOptionalCover.Location = new System.Drawing.Point(562, 18);
+            this.pnlOptionalCover.Location = new System.Drawing.Point(241, 188);
             this.pnlOptionalCover.Name = "pnlOptionalCover";
-            this.pnlOptionalCover.Size = new System.Drawing.Size(61, 89);
+            this.pnlOptionalCover.Size = new System.Drawing.Size(75, 100);
             this.pnlOptionalCover.TabIndex = 71;
             // 
             // lblZnrErrMsg
@@ -1486,7 +1493,7 @@ namespace Gene
             this.pnlThankyou.Controls.Add(this.pnllicenceDiskSummary);
             this.pnlThankyou.Controls.Add(this.lblpayment);
             this.pnlThankyou.Controls.Add(this.lblThankyou);
-            this.pnlThankyou.Location = new System.Drawing.Point(993, 21);
+            this.pnlThankyou.Location = new System.Drawing.Point(614, 14);
             this.pnlThankyou.Name = "pnlThankyou";
             this.pnlThankyou.Size = new System.Drawing.Size(49, 61);
             this.pnlThankyou.TabIndex = 75;
@@ -1594,7 +1601,7 @@ namespace Gene
             // 
             this.pnlAddMoreVehicle.Controls.Add(this.label15);
             this.pnlAddMoreVehicle.Controls.Add(this.btnAddMoreVehicle);
-            this.pnlAddMoreVehicle.Location = new System.Drawing.Point(476, 30);
+            this.pnlAddMoreVehicle.Location = new System.Drawing.Point(347, 12);
             this.pnlAddMoreVehicle.Name = "pnlAddMoreVehicle";
             this.pnlAddMoreVehicle.Size = new System.Drawing.Size(36, 49);
             this.pnlAddMoreVehicle.TabIndex = 74;
@@ -1630,9 +1637,9 @@ namespace Gene
             this.pnlSum.Controls.Add(this.BtnSDback);
             this.pnlSum.Controls.Add(this.label9);
             this.pnlSum.Controls.Add(this.pnlSummery);
-            this.pnlSum.Location = new System.Drawing.Point(1504, 34);
+            this.pnlSum.Location = new System.Drawing.Point(1008, 15);
             this.pnlSum.Name = "pnlSum";
-            this.pnlSum.Size = new System.Drawing.Size(52, 105);
+            this.pnlSum.Size = new System.Drawing.Size(52, 80);
             this.pnlSum.TabIndex = 73;
             // 
             // btnHomeSum
@@ -1873,9 +1880,9 @@ namespace Gene
             this.pnlRadioZinara.Controls.Add(this.OptNext);
             this.pnlRadioZinara.Controls.Add(this.label33);
             this.pnlRadioZinara.ForeColor = System.Drawing.Color.White;
-            this.pnlRadioZinara.Location = new System.Drawing.Point(27, 282);
+            this.pnlRadioZinara.Location = new System.Drawing.Point(438, 203);
             this.pnlRadioZinara.Name = "pnlRadioZinara";
-            this.pnlRadioZinara.Size = new System.Drawing.Size(63, 99);
+            this.pnlRadioZinara.Size = new System.Drawing.Size(1339, 433);
             this.pnlRadioZinara.TabIndex = 76;
             this.pnlRadioZinara.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlRadioZinara_Paint);
             // 
@@ -2177,9 +2184,9 @@ namespace Gene
             this.pnlsumary.Controls.Add(this.btnSumBack);
             this.pnlsumary.Controls.Add(this.btnSumContinue);
             this.pnlsumary.Controls.Add(this.lblAddressValue);
-            this.pnlsumary.Location = new System.Drawing.Point(1362, 24);
+            this.pnlsumary.Location = new System.Drawing.Point(21, 612);
             this.pnlsumary.Name = "pnlsumary";
-            this.pnlsumary.Size = new System.Drawing.Size(47, 83);
+            this.pnlsumary.Size = new System.Drawing.Size(56, 74);
             this.pnlsumary.TabIndex = 68;
             this.pnlsumary.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlsumary_Paint);
             // 
@@ -2303,7 +2310,7 @@ namespace Gene
             // 
             this.pnlErrormessage.Controls.Add(this.btnErrormeg);
             this.pnlErrormessage.Controls.Add(this.lblErrMessage);
-            this.pnlErrormessage.Location = new System.Drawing.Point(658, 27);
+            this.pnlErrormessage.Location = new System.Drawing.Point(534, 12);
             this.pnlErrormessage.Name = "pnlErrormessage";
             this.pnlErrormessage.Size = new System.Drawing.Size(45, 60);
             this.pnlErrormessage.TabIndex = 0;
@@ -2339,19 +2346,100 @@ namespace Gene
             // 
             // pnlconfimpaymeny
             // 
+            this.pnlconfimpaymeny.Controls.Add(this.panel2);
+            this.pnlconfimpaymeny.Controls.Add(this.panel1);
+            this.pnlconfimpaymeny.Controls.Add(this.txtPartialAmount);
             this.pnlconfimpaymeny.Controls.Add(this.pictureBox2);
             this.pnlconfimpaymeny.Controls.Add(this.btnConfirmPayment);
             this.pnlconfimpaymeny.Controls.Add(this.btnhomePay);
             this.pnlconfimpaymeny.Controls.Add(this.btnconformpayBack);
-            this.pnlconfimpaymeny.Controls.Add(this.RadioMobile);
-            this.pnlconfimpaymeny.Controls.Add(this.RadioSwipe);
             this.pnlconfimpaymeny.Controls.Add(this.txttotalamuntc);
             this.pnlconfimpaymeny.Controls.Add(this.label47);
             this.pnlconfimpaymeny.Controls.Add(this.label46);
-            this.pnlconfimpaymeny.Location = new System.Drawing.Point(152, 29);
+            this.pnlconfimpaymeny.Location = new System.Drawing.Point(1142, 34);
             this.pnlconfimpaymeny.Name = "pnlconfimpaymeny";
-            this.pnlconfimpaymeny.Size = new System.Drawing.Size(59, 58);
+            this.pnlconfimpaymeny.Size = new System.Drawing.Size(58, 70);
             this.pnlconfimpaymeny.TabIndex = 77;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.RadioSwipe);
+            this.panel2.Controls.Add(this.RadioMobile);
+            this.panel2.Location = new System.Drawing.Point(321, 389);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(307, 151);
+            this.panel2.TabIndex = 116;
+            // 
+            // RadioSwipe
+            // 
+            this.RadioSwipe.AutoSize = true;
+            this.RadioSwipe.Checked = true;
+            this.RadioSwipe.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RadioSwipe.ForeColor = System.Drawing.Color.White;
+            this.RadioSwipe.Location = new System.Drawing.Point(7, 7);
+            this.RadioSwipe.Name = "RadioSwipe";
+            this.RadioSwipe.Size = new System.Drawing.Size(207, 50);
+            this.RadioSwipe.TabIndex = 105;
+            this.RadioSwipe.TabStop = true;
+            this.RadioSwipe.Text = "Swipe Card";
+            this.RadioSwipe.UseVisualStyleBackColor = true;
+            // 
+            // RadioMobile
+            // 
+            this.RadioMobile.AutoSize = true;
+            this.RadioMobile.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RadioMobile.ForeColor = System.Drawing.Color.White;
+            this.RadioMobile.Location = new System.Drawing.Point(3, 84);
+            this.RadioMobile.Name = "RadioMobile";
+            this.RadioMobile.Size = new System.Drawing.Size(270, 50);
+            this.RadioMobile.TabIndex = 106;
+            this.RadioMobile.Text = "Mobile Payment";
+            this.RadioMobile.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.rdBtnFullPayment);
+            this.panel1.Controls.Add(this.rdBtnPartialPayment);
+            this.panel1.Location = new System.Drawing.Point(327, 224);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(559, 57);
+            this.panel1.TabIndex = 115;
+            // 
+            // rdBtnFullPayment
+            // 
+            this.rdBtnFullPayment.AutoSize = true;
+            this.rdBtnFullPayment.Checked = true;
+            this.rdBtnFullPayment.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdBtnFullPayment.ForeColor = System.Drawing.Color.White;
+            this.rdBtnFullPayment.Location = new System.Drawing.Point(8, 13);
+            this.rdBtnFullPayment.Name = "rdBtnFullPayment";
+            this.rdBtnFullPayment.Size = new System.Drawing.Size(143, 33);
+            this.rdBtnFullPayment.TabIndex = 112;
+            this.rdBtnFullPayment.TabStop = true;
+            this.rdBtnFullPayment.Text = "Full Payment";
+            this.rdBtnFullPayment.UseVisualStyleBackColor = true;
+            this.rdBtnFullPayment.CheckedChanged += new System.EventHandler(this.rdBtnFullPayment_CheckedChanged);
+            // 
+            // rdBtnPartialPayment
+            // 
+            this.rdBtnPartialPayment.AutoSize = true;
+            this.rdBtnPartialPayment.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdBtnPartialPayment.ForeColor = System.Drawing.Color.White;
+            this.rdBtnPartialPayment.Location = new System.Drawing.Point(258, 16);
+            this.rdBtnPartialPayment.Name = "rdBtnPartialPayment";
+            this.rdBtnPartialPayment.Size = new System.Drawing.Size(167, 33);
+            this.rdBtnPartialPayment.TabIndex = 113;
+            this.rdBtnPartialPayment.Text = "Partial Payment";
+            this.rdBtnPartialPayment.UseVisualStyleBackColor = true;
+            this.rdBtnPartialPayment.CheckedChanged += new System.EventHandler(this.rdBtnPartialPayment_CheckedChanged);
+            // 
+            // txtPartialAmount
+            // 
+            this.txtPartialAmount.Font = new System.Drawing.Font("Arial Narrow", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPartialAmount.Location = new System.Drawing.Point(335, 310);
+            this.txtPartialAmount.Name = "txtPartialAmount";
+            this.txtPartialAmount.Size = new System.Drawing.Size(267, 46);
+            this.txtPartialAmount.TabIndex = 114;
             // 
             // pictureBox2
             // 
@@ -2404,36 +2492,10 @@ namespace Gene
             this.btnconformpayBack.UseVisualStyleBackColor = false;
             this.btnconformpayBack.Click += new System.EventHandler(this.btnconformpayBack_Click);
             // 
-            // RadioMobile
-            // 
-            this.RadioMobile.AutoSize = true;
-            this.RadioMobile.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RadioMobile.ForeColor = System.Drawing.Color.White;
-            this.RadioMobile.Location = new System.Drawing.Point(320, 458);
-            this.RadioMobile.Name = "RadioMobile";
-            this.RadioMobile.Size = new System.Drawing.Size(270, 50);
-            this.RadioMobile.TabIndex = 106;
-            this.RadioMobile.Text = "Mobile Payment";
-            this.RadioMobile.UseVisualStyleBackColor = true;
-            // 
-            // RadioSwipe
-            // 
-            this.RadioSwipe.AutoSize = true;
-            this.RadioSwipe.Checked = true;
-            this.RadioSwipe.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RadioSwipe.ForeColor = System.Drawing.Color.White;
-            this.RadioSwipe.Location = new System.Drawing.Point(329, 349);
-            this.RadioSwipe.Name = "RadioSwipe";
-            this.RadioSwipe.Size = new System.Drawing.Size(207, 50);
-            this.RadioSwipe.TabIndex = 105;
-            this.RadioSwipe.TabStop = true;
-            this.RadioSwipe.Text = "Swipe Card";
-            this.RadioSwipe.UseVisualStyleBackColor = true;
-            // 
             // txttotalamuntc
             // 
             this.txttotalamuntc.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttotalamuntc.Location = new System.Drawing.Point(615, 241);
+            this.txttotalamuntc.Location = new System.Drawing.Point(615, 165);
             this.txttotalamuntc.Name = "txttotalamuntc";
             this.txttotalamuntc.ReadOnly = true;
             this.txttotalamuntc.Size = new System.Drawing.Size(267, 53);
@@ -2444,7 +2506,7 @@ namespace Gene
             this.label47.AutoSize = true;
             this.label47.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label47.ForeColor = System.Drawing.Color.White;
-            this.label47.Location = new System.Drawing.Point(317, 238);
+            this.label47.Location = new System.Drawing.Point(317, 162);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(213, 46);
             this.label47.TabIndex = 1;
@@ -2455,7 +2517,7 @@ namespace Gene
             this.label46.AutoSize = true;
             this.label46.Font = new System.Drawing.Font("Arial Narrow", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label46.ForeColor = System.Drawing.Color.White;
-            this.label46.Location = new System.Drawing.Point(315, 102);
+            this.label46.Location = new System.Drawing.Point(315, 68);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(395, 64);
             this.label46.TabIndex = 0;
@@ -2707,9 +2769,9 @@ namespace Gene
             this.pnlTBAPersonalDetails.Controls.Add(this.label61);
             this.pnlTBAPersonalDetails.Controls.Add(this.label62);
             this.pnlTBAPersonalDetails.Controls.Add(this.lbTBAFirstName);
-            this.pnlTBAPersonalDetails.Location = new System.Drawing.Point(374, 9);
+            this.pnlTBAPersonalDetails.Location = new System.Drawing.Point(254, 12);
             this.pnlTBAPersonalDetails.Name = "pnlTBAPersonalDetails";
-            this.pnlTBAPersonalDetails.Size = new System.Drawing.Size(64, 97);
+            this.pnlTBAPersonalDetails.Size = new System.Drawing.Size(64, 51);
             this.pnlTBAPersonalDetails.TabIndex = 78;
             this.pnlTBAPersonalDetails.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlTBAPersonalDetails_Paint);
             // 
@@ -3045,9 +3107,9 @@ namespace Gene
             this.pnlCorporate.Controls.Add(this.label81);
             this.pnlCorporate.Controls.Add(this.label82);
             this.pnlCorporate.Controls.Add(this.label83);
-            this.pnlCorporate.Location = new System.Drawing.Point(262, 19);
+            this.pnlCorporate.Location = new System.Drawing.Point(152, 16);
             this.pnlCorporate.Name = "pnlCorporate";
-            this.pnlCorporate.Size = new System.Drawing.Size(74, 96);
+            this.pnlCorporate.Size = new System.Drawing.Size(57, 51);
             this.pnlCorporate.TabIndex = 79;
             // 
             // btnHomeCorporate
@@ -3388,9 +3450,9 @@ namespace Gene
             this.pnlInsurance.Controls.Add(this.label93);
             this.pnlInsurance.Controls.Add(this.label2);
             this.pnlInsurance.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlInsurance.Location = new System.Drawing.Point(27, 514);
+            this.pnlInsurance.Location = new System.Drawing.Point(1521, 20);
             this.pnlInsurance.Name = "pnlInsurance";
-            this.pnlInsurance.Size = new System.Drawing.Size(63, 96);
+            this.pnlInsurance.Size = new System.Drawing.Size(56, 68);
             this.pnlInsurance.TabIndex = 80;
             // 
             // button1
@@ -3575,6 +3637,10 @@ namespace Gene
             ((System.ComponentModel.ISupportInitialize)(this.NewerrorProvider)).EndInit();
             this.pnlconfimpaymeny.ResumeLayout(false);
             this.pnlconfimpaymeny.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.pnlRiskDetails.ResumeLayout(false);
             this.pnlRiskDetails.PerformLayout();
@@ -3879,6 +3945,11 @@ namespace Gene
         private System.Windows.Forms.ComboBox cmbPaymentTerm;
         private System.Windows.Forms.Label label92;
         private System.Windows.Forms.Label label93;
+        private System.Windows.Forms.RadioButton rdBtnFullPayment;
+        private System.Windows.Forms.RadioButton rdBtnPartialPayment;
+        private System.Windows.Forms.TextBox txtPartialAmount;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
 
         //private System.Windows.Forms.Label lblAmountDue;
     }

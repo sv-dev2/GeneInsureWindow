@@ -22,22 +22,24 @@ using System.Drawing.Printing;
 using Newtonsoft.Json;
 using System.Net.NetworkInformation;
 using System.Net.Mail;
+using System.Xml.Serialization;
+using InsuranceClaim.Models;
+using System.Text.RegularExpressions;
+using System.Web.Configuration;
 
 namespace Gene
 {
     public partial class Form1 : Form
     {
-
         //ResultRootObjects _quoteresponse;
-        //static String ApiURL = "http://windowsapi.gene.co.zw/api/Account/";
-        //static String IceCashRequestUrl = "http://windowsapi.gene.co.zw/api/ICEcash/";
+        //static string ApiURL = "http://windowsapi.gene.co.zw/api/account/";
+        //static string IceCashRequestUrl = "http://windowsapi.gene.co.zw/api/icecash/";
 
-        static string ApiURL = "http://geneinsureclaim2.kindlebit.com/api/account/";
-        static string IceCashRequestUrl = "http://geneinsureclaim2.kindlebit.com/api/icecash/";
+        static string ApiURL = WebConfigurationManager.AppSettings["urlPath"] + "/api/account/";
+        static string IceCashRequestUrl = WebConfigurationManager.AppSettings["urlPath"] + "/api/icecash/";
 
         //static String ApiURL = "http://localhost:6220/api/Account/";
         //static String IceCashRequestUrl = "http://localhost:6220/api/ICEcash/";
-
 
         static String username = "ameyoApi@geneinsure.com";
         static String Pwd = "Geninsure@123";
@@ -47,7 +49,7 @@ namespace Gene
 
         ICEcashTokenResponse _ObjToken;
 
-        public Form1(ICEcashTokenResponse ObjToken=null)
+        public Form1(ICEcashTokenResponse ObjToken = null)
         {
             InitializeComponent();
             CultureInfo culture = new CultureInfo(ConfigurationManager.AppSettings["DefaultCulture"]);
@@ -68,7 +70,10 @@ namespace Gene
             GetBannerImage();
 
 
-          
+
+            //  var date = Convert.ToDateTime("2019/01/31");
+
+
 
             //  CreateLicenseFile("");
 
@@ -180,13 +185,18 @@ namespace Gene
             //frmNewQuote obj = new frmNewQuote();
             //obj.Show();
 
-            if (cmbBranch.SelectedValue != null && cmbBranch.SelectedValue.ToString() == "0")
+            //if (cmbBranch.SelectedValue != null && cmbBranch.SelectedValue.ToString() == "0")
+            //{
+            //    MyMessageBox.ShowBox("Please select branch.", "Modal error message");
+
+            //    cmbBranch.Focus();
+            //    return;
+            //}
+
+
+            if (cmbBranch.SelectedValue == null)
             {
-                // MessageBox.Show("Please select branch.");
-                // lblErrMsg.Text = "Please select branch.";
-
                 MyMessageBox.ShowBox("Please select branch.", "Modal error message");
-
                 cmbBranch.Focus();
                 return;
             }
@@ -194,6 +204,7 @@ namespace Gene
 
             var branch = cmbBranch.SelectedValue == null ? "" : cmbBranch.SelectedValue.ToString();
             btnNewQuote.Text = "Processing..";
+
             frmQuote obj = new frmQuote(branch, _ObjToken);
             obj.Show();
             this.Hide();
@@ -218,42 +229,85 @@ namespace Gene
 
         private void btnRenew_Click(object sender, EventArgs e)
         {
-            frmRenewPolicy objRE = new frmRenewPolicy(_ObjToken);
+
+            if (cmbBranch.SelectedValue == null)
+            {
+                MyMessageBox.ShowBox("Please select branch.", "Modal error message");
+                cmbBranch.Focus();
+            }
+            var branch = cmbBranch.SelectedValue == null ? "" : cmbBranch.SelectedValue.ToString();
+
+
+
+            frmRenewPolicy objRE = new frmRenewPolicy(_ObjToken, branch);
             objRE.Show();
             this.Hide();
+
 
         }
 
         private void SetSelectedValue()
         {
-            var ipAddress = GetAddresses();
+            //var ipAddress = GetAddresses();
 
-            var client = new RestClient(ApiURL + "GetBranchByIp?IpAddress=" + ipAddress);
-            var request = new RestRequest(Method.GET);
-            request.AddHeader("password", Pwd);
-            request.AddHeader("username", username);
-            request.AddParameter("application/json", "{\n\t\"Name\":\"ghj\"\n}", ParameterType.RequestBody);
-            IRestResponse response = client.Execute(request);
-            var result = (new JavaScriptSerializer()).Deserialize<Branch>(response.Content);
+            //var client = new RestClient(ApiURL + "GetBranchByIp?IpAddress=" + ipAddress);
+            //var request = new RestRequest(Method.GET);
+            //request.AddHeader("password", Pwd);
+            //request.AddHeader("username", username);
+            //request.AddParameter("application/json", "{\n\t\"Name\":\"ghj\"\n}", ParameterType.RequestBody);
+            //IRestResponse response = client.Execute(request);
+            //var result = (new JavaScriptSerializer()).Deserialize<Branch>(response.Content);
 
-            if (result != null && result.Id != 0)
+            //if (result != null && result.Id != 0)
+            //{
+            //    branchList = branchList.Where(c => c.Id == result.Id).ToList();
+
+            //    cmbBranch.DataSource = null;
+            //    cmbBranch.DataSource = branchList;
+            //    cmbBranch.DisplayMember = "BranchName";
+            //    cmbBranch.ValueMember = "Id";
+
+            //    cmbBranch.SelectedValue = result.Id;
+            //    selectedBranchId = result.Id;
+
+            //    cmbBranch.Visible = false;
+            //    lblBranch.Visible = false;
+            //}
+
+
+
+            //cmbBranch.DataSource = null;
+            //cmbBranch.DataSource = branchList;
+            //cmbBranch.DisplayMember = "BranchName";
+            //cmbBranch.ValueMember = "Id";
+            //  ReadBranchFromLogFile();
+
+            string branchId = ReadBranchFromLogFile();
+
+
+            cmbBranch.SelectedValue = branchId == "" ? 0 : Convert.ToInt32(branchId);
+
+            if (branchId != "" && Convert.ToInt32(branchId) > 0)
             {
-                branchList = branchList.Where(c => c.Id == result.Id).ToList();
-
-                cmbBranch.DataSource = null;
-                cmbBranch.DataSource = branchList;
-                cmbBranch.DisplayMember = "BranchName";
-                cmbBranch.ValueMember = "Id";
-
-                cmbBranch.SelectedValue = result.Id;
-                selectedBranchId = result.Id;
-
                 cmbBranch.Visible = false;
                 lblBranch.Visible = false;
-
-
             }
+
+
         }
+
+        public string ReadBranchFromLogFile()
+        {
+            string installedPath = @"C:\Users\Public\";
+            string fileName = "Branch" + ".txt";
+            var destinationFileName = System.IO.Path.Combine(installedPath, System.IO.Path.GetFileName(fileName));
+
+            var res = System.IO.File.ReadAllLines(destinationFileName);
+
+            return res[0];
+
+        }
+
 
 
         public void InsertMachineBranch(string branchName1)
@@ -293,7 +347,6 @@ namespace Gene
         public string GetAddresses()
         {
             string hostName = Dns.GetHostName(); // Retrive the Name of HOST  
-
             // Get the IP  
             return Dns.GetHostByName(hostName).AddressList[0].ToString();
         }
@@ -363,9 +416,28 @@ namespace Gene
             MemoryStream ms = new MemoryStream(byteArrayIn);
             Image returnImage = Image.FromStream(ms);
             return returnImage;
-
         }
 
+        public void WriteBranch(string brachId)
+        {
+            //List<string> pdfFiles = new List<string>();
+            //byte[] pdfbytes = Convert.FromBase64String(base64data);
+            //string installedPath = @"C:\Users\Public\";
+            //string fileName = "Branch" + ".pdf";
+            //var destinationFileName = System.IO.Path.Combine(installedPath, System.IO.Path.GetFileName(fileName));
+            //File.WriteAllBytes(destinationFileName, pdfbytes);
+
+
+            string installedPath = @"C:\Users\Public\";
+            string fileName = "Branch" + ".txt";
+            var destinationFileName = System.IO.Path.Combine(installedPath, System.IO.Path.GetFileName(fileName));
+            using (System.IO.StreamWriter file =
+            new System.IO.StreamWriter(destinationFileName))
+            {
+                file.WriteLine(brachId);
+            }
+
+        }
 
 
 
@@ -373,10 +445,19 @@ namespace Gene
         {
             lblErrMsg.Text = "";
 
-            if (cmbBranch.SelectedValue != null && cmbBranch.SelectedIndex != 0)
+            //if (cmbBranch.SelectedValue != null && cmbBranch.SelectedIndex != 0)
+            //{
+            //   InsertMachineBranch(cmbBranch.SelectedValue.ToString());
+            //}
+
+            if (cmbBranch.SelectedValue != null && cmbBranch.SelectedValue.ToString() != "GensureAPIv2.Models.Branch")
             {
-                InsertMachineBranch(cmbBranch.SelectedValue.ToString());
+                WriteBranch(cmbBranch.SelectedValue.ToString());
             }
+
+
+
+
         }
 
         //public void SaveCertificatePdf()

@@ -18,6 +18,7 @@ using System.Configuration;
 using System.IO;
 using System.Net.Sockets;
 using System.Threading;
+using System.Web.Configuration;
 
 namespace Gene
 {
@@ -29,9 +30,9 @@ namespace Gene
         //static string IceCashRequestUrl = "http://windowsapi.gene.co.zw/api/icecash/";
         //static string ApiURLS = "http://windowsapi.gene.co.zw/api/renewal/";
 
-        static String ApiURL = "http://geneinsureclaim2.kindlebit.com/api/Account/";
-        static String IceCashRequestUrl = "http://geneinsureclaim2.kindlebit.com/api/ICEcash/";
-        static String ApiURLS = "http://geneinsureclaim2.kindlebit.com/api/Renewal/";
+        static String ApiURL = WebConfigurationManager.AppSettings["urlPath"] + "/api/Account/";
+        static String IceCashRequestUrl = WebConfigurationManager.AppSettings["urlPath"] + "/api/ICEcash/";
+        static String ApiURLS = WebConfigurationManager.AppSettings["urlPath"] + "/api/Renewal/";
 
         //static String ApiURL = "http://localhost:6220/api/Account/";
         //static String IceCashRequestUrl = "http://localhost:6220/api/ICEcash/";
@@ -64,20 +65,27 @@ namespace Gene
         string responseMessage = "";
         string ReCardDetail = "";
 
-        string _clientId = "";
+        string _clientIdType = "";
+        string _licenseId = "0";
+        string _iceCashErrorMsg = "";
+        string branchName = "0";
+
+
         List<ResultLicenceIDResponse> licenseDiskList = new List<ResultLicenceIDResponse>();
-        public frmRenewPolicy(ICEcashTokenResponse _ObjToken = null)
+        public frmRenewPolicy(ICEcashTokenResponse _ObjToken = null, string branch="0")
         {
+            branchName = branch;
 
             objListUserInput = new List<UserInput>();
             customerInfo = new CustomerModel();
-          //  ObjToken = new ICEcashTokenResponse();
+            //  ObjToken = new ICEcashTokenResponse();
 
             if (_ObjToken == null)
                 ObjToken = new ICEcashTokenResponse();
             else
                 ObjToken = _ObjToken;
 
+            
 
             objlistRisk = new List<RiskDetailModel>();
             IcServiceobj = new ICEcashService();
@@ -113,7 +121,6 @@ namespace Gene
 
 
             //18 Feb
-
             pnlRenewRadioZinara.Visible = false;
             pnlReRadio.Visible = false;
             pnlReZinara.Visible = false;
@@ -121,7 +128,8 @@ namespace Gene
 
             pnlRenewRadioZinara.Location = new Point(335, 20);
             //pnlRenewRadioZinara.Size = new System.Drawing.Size(1390, 750);
-            pnlRenewRadioZinara.Size = new System.Drawing.Size(1491, 850);
+            // pnlRenewRadioZinara.Size = new System.Drawing.Size(1491, 850);
+            pnlRenewRadioZinara.Size = new System.Drawing.Size(1591, 850);
 
 
 
@@ -171,6 +179,8 @@ namespace Gene
 
             pnlRenewLogo.Size = new System.Drawing.Size(300, 220);
 
+            // pnlRenewLogo.Visible = false; // I will undo this
+
             pnlRenewRiskDetails.Location = new Point(335, 20);
             pnlRenewRiskDetails.Size = new System.Drawing.Size(1350, 638);
 
@@ -200,13 +210,13 @@ namespace Gene
             pnlRenewConfirm.Size = new System.Drawing.Size(1450, 750);
 
             pnlRenewThankyou.Location = new Point(335, 20);
-            pnlRenewThankyou.Size = new System.Drawing.Size(1350, 750);
+            pnlRenewThankyou.Size = new System.Drawing.Size(1450, 750);
 
             pnlReErrormessage.Location = new Point(335, 20);
             pnlReErrormessage.Size = new System.Drawing.Size(1350, 750);
 
             pnlReconfimpaymeny.Location = new Point(335, 20);
-            pnlReconfimpaymeny.Size = new System.Drawing.Size(1350, 750);
+            pnlReconfimpaymeny.Size = new System.Drawing.Size(1450, 750);
 
 
             txtRenewVrn.Text = "Car Registration Number";
@@ -900,7 +910,7 @@ namespace Gene
             ResultResponse resObject = quoteresponse.Response;
             if (resObject.Message.Contains("Partner Token has expired"))
             {
-               // ObjToken = null;
+                // ObjToken = null;
                 // CheckToken();
                 ObjToken = IcServiceobj.getToken();
                 Service_db.UpdateToken(ObjToken);
@@ -1269,12 +1279,17 @@ namespace Gene
             ICEcashService IcServiceobj = new ICEcashService();
 
             //9Jan2019
-            ObjToken = CheckParterTokenExpire();
+            //ObjToken = CheckParterTokenExpire();
 
-            if (ObjToken != null)
-            {
-                parternToken = ObjToken.Response.PartnerToken;
-            }
+            //if (ObjToken != null)
+            //{
+            //    parternToken = ObjToken.Response.PartnerToken;
+            //}
+
+            RequestToke token = Service_db.GetLatestToken();
+            if (token != null)
+                parternToken = token.Token;
+
 
 
 
@@ -1803,8 +1818,6 @@ namespace Gene
             }
 
 
-
-
             //pnlRenewConfirm.Visible = false;
             pnlRenewRiskDetails.Visible = false;
             pnlRenewOptionalCover.Visible = true;
@@ -1836,7 +1849,7 @@ namespace Gene
                 //    parternToken = ObjToken.Response.PartnerToken;
 
                 RequestToke token = Service_db.GetLatestToken();
-                if (ObjToken != null)
+                if (token != null)
                     parternToken = token.Token;
 
 
@@ -1899,8 +1912,10 @@ namespace Gene
                     ResultRootObject quoteresponse = IcServiceobj.RequestQuote(objRiskModel, (CustomerModel)customerInfo, parternToken); // uncomment this line 
 
                     resObject = quoteresponse.Response;
+
+
                     //if token expire
-                    if (resObject != null && resObject.Message.Contains("Partner Token has expired"))
+                    if (resObject != null && (resObject.Message.Contains("Partner Token has expired") || resObject.Message.Contains("Invalid Partner Token")))
                     {
                         ObjToken = IcServiceobj.getToken();
                         if (ObjToken != null)
@@ -1913,6 +1928,11 @@ namespace Gene
 
                         }
 
+                    }
+
+                    if (quoteresponse.Response.Message.Contains("1 failed"))
+                    {
+                        _iceCashErrorMsg = "Error Occured";
                     }
 
 
@@ -2004,7 +2024,7 @@ namespace Gene
 
                                         //}
 
-                                        _clientId = quoteresponse.Response.Quotes[0].Client.IDNumber;
+                                        //   _clientIdType = quoteresponse.Response.Quotes[0].Client.IDNumber;
 
                                     }
                                     int cmVehicleValue = 0;
@@ -2030,19 +2050,13 @@ namespace Gene
                                     /////End
 
                                     // Session["InsuranceId"] = quoteresponse.Response.Quotes[0].InsuranceID;
-
                                 }
 
 
                                 // for zinara license 
-
-                                GetZinraLiceenseFee(Convert.ToString(cmbPaymentTerm.SelectedValue));
-
-
+                                //  GetZinraLiceenseFee(Convert.ToString(cmbPaymentTerm.SelectedValue));
 
                             }
-
-
                         }
                     }
                 }
@@ -2050,7 +2064,6 @@ namespace Gene
             catch (Exception ex)
             {
                 // response.message = "Error occured.";
-
                 MyMessageBox.ShowBox("Error occured.");
             }
         }
@@ -2060,35 +2073,47 @@ namespace Gene
 
         private void GetZinraLiceenseFee(string paymentTerm)
         {
-
             try
             {
-
                 if (resObject.Quotes != null && resObject.Quotes[0].Message == "Unable to retrieve vehicle info from Zimlic, please check the VRN is correct or try again later.")
                 {
                     return;
                 }
 
-
-                if (resObject != null && resObject.Message.Contains("Partner Token has expired"))
+                if (_iceCashErrorMsg != "")
                 {
-                    ObjToken = IcServiceobj.getToken();
-
-                    parternToken = ObjToken.Response.PartnerToken;
-
-                    Service_db.UpdateToken(ObjToken);
-                    //if (ObjToken != null)
-                    //{
-                    //    parternToken = ObjToken.Response.PartnerToken;
-                    //    quoteresponse = IcServiceobj.checkVehicleExistsWithVRN(objRiskModel, customerInfo, parternToken);
-                    //    resObject = quoteresponse.Response;
-                    //}
+                    return;
                 }
 
+                var requestToken = Service_db.GetLatestToken();
+                if (requestToken != null)
+                {
+                    parternToken = requestToken.Token;
+                }
+
+                //if (resObject != null && resObject.Message.Contains("Partner Token has expired"))
+                //{
+                //    ObjToken = IcServiceobj.getToken();
+
+                //    parternToken = ObjToken.Response.PartnerToken;
+
+                //    Service_db.UpdateToken(ObjToken);
+                //    //if (ObjToken != null)
+                //    //{
+                //    //    parternToken = ObjToken.Response.PartnerToken;
+                //    //    quoteresponse = IcServiceobj.checkVehicleExistsWithVRN(objRiskModel, customerInfo, parternToken);
+                //    //    resObject = quoteresponse.Response;
+                //    //}
+                //}
+
+                if (rdoCorporate.Checked)
+                    _clientIdType = "2";
+                else
+                    _clientIdType = "1";
 
 
                 // var _quoteresponse = IcServiceobj.ZineraLICQuote(txtRenewVrn.Text, parternToken, resObject.Quotes[0].Client.IDNumber, paymentTerm, cmbProducts.SelectedValue.ToString());
-                var _quoteresponse = IcServiceobj.ZineraLICQuote(txtRenewVrn.Text, parternToken, customerInfo.NationalIdentificationNumber, paymentTerm, cmbProducts.SelectedValue.ToString());
+                var _quoteresponse = IcServiceobj.ZineraLICQuote(txtRenewVrn.Text, parternToken, _clientIdType, paymentTerm, cmbProducts.SelectedValue.ToString(), customerInfo.NationalIdentificationNumber, customerInfo);
                 var _resObjects = _quoteresponse.Response;
 
 
@@ -2102,11 +2127,19 @@ namespace Gene
 
                         Service_db.UpdateToken(ObjToken);
                         //  quoteresponse = IcServiceobj.RequestQuote(parternToken, RegistrationNo, suminsured, make, model, PaymentTermId, VehicleYear, CoverTypeId, VehicleUsage, "", (CustomerModel)customerInfo); // uncomment this line 
-                        _quoteresponse = IcServiceobj.ZineraLICQuote(txtRenewVrn.Text, parternToken, _clientId, paymentTerm, cmbProducts.SelectedValue.ToString());
+                        _quoteresponse = IcServiceobj.ZineraLICQuote(txtRenewVrn.Text, parternToken, _clientIdType, paymentTerm, cmbProducts.SelectedValue.ToString(), customerInfo.NationalIdentificationNumber, customerInfo);
 
                         _resObjects = _quoteresponse.Response;
                     }
                 }
+
+                if (_resObjects != null && _resObjects.Message.Contains("1 failed"))
+                {
+                    MyMessageBox.ShowBox(_resObjects.Quotes[0].Message, "Modal error message"); // need to do uncomment
+
+                }
+
+
 
 
                 if (_resObjects != null && _resObjects.Quotes != null && _resObjects.Quotes[0].Message == "Success")
@@ -2151,38 +2184,45 @@ namespace Gene
             try
             {
 
-
-
                 if (resObject.Quotes != null && resObject.Quotes[0].Message == "Unable to retrieve vehicle info from Zimlic, please check the VRN is correct or try again later.")
                 {
                     return;
                 }
 
-
-                if (resObject != null && resObject.Message.Contains("Partner Token has expired"))
+                var requestToken = Service_db.GetLatestToken();
+                if (requestToken != null)
                 {
-                    ObjToken = IcServiceobj.getToken();
-
-                    parternToken = ObjToken.Response.PartnerToken;
-
-                    Service_db.UpdateToken(ObjToken);
-                    //if (ObjToken != null)
-                    //{
-                    //    parternToken = ObjToken.Response.PartnerToken;
-                    //    quoteresponse = IcServiceobj.checkVehicleExistsWithVRN(objRiskModel, customerInfo, parternToken);
-                    //    resObject = quoteresponse.Response;
-                    //}
-
+                    parternToken = requestToken.Token;
                 }
 
+                //if (resObject != null && resObject.Message.Contains("Partner Token has expired"))
+                //{
+                //    ObjToken = IcServiceobj.getToken();
+
+                //    parternToken = ObjToken.Response.PartnerToken;
+
+                //    Service_db.UpdateToken(ObjToken);
+                //    //if (ObjToken != null)
+                //    //{
+                //    //    parternToken = ObjToken.Response.PartnerToken;
+                //    //    quoteresponse = IcServiceobj.checkVehicleExistsWithVRN(objRiskModel, customerInfo, parternToken);
+                //    //    resObject = quoteresponse.Response;
+                //    //}
+
+                //}
+
+                if (rdoCorporate.Checked)
+                    _clientIdType = "2";
+                else
+                    _clientIdType = "1";
 
 
-                var _quoteresponse = IcServiceobj.ZineraLICQuote(txtRenewVrn.Text, parternToken, customerInfo.NationalIdentificationNumber, paymentTerm, cmbProducts.SelectedValue.ToString());
+                var _quoteresponse = IcServiceobj.ZineraLICQuote(txtRenewVrn.Text, parternToken, _clientIdType, paymentTerm, cmbProducts.SelectedValue.ToString(), customerInfo.NationalIdentificationNumber, customerInfo);
                 var _resObjects = _quoteresponse.Response;
 
 
                 //if token expire
-                if (_resObjects != null && _resObjects.Message.Contains("Partner Token has expired"))
+                if (_resObjects != null && (_resObjects.Message.Contains("Partner Token has expired") || _resObjects.Message.Contains("Invalid Partner Token")))
                 {
                     ObjToken = IcServiceobj.getToken();
                     if (ObjToken != null)
@@ -2191,7 +2231,7 @@ namespace Gene
 
                         Service_db.UpdateToken(ObjToken);
                         //  quoteresponse = IcServiceobj.RequestQuote(parternToken, RegistrationNo, suminsured, make, model, PaymentTermId, VehicleYear, CoverTypeId, VehicleUsage, "", (CustomerModel)customerInfo); // uncomment this line 
-                        _quoteresponse = IcServiceobj.ZineraLICQuote(txtRenewVrn.Text, parternToken, customerInfo.NationalIdentificationNumber, paymentTerm, cmbProducts.SelectedValue.ToString());
+                        _quoteresponse = IcServiceobj.ZineraLICQuote(txtRenewVrn.Text, parternToken, _clientIdType, paymentTerm, cmbProducts.SelectedValue.ToString(), customerInfo.NationalIdentificationNumber, customerInfo);
 
                         _resObjects = _quoteresponse.Response;
                     }
@@ -2483,6 +2523,9 @@ namespace Gene
                 customerInfo.CountryCode = "+263";
                 customerInfo.AddressLine1 = txtAdd1.Text;
                 customerInfo.NationalIdentificationNumber = txtIDNumber.Text;
+
+                customerInfo.BranchId = branchName == "" ? 0 : Convert.ToInt32(branchName);
+
                 // customerInfo.Gender = rdbFemale
 
                 if (rdbMale.Checked)
@@ -2680,6 +2723,21 @@ namespace Gene
             }
             pnlRenewOptionalCover.Visible = false;
             var _productid = objRiskModel.ProductId;
+
+
+            if (Convert.ToInt32(cmbCoverType.SelectedValue) != (int)eCoverType.Comprehensive && objRiskModel.isVehicleRegisteredonICEcash)
+            {
+                if (rdbFemale.Checked)
+                    _clientIdType = "2";
+                else
+                    _clientIdType = "1";
+
+
+                GetZinraLiceenseFee(cmbPaymentTerm.SelectedValue.ToString());
+
+            }
+
+
 
 
         }
@@ -3457,6 +3515,7 @@ namespace Gene
 
         private void chkExcessBuyback_CheckedChanged(object sender, EventArgs e)
         {
+
         }
 
         public SummaryDetailModel SaveCustomerVehical()
@@ -3603,6 +3662,7 @@ namespace Gene
         private void btnSumContinue_Click(object sender, EventArgs e)
         {
             pnlSummery.Visible = false;
+
             pnlReconfimpaymeny.Visible = true;
             txtRetotalamuntc.Text = txtTotalPremium.Text;
         }
@@ -3672,6 +3732,15 @@ namespace Gene
                         var terninalids = ConfigurationManager.AppSettings["TerminalId"];
                         decimal tranjectionamts = amountIncents;
 
+                        if (summaryDetails.Id == 0)
+                        {
+                            MyMessageBox.ShowBox("Error occur, please contact to admistrator.");
+                            btnReconformpaynxt.Enabled = true;
+                            pictureBox2.Visible = false;
+                            return;
+                        }
+
+
 
                         ResultRootObject policyDetailsIceCash = ApproveVRNToIceCash(summaryDetails.Id);
 
@@ -3684,6 +3753,7 @@ namespace Gene
 
 
                         SavePaymentinformation(TransactionId.ToString(), summaryDetails.Id, paymentTermName, ReCardDetail, terninalids, tranjectionamts, summaryDetails.VehicleId, iceCashPolicyNumber);
+
                         lblThankyou1.Text = "";
 
 
@@ -3718,6 +3788,7 @@ namespace Gene
 
                         foreach (var item in objlistRisk)
                         {
+                            item.LicenseId = _licenseId;
                             if (!string.IsNullOrEmpty(item.LicenseId))
                             {
                                 DisplayLicenseDisc(item, parternToken);
@@ -3725,24 +3796,17 @@ namespace Gene
                         }
 
 
-                        if (licenseDiskList.Count > 0)
-                            btnPrint.Visible = true;
-                        else
-                            btnPrint.Visible = false;
+                        //if (licenseDiskList.Count > 0)
+                        //    btnPrint.Visible = true;
+                        //else
+                        //    btnPrint.Visible = false;
 
-
-
-
-
+                        btnPrint.Visible = false;
 
                         //MessageBox.Show("Policy has been sucessfully registred.");
                         pnlRenewThankyou.Visible = true;
                         pnlReconfimpaymeny.Visible = false;
-
-
                         btnReconformpaynxt.Text = "Pay";
-
-
                     }
                 }
                 else
@@ -3755,8 +3819,6 @@ namespace Gene
                     lblReErrMessage.ForeColor = Color.Red;
                     //lblREPaymentMsg.Text = "";
 
-
-
                     btnReconformpaynxt.Text = "Pay";
                     lblREPaymentMsg.Text = "";
                 }
@@ -3765,8 +3827,7 @@ namespace Gene
             }
             catch (Exception ex)
             {
-                WriteLog("InitializeTermianl :" + ex.Message);
-
+                MyMessageBox.ShowBox(ex.Message);
                 //MessageBox.Show(ex.ToString());
             }
             finally
@@ -3776,7 +3837,10 @@ namespace Gene
                 xmlString = @"<?xml version='1.0' encoding='UTF-8'?>
   <Esp:Interface Version='1.0' xmlns:Esp='http://www.mosaicsoftware.com/Postilion/eSocket.POS/'><Esp:Admin TerminalId='" + ConfigurationManager.AppSettings["TerminalId"] + "' Action ='CLOSE'/></Esp:Interface>";
                 InitializeTermianl("" + ConfigurationManager.AppSettings["url"] + "", ConfigurationManager.AppSettings["Port"], xmlString);
+                btnReconformpaynxt.Enabled = true;
+                pictureBox2.Visible = false;
             }
+
         }
 
 
@@ -3804,6 +3868,9 @@ namespace Gene
             if (quoteresponseResult.Response != null)
             {
                 licenseDiskList.Add(quoteresponseResult.Response);
+                this.Hide();
+                CertificateSerialForm obj = new CertificateSerialForm(riskDetailModel, parternToken, quoteresponseResult.Response.LicenceCert); // hide for now
+                obj.Show();
             }
 
             // 
@@ -4212,7 +4279,7 @@ namespace Gene
             //    parternToken = ObjToken.Response.PartnerToken;
 
             RequestToke token = Service_db.GetLatestToken();
-            if (ObjToken != null)
+            if (token != null)
                 parternToken = token.Token;
 
 
@@ -4256,6 +4323,8 @@ namespace Gene
                                 VehicleUpdateModel objVehicleUpdate = new VehicleUpdateModel();
                                 objVehicleUpdate.InsuranceStatus = "Approved";
                                 objVehicleUpdate.SummaryId = Convert.ToString(SummaryId);
+                                objVehicleUpdate.VRN = item.RegistrationNo;
+                                objVehicleUpdate.CoverNote = res.Response.PolicyNo;
                                 UpdateVehicleInfo(objVehicleUpdate);
                             }
                         }
@@ -4273,7 +4342,113 @@ namespace Gene
                             //PaymentMethod =1 for cash 
                             //PaymentMethod =3 for icecash
 
-                            VehicleLicQuoteUpdate vehicleLic = new VehicleLicQuoteUpdate { LicenceID = Convert.ToInt32(item.LicenseId), PaymentMethod = 1, DeliveryMethod = 1, Status = "1" };
+                            int licenseFreequency = IcServiceobj.GetMonthKey(Convert.ToInt32(item.PaymentTermId));
+
+                            int RadioTVUsage = 1; // for private car
+
+                            if (item.ProductId == 0)
+                            {
+                                RadioTVUsage = 1;
+                            }
+                            else if (item.ProductId == 3 || item.ProductId == 11) // for commercial vehicle
+                            {
+                                RadioTVUsage = 2;
+                            }
+
+
+                            List<VehicleLicQuote> obj = new List<VehicleLicQuote>();
+                            obj.Add(new VehicleLicQuote
+                            {
+                                VRN = txtRenewVrn.Text,
+                                IDNumber = customerInfo.NationalIdentificationNumber,
+                                ClientIDType = _clientIdType,
+                                LicFrequency = licenseFreequency.ToString(),
+                                RadioTVUsage = RadioTVUsage.ToString(),
+                                RadioTVFrequency = licenseFreequency.ToString()
+                            });
+
+
+
+                            ResultRootObject quoteresponse = new ResultRootObject();
+                            if (item.VehicleLicenceFee > 0 && item.RadioLicenseCost > 0)
+                            {
+                                quoteresponse = IcServiceobj.LICQuote(obj, parternToken);
+
+                                if (quoteresponse != null && quoteresponse.Response.Message.Contains("Partner Token has expired"))
+                                {
+                                    // ObjToken = IcServiceobj.getToken();
+
+                                    //  ObjToken = CheckParterTokenExpire();
+                                    ObjToken = IcServiceobj.getToken();
+                                    if (ObjToken != null)
+                                        parternToken = ObjToken.Response.PartnerToken;
+
+                                    Service_db.UpdateToken(ObjToken);
+
+                                    quoteresponse = IcServiceobj.LICQuote(obj, parternToken);
+                                }
+                            }
+                            else if (item.VehicleLicenceFee > 0)
+                            {
+                                quoteresponse = IcServiceobj.RadioQuote(obj, parternToken);
+
+                                if (quoteresponse != null && quoteresponse.Response.Message.Contains("Partner Token has expired"))
+                                {
+                                    //  ObjToken = IcServiceobj.getToken();
+
+                                    //  ObjToken = CheckParterTokenExpire();
+                                    ObjToken = IcServiceobj.getToken();
+
+                                    if (ObjToken != null)
+                                        parternToken = ObjToken.Response.PartnerToken;
+
+                                    Service_db.UpdateToken(ObjToken);
+
+                                    quoteresponse = IcServiceobj.RadioQuote(obj, parternToken);
+                                }
+                            }
+
+                            else if (item.RadioLicenseCost > 0)
+                            {
+                                quoteresponse = IcServiceobj.LICQuote(obj, parternToken);
+
+                                if (quoteresponse != null && quoteresponse.Response.Message.Contains("Partner Token has expired"))
+                                {
+                                    // ObjToken = IcServiceobj.getToken();
+
+                                    //  ObjToken = CheckParterTokenExpire();
+                                    ObjToken = IcServiceobj.getToken();
+                                    if (ObjToken != null)
+                                        parternToken = ObjToken.Response.PartnerToken;
+
+                                    Service_db.UpdateToken(ObjToken);
+
+                                    quoteresponse = IcServiceobj.LICQuote(obj, parternToken);
+                                }
+                            }
+
+                            //  int licenseId = 0;
+                            if (quoteresponse.Response != null && quoteresponse.Response.Quotes != null)
+                            {
+                                item.LicenseId = quoteresponse.Response.Quotes[0].LicenceID;
+                                if (quoteresponse.Response.Quotes != null && !(string.IsNullOrEmpty(quoteresponse.Response.Quotes[0].LicenceID)))
+                                {
+                                    _licenseId = quoteresponse.Response.Quotes[0].LicenceID;
+                                }
+
+
+
+                                VehicleUpdateModel objVehicleUpdate = new VehicleUpdateModel();
+                                objVehicleUpdate.VRN = item.RegistrationNo;
+                                objVehicleUpdate.SummaryId = Convert.ToString(SummaryId);
+                                objVehicleUpdate.LicenseId = Convert.ToInt32(_licenseId);
+                                UpdateVehicleInfo(objVehicleUpdate);
+                            }
+
+
+
+
+                            VehicleLicQuoteUpdate vehicleLic = new VehicleLicQuoteUpdate { LicenceID = Convert.ToInt32(item.LicenseId), PaymentMethod = 1, DeliveryMethod = 3, Status = "1", LicenceCert = 1 };
                             vehicleLicenseList.Add(vehicleLic);
 
                             ResultRootObject quoteresponseNew = IcServiceobj.LICQuoteUpdate(vehicleLicenseList, parternToken);
@@ -4291,32 +4466,35 @@ namespace Gene
                             }
 
 
-                            if (quoteresponseNew.Response != null && !quoteresponseNew.Response.Message.Contains("1 failed"))
-                            {
-                                resultPolicy = ICEcashService.TPIPolicy(item, parternToken);
+                            //if (quoteresponseNew.Response != null && !quoteresponseNew.Response.Message.Contains("1 failed"))
+                            //{
+                            //    resultPolicy = ICEcashService.TPIPolicy(item, parternToken);
 
 
-                                if (resultPolicy.Response != null && resultPolicy.Response.Message.Contains("Partner Token has expired"))
-                                {
-                                    ObjToken = IcServiceobj.getToken();
-                                    if (ObjToken != null)
-                                    {
-                                        parternToken = ObjToken.Response.PartnerToken;
-                                        Service_db.UpdateToken(ObjToken);
+                            //    if (resultPolicy.Response != null && resultPolicy.Response.Message.Contains("Partner Token has expired"))
+                            //    {
+                            //        ObjToken = IcServiceobj.getToken();
+                            //        if (ObjToken != null)
+                            //        {
+                            //            parternToken = ObjToken.Response.PartnerToken;
+                            //            Service_db.UpdateToken(ObjToken);
 
-                                        resultPolicy = ICEcashService.TPIPolicy(item, parternToken);
-                                    }
-                                }
+                            //            resultPolicy = ICEcashService.TPIPolicy(item, parternToken);
+                            //        }
+                            //    }
 
 
-                                if (resultPolicy.Response != null && resultPolicy.Response.Message == "Policy Retrieved")
-                                {
-                                    VehicleUpdateModel objVehicleUpdate = new VehicleUpdateModel();
-                                    objVehicleUpdate.InsuranceStatus = "Approved";
-                                    objVehicleUpdate.SummaryId = Convert.ToString(SummaryId);
-                                    UpdateVehicleInfo(objVehicleUpdate);
-                                }
-                            }
+                            //    if (resultPolicy.Response != null && resultPolicy.Response.Message == "Policy Retrieved")
+                            //    {
+                            //        VehicleUpdateModel objVehicleUpdate = new VehicleUpdateModel();
+                            //        objVehicleUpdate.InsuranceStatus = "Approved";
+                            //        objVehicleUpdate.SummaryId = Convert.ToString(SummaryId);
+                            //        UpdateVehicleInfo(objVehicleUpdate);
+                            //    }
+                            //}
+
+
+
 
                         }
                     }
@@ -4475,7 +4653,6 @@ namespace Gene
                 pnlReRadio.Visible = true;
                 pnlReZinara.Visible = false;
                 objRiskModel.IncludeRadioLicenseCost = true;
-
             }
             else
             {
@@ -4485,8 +4662,6 @@ namespace Gene
 
         private void ReRadiobtnZinara_CheckedChanged(object sender, EventArgs e)
         {
-
-
             if (chkZinaraLicFee.Checked)
             {
                 pnlReZinara.Visible = true;
@@ -4508,30 +4683,35 @@ namespace Gene
                         var amount1 = txtReRepenalty.Text;
                         var totalamouny = Convert.ToInt16(amount) + Convert.ToInt16(amount1);
                         txtReZinTotalAmount.Text = Convert.ToString(totalamouny);
-
                         //objlistRisk[VehicalIndex].IncludeZineraCost = true;
                     }
-
                 }
-
                 objRiskModel.IncludeRadioLicenseCost = false;
-
             }
-
         }
 
         private void optReBack_Click(object sender, EventArgs e)
         {
-
             pnlRenewOptionalCover.Visible = true;
             pnlRenewRadioZinara.Visible = false;
             pnlReRadio.Visible = false;
             pnlReZinara.Visible = false;
-
         }
 
         private void OptReNext_Click(object sender, EventArgs e)
         {
+
+            if (chkRadioLicence.Checked)
+            {
+                if (!chkRadioLicence.Checked)
+                {
+                    //lblZinraErrMsg.Text = "System cannot process Radio Only.";
+                    //lblZinraErrMsg.ForeColor = Color.Red;
+                    MyMessageBox.ShowBox("System cannot process Radio Only.");
+                    return;
+                }
+            }
+
 
             //if (!chkRadioLicence.Checked && !chkZinaraLicFee.Checked)
             //{
@@ -4648,7 +4828,13 @@ namespace Gene
 
                 pnlReRadio.Visible = true;
 
-                ObjToken = CheckParterTokenExpire();
+                //ObjToken = CheckParterTokenExpire();
+
+                RequestToke token = Service_db.GetLatestToken();
+                if (token != null)
+                    parternToken = token.Token;
+
+
                 errorProvider1.Clear();
                 if (chkZinaraLicFee.Checked)
                 {
@@ -5086,7 +5272,7 @@ namespace Gene
                     {
                         var amount = txtReAccessAmount.Text;
                         var amount1 = txtReRepenalty.Text;
-                        var totalamouny = Convert.ToInt16(amount) + Convert.ToInt16(amount1);
+                        var totalamouny = Convert.ToDecimal(amount) + Convert.ToDecimal(amount1);
                         txtReZinTotalAmount.Text = Convert.ToString(totalamouny);
                         if (chkRadioLicence.Checked)
                         {
@@ -5107,7 +5293,7 @@ namespace Gene
 
                         var amount = txtReAccessAmount.Text;
                         var amount1 = txtReRepenalty.Text;
-                        var totalamouny = Convert.ToInt16(amount) + Convert.ToInt16(amount1);
+                        var totalamouny = Convert.ToDecimal(amount) + Convert.ToDecimal(amount1);
                         txtReZinTotalAmount.Text = Convert.ToString(totalamouny);
                         //objlistRisk[VehicalIndex].IncludeZineraCost = true;
                         //}
@@ -5238,10 +5424,6 @@ namespace Gene
 
         private void btnReconformpaynxt_Click(object sender, EventArgs e)
         {
-           
-
-
-
             checkVRNwithICEcashResponse response = new checkVRNwithICEcashResponse();
             // Save all details
             CustomerModel customerModel = new CustomerModel();
@@ -5261,7 +5443,7 @@ namespace Gene
             TransactionId = GenerateTransactionId();
             decimal transctionAmt = Convert.ToDecimal(txtTotalPremium.Text);
 
-          
+
             string paymentTermName = "Swipe";
             summaryModel.PaymentMethodId = Convert.ToInt32(ePaymentMethod.Swipe);
 
@@ -5276,11 +5458,8 @@ namespace Gene
                 MyMessageBox.ShowBox("Please swipe the card for making the payment.");
             }
 
-
             if (btnReconformpaynxt.Text == "Pay")
                 btnReconformpaynxt.Text = "Processing.";
-            
-
 
             pictureBox2.Visible = true;
             pictureBox2.WaitOnLoad = true;
@@ -5414,9 +5593,13 @@ namespace Gene
             if (objRiskModel != null && objRiskModel.RegistrationNo == null)
                 return;
 
+            if (cmbPaymentTerm.SelectedValue.ToString() != ReZinPaymentDetail.SelectedValue.ToString())
+            {
+                GetZinraLiceenseFee(ReZinPaymentDetail.SelectedValue.ToString());
+            }
 
 
-            GetZinraLiceenseFee(ReZinPaymentDetail.SelectedValue.ToString());
+
 
 
 
@@ -5432,7 +5615,12 @@ namespace Gene
                 return;
 
 
-            GetRadioLiceenseFee(ReRadioPaymnetTerm.SelectedValue.ToString());
+            if (cmbPaymentTerm.SelectedValue.ToString() != ReRadioPaymnetTerm.SelectedValue.ToString())
+            {
+                GetRadioLiceenseFee(ReRadioPaymnetTerm.SelectedValue.ToString());
+            }
+
+
         }
 
         private void rdoPersonal_CheckedChanged(object sender, EventArgs e)

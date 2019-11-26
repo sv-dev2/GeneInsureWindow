@@ -12,12 +12,9 @@ namespace Gene
 {
     public class RawPrinterHelper
     {
-      
-
-
 
     }
-    }
+}
 //Testing above code
 
 

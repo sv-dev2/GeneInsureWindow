@@ -58,6 +58,7 @@ namespace Gene
     public class ResponseCodeObj
     {
         public string Name { get; set; }
+        public string TransactionAmount { get; set;}
     }
 
 

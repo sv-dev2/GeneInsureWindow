@@ -267,9 +267,9 @@
             this.PnlRenewVrn.Controls.Add(this.txtRenewVrn);
             this.PnlRenewVrn.Controls.Add(this.btnSave);
             this.PnlRenewVrn.Controls.Add(this.PnlVrn);
-            this.PnlRenewVrn.Location = new System.Drawing.Point(249, 208);
+            this.PnlRenewVrn.Location = new System.Drawing.Point(177, 29);
             this.PnlRenewVrn.Name = "PnlRenewVrn";
-            this.PnlRenewVrn.Size = new System.Drawing.Size(1475, 435);
+            this.PnlRenewVrn.Size = new System.Drawing.Size(48, 60);
             this.PnlRenewVrn.TabIndex = 4;
             this.PnlRenewVrn.Paint += new System.Windows.Forms.PaintEventHandler(this.PnlVrn_Paint);
             // 
@@ -429,9 +429,9 @@
             this.pnlRenewRiskDetails.Controls.Add(this.label4);
             this.pnlRenewRiskDetails.Controls.Add(this.label3);
             this.pnlRenewRiskDetails.Controls.Add(this.label2);
-            this.pnlRenewRiskDetails.Location = new System.Drawing.Point(1006, 42);
+            this.pnlRenewRiskDetails.Location = new System.Drawing.Point(34, 391);
             this.pnlRenewRiskDetails.Name = "pnlRenewRiskDetails";
-            this.pnlRenewRiskDetails.Size = new System.Drawing.Size(65, 75);
+            this.pnlRenewRiskDetails.Size = new System.Drawing.Size(55, 75);
             this.pnlRenewRiskDetails.TabIndex = 7;
             this.pnlRenewRiskDetails.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -762,9 +762,9 @@
             this.pnlRenewConfirm.Controls.Add(this.lblyear);
             this.pnlRenewConfirm.Controls.Add(this.lblmodel);
             this.pnlRenewConfirm.Controls.Add(this.lblMakeModel);
-            this.pnlRenewConfirm.Location = new System.Drawing.Point(93, 31);
+            this.pnlRenewConfirm.Location = new System.Drawing.Point(62, 34);
             this.pnlRenewConfirm.Name = "pnlRenewConfirm";
-            this.pnlRenewConfirm.Size = new System.Drawing.Size(49, 89);
+            this.pnlRenewConfirm.Size = new System.Drawing.Size(54, 79);
             this.pnlRenewConfirm.TabIndex = 69;
             // 
             // btnHomeConfirmVD
@@ -1024,9 +1024,9 @@
             this.pnlRenewsumary.Controls.Add(this.btnSumBack);
             this.pnlRenewsumary.Controls.Add(this.btnSumContinue);
             this.pnlRenewsumary.Controls.Add(this.lblAddressValue);
-            this.pnlRenewsumary.Location = new System.Drawing.Point(1353, 28);
+            this.pnlRenewsumary.Location = new System.Drawing.Point(12, 531);
             this.pnlRenewsumary.Name = "pnlRenewsumary";
-            this.pnlRenewsumary.Size = new System.Drawing.Size(43, 87);
+            this.pnlRenewsumary.Size = new System.Drawing.Size(53, 79);
             this.pnlRenewsumary.TabIndex = 68;
             this.pnlRenewsumary.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlsumary_Paint);
             // 
@@ -1669,9 +1669,9 @@
             this.pnlRenewPersonalDetails2.Controls.Add(this.label17);
             this.pnlRenewPersonalDetails2.Controls.Add(this.label18);
             this.pnlRenewPersonalDetails2.Controls.Add(this.label19);
-            this.pnlRenewPersonalDetails2.Location = new System.Drawing.Point(499, 10);
+            this.pnlRenewPersonalDetails2.Location = new System.Drawing.Point(273, 180);
             this.pnlRenewPersonalDetails2.Name = "pnlRenewPersonalDetails2";
-            this.pnlRenewPersonalDetails2.Size = new System.Drawing.Size(64, 100);
+            this.pnlRenewPersonalDetails2.Size = new System.Drawing.Size(1528, 591);
             this.pnlRenewPersonalDetails2.TabIndex = 69;
             this.pnlRenewPersonalDetails2.Visible = false;
             this.pnlRenewPersonalDetails2.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSummery_Paint);
@@ -1917,9 +1917,9 @@
             this.pnlRenewOptionalCover.Controls.Add(this.label23);
             this.pnlRenewOptionalCover.Controls.Add(this.btnOptionCoverBack);
             this.pnlRenewOptionalCover.Controls.Add(this.btnContionOptionalCover);
-            this.pnlRenewOptionalCover.Location = new System.Drawing.Point(1132, 31);
+            this.pnlRenewOptionalCover.Location = new System.Drawing.Point(601, 10);
             this.pnlRenewOptionalCover.Name = "pnlRenewOptionalCover";
-            this.pnlRenewOptionalCover.Size = new System.Drawing.Size(57, 106);
+            this.pnlRenewOptionalCover.Size = new System.Drawing.Size(59, 80);
             this.pnlRenewOptionalCover.TabIndex = 71;
             // 
             // btnHomeOptional
@@ -2057,9 +2057,9 @@
             this.pnlRenewSum.Controls.Add(this.btnSDContinue);
             this.pnlRenewSum.Controls.Add(this.label9);
             this.pnlRenewSum.Controls.Add(this.pnlSummery);
-            this.pnlRenewSum.Location = new System.Drawing.Point(1265, 29);
+            this.pnlRenewSum.Location = new System.Drawing.Point(41, 641);
             this.pnlRenewSum.Name = "pnlRenewSum";
-            this.pnlRenewSum.Size = new System.Drawing.Size(44, 90);
+            this.pnlRenewSum.Size = new System.Drawing.Size(75, 72);
             this.pnlRenewSum.TabIndex = 73;
             // 
             // btnHomeVehicleSummary
@@ -2105,9 +2105,9 @@
             // 
             this.pnlAddMoreVehicle.Controls.Add(this.label15);
             this.pnlAddMoreVehicle.Controls.Add(this.btnAddMoreVehicle);
-            this.pnlAddMoreVehicle.Location = new System.Drawing.Point(379, 24);
+            this.pnlAddMoreVehicle.Location = new System.Drawing.Point(901, 34);
             this.pnlAddMoreVehicle.Name = "pnlAddMoreVehicle";
-            this.pnlAddMoreVehicle.Size = new System.Drawing.Size(45, 44);
+            this.pnlAddMoreVehicle.Size = new System.Drawing.Size(45, 61);
             this.pnlAddMoreVehicle.TabIndex = 74;
             // 
             // label15
@@ -2139,9 +2139,9 @@
             this.pnlRenewThankyou.Controls.Add(this.lblRepayment);
             this.pnlRenewThankyou.Controls.Add(this.btnHome);
             this.pnlRenewThankyou.Controls.Add(this.lblThankyou1);
-            this.pnlRenewThankyou.Location = new System.Drawing.Point(29, 193);
+            this.pnlRenewThankyou.Location = new System.Drawing.Point(39, 205);
             this.pnlRenewThankyou.Name = "pnlRenewThankyou";
-            this.pnlRenewThankyou.Size = new System.Drawing.Size(54, 105);
+            this.pnlRenewThankyou.Size = new System.Drawing.Size(54, 58);
             this.pnlRenewThankyou.TabIndex = 75;
             this.pnlRenewThankyou.Visible = false;
             this.pnlRenewThankyou.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlRenewThankyou_Paint);
@@ -2226,9 +2226,9 @@
             this.pnlRenewRadioZinara.Controls.Add(this.OptReNext);
             this.pnlRenewRadioZinara.Controls.Add(this.label43);
             this.pnlRenewRadioZinara.ForeColor = System.Drawing.Color.White;
-            this.pnlRenewRadioZinara.Location = new System.Drawing.Point(167, 19);
+            this.pnlRenewRadioZinara.Location = new System.Drawing.Point(759, 23);
             this.pnlRenewRadioZinara.Name = "pnlRenewRadioZinara";
-            this.pnlRenewRadioZinara.Size = new System.Drawing.Size(59, 87);
+            this.pnlRenewRadioZinara.Size = new System.Drawing.Size(66, 109);
             this.pnlRenewRadioZinara.TabIndex = 77;
             // 
             // btnHomeOptinal
@@ -2463,7 +2463,7 @@
             this.OptReNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
             this.OptReNext.Font = new System.Drawing.Font("Arial Narrow", 32.25F);
             this.OptReNext.ForeColor = System.Drawing.Color.White;
-            this.OptReNext.Location = new System.Drawing.Point(1251, 89);
+            this.OptReNext.Location = new System.Drawing.Point(1233, 89);
             this.OptReNext.Name = "OptReNext";
             this.OptReNext.Size = new System.Drawing.Size(249, 95);
             this.OptReNext.TabIndex = 6;
@@ -2531,9 +2531,9 @@
             this.pnlReconfimpaymeny.Controls.Add(this.txtRetotalamuntc);
             this.pnlReconfimpaymeny.Controls.Add(this.label50);
             this.pnlReconfimpaymeny.Controls.Add(this.label51);
-            this.pnlReconfimpaymeny.Location = new System.Drawing.Point(849, 34);
+            this.pnlReconfimpaymeny.Location = new System.Drawing.Point(1081, 23);
             this.pnlReconfimpaymeny.Name = "pnlReconfimpaymeny";
-            this.pnlReconfimpaymeny.Size = new System.Drawing.Size(68, 76);
+            this.pnlReconfimpaymeny.Size = new System.Drawing.Size(44, 86);
             this.pnlReconfimpaymeny.TabIndex = 79;
             // 
             // pictureBox2
@@ -2579,7 +2579,7 @@
             this.btnReconformpaynxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
             this.btnReconformpaynxt.Font = new System.Drawing.Font("Arial Narrow", 32F);
             this.btnReconformpaynxt.ForeColor = System.Drawing.Color.White;
-            this.btnReconformpaynxt.Location = new System.Drawing.Point(1136, 138);
+            this.btnReconformpaynxt.Location = new System.Drawing.Point(1120, 138);
             this.btnReconformpaynxt.Name = "btnReconformpaynxt";
             this.btnReconformpaynxt.Size = new System.Drawing.Size(249, 95);
             this.btnReconformpaynxt.TabIndex = 107;
@@ -2672,7 +2672,6 @@
             this.Text = "GeneInsure Renew Policy";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmQuote_Load);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmQuote_Paint);
             this.PnlRenewVrn.ResumeLayout(false);
             this.PnlRenewVrn.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

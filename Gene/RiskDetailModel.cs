@@ -107,9 +107,7 @@ namespace GensureAPIv2.Models
         public int CurrencyId { get; set; }
         public bool isVehicleRegisteredonICEcash { get; set; }
         public decimal BasicPremiumICEcash { get; set; }
-
         public decimal? RadioLicenseCost { get; set; }
-
         public decimal? TotalLicAmount { get; set; }
         public decimal? PenaltiesAmount { get; set; }
         //public bool? IncludeZineraCost { get; set; }
@@ -117,7 +115,8 @@ namespace GensureAPIv2.Models
 
         public int TaxClassId { get; set; }
         public bool IsCorporateField { get; set; }
-    
+       
+           
     }
 
 
@@ -131,6 +130,18 @@ namespace GensureAPIv2.Models
     public class BannerImage
     {
         public byte[] Data { get; set; }
+    }
+
+    public class PartialPaymentModel
+    {       
+        public int Id { get; set; }
+        public decimal PartialAmount { get; set; }
+        public int SummaryDetailId { get; set; }
+        public string RegistratonNumber { get; set; }
+        public string CustomerEmail { get; set; }
+        public DateTime? CreatedOn { get; set; }
+        public decimal CalulatedPremium { get; set; }
+
     }
 
 

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 using System.Web.Script.Serialization;
 
 
@@ -14,11 +15,11 @@ namespace Gene
     {
 
         //ResultRootObjects _quoteresponse;
-        //static String ApiURL = "http://windowsapi.gene.co.zw/api/Account/";
-        //static String IceCashRequestUrl = "http://windowsapi.gene.co.zw/api/ICEcash/";
+        //static string ApiURL = "http://windowsapi.gene.co.zw/api/account/";
+        //static string IceCashRequestUrl = "http://windowsapi.gene.co.zw/api/icecash/";
 
-        static String ApiURL = "http://geneinsureclaim2.kindlebit.com/api/Account/";
-        static String IceCashRequestUrl = "http://geneinsureclaim2.kindlebit.com/api/ICEcash/";
+        static String ApiURL = WebConfigurationManager.AppSettings["urlPath"] + "/api/Account/";
+        static String IceCashRequestUrl = WebConfigurationManager.AppSettings["urlPath"] + "/api/ICEcash/";
 
         //static String ApiURL = "http://localhost:6220/api/Account/";
         //static String IceCashRequestUrl = "http://localhost:6220/api/ICEcash/";
@@ -56,7 +57,15 @@ namespace Gene
             IRestResponse response = client.Execute(request);
         }
 
-
+        public static void WriteIceCashLog(string requestData, string responseData, string method, string vrn="", string BranchId="")
+        { 
+            var client = new RestClient(IceCashRequestUrl + "WriteIceCashLog?request='" + requestData + "'&response='" + responseData + "'&method='" + method +"'" + "'&vrn='" + vrn + "'" + "'&BranchId=" + BranchId );
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("password", Pwd);
+            request.AddHeader("username", username);
+            request.AddParameter("application/json", "{\n\t\"Name\":\"ghj\"\n}", ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+        }
 
 
 

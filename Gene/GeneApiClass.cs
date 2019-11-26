@@ -149,7 +149,7 @@ namespace Gene
 
         public string RegistrationNo { get; set; }
 
-
+        public string LicenseExpiryDate { get; set; }
     }
 
     public class QuoteLogic
@@ -263,6 +263,8 @@ namespace Gene
         public int LicenseId { get; set; }
 
         public string VRN { get; set; }
+
+        public int VehicleId { get; set; }
 
     }
 

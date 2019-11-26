@@ -13,6 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 using System.Windows.Forms;
 
 
@@ -28,8 +29,8 @@ namespace Gene
         ICEcashService IcServiceobj;
 
         public string _base64Data = "";
-        // static String ApiURL = "http://windowsapi.gene.co.zw/api/Account/";
-        static String ApiURL = "http://geneinsureclaim2.kindlebit.com/api/Account/";
+       // static String ApiURL = "http://windowsapi.gene.co.zw/api/Account/";
+        static String ApiURL = WebConfigurationManager.AppSettings["urlPath"] +"/api/Account/";
 
 
         [System.ComponentModel.Browsable(false)]
@@ -91,17 +92,13 @@ namespace Gene
 
         private void CertificateSerialForm_Load(object sender, EventArgs e)
         {
-
-
             //MessageBox.Show("Confirm printing.");
-
-
             // pictureBox2.Visible = true;
             //pictureBox2.WaitOnLoad = true;
 
             //   btnScan.Click += new System.EventHandler(this.btnScan_Click);
 
-             btnScan_Click(sender, e); // commented for now
+            btnScan_Click(sender, e); // commented for now
 
             txtCertificateSerialNumber.Focus();
 

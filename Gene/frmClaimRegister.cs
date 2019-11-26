@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
@@ -23,8 +24,8 @@ namespace Gene
         //static String ApiURLS = "http://windowsapi.gene.co.zw/api/Account/";
 
 
-        static String ApiURL = "http://geneinsureclaim2.kindlebit.com/api/Claimant/";
-        static String ApiURLS = "http://geneinsureclaim2.kindlebit.com/api/Account/";
+        static String ApiURL = WebConfigurationManager.AppSettings["urlPath"] + "/api/Claimant/";
+        static String ApiURLS = WebConfigurationManager.AppSettings["urlPath"] + "/api/Account/";
 
 
         //static String ApiURL = "http://localhost:6220/api/Claimant/";

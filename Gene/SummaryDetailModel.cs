@@ -50,6 +50,8 @@ namespace InsuranceClaim.Models
 
         public decimal BasicPremium { get; set; }
 
+        public bool PaymentStatus { get; set; }
+
     }
 
 
@@ -72,7 +74,12 @@ namespace InsuranceClaim.Models
     }
 
 
-
+    public class TransactionDetail
+    {
+        public string TransactionAmount { get; set; }
+        public string ActionCode { get; set; }
+        public string MessageReasonCode { get; set; }
+    }
 
 
 

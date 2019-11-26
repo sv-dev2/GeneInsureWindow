@@ -17,6 +17,7 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 using System.Windows.Forms;
 
 namespace Gene
@@ -30,11 +31,11 @@ namespace Gene
 
         Bitmap bitmap;
 
-        //  static String IceCashRequestUrl = "http://windowsapi.gene.co.zw/api/ICEcash/";
-        // static String ApiURL = "http://windowsapi.gene.co.zw/api/Account/";
+        //static String IceCashRequestUrl = "http://windowsapi.gene.co.zw/api/ICEcash/";
+        //static String ApiURL = "http://windowsapi.gene.co.zw/api/Account/";
 
-        static String IceCashRequestUrl = "http://geneinsureclaim2.kindlebit.com/api/ICEcash/";
-        static String ApiURL = "http://geneinsureclaim2.kindlebit.com/api/Account/";
+        static String IceCashRequestUrl = WebConfigurationManager.AppSettings["urlPath"] + "/api/ICEcash/";
+        static String ApiURL = WebConfigurationManager.AppSettings["urlPath"] + "/api/Account/";
 
 
 
@@ -109,7 +110,8 @@ namespace Gene
                     if (ObjToken != null)
                         parternToken = token.Token;
 
-                    riskDetail = new RiskDetailModel { LicenseId = vehicelDetails.LicenseId.ToString(), RegistrationNo = vehicelDetails.RegistrationNo };
+                     riskDetail = new RiskDetailModel { LicenseId = vehicelDetails.LicenseId.ToString(), RegistrationNo = vehicelDetails.RegistrationNo };
+
                     DisplayLicenseDisc(riskDetail, parternToken);
                 }
                 else
@@ -144,7 +146,7 @@ namespace Gene
             // List<ResultLicenceIDResponse> list = new List<ResultLicenceIDResponse>();
 
             ResultLicenceIDRootObject quoteresponseResult = IcServiceobj.LICResult(riskDetailModel.LicenseId, parternToken);
-            if (quoteresponseResult != null && quoteresponseResult.Response.Message.Contains("Partner Token has expired"))
+            if (quoteresponseResult != null && (quoteresponseResult.Response.Message.Contains("Partner Token has expired") || quoteresponseResult.Response.Message.Contains("Invalid Partner Token")) )
             {
                 ObjToken = IcServiceobj.getToken();
                 if (ObjToken != null)
