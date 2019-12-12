@@ -119,6 +119,9 @@
             this.btnSumContinue = new System.Windows.Forms.Button();
             this.lblAddressValue = new System.Windows.Forms.Label();
             this.pnlRenewPersonalDetails = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtLastName = new System.Windows.Forms.TextBox();
+            this.label49 = new System.Windows.Forms.Label();
             this.btnHomePersonal = new System.Windows.Forms.Button();
             this.label35 = new System.Windows.Forms.Label();
             this.rdbFemale = new System.Windows.Forms.RadioButton();
@@ -131,7 +134,7 @@
             this.txtDOB = new System.Windows.Forms.DateTimePicker();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.txtEmailAddress = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtFirstName = new System.Windows.Forms.TextBox();
             this.lblDOBFormat = new System.Windows.Forms.Label();
             this.lblPhoneValue = new System.Windows.Forms.Label();
             this.lblEmailValue = new System.Windows.Forms.Label();
@@ -429,9 +432,9 @@
             this.pnlRenewRiskDetails.Controls.Add(this.label4);
             this.pnlRenewRiskDetails.Controls.Add(this.label3);
             this.pnlRenewRiskDetails.Controls.Add(this.label2);
-            this.pnlRenewRiskDetails.Location = new System.Drawing.Point(34, 391);
+            this.pnlRenewRiskDetails.Location = new System.Drawing.Point(44, 326);
             this.pnlRenewRiskDetails.Name = "pnlRenewRiskDetails";
-            this.pnlRenewRiskDetails.Size = new System.Drawing.Size(55, 75);
+            this.pnlRenewRiskDetails.Size = new System.Drawing.Size(55, 71);
             this.pnlRenewRiskDetails.TabIndex = 7;
             this.pnlRenewRiskDetails.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -1024,7 +1027,7 @@
             this.pnlRenewsumary.Controls.Add(this.btnSumBack);
             this.pnlRenewsumary.Controls.Add(this.btnSumContinue);
             this.pnlRenewsumary.Controls.Add(this.lblAddressValue);
-            this.pnlRenewsumary.Location = new System.Drawing.Point(12, 531);
+            this.pnlRenewsumary.Location = new System.Drawing.Point(49, 453);
             this.pnlRenewsumary.Name = "pnlRenewsumary";
             this.pnlRenewsumary.Size = new System.Drawing.Size(53, 79);
             this.pnlRenewsumary.TabIndex = 68;
@@ -1357,6 +1360,9 @@
             // pnlRenewPersonalDetails
             // 
             this.pnlRenewPersonalDetails.BackColor = System.Drawing.Color.Transparent;
+            this.pnlRenewPersonalDetails.Controls.Add(this.label6);
+            this.pnlRenewPersonalDetails.Controls.Add(this.txtLastName);
+            this.pnlRenewPersonalDetails.Controls.Add(this.label49);
             this.pnlRenewPersonalDetails.Controls.Add(this.btnHomePersonal);
             this.pnlRenewPersonalDetails.Controls.Add(this.label35);
             this.pnlRenewPersonalDetails.Controls.Add(this.rdbFemale);
@@ -1369,7 +1375,7 @@
             this.pnlRenewPersonalDetails.Controls.Add(this.txtDOB);
             this.pnlRenewPersonalDetails.Controls.Add(this.txtPhone);
             this.pnlRenewPersonalDetails.Controls.Add(this.txtEmailAddress);
-            this.pnlRenewPersonalDetails.Controls.Add(this.txtName);
+            this.pnlRenewPersonalDetails.Controls.Add(this.txtFirstName);
             this.pnlRenewPersonalDetails.Controls.Add(this.lblDOBFormat);
             this.pnlRenewPersonalDetails.Controls.Add(this.lblPhoneValue);
             this.pnlRenewPersonalDetails.Controls.Add(this.lblEmailValue);
@@ -1380,11 +1386,41 @@
             this.pnlRenewPersonalDetails.Controls.Add(this.lblPhone);
             this.pnlRenewPersonalDetails.Controls.Add(this.lblEmail);
             this.pnlRenewPersonalDetails.Controls.Add(this.lblPName);
-            this.pnlRenewPersonalDetails.Location = new System.Drawing.Point(1543, 23);
+            this.pnlRenewPersonalDetails.Location = new System.Drawing.Point(396, 26);
             this.pnlRenewPersonalDetails.Name = "pnlRenewPersonalDetails";
-            this.pnlRenewPersonalDetails.Size = new System.Drawing.Size(44, 78);
+            this.pnlRenewPersonalDetails.Size = new System.Drawing.Size(58, 75);
             this.pnlRenewPersonalDetails.TabIndex = 60;
             this.pnlRenewPersonalDetails.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlPersonalDetails_Paint);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(1120, 134);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(30, 39);
+            this.label6.TabIndex = 88;
+            this.label6.Text = "*";
+            // 
+            // txtLastName
+            // 
+            this.txtLastName.Font = new System.Drawing.Font("Arial Narrow", 22F);
+            this.txtLastName.Location = new System.Drawing.Point(624, 141);
+            this.txtLastName.Name = "txtLastName";
+            this.txtLastName.Size = new System.Drawing.Size(493, 41);
+            this.txtLastName.TabIndex = 87;
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Font = new System.Drawing.Font("Arial Narrow", 22F);
+            this.label49.ForeColor = System.Drawing.Color.White;
+            this.label49.Location = new System.Drawing.Point(284, 138);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(135, 35);
+            this.label49.TabIndex = 86;
+            this.label49.Text = "Last Name";
             // 
             // btnHomePersonal
             // 
@@ -1404,7 +1440,7 @@
             this.label35.AutoSize = true;
             this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label35.ForeColor = System.Drawing.Color.Red;
-            this.label35.Location = new System.Drawing.Point(988, 334);
+            this.label35.Location = new System.Drawing.Point(988, 389);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(30, 39);
             this.label35.TabIndex = 83;
@@ -1415,7 +1451,7 @@
             this.rdbFemale.AutoSize = true;
             this.rdbFemale.Font = new System.Drawing.Font("Arial Narrow", 22F);
             this.rdbFemale.ForeColor = System.Drawing.Color.White;
-            this.rdbFemale.Location = new System.Drawing.Point(799, 340);
+            this.rdbFemale.Location = new System.Drawing.Point(799, 395);
             this.rdbFemale.Name = "rdbFemale";
             this.rdbFemale.Size = new System.Drawing.Size(115, 39);
             this.rdbFemale.TabIndex = 82;
@@ -1429,7 +1465,7 @@
             this.rdbMale.AutoSize = true;
             this.rdbMale.Font = new System.Drawing.Font("Arial Narrow", 22F);
             this.rdbMale.ForeColor = System.Drawing.Color.White;
-            this.rdbMale.Location = new System.Drawing.Point(627, 339);
+            this.rdbMale.Location = new System.Drawing.Point(627, 394);
             this.rdbMale.Name = "rdbMale";
             this.rdbMale.Size = new System.Drawing.Size(86, 39);
             this.rdbMale.TabIndex = 81;
@@ -1443,7 +1479,7 @@
             this.lblgender.AutoSize = true;
             this.lblgender.Font = new System.Drawing.Font("Arial Narrow", 22F);
             this.lblgender.ForeColor = System.Drawing.Color.White;
-            this.lblgender.Location = new System.Drawing.Point(284, 339);
+            this.lblgender.Location = new System.Drawing.Point(284, 394);
             this.lblgender.Name = "lblgender";
             this.lblgender.Size = new System.Drawing.Size(98, 35);
             this.lblgender.TabIndex = 80;
@@ -1454,7 +1490,7 @@
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.ForeColor = System.Drawing.Color.Red;
-            this.label25.Location = new System.Drawing.Point(1135, 249);
+            this.label25.Location = new System.Drawing.Point(1135, 304);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(30, 39);
             this.label25.TabIndex = 78;
@@ -1465,7 +1501,7 @@
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.Red;
-            this.label24.Location = new System.Drawing.Point(1121, 194);
+            this.label24.Location = new System.Drawing.Point(1121, 249);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(30, 39);
             this.label24.TabIndex = 77;
@@ -1476,7 +1512,7 @@
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.Red;
-            this.label22.Location = new System.Drawing.Point(1120, 127);
+            this.label22.Location = new System.Drawing.Point(1120, 182);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(30, 39);
             this.label22.TabIndex = 76;
@@ -1497,7 +1533,7 @@
             // 
             this.txtDOB.Font = new System.Drawing.Font("Arial Narrow", 22F);
             this.txtDOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDOB.Location = new System.Drawing.Point(639, 261);
+            this.txtDOB.Location = new System.Drawing.Point(639, 316);
             this.txtDOB.Name = "txtDOB";
             this.txtDOB.Size = new System.Drawing.Size(480, 41);
             this.txtDOB.TabIndex = 74;
@@ -1506,7 +1542,7 @@
             // txtPhone
             // 
             this.txtPhone.Font = new System.Drawing.Font("Arial Narrow", 22F);
-            this.txtPhone.Location = new System.Drawing.Point(624, 202);
+            this.txtPhone.Location = new System.Drawing.Point(624, 257);
             this.txtPhone.MaxLength = 9;
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(494, 41);
@@ -1517,28 +1553,28 @@
             // txtEmailAddress
             // 
             this.txtEmailAddress.Font = new System.Drawing.Font("Arial Narrow", 22F);
-            this.txtEmailAddress.Location = new System.Drawing.Point(625, 140);
+            this.txtEmailAddress.Location = new System.Drawing.Point(625, 195);
             this.txtEmailAddress.Name = "txtEmailAddress";
             this.txtEmailAddress.ReadOnly = true;
             this.txtEmailAddress.Size = new System.Drawing.Size(493, 41);
             this.txtEmailAddress.TabIndex = 72;
             this.txtEmailAddress.TextChanged += new System.EventHandler(this.txtEmailAddress_TextChanged);
             // 
-            // txtName
+            // txtFirstName
             // 
-            this.txtName.Font = new System.Drawing.Font("Arial Narrow", 22F);
-            this.txtName.Location = new System.Drawing.Point(624, 78);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(493, 41);
-            this.txtName.TabIndex = 71;
-            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
+            this.txtFirstName.Font = new System.Drawing.Font("Arial Narrow", 22F);
+            this.txtFirstName.Location = new System.Drawing.Point(624, 78);
+            this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.Size = new System.Drawing.Size(493, 41);
+            this.txtFirstName.TabIndex = 71;
+            this.txtFirstName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // lblDOBFormat
             // 
             this.lblDOBFormat.AutoSize = true;
             this.lblDOBFormat.Font = new System.Drawing.Font("Comic Sans MS", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDOBFormat.ForeColor = System.Drawing.Color.White;
-            this.lblDOBFormat.Location = new System.Drawing.Point(1125, 290);
+            this.lblDOBFormat.Location = new System.Drawing.Point(1125, 345);
             this.lblDOBFormat.Name = "lblDOBFormat";
             this.lblDOBFormat.Size = new System.Drawing.Size(156, 26);
             this.lblDOBFormat.TabIndex = 67;
@@ -1549,7 +1585,7 @@
             this.lblPhoneValue.AutoSize = true;
             this.lblPhoneValue.Font = new System.Drawing.Font("Comic Sans MS", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPhoneValue.ForeColor = System.Drawing.Color.White;
-            this.lblPhoneValue.Location = new System.Drawing.Point(419, 157);
+            this.lblPhoneValue.Location = new System.Drawing.Point(419, 212);
             this.lblPhoneValue.Name = "lblPhoneValue";
             this.lblPhoneValue.Size = new System.Drawing.Size(0, 45);
             this.lblPhoneValue.TabIndex = 63;
@@ -1559,7 +1595,7 @@
             this.lblEmailValue.AutoSize = true;
             this.lblEmailValue.Font = new System.Drawing.Font("Comic Sans MS", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmailValue.ForeColor = System.Drawing.Color.White;
-            this.lblEmailValue.Location = new System.Drawing.Point(419, 128);
+            this.lblEmailValue.Location = new System.Drawing.Point(419, 183);
             this.lblEmailValue.Name = "lblEmailValue";
             this.lblEmailValue.Size = new System.Drawing.Size(0, 45);
             this.lblEmailValue.TabIndex = 62;
@@ -1569,7 +1605,7 @@
             this.lblDOB.AutoSize = true;
             this.lblDOB.Font = new System.Drawing.Font("Arial Narrow", 22F);
             this.lblDOB.ForeColor = System.Drawing.Color.White;
-            this.lblDOB.Location = new System.Drawing.Point(289, 262);
+            this.lblDOB.Location = new System.Drawing.Point(289, 317);
             this.lblDOB.Name = "lblDOB";
             this.lblDOB.Size = new System.Drawing.Size(158, 35);
             this.lblDOB.TabIndex = 61;
@@ -1617,7 +1653,7 @@
             this.lblPhone.AutoSize = true;
             this.lblPhone.Font = new System.Drawing.Font("Arial Narrow", 22F);
             this.lblPhone.ForeColor = System.Drawing.Color.White;
-            this.lblPhone.Location = new System.Drawing.Point(284, 200);
+            this.lblPhone.Location = new System.Drawing.Point(284, 255);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(182, 35);
             this.lblPhone.TabIndex = 9;
@@ -1628,7 +1664,7 @@
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Arial Narrow", 22F);
             this.lblEmail.ForeColor = System.Drawing.Color.White;
-            this.lblEmail.Location = new System.Drawing.Point(284, 140);
+            this.lblEmail.Location = new System.Drawing.Point(284, 195);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(172, 35);
             this.lblEmail.TabIndex = 8;
@@ -1641,9 +1677,9 @@
             this.lblPName.ForeColor = System.Drawing.Color.White;
             this.lblPName.Location = new System.Drawing.Point(284, 75);
             this.lblPName.Name = "lblPName";
-            this.lblPName.Size = new System.Drawing.Size(81, 35);
+            this.lblPName.Size = new System.Drawing.Size(135, 35);
             this.lblPName.TabIndex = 7;
-            this.lblPName.Text = "Name";
+            this.lblPName.Text = "First Name";
             // 
             // pnlRenewPersonalDetails2
             // 
@@ -1669,9 +1705,9 @@
             this.pnlRenewPersonalDetails2.Controls.Add(this.label17);
             this.pnlRenewPersonalDetails2.Controls.Add(this.label18);
             this.pnlRenewPersonalDetails2.Controls.Add(this.label19);
-            this.pnlRenewPersonalDetails2.Location = new System.Drawing.Point(273, 180);
+            this.pnlRenewPersonalDetails2.Location = new System.Drawing.Point(1239, 19);
             this.pnlRenewPersonalDetails2.Name = "pnlRenewPersonalDetails2";
-            this.pnlRenewPersonalDetails2.Size = new System.Drawing.Size(1528, 591);
+            this.pnlRenewPersonalDetails2.Size = new System.Drawing.Size(57, 71);
             this.pnlRenewPersonalDetails2.TabIndex = 69;
             this.pnlRenewPersonalDetails2.Visible = false;
             this.pnlRenewPersonalDetails2.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSummery_Paint);
@@ -2057,9 +2093,9 @@
             this.pnlRenewSum.Controls.Add(this.btnSDContinue);
             this.pnlRenewSum.Controls.Add(this.label9);
             this.pnlRenewSum.Controls.Add(this.pnlSummery);
-            this.pnlRenewSum.Location = new System.Drawing.Point(41, 641);
+            this.pnlRenewSum.Location = new System.Drawing.Point(41, 573);
             this.pnlRenewSum.Name = "pnlRenewSum";
-            this.pnlRenewSum.Size = new System.Drawing.Size(75, 72);
+            this.pnlRenewSum.Size = new System.Drawing.Size(58, 72);
             this.pnlRenewSum.TabIndex = 73;
             // 
             // btnHomeVehicleSummary
@@ -2228,7 +2264,7 @@
             this.pnlRenewRadioZinara.ForeColor = System.Drawing.Color.White;
             this.pnlRenewRadioZinara.Location = new System.Drawing.Point(759, 23);
             this.pnlRenewRadioZinara.Name = "pnlRenewRadioZinara";
-            this.pnlRenewRadioZinara.Size = new System.Drawing.Size(66, 109);
+            this.pnlRenewRadioZinara.Size = new System.Drawing.Size(66, 78);
             this.pnlRenewRadioZinara.TabIndex = 77;
             // 
             // btnHomeOptinal
@@ -2531,9 +2567,9 @@
             this.pnlReconfimpaymeny.Controls.Add(this.txtRetotalamuntc);
             this.pnlReconfimpaymeny.Controls.Add(this.label50);
             this.pnlReconfimpaymeny.Controls.Add(this.label51);
-            this.pnlReconfimpaymeny.Location = new System.Drawing.Point(1081, 23);
+            this.pnlReconfimpaymeny.Location = new System.Drawing.Point(318, 186);
             this.pnlReconfimpaymeny.Name = "pnlReconfimpaymeny";
-            this.pnlReconfimpaymeny.Size = new System.Drawing.Size(44, 86);
+            this.pnlReconfimpaymeny.Size = new System.Drawing.Size(1231, 356);
             this.pnlReconfimpaymeny.TabIndex = 79;
             // 
             // pictureBox2
@@ -2786,7 +2822,7 @@
         private System.Windows.Forms.NumericUpDown cmbNoofPerson;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.TextBox txtEmailAddress;
-        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.Panel pnlSummery;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel pnlRenewSum;
@@ -2912,6 +2948,9 @@
         private System.Windows.Forms.Label label85;
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtLastName;
+        private System.Windows.Forms.Label label49;
 
         //private System.Windows.Forms.Label lblAmountDue;
     }

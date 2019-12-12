@@ -26,18 +26,9 @@ namespace Gene
     {
         ResultRootObject quoteresponse;
 
-        //static string ApiURL = "http://windowsapi.gene.co.zw/api/account/";
-        //static string IceCashRequestUrl = "http://windowsapi.gene.co.zw/api/icecash/";
-        //static string ApiURLS = "http://windowsapi.gene.co.zw/api/renewal/";
-
         static String ApiURL = WebConfigurationManager.AppSettings["urlPath"] + "/api/Account/";
         static String IceCashRequestUrl = WebConfigurationManager.AppSettings["urlPath"] + "/api/ICEcash/";
         static String ApiURLS = WebConfigurationManager.AppSettings["urlPath"] + "/api/Renewal/";
-
-        //static String ApiURL = "http://localhost:6220/api/Account/";
-        //static String IceCashRequestUrl = "http://localhost:6220/api/ICEcash/";
-        //static String ApiURLS = "http://localhost:6220/api/Renewal/";
-
 
         static String username = "ameyoApi@geneinsure.com";
         static String Pwd = "Geninsure@123";
@@ -1341,7 +1332,8 @@ namespace Gene
             }
 
             //Personal Infomation
-            txtName.Text = result.Cutomer.FirstName + " " + result.Cutomer.LastName;
+            txtFirstName.Text = result.Cutomer.FirstName;
+            txtLastName.Text = result.Cutomer.LastName;
             txtEmailAddress.Text = result.Cutomer.EmailAddress;
             txtPhone.Text = result.Cutomer.PhoneNumber;
             if (result.Cutomer.Gender == "Male")
@@ -1921,22 +1913,17 @@ namespace Gene
                         if (ObjToken != null)
                         {
                             parternToken = ObjToken.Response.PartnerToken;
-
                             Service_db.UpdateToken(ObjToken);
                             //  quoteresponse = IcServiceobj.RequestQuote(parternToken, RegistrationNo, suminsured, make, model, PaymentTermId, VehicleYear, CoverTypeId, VehicleUsage, "", (CustomerModel)customerInfo); // uncomment this line 
                             quoteresponse = IcServiceobj.RequestQuote(objRiskModel, (CustomerModel)customerInfo, parternToken);
 
                         }
-
                     }
 
                     if (quoteresponse.Response.Message.Contains("1 failed"))
                     {
                         _iceCashErrorMsg = "Error Occured";
                     }
-
-
-
 
 
                     // picbxCoverType.Visible = false;
@@ -2039,7 +2026,7 @@ namespace Gene
 
                                     if (quoteresponse.Response.Quotes[0].Client != null)
                                     {
-                                        txtName.Text = quoteresponse.Response.Quotes[0].Client.FirstName + " " + quoteresponse.Response.Quotes[0].Client.LastName;
+                                        txtFirstName.Text = quoteresponse.Response.Quotes[0].Client.FirstName + " " + quoteresponse.Response.Quotes[0].Client.LastName;
                                         txtPhone.Text = "";
                                         txtAdd1.Text = quoteresponse.Response.Quotes[0].Client.Address1;
                                         txtAdd2.Text = quoteresponse.Response.Quotes[0].Client.Address2;
@@ -2284,12 +2271,21 @@ namespace Gene
         private void btnPersoanlContinue_Click(object sender, EventArgs e)
         {
 
-            if (txtName.Text == string.Empty)
+            if (txtFirstName.Text == string.Empty)
             {
-                errorProvider1.SetError(txtName, "Please enter the name.");
-                txtName.Focus();
+                errorProvider1.SetError(txtFirstName, "Please enter first name.");
+                txtFirstName.Focus();
                 return;
             }
+
+            if (txtLastName.Text == string.Empty)
+            {
+                errorProvider1.SetError(txtLastName, "Please enter last name.");
+                txtLastName.Focus();
+                return;
+            }
+
+
             if (txtEmailAddress.Text == string.Empty)
             {
                 errorProvider1.SetError(txtEmailAddress, "Please enter the email address.");
@@ -2320,7 +2316,7 @@ namespace Gene
                 return;
             }
 
-            if (txtName.Text != string.Empty && txtEmailAddress.Text != string.Empty && txtPhone.Text != string.Empty)
+            if (txtFirstName.Text != string.Empty && txtEmailAddress.Text != string.Empty && txtPhone.Text != string.Empty)
             {
 
                 pnlRenewPersonalDetails2.Visible = true;
@@ -2513,8 +2509,9 @@ namespace Gene
                 pnlRenewsumary.Visible = true;
                 pnlRenewPersonalDetails2.Visible = false;
 
-                customerInfo.FirstName = txtName.Text;
-                customerInfo.LastName = customerInfo.LastName;
+                customerInfo.FirstName = txtFirstName.Text;
+                //  customerInfo.LastName = customerInfo.LastName;
+                customerInfo.LastName = txtLastName.Text;
                 customerInfo.EmailAddress = txtEmailAddress.Text;
                 customerInfo.AddressLine2 = txtAdd2.Text;
                 customerInfo.DateOfBirth = Convert.ToDateTime(txtDOB.Text);
@@ -2627,7 +2624,7 @@ namespace Gene
 
 
             //PersonalDetails1
-            customerInfo.FirstName = txtName.Text;
+            customerInfo.FirstName = txtFirstName.Text;
             if (customerInfo.LastName != null)
             {
                 customerInfo.LastName = customerInfo.LastName;
@@ -3789,7 +3786,7 @@ namespace Gene
                         foreach (var item in objlistRisk)
                         {
                             item.LicenseId = _licenseId;
-                            if (!string.IsNullOrEmpty(item.LicenseId))
+                            if (!string.IsNullOrEmpty(item.LicenseId) && item.LicenseId!="0")
                             {
                                 DisplayLicenseDisc(item, parternToken);
                             }
@@ -5427,7 +5424,7 @@ namespace Gene
             checkVRNwithICEcashResponse response = new checkVRNwithICEcashResponse();
             // Save all details
             CustomerModel customerModel = new CustomerModel();
-            customerModel.FirstName = txtName.Text;
+            customerModel.FirstName = txtFirstName.Text;
             customerModel.EmailAddress = txtEmailAddress.Text;
 
             //var _TransactionId = "100020";

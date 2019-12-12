@@ -63,10 +63,12 @@ namespace Gene
             this.cmbModel = new System.Windows.Forms.ComboBox();
             this.cmbMake = new System.Windows.Forms.ComboBox();
             this.lblChas = new System.Windows.Forms.Label();
-            this.lblyear = new System.Windows.Forms.Label();
             this.lblmodel = new System.Windows.Forms.Label();
             this.lblMakeModel = new System.Windows.Forms.Label();
             this.pnlPersonalDetails = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtLastName = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.btnHomePernlDetail = new System.Windows.Forms.Button();
             this.chkCustomEmail = new System.Windows.Forms.CheckBox();
             this.cmbCode = new System.Windows.Forms.ComboBox();
@@ -80,7 +82,7 @@ namespace Gene
             this.txtDOB = new System.Windows.Forms.DateTimePicker();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.txtEmailAddress = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtFirstName = new System.Windows.Forms.TextBox();
             this.lblDOBFormat = new System.Windows.Forms.Label();
             this.rdbFemale = new System.Windows.Forms.RadioButton();
             this.rdbMale = new System.Windows.Forms.RadioButton();
@@ -304,6 +306,7 @@ namespace Gene
             this.cmbPaymentTerm = new System.Windows.Forms.ComboBox();
             this.label92 = new System.Windows.Forms.Label();
             this.label93 = new System.Windows.Forms.Label();
+            this.lblyear = new System.Windows.Forms.Label();
             this.PnlVrn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlConfirm.SuspendLayout();
@@ -348,9 +351,9 @@ namespace Gene
             this.PnlVrn.Controls.Add(this.txtVrn);
             this.PnlVrn.Controls.Add(this.btnSave);
             this.PnlVrn.Controls.Add(this.label1);
-            this.PnlVrn.Location = new System.Drawing.Point(1285, 27);
+            this.PnlVrn.Location = new System.Drawing.Point(1115, 19);
             this.PnlVrn.Name = "PnlVrn";
-            this.PnlVrn.Size = new System.Drawing.Size(51, 69);
+            this.PnlVrn.Size = new System.Drawing.Size(43, 56);
             this.PnlVrn.TabIndex = 4;
             // 
             // rdCorporate
@@ -517,9 +520,9 @@ namespace Gene
             this.pnlConfirm.Controls.Add(this.lblyear);
             this.pnlConfirm.Controls.Add(this.lblmodel);
             this.pnlConfirm.Controls.Add(this.lblMakeModel);
-            this.pnlConfirm.Location = new System.Drawing.Point(32, 407);
+            this.pnlConfirm.Location = new System.Drawing.Point(466, 213);
             this.pnlConfirm.Name = "pnlConfirm";
-            this.pnlConfirm.Size = new System.Drawing.Size(62, 90);
+            this.pnlConfirm.Size = new System.Drawing.Size(1014, 412);
             this.pnlConfirm.TabIndex = 69;
             // 
             // lblConfirmMessage
@@ -711,17 +714,6 @@ namespace Gene
             this.lblChas.TabIndex = 10;
             this.lblChas.Text = "Chassis Number";
             // 
-            // lblyear
-            // 
-            this.lblyear.AutoSize = true;
-            this.lblyear.Font = new System.Drawing.Font("Arial Narrow", 36.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblyear.ForeColor = System.Drawing.Color.White;
-            this.lblyear.Location = new System.Drawing.Point(283, 255);
-            this.lblyear.Name = "lblyear";
-            this.lblyear.Size = new System.Drawing.Size(109, 57);
-            this.lblyear.TabIndex = 9;
-            this.lblyear.Text = "Year";
-            // 
             // lblmodel
             // 
             this.lblmodel.AutoSize = true;
@@ -747,6 +739,9 @@ namespace Gene
             // pnlPersonalDetails
             // 
             this.pnlPersonalDetails.BackColor = System.Drawing.Color.Transparent;
+            this.pnlPersonalDetails.Controls.Add(this.label5);
+            this.pnlPersonalDetails.Controls.Add(this.txtLastName);
+            this.pnlPersonalDetails.Controls.Add(this.label4);
             this.pnlPersonalDetails.Controls.Add(this.btnHomePernlDetail);
             this.pnlPersonalDetails.Controls.Add(this.chkCustomEmail);
             this.pnlPersonalDetails.Controls.Add(this.cmbCode);
@@ -760,7 +755,7 @@ namespace Gene
             this.pnlPersonalDetails.Controls.Add(this.txtDOB);
             this.pnlPersonalDetails.Controls.Add(this.txtPhone);
             this.pnlPersonalDetails.Controls.Add(this.txtEmailAddress);
-            this.pnlPersonalDetails.Controls.Add(this.txtName);
+            this.pnlPersonalDetails.Controls.Add(this.txtFirstName);
             this.pnlPersonalDetails.Controls.Add(this.lblDOBFormat);
             this.pnlPersonalDetails.Controls.Add(this.rdbFemale);
             this.pnlPersonalDetails.Controls.Add(this.rdbMale);
@@ -774,10 +769,40 @@ namespace Gene
             this.pnlPersonalDetails.Controls.Add(this.lblPhone);
             this.pnlPersonalDetails.Controls.Add(this.lblEmail);
             this.pnlPersonalDetails.Controls.Add(this.lblPName);
-            this.pnlPersonalDetails.Location = new System.Drawing.Point(705, 12);
+            this.pnlPersonalDetails.Location = new System.Drawing.Point(40, 320);
             this.pnlPersonalDetails.Name = "pnlPersonalDetails";
-            this.pnlPersonalDetails.Size = new System.Drawing.Size(57, 92);
+            this.pnlPersonalDetails.Size = new System.Drawing.Size(53, 44);
             this.pnlPersonalDetails.TabIndex = 60;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(1174, 155);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(30, 39);
+            this.label5.TabIndex = 87;
+            this.label5.Text = "*";
+            // 
+            // txtLastName
+            // 
+            this.txtLastName.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLastName.Location = new System.Drawing.Point(663, 154);
+            this.txtLastName.Name = "txtLastName";
+            this.txtLastName.Size = new System.Drawing.Size(493, 53);
+            this.txtLastName.TabIndex = 72;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(270, 153);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(177, 46);
+            this.label4.TabIndex = 85;
+            this.label4.Text = "Last Name";
             // 
             // btnHomePernlDetail
             // 
@@ -796,7 +821,7 @@ namespace Gene
             // 
             this.chkCustomEmail.AutoSize = true;
             this.chkCustomEmail.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkCustomEmail.Location = new System.Drawing.Point(663, 157);
+            this.chkCustomEmail.Location = new System.Drawing.Point(663, 214);
             this.chkCustomEmail.Name = "chkCustomEmail";
             this.chkCustomEmail.Size = new System.Drawing.Size(151, 27);
             this.chkCustomEmail.TabIndex = 83;
@@ -810,16 +835,16 @@ namespace Gene
             this.cmbCode.Font = new System.Drawing.Font("Arial Narrow", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCode.FormattingEnabled = true;
             this.cmbCode.IntegralHeight = false;
-            this.cmbCode.Location = new System.Drawing.Point(663, 275);
+            this.cmbCode.Location = new System.Drawing.Point(663, 311);
             this.cmbCode.Name = "cmbCode";
             this.cmbCode.Size = new System.Drawing.Size(231, 48);
-            this.cmbCode.TabIndex = 82;
+            this.cmbCode.TabIndex = 76;
             // 
             // lblEmailExist
             // 
             this.lblEmailExist.AutoSize = true;
             this.lblEmailExist.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmailExist.Location = new System.Drawing.Point(669, 246);
+            this.lblEmailExist.Location = new System.Drawing.Point(669, 284);
             this.lblEmailExist.Name = "lblEmailExist";
             this.lblEmailExist.Size = new System.Drawing.Size(0, 25);
             this.lblEmailExist.TabIndex = 81;
@@ -829,7 +854,7 @@ namespace Gene
             this.label45.AutoSize = true;
             this.label45.Font = new System.Drawing.Font("Comic Sans MS", 20F);
             this.label45.ForeColor = System.Drawing.Color.White;
-            this.label45.Location = new System.Drawing.Point(1195, 275);
+            this.label45.Location = new System.Drawing.Point(1195, 313);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(267, 38);
             this.label45.TabIndex = 80;
@@ -841,7 +866,7 @@ namespace Gene
             this.label35.AutoSize = true;
             this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label35.ForeColor = System.Drawing.Color.Red;
-            this.label35.Location = new System.Drawing.Point(1174, 344);
+            this.label35.Location = new System.Drawing.Point(1174, 374);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(30, 39);
             this.label35.TabIndex = 79;
@@ -852,7 +877,7 @@ namespace Gene
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.ForeColor = System.Drawing.Color.Red;
-            this.label25.Location = new System.Drawing.Point(1174, 436);
+            this.label25.Location = new System.Drawing.Point(1174, 439);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(30, 39);
             this.label25.TabIndex = 78;
@@ -863,7 +888,7 @@ namespace Gene
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.Red;
-            this.label24.Location = new System.Drawing.Point(1170, 273);
+            this.label24.Location = new System.Drawing.Point(1170, 311);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(30, 39);
             this.label24.TabIndex = 77;
@@ -874,7 +899,7 @@ namespace Gene
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.Red;
-            this.label22.Location = new System.Drawing.Point(1170, 177);
+            this.label22.Location = new System.Drawing.Point(1170, 243);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(30, 39);
             this.label22.TabIndex = 76;
@@ -885,7 +910,7 @@ namespace Gene
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Red;
-            this.label8.Location = new System.Drawing.Point(1170, 77);
+            this.label8.Location = new System.Drawing.Point(1170, 90);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(30, 39);
             this.label8.TabIndex = 75;
@@ -899,46 +924,46 @@ namespace Gene
             this.txtDOB.Location = new System.Drawing.Point(665, 432);
             this.txtDOB.Name = "txtDOB";
             this.txtDOB.Size = new System.Drawing.Size(487, 53);
-            this.txtDOB.TabIndex = 74;
+            this.txtDOB.TabIndex = 75;
             this.txtDOB.ValueChanged += new System.EventHandler(this.txtDOB_ValueChanged);
             // 
             // txtPhone
             // 
             this.txtPhone.BackColor = System.Drawing.SystemColors.Window;
             this.txtPhone.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhone.Location = new System.Drawing.Point(916, 275);
+            this.txtPhone.Location = new System.Drawing.Point(916, 311);
             this.txtPhone.MaxLength = 10;
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(242, 53);
-            this.txtPhone.TabIndex = 73;
+            this.txtPhone.TabIndex = 74;
             this.txtPhone.TextChanged += new System.EventHandler(this.txtPhone_TextChanged);
             this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
             // txtEmailAddress
             // 
             this.txtEmailAddress.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmailAddress.Location = new System.Drawing.Point(663, 185);
+            this.txtEmailAddress.Location = new System.Drawing.Point(663, 242);
             this.txtEmailAddress.Name = "txtEmailAddress";
             this.txtEmailAddress.Size = new System.Drawing.Size(493, 53);
-            this.txtEmailAddress.TabIndex = 72;
+            this.txtEmailAddress.TabIndex = 73;
             this.txtEmailAddress.TextChanged += new System.EventHandler(this.txtEmailAddress_TextChanged);
             this.txtEmailAddress.Leave += new System.EventHandler(this.txtEmailAddress_Leave);
             // 
-            // txtName
+            // txtFirstName
             // 
-            this.txtName.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(663, 86);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(493, 53);
-            this.txtName.TabIndex = 71;
-            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
+            this.txtFirstName.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFirstName.Location = new System.Drawing.Point(663, 86);
+            this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.Size = new System.Drawing.Size(493, 53);
+            this.txtFirstName.TabIndex = 71;
+            this.txtFirstName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // lblDOBFormat
             // 
             this.lblDOBFormat.AutoSize = true;
             this.lblDOBFormat.Font = new System.Drawing.Font("Comic Sans MS", 20F);
             this.lblDOBFormat.ForeColor = System.Drawing.Color.White;
-            this.lblDOBFormat.Location = new System.Drawing.Point(1195, 432);
+            this.lblDOBFormat.Location = new System.Drawing.Point(1195, 435);
             this.lblDOBFormat.Name = "lblDOBFormat";
             this.lblDOBFormat.Size = new System.Drawing.Size(221, 38);
             this.lblDOBFormat.TabIndex = 67;
@@ -949,7 +974,7 @@ namespace Gene
             this.rdbFemale.AutoSize = true;
             this.rdbFemale.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbFemale.ForeColor = System.Drawing.Color.White;
-            this.rdbFemale.Location = new System.Drawing.Point(830, 348);
+            this.rdbFemale.Location = new System.Drawing.Point(830, 372);
             this.rdbFemale.Name = "rdbFemale";
             this.rdbFemale.Size = new System.Drawing.Size(146, 50);
             this.rdbFemale.TabIndex = 65;
@@ -963,7 +988,7 @@ namespace Gene
             this.rdbMale.AutoSize = true;
             this.rdbMale.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbMale.ForeColor = System.Drawing.Color.White;
-            this.rdbMale.Location = new System.Drawing.Point(667, 348);
+            this.rdbMale.Location = new System.Drawing.Point(667, 372);
             this.rdbMale.Name = "rdbMale";
             this.rdbMale.Size = new System.Drawing.Size(108, 50);
             this.rdbMale.TabIndex = 64;
@@ -977,7 +1002,7 @@ namespace Gene
             this.lblPhoneValue.AutoSize = true;
             this.lblPhoneValue.Font = new System.Drawing.Font("Comic Sans MS", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPhoneValue.ForeColor = System.Drawing.Color.White;
-            this.lblPhoneValue.Location = new System.Drawing.Point(498, 370);
+            this.lblPhoneValue.Location = new System.Drawing.Point(498, 448);
             this.lblPhoneValue.Name = "lblPhoneValue";
             this.lblPhoneValue.Size = new System.Drawing.Size(0, 45);
             this.lblPhoneValue.TabIndex = 63;
@@ -987,7 +1012,7 @@ namespace Gene
             this.lblEmailValue.AutoSize = true;
             this.lblEmailValue.Font = new System.Drawing.Font("Comic Sans MS", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmailValue.ForeColor = System.Drawing.Color.White;
-            this.lblEmailValue.Location = new System.Drawing.Point(498, 308);
+            this.lblEmailValue.Location = new System.Drawing.Point(498, 342);
             this.lblEmailValue.Name = "lblEmailValue";
             this.lblEmailValue.Size = new System.Drawing.Size(0, 45);
             this.lblEmailValue.TabIndex = 62;
@@ -1045,7 +1070,7 @@ namespace Gene
             this.lblgender.AutoSize = true;
             this.lblgender.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblgender.ForeColor = System.Drawing.Color.White;
-            this.lblgender.Location = new System.Drawing.Point(271, 359);
+            this.lblgender.Location = new System.Drawing.Point(271, 374);
             this.lblgender.Name = "lblgender";
             this.lblgender.Size = new System.Drawing.Size(129, 46);
             this.lblgender.TabIndex = 10;
@@ -1056,7 +1081,7 @@ namespace Gene
             this.lblPhone.AutoSize = true;
             this.lblPhone.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPhone.ForeColor = System.Drawing.Color.White;
-            this.lblPhone.Location = new System.Drawing.Point(273, 266);
+            this.lblPhone.Location = new System.Drawing.Point(273, 302);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(239, 46);
             this.lblPhone.TabIndex = 9;
@@ -1067,7 +1092,7 @@ namespace Gene
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmail.ForeColor = System.Drawing.Color.White;
-            this.lblEmail.Location = new System.Drawing.Point(270, 180);
+            this.lblEmail.Location = new System.Drawing.Point(270, 237);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(229, 46);
             this.lblEmail.TabIndex = 8;
@@ -1080,9 +1105,9 @@ namespace Gene
             this.lblPName.ForeColor = System.Drawing.Color.White;
             this.lblPName.Location = new System.Drawing.Point(270, 85);
             this.lblPName.Name = "lblPName";
-            this.lblPName.Size = new System.Drawing.Size(107, 46);
+            this.lblPName.Size = new System.Drawing.Size(179, 46);
             this.lblPName.TabIndex = 7;
-            this.lblPName.Text = "Name";
+            this.lblPName.Text = "First Name";
             // 
             // pnlPersonalDetails2
             // 
@@ -1108,9 +1133,9 @@ namespace Gene
             this.pnlPersonalDetails2.Controls.Add(this.label17);
             this.pnlPersonalDetails2.Controls.Add(this.label18);
             this.pnlPersonalDetails2.Controls.Add(this.label19);
-            this.pnlPersonalDetails2.Location = new System.Drawing.Point(32, 47);
+            this.pnlPersonalDetails2.Location = new System.Drawing.Point(40, 521);
             this.pnlPersonalDetails2.Name = "pnlPersonalDetails2";
-            this.pnlPersonalDetails2.Size = new System.Drawing.Size(73, 97);
+            this.pnlPersonalDetails2.Size = new System.Drawing.Size(49, 63);
             this.pnlPersonalDetails2.TabIndex = 69;
             this.pnlPersonalDetails2.Visible = false;
             this.pnlPersonalDetails2.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSummery_Paint);
@@ -1363,9 +1388,9 @@ namespace Gene
             this.pnlOptionalCover.Controls.Add(this.label23);
             this.pnlOptionalCover.Controls.Add(this.btnOptionCoverBack);
             this.pnlOptionalCover.Controls.Add(this.btnContionOptionalCover);
-            this.pnlOptionalCover.Location = new System.Drawing.Point(241, 188);
+            this.pnlOptionalCover.Location = new System.Drawing.Point(1379, 11);
             this.pnlOptionalCover.Name = "pnlOptionalCover";
-            this.pnlOptionalCover.Size = new System.Drawing.Size(75, 100);
+            this.pnlOptionalCover.Size = new System.Drawing.Size(49, 42);
             this.pnlOptionalCover.TabIndex = 71;
             // 
             // lblZnrErrMsg
@@ -1637,9 +1662,9 @@ namespace Gene
             this.pnlSum.Controls.Add(this.BtnSDback);
             this.pnlSum.Controls.Add(this.label9);
             this.pnlSum.Controls.Add(this.pnlSummery);
-            this.pnlSum.Location = new System.Drawing.Point(1008, 15);
+            this.pnlSum.Location = new System.Drawing.Point(926, 14);
             this.pnlSum.Name = "pnlSum";
-            this.pnlSum.Size = new System.Drawing.Size(52, 80);
+            this.pnlSum.Size = new System.Drawing.Size(45, 48);
             this.pnlSum.TabIndex = 73;
             // 
             // btnHomeSum
@@ -1880,9 +1905,9 @@ namespace Gene
             this.pnlRadioZinara.Controls.Add(this.OptNext);
             this.pnlRadioZinara.Controls.Add(this.label33);
             this.pnlRadioZinara.ForeColor = System.Drawing.Color.White;
-            this.pnlRadioZinara.Location = new System.Drawing.Point(438, 203);
+            this.pnlRadioZinara.Location = new System.Drawing.Point(35, 206);
             this.pnlRadioZinara.Name = "pnlRadioZinara";
-            this.pnlRadioZinara.Size = new System.Drawing.Size(1339, 433);
+            this.pnlRadioZinara.Size = new System.Drawing.Size(47, 69);
             this.pnlRadioZinara.TabIndex = 76;
             this.pnlRadioZinara.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlRadioZinara_Paint);
             // 
@@ -2184,9 +2209,9 @@ namespace Gene
             this.pnlsumary.Controls.Add(this.btnSumBack);
             this.pnlsumary.Controls.Add(this.btnSumContinue);
             this.pnlsumary.Controls.Add(this.lblAddressValue);
-            this.pnlsumary.Location = new System.Drawing.Point(21, 612);
+            this.pnlsumary.Location = new System.Drawing.Point(1576, 14);
             this.pnlsumary.Name = "pnlsumary";
-            this.pnlsumary.Size = new System.Drawing.Size(56, 74);
+            this.pnlsumary.Size = new System.Drawing.Size(50, 66);
             this.pnlsumary.TabIndex = 68;
             this.pnlsumary.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlsumary_Paint);
             // 
@@ -2356,9 +2381,9 @@ namespace Gene
             this.pnlconfimpaymeny.Controls.Add(this.txttotalamuntc);
             this.pnlconfimpaymeny.Controls.Add(this.label47);
             this.pnlconfimpaymeny.Controls.Add(this.label46);
-            this.pnlconfimpaymeny.Location = new System.Drawing.Point(1142, 34);
+            this.pnlconfimpaymeny.Location = new System.Drawing.Point(40, 435);
             this.pnlconfimpaymeny.Name = "pnlconfimpaymeny";
-            this.pnlconfimpaymeny.Size = new System.Drawing.Size(58, 70);
+            this.pnlconfimpaymeny.Size = new System.Drawing.Size(53, 57);
             this.pnlconfimpaymeny.TabIndex = 77;
             // 
             // panel2
@@ -2367,7 +2392,7 @@ namespace Gene
             this.panel2.Controls.Add(this.RadioMobile);
             this.panel2.Location = new System.Drawing.Point(321, 389);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(307, 151);
+            this.panel2.Size = new System.Drawing.Size(326, 151);
             this.panel2.TabIndex = 116;
             // 
             // RadioSwipe
@@ -2445,7 +2470,7 @@ namespace Gene
             // 
             this.pictureBox2.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.ErrorImage")));
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(666, 461);
+            this.pictureBox2.Location = new System.Drawing.Point(695, 461);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(128, 106);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2625,9 +2650,9 @@ namespace Gene
             this.pnlRiskDetails.Controls.Add(this.cmbVehicleUsage);
             this.pnlRiskDetails.Controls.Add(this.label3);
             this.pnlRiskDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlRiskDetails.Location = new System.Drawing.Point(32, 172);
+            this.pnlRiskDetails.Location = new System.Drawing.Point(45, 120);
             this.pnlRiskDetails.Name = "pnlRiskDetails";
-            this.pnlRiskDetails.Size = new System.Drawing.Size(45, 59);
+            this.pnlRiskDetails.Size = new System.Drawing.Size(45, 42);
             this.pnlRiskDetails.TabIndex = 7;
             this.pnlRiskDetails.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -3427,7 +3452,7 @@ namespace Gene
             this.pnlLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlLogo.BackgroundImage = global::Gene.Properties.Resources.gene_logo;
             this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlLogo.Location = new System.Drawing.Point(868, 16);
+            this.pnlLogo.Location = new System.Drawing.Point(792, 18);
             this.pnlLogo.Name = "pnlLogo";
             this.pnlLogo.Size = new System.Drawing.Size(82, 24);
             this.pnlLogo.TabIndex = 70;
@@ -3450,9 +3475,9 @@ namespace Gene
             this.pnlInsurance.Controls.Add(this.label93);
             this.pnlInsurance.Controls.Add(this.label2);
             this.pnlInsurance.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlInsurance.Location = new System.Drawing.Point(1521, 20);
+            this.pnlInsurance.Location = new System.Drawing.Point(1211, 15);
             this.pnlInsurance.Name = "pnlInsurance";
-            this.pnlInsurance.Size = new System.Drawing.Size(56, 68);
+            this.pnlInsurance.Size = new System.Drawing.Size(45, 47);
             this.pnlInsurance.TabIndex = 80;
             // 
             // button1
@@ -3574,6 +3599,17 @@ namespace Gene
             this.label93.TabIndex = 9;
             this.label93.Text = "Payment Term ";
             // 
+            // lblyear
+            // 
+            this.lblyear.AutoSize = true;
+            this.lblyear.Font = new System.Drawing.Font("Arial Narrow", 36.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblyear.ForeColor = System.Drawing.Color.White;
+            this.lblyear.Location = new System.Drawing.Point(283, 255);
+            this.lblyear.Name = "lblyear";
+            this.lblyear.Size = new System.Drawing.Size(109, 57);
+            this.lblyear.TabIndex = 9;
+            this.lblyear.Text = "Year";
+            // 
             // frmQuote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3683,7 +3719,6 @@ namespace Gene
         private System.Windows.Forms.ComboBox cmbModel;
         private System.Windows.Forms.ComboBox cmbMake;
         private System.Windows.Forms.Label lblChas;
-        private System.Windows.Forms.Label lblyear;
         private System.Windows.Forms.Label lblmodel;
         private System.Windows.Forms.Label lblMakeModel;
         private System.Windows.Forms.Label lblyearValue;
@@ -3724,7 +3759,7 @@ namespace Gene
        // private TextBoxWithKeyboard txtPhone;
         private System.Windows.Forms.TextBox txtEmailAddress;
       //  private TextBoxWithKeyboard txtEmailAddress;
-        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtFirstName;
        // private TextBoxWithKeyboard txtName;
         private System.Windows.Forms.TextBox txtIDNumber;
        // private TextBoxWithKeyboard txtIDNumber;
@@ -3950,6 +3985,10 @@ namespace Gene
         private System.Windows.Forms.TextBox txtPartialAmount;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox txtLastName;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblyear;
 
         //private System.Windows.Forms.Label lblAmountDue;
     }

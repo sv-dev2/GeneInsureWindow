@@ -22,7 +22,7 @@ using System.Windows.Forms;
 
 namespace Gene
 {
-    public partial class frmLicenceQuote : Form
+    public partial class frmLicence : Form
     {
         ICEcashService IcServiceobj;
         ICEcashTokenResponse ObjToken;
@@ -30,14 +30,11 @@ namespace Gene
         string parternToken = "";
 
         Bitmap bitmap;
-
         //static String IceCashRequestUrl = "http://windowsapi.gene.co.zw/api/ICEcash/";
         //static String ApiURL = "http://windowsapi.gene.co.zw/api/Account/";
 
         static String IceCashRequestUrl = WebConfigurationManager.AppSettings["urlPath"] + "/api/ICEcash/";
         static String ApiURL = WebConfigurationManager.AppSettings["urlPath"] + "/api/Account/";
-
-
 
         static String username = "ameyoApi@geneinsure.com";
         static String Pwd = "Geninsure@123";
@@ -50,7 +47,7 @@ namespace Gene
 
         List<ResultLicenceIDResponse> licenseDiskList = new List<ResultLicenceIDResponse>();
 
-        public frmLicenceQuote()
+        public frmLicence()
         {
             ObjToken = new ICEcashTokenResponse();
             IcServiceobj = new ICEcashService();
@@ -112,7 +109,10 @@ namespace Gene
 
                      riskDetail = new RiskDetailModel { LicenseId = vehicelDetails.LicenseId.ToString(), RegistrationNo = vehicelDetails.RegistrationNo };
 
-                    DisplayLicenseDisc(riskDetail, parternToken);
+                    if (!string.IsNullOrEmpty(vehicelDetails.LicenseId) && (vehicelDetails.LicenseId != "0"))
+                    {
+                        DisplayLicenseDisc(riskDetail, parternToken);
+                    }                 
                 }
                 else
                 {

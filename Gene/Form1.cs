@@ -32,15 +32,10 @@ namespace Gene
     public partial class Form1 : Form
     {
         //ResultRootObjects _quoteresponse;
-        //static string ApiURL = "http://windowsapi.gene.co.zw/api/account/";
-        //static string IceCashRequestUrl = "http://windowsapi.gene.co.zw/api/icecash/";
 
         static string ApiURL = WebConfigurationManager.AppSettings["urlPath"] + "/api/account/";
         static string IceCashRequestUrl = WebConfigurationManager.AppSettings["urlPath"] + "/api/icecash/";
-
-        //static String ApiURL = "http://localhost:6220/api/Account/";
-        //static String IceCashRequestUrl = "http://localhost:6220/api/ICEcash/";
-
+      
         static String username = "ameyoApi@geneinsure.com";
         static String Pwd = "Geninsure@123";
 
@@ -69,16 +64,8 @@ namespace Gene
             BindBranch();
             GetBannerImage();
 
-
-
             //  var date = Convert.ToDateTime("2019/01/31");
-
-
-
             //  CreateLicenseFile("");
-
-
-
             //LincenceFileTest();
 
             //SaveCertificatePdf();
@@ -205,7 +192,7 @@ namespace Gene
             var branch = cmbBranch.SelectedValue == null ? "" : cmbBranch.SelectedValue.ToString();
             btnNewQuote.Text = "Processing..";
 
-            frmQuote obj = new frmQuote(branch, _ObjToken);
+            frmQuote obj = new frmQuote(branch, _ObjToken, true);
             obj.Show();
             this.Hide();
             btnNewQuote.Text = "New Quote";
@@ -222,7 +209,7 @@ namespace Gene
 
         private void btnQuickPrint_Click(object sender, EventArgs e)
         {
-            frmLicenceQuote objLic = new frmLicenceQuote();
+            frmLicence objLic = new frmLicence();
             objLic.Show();
             this.Hide();
         }
@@ -248,42 +235,9 @@ namespace Gene
 
         private void SetSelectedValue()
         {
-            //var ipAddress = GetAddresses();
-
-            //var client = new RestClient(ApiURL + "GetBranchByIp?IpAddress=" + ipAddress);
-            //var request = new RestRequest(Method.GET);
-            //request.AddHeader("password", Pwd);
-            //request.AddHeader("username", username);
-            //request.AddParameter("application/json", "{\n\t\"Name\":\"ghj\"\n}", ParameterType.RequestBody);
-            //IRestResponse response = client.Execute(request);
-            //var result = (new JavaScriptSerializer()).Deserialize<Branch>(response.Content);
-
-            //if (result != null && result.Id != 0)
-            //{
-            //    branchList = branchList.Where(c => c.Id == result.Id).ToList();
-
-            //    cmbBranch.DataSource = null;
-            //    cmbBranch.DataSource = branchList;
-            //    cmbBranch.DisplayMember = "BranchName";
-            //    cmbBranch.ValueMember = "Id";
-
-            //    cmbBranch.SelectedValue = result.Id;
-            //    selectedBranchId = result.Id;
-
-            //    cmbBranch.Visible = false;
-            //    lblBranch.Visible = false;
-            //}
-
-
-
-            //cmbBranch.DataSource = null;
-            //cmbBranch.DataSource = branchList;
-            //cmbBranch.DisplayMember = "BranchName";
-            //cmbBranch.ValueMember = "Id";
-            //  ReadBranchFromLogFile();
+            
 
             string branchId = ReadBranchFromLogFile();
-
 
             cmbBranch.SelectedValue = branchId == "" ? 0 : Convert.ToInt32(branchId);
 
@@ -292,7 +246,6 @@ namespace Gene
                 cmbBranch.Visible = false;
                 lblBranch.Visible = false;
             }
-
 
         }
 
@@ -436,7 +389,6 @@ namespace Gene
             {
                 file.WriteLine(brachId);
             }
-
         }
 
 
@@ -454,10 +406,6 @@ namespace Gene
             {
                 WriteBranch(cmbBranch.SelectedValue.ToString());
             }
-
-
-
-
         }
 
         //public void SaveCertificatePdf()
@@ -482,8 +430,6 @@ namespace Gene
         //    {
         //    }
         //}
-
-
 
         public string SaveCertificatePdf(string base64data = "")
         {
@@ -517,6 +463,23 @@ namespace Gene
             return pdfPath;
         }
 
+        private void btnLicenseQuote_Click(object sender, EventArgs e)
+        {
+            if (cmbBranch.SelectedValue == null)
+            {
+                MyMessageBox.ShowBox("Please select branch.", "Modal error message");
+                cmbBranch.Focus();
+                return;
+            }
+
+            var branch = cmbBranch.SelectedValue == null ? "" : cmbBranch.SelectedValue.ToString();
+            btnLicenseQuote.Text = "Processing..";
+  
+            frmLicenseQuote obj = new frmLicenseQuote(branch, _ObjToken, false);
+            obj.Show();
+            this.Hide();
+            btnLicenseQuote.Text = "License";
+        }
 
 
     }

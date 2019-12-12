@@ -37,17 +37,8 @@ namespace Gene
     public partial class frmQuote : Form
     {
         ResultRootObject quoteresponse;
-
-        //ResultRootObjects _quoteresponse;
-        //static String ApiURL = "http://windowsapi.gene.co.zw/api/Account/";
-        //static String IceCashRequestUrl = "http://windowsapi.gene.co.zw/api/ICEcash/";
-
         static String ApiURL = WebConfigurationManager.AppSettings["urlPath"] + "/api/Account/";
         static String IceCashRequestUrl = WebConfigurationManager.AppSettings["urlPath"] + "/api/ICEcash/";
-
-        //static String ApiURL = "http://localhost:6220/api/Account/";
-        //static String IceCashRequestUrl = "http://localhost:6220/api/ICEcash/";
-
 
         public string CertificateNumber { get; set; }
         static String username = "ameyoApi@geneinsure.com";
@@ -95,11 +86,13 @@ namespace Gene
         string _iceCashErrorMsg = "";
         const string _tba = "TBA";
         string _licenseId = "0";
+        bool _insuranceAndLicense = true;
+      
 
         List<ResultLicenceIDResponse> licenseDiskList = new List<ResultLicenceIDResponse>();
 
         //private static frmQuote _mf;
-        public frmQuote(string branch, ICEcashTokenResponse _ObjToken = null)
+        public frmQuote(string branch, ICEcashTokenResponse _ObjToken = null, bool insuranceAndLicense = true)
         {
             branchName = branch;
             // this for testing
@@ -111,6 +104,8 @@ namespace Gene
                 ObjToken = new ICEcashTokenResponse();
             else
                 ObjToken = _ObjToken;
+
+            _insuranceAndLicense = insuranceAndLicense;
 
 
             objlistRisk = new List<RiskDetailModel>();
@@ -1031,13 +1026,10 @@ namespace Gene
 
             cmbMake.DataSource = result;
             cmbMake.DisplayMember = "MakeDescription";
-            cmbMake.ValueMember = "makeCode";
+            cmbMake.ValueMember = "MakeCode";
 
 
             cmbMake.SelectedValue = "0";
-
-
-
 
             bindModel(Convert.ToString(cmbMake.SelectedValue));
 
@@ -1066,7 +1058,7 @@ namespace Gene
             result.Insert(0, new ModelObject { ModelCode = "0", ModelDescription = "-Select-" });
 
             cmbModel.DataSource = result;
-            cmbModel.DisplayMember = "modeldescription";
+            cmbModel.DisplayMember = "ModelDescription";
             cmbModel.ValueMember = "ModelCode";
             cmbPaymentTerm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 
@@ -1293,10 +1285,7 @@ namespace Gene
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //BackgroundWorker worker = new BackgroundWorker();
-            //worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
-            //worker.DoWork += Worker_DoWork;
-            //worker.RunWorkerAsync();
+
 
             NewObjectDuringEditOrBack();
 
@@ -1304,8 +1293,6 @@ namespace Gene
             //btnSave.Text = "Processing.";
             btnSave.Text = "Process...";
             //pictureBox1.Visible = true;
-
-
 
             Worker_DoWork();
             btnSave.Text = "Submit";
@@ -1754,7 +1741,7 @@ namespace Gene
                             }
                             if (resObject.Quotes[0].Client != null)
                             {
-                                txtName.Text = resObject.Quotes[0].Client.FirstName + " " + resObject.Quotes[0].Client.LastName;
+                                txtFirstName.Text = resObject.Quotes[0].Client.FirstName + " " + resObject.Quotes[0].Client.LastName;
                                 txtPhone.Text = "";
                                 txtAdd1.Text = resObject.Quotes[0].Client.Address1;
                                 txtAdd2.Text = resObject.Quotes[0].Client.Address2;
@@ -1943,7 +1930,7 @@ namespace Gene
 
                                 if (resObject.Quotes[0].Client != null)
                                 {
-                                    txtName.Text = resObject.Quotes[0].Client.FirstName + " " + resObject.Quotes[0].Client.LastName;
+                                    txtFirstName.Text = resObject.Quotes[0].Client.FirstName + " " + resObject.Quotes[0].Client.LastName;
                                     txtPhone.Text = "";
                                     txtAdd1.Text = resObject.Quotes[0].Client.Address1;
                                     txtAdd2.Text = resObject.Quotes[0].Client.Address2;
@@ -2321,7 +2308,6 @@ namespace Gene
             pnlConfirm.Visible = true;
             pnlRiskDetails.Visible = false;
 
-
         }
 
 
@@ -2352,12 +2338,21 @@ namespace Gene
             //    MessageBox.Show("Please Enter the required fields");
             //    return;
             //}
-            if (txtName.Text == string.Empty)
+            if (txtFirstName.Text == string.Empty)
             {
-                NewerrorProvider.SetError(txtName, "Please enter the name.");
-                txtName.Focus();
+                NewerrorProvider.SetError(txtFirstName, "Please enter first name.");
+                txtFirstName.Focus();
                 return;
             }
+
+            if (txtLastName.Text == string.Empty)
+            {
+                NewerrorProvider.SetError(txtLastName, "Please enter last name.");
+                txtLastName.Focus();
+                return;
+            }
+
+
             if (txtEmailAddress.Text == string.Empty)
             {
                 NewerrorProvider.SetError(txtEmailAddress, "Please enter the email.");
@@ -2421,7 +2416,7 @@ namespace Gene
             //    }
             //}
 
-            if (txtName.Text != string.Empty && txtEmailAddress.Text != string.Empty && txtPhone.Text != string.Empty)
+            if (txtFirstName.Text != string.Empty && txtEmailAddress.Text != string.Empty && txtPhone.Text != string.Empty)
             {
                 //int result = checkEmailExist();
 
@@ -2633,8 +2628,6 @@ namespace Gene
         private void btnConfBack_Click(object sender, EventArgs e)
         {
             //pnlRiskDetails.Visible = true;
-
-
             if (txtVrn.Text == "TBA")
             {
                 pnlTBAPersonalDetails.Visible = true;
@@ -2684,20 +2677,7 @@ namespace Gene
 
         public void btnPer2Con_Click(object sender, EventArgs e)
         {
-            //if (txtAdd1.Text == string.Empty || txtAdd2.Text == string.Empty || cmdCity.SelectedIndex == -1 || txtIDNumber.Text == string.Empty || txtZipCode.Text == string.Empty)
-            //{
-            //    MessageBox.Show("Please Enter the required fields.");
-            //    return;
-            //}
-            //if (!string.IsNullOrWhiteSpace(txtIDNumber.Text))
-            //{
-            //    Regex reg = new Regex(@"^([0-9]{2}-[0-9]{6,7}[a-zA-Z]{1}[0-9]{2})$");
-            //    if (!reg.IsMatch(txtIDNumber.Text))
-            //    {
-            //        MessageBox.Show("Please Enter a valid National Identification Number");
-            //        return;
-            //    }
-            //}
+            
 
             if (txtAdd1.Text == string.Empty)
             {
@@ -2738,19 +2718,7 @@ namespace Gene
                 txtZipCode.Focus();
                 return;
             }
-            //if (!string.IsNullOrWhiteSpace(txtIDNumber.Text))
-            //{
-            //    Regex reg = new Regex(@"^([0-9]{2}-[0-9]{6,7}[a-zA-Z]{1}[0-9]{2})$");
-            //    if (!reg.IsMatch(txtIDNumber.Text))
-            //    {
-            //        MessageBox.Show("Please Enter a valid National Identification Number");
-            //        NewerrorProvider.SetError(txtIDNumber, "Please Enter a valid National Identification Number.");
-            //        txtIDNumber.Focus();
-            //        return;
-            //    }
-            //}
-
-
+           
             if (txtAdd1.Text != string.Empty && txtAdd2.Text != string.Empty && cmdCity.SelectedIndex != -1 && txtIDNumber.Text != string.Empty && txtZipCode.Text != string.Empty)
             {
 
@@ -2759,11 +2727,9 @@ namespace Gene
                 pnlPersonalDetails2.Visible = false;
 
 
-                var strName = txtName.Text.Split(' ');
-                customerInfo.FirstName = strName[0];
-
-                if (strName.Length > 1)
-                    customerInfo.LastName = strName[1];
+                //  var strName = txtFirstName.Text.Split(' ');
+                customerInfo.FirstName = txtFirstName.Text;
+                customerInfo.LastName = txtLastName.Text;
 
                 customerInfo.EmailAddress = txtEmailAddress.Text;
                 customerInfo.AddressLine2 = txtAdd2.Text;
@@ -2787,74 +2753,7 @@ namespace Gene
                 customerInfo.BranchId = branchName == "" ? 0 : Convert.ToInt32(branchName);
 
 
-                //    if (objListUserInput.Count > 0)
-                //    {
-                //        UserInput objExistingInput = objListUserInput.Find(x => x.VRN == txtVrn.Text);
-                //        if (objExistingInput != null)
-                //        {
-                //            objExistingInput.VRN = txtVrn.Text;
-                //            objExistingInput.SumInsured = txtSumInsured.Text;
-
-                //            objExistingInput.VehicalUsage = Convert.ToString(cmbVehicleUsage.SelectedValue);
-                //            objExistingInput.PaymentTerm = Convert.ToString(cmbPaymentTerm.SelectedValue);
-                //            //objExistingInput.CoverType = Convert.ToInt32(cmbCoverType.SelectedValue);
-                //            objExistingInput.CoverType = cmbCoverType.SelectedValue == null ? 0 : Convert.ToInt32(cmbCoverType.SelectedValue);
-
-                //            //Vehicle Type
-                //            objExistingInput.Make = cmbMake.SelectedText;
-                //            objExistingInput.MakeID = Convert.ToString(cmbMake.SelectedValue);
-                //            objExistingInput.Model = cmbModel.SelectedText;
-                //            objExistingInput.ModelID = Convert.ToString(cmbModel.SelectedValue);
-                //            objExistingInput.Year = txtYear.Text;
-                //            objExistingInput.ChasisNumber = txtChasis.Text;
-                //            objExistingInput.EngineNumber = txtEngine.Text;
-
-
-                //            //PersonalDetails1
-                //            objExistingInput.Name = txtName.Text;
-                //            objExistingInput.EmailAddress = txtEmailAddress.Text;
-                //            objExistingInput.Phone = txtPhone.Text;
-                //            objExistingInput.Gender = "";
-                //            objExistingInput.DOB = txtDOB.Value.ToString("MM/dd/yyyy");
-                //            //objExistingInput.DOB = txtDOB.Text;
-
-
-
-                //            //PersonalDetails2
-                //            objExistingInput.Address1 = txtAdd1.Text;
-                //            objExistingInput.Address2 = txtAdd2.Text;
-                //            //objExistingInput.City = txtCity.Text;
-                //            objExistingInput.City = Convert.ToString(cmdCity.Text);
-                //            objExistingInput.Zip = txtZipCode.Text;
-                //            objExistingInput.IDNumber = txtIDNumber.Text;
-
-
-                //            //optionalCover
-                //            objExistingInput.ExcessBuyback = Convert.ToInt32(chkExcessBuyback.Checked);
-                //            objExistingInput.RoadsideAssistance = Convert.ToInt32(chkRoadsideAssistance.Checked);
-                //            objExistingInput.MedicalExpenses = Convert.ToInt32(chkMedicalExpenses.Checked);
-                //            //objExistingInput.PassengerAccidentalCover = Convert.ToInt32(chkPassengerAccidentalCover.Checked);
-                //            objExistingInput.NumberOfPerson = Convert.ToInt32(cmbNoofPerson.Value);
-                //        }
-                //        else
-                //        {
-                //            SetUserInput();
-                //        }
-                //    }
-                //    else
-                //    {
-                //        SetUserInput();
-                //    }
-
-                //}
-
-                //// calculate summary
-                //CaclulateSummary(objlistRisk);
-
-
-
-
-                //CheckToken();
+             
             }
         }
         public void SetUserInput()
@@ -2911,7 +2810,7 @@ namespace Gene
 
 
             //PersonalDetails1
-            objU.Name = txtName.Text;
+            objU.Name = txtFirstName.Text;
             objU.EmailAddress = txtEmailAddress.Text;
             objU.Phone = txtPhone.Text;
             objU.Gender = "";
@@ -3200,9 +3099,8 @@ namespace Gene
             txtAccessAmount.Text = string.Empty;
             txtpenalty.Text = string.Empty;
             txtZinTotalAmount.Text = string.Empty;
-
-
             btnAddMoreVehicle.Visible = true;
+
         }
 
 
@@ -3333,7 +3231,7 @@ namespace Gene
 
 
                     //PersonalDetails1
-                    objExistingInput.Name = txtName.Text;
+                    objExistingInput.Name = txtFirstName.Text;
                     objExistingInput.EmailAddress = txtEmailAddress.Text;
                     objExistingInput.Phone = txtPhone.Text;
                     objExistingInput.Gender = "";
@@ -3718,7 +3616,7 @@ namespace Gene
 
                                     if (quoteresponseQuote.Response.Quotes[0].Client != null)
                                     {
-                                        txtName.Text = quoteresponseQuote.Response.Quotes[0].Client.FirstName + " " + quoteresponseQuote.Response.Quotes[0].Client.LastName;
+                                        txtFirstName.Text = quoteresponseQuote.Response.Quotes[0].Client.FirstName + " " + quoteresponseQuote.Response.Quotes[0].Client.LastName;
                                         txtPhone.Text = "";
                                         txtAdd1.Text = quoteresponseQuote.Response.Quotes[0].Client.Address1;
                                         txtAdd2.Text = quoteresponseQuote.Response.Quotes[0].Client.Address2;
@@ -3906,6 +3804,8 @@ namespace Gene
                         else
                         {
                             response.Data = quoteresponseQuote;
+
+
                             if (response.result != 0)
                             {
                                 if (quoteresponseQuote.Response.Quotes[0] != null)
@@ -3945,10 +3845,15 @@ namespace Gene
                                     if (quoteresponseQuote.Response.Quotes[0].Vehicle != null)
                                     {
                                         cmbProducts.SelectedValue = quoteresponseQuote.Response.Quotes[0].Vehicle.VehicleType;
-                                        cmbTaxClasses.SelectedValue = quoteresponseQuote.Response.Quotes[0].Vehicle.TaxClass;
+                                        cmbTaxClasses.SelectedValue = quoteresponseQuote.Response.Quotes[0].Vehicle.TaxClass==null? 0 : Convert.ToInt32(quoteresponseQuote.Response.Quotes[0].Vehicle.TaxClass);
+
+                                       
                                         txtYear.Text = quoteresponseQuote.Response.Quotes[0].Vehicle.YearManufacture;
 
                                         _TaxClass = quoteresponseQuote.Response.Quotes[0].Vehicle.TaxClass == null ? 0 : Convert.ToInt32(quoteresponseQuote.Response.Quotes[0].Vehicle.TaxClass);
+
+                                        
+                                       // cmbTaxClasses.SelectedIndex= cmbMake.FindStringExact(_TaxClass.ToString());
 
                                         string make = resObject.Quotes[0].Vehicle.Make;
                                         string model = resObject.Quotes[0].Vehicle.Model;
@@ -3977,12 +3882,14 @@ namespace Gene
                                             objlistRisk[VehicalIndex].ModelId = quoteresponseQuote.Response.Quotes[0].Vehicle.Model;
                                         }
 
-                                        Int32 index = cmbMake.FindStringExact(quoteresponseQuote.Response.Quotes[0].Vehicle.Make);
-                                        cmbMake.SelectedIndex = index;
-
+                                        Int32 indexMake = cmbMake.FindStringExact(quoteresponseQuote.Response.Quotes[0].Vehicle.Make);
+                                        cmbMake.SelectedIndex = indexMake;
 
                                         Int32 indexModel = cmbModel.FindString(quoteresponseQuote.Response.Quotes[0].Vehicle.Model);
                                         cmbModel.SelectedIndex = indexModel;
+
+
+                                        
 
                                         //_clientIdType = textSearchVrn.Text == "Id Number" ? quoteresponseQuote.Response.Quotes[0].Client.IDNumber : textSearchVrn.Text;
 
@@ -4386,8 +4293,6 @@ namespace Gene
             }
             return Message;
         }
-
-
 
         private void cmbPaymentTerm_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -5421,14 +5326,14 @@ namespace Gene
 
                 isPaymentDone = SendTransaction(ConfigurationManager.AppSettings["url"], ConfigurationManager.AppSettings["Port"], xmlString);
 
-               // isPaymentDone = true;
+                // isPaymentDone = true;
                 PartialPaymentModel paymentDetail = SavePartialPayment();
 
                 decimal balanceAmount = Convert.ToDecimal(summaryModel.TotalPremium - paymentDetail.CalulatedPremium);
 
                 if (balanceAmount > 0)
                 {
-                    // TransactionId = GenerateTransactionId();
+                    TransactionId = GenerateTransactionId();
                     btnConfirmPayment.Enabled = true;
                     pictureBox2.Visible = false;
                     RadioSwipe.Checked = true;
@@ -5457,10 +5362,8 @@ namespace Gene
             string msg = "";
             try
             {
-               
-
                 //  if (SendTransaction(ConfigurationManager.AppSettings["url"], ConfigurationManager.AppSettings["Port"], xmlString)) // testing condition false
-                if(isPaymentDone)
+                if (isPaymentDone)
                 {
                     //if (isPaymentDone) // testing condition false
 
@@ -5490,7 +5393,7 @@ namespace Gene
 
                         SavePaymentinformation(TransactionId.ToString(), summaryDetails.Id, paymentTermName, CardDetail, terninalid, transctionAmt, iceCashPolicyNumber);
 
-                        lblpayment.Text = "";
+                      lblpayment.Text = "";
                         lblpayment.Text += "Transaction ID =" + TransactionId;
                         lblpayment.Text += "\n";
                         lblpayment.Text = "Sucessfully ddddd";
@@ -5529,7 +5432,7 @@ namespace Gene
                         foreach (var item in objlistRisk)  // for now it's  commented
                         {
                             item.LicenseId = _licenseId; //m latest license
-                            if (!string.IsNullOrEmpty(item.LicenseId))
+                            if (!string.IsNullOrEmpty(item.LicenseId) && (item.LicenseId!="0"))
                             {
                                 DisplayLicenseDisc(item, parternToken, item.Id);
                             }
@@ -5842,81 +5745,87 @@ namespace Gene
             {
                 foreach (var item in objlistRisk)
                 {
-                    if (item.InsuranceId != null)
+
+                    if (_insuranceAndLicense) // if insurance and license both need to do approve
                     {
-                        ResultRootObject quoteresponse = ICEcashService.TPIQuoteUpdate(Phonenumber, item, parternToken, 1);
-                        if (quoteresponse != null)
+                        if (item.InsuranceId != null)
                         {
-
-                            if (quoteresponse.Response != null && quoteresponse.Response.Message.Contains("Partner Token has expired"))
+                            ResultRootObject quoteresponse = ICEcashService.TPIQuoteUpdate(Phonenumber, item, parternToken, 1);
+                            if (quoteresponse != null)
                             {
 
-                                //  ObjToken = CheckParterTokenExpire();
-                                ObjToken = IcServiceobj.getToken();
-                                if (ObjToken != null)
-                                    parternToken = ObjToken.Response.PartnerToken;
+                                if (quoteresponse.Response != null && quoteresponse.Response.Message.Contains("Partner Token has expired"))
+                                {
 
-                                Service_db.UpdateToken(ObjToken);
-                                quoteresponse = ICEcashService.TPIQuoteUpdate(Phonenumber, item, parternToken, 1);
+                                    //  ObjToken = CheckParterTokenExpire();
+                                    ObjToken = IcServiceobj.getToken();
+                                    if (ObjToken != null)
+                                        parternToken = ObjToken.Response.PartnerToken;
+
+                                    Service_db.UpdateToken(ObjToken);
+                                    quoteresponse = ICEcashService.TPIQuoteUpdate(Phonenumber, item, parternToken, 1);
 
 
 
-                                //ObjToken = IcServiceobj.getToken();
-                                //if (ObjToken != null)
+                                    //ObjToken = IcServiceobj.getToken();
+                                    //if (ObjToken != null)
+                                    //{
+                                    //    parternToken = ObjToken.Response.PartnerToken;
+                                    //    quoteresponse = ICEcashService.TPIQuoteUpdate(Phonenumber, item, parternToken, 1);
+                                    //}
+                                }
+
+
+                                //if (quoteresponse.Response != null && quoteresponse.Response.Message != "ICEcash System Error [O]")
                                 //{
-                                //    parternToken = ObjToken.Response.PartnerToken;
-                                //    quoteresponse = ICEcashService.TPIQuoteUpdate(Phonenumber, item, parternToken, 1);
-                                //}
-                            }
-
-
-                            //if (quoteresponse.Response != null && quoteresponse.Response.Message != "ICEcash System Error [O]")
-                            //{
-                            resultPolicy = ICEcashService.TPIPolicy(item, parternToken);
-
-
-                            if (resultPolicy.Response != null && resultPolicy.Response.Message.Contains("Partner Token has expired"))
-                            {
-
-                                // ObjToken = CheckParterTokenExpire();
-                                ObjToken = IcServiceobj.getToken();
-                                if (ObjToken != null)
-                                    parternToken = ObjToken.Response.PartnerToken;
-
-                                Service_db.UpdateToken(ObjToken);
-
                                 resultPolicy = ICEcashService.TPIPolicy(item, parternToken);
 
 
+                                if (resultPolicy.Response != null && resultPolicy.Response.Message.Contains("Partner Token has expired"))
+                                {
 
-                                //ObjToken = IcServiceobj.getToken();
-                                //    if (ObjToken != null)
-                                //    {
-                                //        parternToken = ObjToken.Response.PartnerToken;
+                                    // ObjToken = CheckParterTokenExpire();
+                                    ObjToken = IcServiceobj.getToken();
+                                    if (ObjToken != null)
+                                        parternToken = ObjToken.Response.PartnerToken;
 
-                                //        //  vichelDetails.CoverNote = ObjToken.Response.PolicyNo; // it's represent to Cover Note
+                                    Service_db.UpdateToken(ObjToken);
 
-                                //        //vichelDetails.CoverNote = ObjToken.Response.PolicyNo; // it's represent to Cover Note
+                                    resultPolicy = ICEcashService.TPIPolicy(item, parternToken);
 
-                                //        resultPolicy = ICEcashService.TPIPolicy(item, parternToken);
-                                //    }
+
+
+                                    //ObjToken = IcServiceobj.getToken();
+                                    //    if (ObjToken != null)
+                                    //    {
+                                    //        parternToken = ObjToken.Response.PartnerToken;
+
+                                    //        //  vichelDetails.CoverNote = ObjToken.Response.PolicyNo; // it's represent to Cover Note
+
+                                    //        //vichelDetails.CoverNote = ObjToken.Response.PolicyNo; // it's represent to Cover Note
+
+                                    //        resultPolicy = ICEcashService.TPIPolicy(item, parternToken);
+                                    //    }
+                                }
+
+
+                                if (resultPolicy.Response != null && resultPolicy.Response.Message.Contains("Policy Retrieved"))
+                                {
+                                    VehicleUpdateModel objVehicleUpdate = new VehicleUpdateModel();
+                                    objVehicleUpdate.VRN = item.RegistrationNo;
+                                    objVehicleUpdate.InsuranceStatus = "Approved";
+
+                                    objVehicleUpdate.CoverNote = resultPolicy.Response.PolicyNo;
+
+                                    objVehicleUpdate.SummaryId = Convert.ToString(SummaryId);
+                                    UpdateVehicleInfo(objVehicleUpdate);
+                                }
+                                //}
                             }
-
-
-                            if (resultPolicy.Response != null && resultPolicy.Response.Message.Contains("Policy Retrieved"))
-                            {
-                                VehicleUpdateModel objVehicleUpdate = new VehicleUpdateModel();
-                                objVehicleUpdate.VRN = item.RegistrationNo;
-                                objVehicleUpdate.InsuranceStatus = "Approved";
-
-                                objVehicleUpdate.CoverNote = resultPolicy.Response.PolicyNo;
-
-                                objVehicleUpdate.SummaryId = Convert.ToString(SummaryId);
-                                UpdateVehicleInfo(objVehicleUpdate);
-                            }
-                            //}
                         }
+
                     }
+
 
                     if (item.LicenseId != null)
                     {
@@ -6616,8 +6525,6 @@ namespace Gene
                 // IDNumber = customerInfo.NationalIdentificationNumber;
 
 
-
-
                 if (resObject.Quotes != null && resObject.Quotes[0].Message == "Unable to retrieve vehicle info from Zimlic, please check the VRN is correct or try again later.")
                 {
                     return;
@@ -7052,9 +6959,6 @@ namespace Gene
 
             try
             {
-
-
-
                 var listStrLineElements = responseData.Split('=').ToList();
                 List<ResponseCodeObj> lst = new List<ResponseCodeObj>();
                 var j = 0;
@@ -7301,7 +7205,6 @@ namespace Gene
             {
                 NewerrorProvider.Clear();
             }
-
         }
 
         private void txtSumInsured_TextChanged(object sender, EventArgs e)
@@ -7317,20 +7220,11 @@ namespace Gene
         private void txtEmailAddress_TextChanged(object sender, EventArgs e)
         {
             NewerrorProvider.Clear();
-
-
-
-
         }
 
         private void txtPhone_TextChanged(object sender, EventArgs e)
         {
-
             NewerrorProvider.Clear();
-
-
-
-
         }
 
         private void rdbMale_CheckedChanged(object sender, EventArgs e)
@@ -7470,7 +7364,7 @@ namespace Gene
             customerInfo.PhoneNumber = txtTBAPhone.Text;
             customerInfo.CountryCode = cmbTBAPhoneCode.SelectedValue.ToString();
 
-            txtName.Text = txtTBAFirstName.Text + " " + txtTBALastName.Text;
+            txtFirstName.Text = txtTBAFirstName.Text + " " + txtTBALastName.Text;
             txtAdd1.Text = txtTBAAddress.Text;
             cmdCity.SelectedValue = cmbTBACity.SelectedValue;
             txtIDNumber.Text = txtTBAIDNumber.Text;
@@ -7516,8 +7410,6 @@ namespace Gene
             }
             return CustomEmail;
         }
-
-
 
         private void ZinPaymentDetail_SelectedIndexChanged_1(object sender, EventArgs e)
         {
@@ -8444,27 +8336,18 @@ namespace Gene
                 return;
             }
 
-
             checkVRNwithICEcashResponse response = new checkVRNwithICEcashResponse();
             // Save all details
             CustomerModel customerModel = new CustomerModel();
-            customerModel.FirstName = txtName.Text;
+            customerModel.FirstName = txtFirstName.Text;
             customerModel.EmailAddress = txtEmailAddress.Text;
 
-            //pnlThankyou.Visible = true;
-            //SaveCustomerVehical();
-
-
-            //var summaryDetails = SaveCustomerVehical();
 
             //Save Payment info
             PaymentResult objResult = new PaymentResult();
             long TransactionId = 0;
             TransactionId = GenerateTransactionId();
-            // decimal transctionAmt = Convert.ToDecimal(txtTotalPremium.Text);
-
             decimal transctionAmt = Convert.ToDecimal(txtTotalPremium.Text);
-
 
             string paymentTermName = "Swipe";
             summaryModel.PaymentMethodId = Convert.ToInt32(ePaymentMethod.Swipe);
@@ -8480,126 +8363,12 @@ namespace Gene
                 MyMessageBox.ShowBox("Please swipe the card for making the payment.");
             }
 
-
             Button btnConfirmPayment = (Button)sender;
             btnConfirmPayment.Text = "Processing.";
             btnConfirmPayment.Enabled = false;
             pictureBox2.Visible = true;
             pictureBox2.WaitOnLoad = true;
-
-
-
-
-            //string TransactionId1 = Convert.ToString(TransactionId); // remove after testing
-            //if(summaryDetails!=null)
-            //{
-            //    SavePaymentinformation(TransactionId1, summaryDetails.Id);  // remove after testing
-            //}
-
-
-            //if(summaryDetails != null)
-            //{
-            //SendSymbol(TransactionId, transctionAmt, summaryDetails.Id);
             SendSymbol(TransactionId, transctionAmt, paymentTermName);
-
-
-            //}
-            //End
-
-
-            //List<VehicleLicQuote> obj = new List<VehicleLicQuote>();
-            //try
-            //{
-            //    if (objlistRisk != null && objlistRisk.Count > 0)
-            //    {
-            //        foreach (var item in objlistRisk)
-            //        {
-            //            obj.Add(new VehicleLicQuote
-            //            {
-            //                //VRN = txtVrn.Text,
-            //                VRN = item.RegistrationNo,
-            //                //VRN= ,
-            //                ClientIDType = "1",
-            //                IDNumber = "ABCDEFGHIJ1",
-            //                DurationMonths = "4",
-            //                LicFrequency = "3",
-            //                RadioTVUsage = "1",
-            //                RadioTVFrequency = "1"
-            //            });
-            //        }
-            //    }
-
-            //    if (ObjToken != null)
-            //    {
-            //        if (ObjToken.Response.PartnerToken != null)
-            //        {
-            //            ResultRootObject quoteresponse = IcServiceobj.TPILICQuote(obj, ObjToken.Response.PartnerToken);
-            //        }
-            //    }
-
-
-
-            //    if (quoteresponse != null)
-            //    {
-            //        response.result = quoteresponse.Response.Result;
-            //        if (response.result == 0)
-            //        {
-            //            response.message = quoteresponse.Response.Quotes[0].Message;
-            //        }
-            //        else
-            //        {
-            //            response.Data = quoteresponse;
-
-            //            if (quoteresponse.Response.Quotes != null)
-            //            {
-            //                if (quoteresponse.Response.Quotes.Count != 0)
-            //                {
-            //                    objVehicleLicense = new List<VehicleLicenseModel>();
-            //                    foreach (var item in quoteresponse.Response.Quotes.ToList())
-            //                    {
-            //                        string format = "yyyyMMdd";
-            //                        if (item.Licence != null)
-            //                        {
-            //                            var LicExpiryDate = DateTime.ParseExact(item.Licence.LicExpiryDate, format, CultureInfo.InvariantCulture);
-            //                            objVehicleLicense.Add(new VehicleLicenseModel
-            //                            {
-            //                                InsuranceID = item.InsuranceID,
-            //                                VRN = item.VRN,
-            //                                CombinedID = item.CombinedID,
-            //                                LicenceID = item.LicenceID,
-            //                                TotalAmount = Convert.ToDecimal(item.Licence.TotalAmount),
-            //                                RadioTVFrequency = Convert.ToInt32(item.Licence.RadioTVFrequency),
-            //                                RadioTVUsage = Convert.ToInt32(item.Licence.RadioTVUsage),
-            //                                LicFrequency = Convert.ToInt32(item.Licence.LicFrequency),
-            //                                NettMass = Convert.ToString(item.Licence.NettMass),
-
-            //                                LicExpiryDate = Convert.ToDateTime(LicExpiryDate),
-            //                                TransactionAmt = Convert.ToInt32(item.Licence.TransactionAmt),
-            //                                ArrearsAmt = Convert.ToInt32(item.Licence.ArrearsAmt),
-            //                                PenaltiesAmt = Convert.ToInt32(item.Licence.PenaltiesAmt),
-            //                                AdministrationAmt = Convert.ToInt32(item.Licence.AdministrationAmt),
-            //                                TotalLicAmt = Convert.ToInt32(item.Licence.TotalRadioTVAmt),
-            //                                RadioTVAmt = Convert.ToInt32(item.Licence.RadioTVAmt),
-            //                                RadioTVArrearsAmt = Convert.ToInt32(item.Licence.RadioTVArrearsAmt),
-            //                                TotalRadioTVAmt = Convert.ToInt32(item.Licence.TotalRadioTVAmt),
-            //                                VehicelId = objlistVehicalModel.FirstOrDefault(c => c.VRN == item.VRN).VehicalId
-            //                            });
-            //                        }
-
-
-            //                    }
-            //                    SaveVehicleLicense(objVehicleLicense);
-            //                }
-            //            }
-            //        }
-            //    }
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw ex;
-            //}
-
 
         }
 
@@ -8710,6 +8479,13 @@ namespace Gene
                 }
             }
 
+            string IceCashRequest = "";
+
+            if (_insuranceAndLicense)
+                IceCashRequest = "InsuranceAndLicense";
+            else
+                IceCashRequest = "License";
+
 
             if (VehicalIndex == -1)
             {
@@ -8718,6 +8494,7 @@ namespace Gene
                     objRiskModel.PaymentTermId = Convert.ToInt32(cmbPaymentTerm.SelectedValue);
                     objRiskModel.CoverTypeId = Convert.ToInt32(cmbCoverType.SelectedValue);
                     objRiskModel.SumInsured = Math.Round(Convert.ToDecimal(txtSumInsured.Text == "" ? 0 : Convert.ToDecimal(txtSumInsured.Text, System.Globalization.CultureInfo.InvariantCulture)), 2);
+                    objRiskModel.IceCashRequest = IceCashRequest;
                 }
             }
             else
@@ -8727,6 +8504,7 @@ namespace Gene
                     objlistRisk[VehicalIndex].SumInsured = Math.Round(Convert.ToDecimal(txtSumInsured.Text == "" ? 0 : Convert.ToDecimal(txtSumInsured.Text, System.Globalization.CultureInfo.InvariantCulture)), 2);
                     objlistRisk[VehicalIndex].PaymentTermId = Convert.ToInt32(cmbPaymentTerm.SelectedValue);
                     objlistRisk[VehicalIndex].CoverTypeId = Convert.ToInt32(cmbCoverType.SelectedValue);
+                    objlistRisk[VehicalIndex].IceCashRequest = IceCashRequest;
                 }
             }
 

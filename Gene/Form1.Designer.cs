@@ -39,6 +39,7 @@
             this.lblErrMsg = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnLicenseQuote = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -82,7 +83,7 @@
             this.btnQuickPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuickPrint.Font = new System.Drawing.Font("Arial Narrow", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuickPrint.ForeColor = System.Drawing.Color.White;
-            this.btnQuickPrint.Location = new System.Drawing.Point(341, 361);
+            this.btnQuickPrint.Location = new System.Drawing.Point(341, 502);
             this.btnQuickPrint.Name = "btnQuickPrint";
             this.btnQuickPrint.Size = new System.Drawing.Size(480, 108);
             this.btnQuickPrint.TabIndex = 3;
@@ -182,12 +183,28 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
+            // btnLicenseQuote
+            // 
+            this.btnLicenseQuote.BackColor = System.Drawing.Color.White;
+            this.btnLicenseQuote.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLicenseQuote.Font = new System.Drawing.Font("Arial Narrow", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLicenseQuote.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
+            this.btnLicenseQuote.Location = new System.Drawing.Point(341, 365);
+            this.btnLicenseQuote.Name = "btnLicenseQuote";
+            this.btnLicenseQuote.Padding = new System.Windows.Forms.Padding(5);
+            this.btnLicenseQuote.Size = new System.Drawing.Size(480, 108);
+            this.btnLicenseQuote.TabIndex = 12;
+            this.btnLicenseQuote.Text = "License";
+            this.btnLicenseQuote.UseVisualStyleBackColor = false;
+            this.btnLicenseQuote.Click += new System.EventHandler(this.btnLicenseQuote_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(212)))));
             this.ClientSize = new System.Drawing.Size(1556, 779);
+            this.Controls.Add(this.btnLicenseQuote);
             this.Controls.Add(this.lblErrMsg);
             this.Controls.Add(this.lblBranch);
             this.Controls.Add(this.cmbBranch);
@@ -225,6 +242,7 @@
         private System.Windows.Forms.ComboBox cmbBranch;
         private System.Windows.Forms.Label lblBranch;
         private System.Windows.Forms.Label lblErrMsg;
+        private System.Windows.Forms.Button btnLicenseQuote;
     }
 }
 

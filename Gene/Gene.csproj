@@ -128,11 +128,17 @@
     <Compile Include="frmClaimRegister.Designer.cs">
       <DependentUpon>frmClaimRegister.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLicenceQuote.cs">
+    <Compile Include="frmLicence.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLicenceQuote.Designer.cs">
-      <DependentUpon>frmLicenceQuote.cs</DependentUpon>
+    <Compile Include="frmLicence.Designer.cs">
+      <DependentUpon>frmLicence.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLicenseQuote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLicenseQuote.Designer.cs">
+      <DependentUpon>frmLicenseQuote.cs</DependentUpon>
     </Compile>
     <Compile Include="frmNewQuote.cs">
       <SubType>Form</SubType>
@@ -203,8 +209,11 @@
     <EmbeddedResource Include="frmClaimRegister.resx">
       <DependentUpon>frmClaimRegister.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLicenceQuote.resx">
-      <DependentUpon>frmLicenceQuote.cs</DependentUpon>
+    <EmbeddedResource Include="frmLicence.resx">
+      <DependentUpon>frmLicence.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLicenseQuote.resx">
+      <DependentUpon>frmLicenseQuote.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNewQuote.resx">
       <DependentUpon>frmNewQuote.cs</DependentUpon>

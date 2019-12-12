@@ -841,8 +841,6 @@ namespace Insurance.Service
 
             Service_db.WriteIceCashLog(data, response.Content, "TPIQuoteUpdate");
             
-
-
             return json;
         }
 
@@ -1037,12 +1035,10 @@ namespace Insurance.Service
             {
                 RadioTVUsage = 1;
             }
-
             else if (ProductId == "3" || ProductId == "11") // fr 
             {
                 RadioTVUsage = 2;
             }
-
 
 
             int licenseFreequency = GetMonthKey(Convert.ToInt32(PaymentTermId));
@@ -1569,6 +1565,10 @@ namespace Insurance.Service
         public decimal TotalLicAmt { get; set; }
         public decimal PenaltiesAmt { get; set; }
         public decimal RadioTVAmt { get; set; }
+        public string LicExpiryDate { get; set; }
+
+        public string RadioTVExpiryDate { get; set; }
+
         public ResultPolicy Policy { get; set; }
         public ResultClient Client { get; set; }
         public ResultVehicle Vehicle { get; set; }

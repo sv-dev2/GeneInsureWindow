@@ -2,7 +2,7 @@
 
 namespace Gene
 {
-    partial class frmLicenceQuote
+    partial class frmLicence
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@ namespace Gene
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLicenceQuote));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLicence));
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnHome = new System.Windows.Forms.Button();
             this.txtLicVrn = new System.Windows.Forms.TextBox();

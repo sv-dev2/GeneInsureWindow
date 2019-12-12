@@ -114,9 +114,17 @@ namespace GensureAPIv2.Models
         public string LicenseId { get; set; }
 
         public int TaxClassId { get; set; }
-        public bool IsCorporateField { get; set; }
-       
-           
+        public bool IsCorporateField { get; set; }      
+        public string IceCashRequest { get; set; }
+
+
+        public int ZinaraPaymentTermId { get; set; }
+        public int ZinaraRadioPaymentTermId { get; set; }
+
+        public string LicExpiryDate { get; set; }
+        public string RadioTVExpiryDate { get; set; }
+
+
     }
 
 

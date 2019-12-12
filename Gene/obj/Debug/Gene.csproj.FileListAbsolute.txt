@@ -359,7 +359,6 @@ F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.CertificatePreview.r
 F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.CertificateSerialForm.resources
 F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.Form1.resources
 F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.frmClaimRegister.resources
-F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.frmLicenceQuote.resources
 F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.frmNewQuote.resources
 F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.frmRenewPolicy.resources
 F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.frmQuote.resources
@@ -369,4 +368,6 @@ F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.PrintPreview1.resour
 F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.Properties.Resources.resources
 F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.QuickPrintPreview.resources
 F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.csproj.GenerateResource.Cache
+F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.frmLicence.resources
+F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.frmLicenseQuote.resources
 F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.csprojResolveAssemblyReference.cache

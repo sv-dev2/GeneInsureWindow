@@ -60,18 +60,15 @@ namespace Gene
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    frmLicenceQuote quotObj = new frmLicenceQuote();
+                    frmLicence quotObj = new frmLicence();
                     quotObj.CertificateNumber = txtCertificateSerialNumber.Text;
                     var response = ICEcashService.LICCertConf(RiskDetailModel, ParternToken, txtCertificateSerialNumber.Text);
-
 
                     if (response != null && response.Response.Message.Contains("Partner Token has expired"))
                     {
                         ObjToken = IcServiceobj.getToken();
                         ParternToken = ObjToken.Response.PartnerToken;
-
                         Service_db.UpdateToken(ObjToken);
-
                         response = ICEcashService.LICCertConf(RiskDetailModel, ParternToken, txtCertificateSerialNumber.Text);
                     }
 
