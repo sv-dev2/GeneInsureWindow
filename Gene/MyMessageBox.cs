@@ -19,6 +19,7 @@ namespace Gene
         public MyMessageBox()
         {
             InitializeComponent();
+           
         }
 
         public static string ShowBox(string txtMessage)

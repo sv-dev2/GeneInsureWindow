@@ -154,8 +154,14 @@
   <data name="baaner-neww" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\baaner-neww.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="loadingImg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\loadingImg.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Bannerpage" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Bannerpage.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="baaner-neww-12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\baaner-neww-12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="top_bar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\top_bar3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -163,7 +169,7 @@
   <data name="banner2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\banner2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="baaner-neww-12" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\baaner-neww-12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="loadingImg1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\loadingImg1.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

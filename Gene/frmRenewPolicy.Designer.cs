@@ -270,9 +270,9 @@
             this.PnlRenewVrn.Controls.Add(this.txtRenewVrn);
             this.PnlRenewVrn.Controls.Add(this.btnSave);
             this.PnlRenewVrn.Controls.Add(this.PnlVrn);
-            this.PnlRenewVrn.Location = new System.Drawing.Point(177, 29);
+            this.PnlRenewVrn.Location = new System.Drawing.Point(304, 164);
             this.PnlRenewVrn.Name = "PnlRenewVrn";
-            this.PnlRenewVrn.Size = new System.Drawing.Size(48, 60);
+            this.PnlRenewVrn.Size = new System.Drawing.Size(1431, 402);
             this.PnlRenewVrn.TabIndex = 4;
             this.PnlRenewVrn.Paint += new System.Windows.Forms.PaintEventHandler(this.PnlVrn_Paint);
             // 
@@ -432,9 +432,9 @@
             this.pnlRenewRiskDetails.Controls.Add(this.label4);
             this.pnlRenewRiskDetails.Controls.Add(this.label3);
             this.pnlRenewRiskDetails.Controls.Add(this.label2);
-            this.pnlRenewRiskDetails.Location = new System.Drawing.Point(44, 326);
+            this.pnlRenewRiskDetails.Location = new System.Drawing.Point(49, 342);
             this.pnlRenewRiskDetails.Name = "pnlRenewRiskDetails";
-            this.pnlRenewRiskDetails.Size = new System.Drawing.Size(55, 71);
+            this.pnlRenewRiskDetails.Size = new System.Drawing.Size(68, 65);
             this.pnlRenewRiskDetails.TabIndex = 7;
             this.pnlRenewRiskDetails.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -2262,9 +2262,9 @@
             this.pnlRenewRadioZinara.Controls.Add(this.OptReNext);
             this.pnlRenewRadioZinara.Controls.Add(this.label43);
             this.pnlRenewRadioZinara.ForeColor = System.Drawing.Color.White;
-            this.pnlRenewRadioZinara.Location = new System.Drawing.Point(759, 23);
+            this.pnlRenewRadioZinara.Location = new System.Drawing.Point(746, 30);
             this.pnlRenewRadioZinara.Name = "pnlRenewRadioZinara";
-            this.pnlRenewRadioZinara.Size = new System.Drawing.Size(66, 78);
+            this.pnlRenewRadioZinara.Size = new System.Drawing.Size(69, 84);
             this.pnlRenewRadioZinara.TabIndex = 77;
             // 
             // btnHomeOptinal
@@ -2293,11 +2293,11 @@
             // 
             this.chkZinaraLicFee.AutoSize = true;
             this.chkZinaraLicFee.Font = new System.Drawing.Font("Arial Narrow", 28F);
-            this.chkZinaraLicFee.Location = new System.Drawing.Point(885, 91);
+            this.chkZinaraLicFee.Location = new System.Drawing.Point(805, 91);
             this.chkZinaraLicFee.Name = "chkZinaraLicFee";
-            this.chkZinaraLicFee.Size = new System.Drawing.Size(126, 48);
+            this.chkZinaraLicFee.Size = new System.Drawing.Size(371, 48);
             this.chkZinaraLicFee.TabIndex = 79;
-            this.chkZinaraLicFee.Text = "Zinara";
+            this.chkZinaraLicFee.Text = "Zinara vehicle Licensing";
             this.chkZinaraLicFee.UseVisualStyleBackColor = true;
             this.chkZinaraLicFee.CheckedChanged += new System.EventHandler(this.chkZinaraLicFee_CheckedChanged);
             // 
@@ -2514,9 +2514,9 @@
             this.label43.ForeColor = System.Drawing.Color.White;
             this.label43.Location = new System.Drawing.Point(287, 6);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(204, 63);
+            this.label43.Size = new System.Drawing.Size(548, 63);
             this.label43.TabIndex = 0;
-            this.label43.Text = "Optional";
+            this.label43.Text = "Vehicle Licencing Details";
             // 
             // pnlReErrormessage
             // 
@@ -2567,9 +2567,9 @@
             this.pnlReconfimpaymeny.Controls.Add(this.txtRetotalamuntc);
             this.pnlReconfimpaymeny.Controls.Add(this.label50);
             this.pnlReconfimpaymeny.Controls.Add(this.label51);
-            this.pnlReconfimpaymeny.Location = new System.Drawing.Point(318, 186);
+            this.pnlReconfimpaymeny.Location = new System.Drawing.Point(1054, 26);
             this.pnlReconfimpaymeny.Name = "pnlReconfimpaymeny";
-            this.pnlReconfimpaymeny.Size = new System.Drawing.Size(1231, 356);
+            this.pnlReconfimpaymeny.Size = new System.Drawing.Size(72, 89);
             this.pnlReconfimpaymeny.TabIndex = 79;
             // 
             // pictureBox2
@@ -2701,6 +2701,7 @@
             this.Controls.Add(this.pnlRenewsumary);
             this.Controls.Add(this.pnlRenewConfirm);
             this.Controls.Add(this.PnlRenewVrn);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmRenewPolicy";

@@ -725,6 +725,7 @@
             this.Controls.Add(this.pnlClamantDetail);
             this.Controls.Add(this.pnlLogo);
             this.Controls.Add(this.pnlClaimNotification);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmClaimRegister";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GeneInsure Claim Register";

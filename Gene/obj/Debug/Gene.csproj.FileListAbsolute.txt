@@ -370,4 +370,80 @@ F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.QuickPrintPreview.re
 F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.csproj.GenerateResource.Cache
 F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.frmLicence.resources
 F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.frmLicenseQuote.resources
-F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.csprojResolveAssemblyReference.cache
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\bin\Debug\Gene.exe.config
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\bin\Debug\Gene.exe
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\bin\Debug\Gene.pdb
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\bin\Debug\MetroFramework.dll
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\bin\Debug\Newtonsoft.Json.dll
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\bin\Debug\RestSharp.dll
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\bin\Debug\Spire.License.dll
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\bin\Debug\Spire.Pdf.dll
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\bin\Debug\Microsoft.mshtml.dll
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\bin\Debug\Newtonsoft.Json.xml
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\bin\Debug\RestSharp.xml
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\bin\Debug\Spire.License.xml
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\bin\Debug\Spire.Pdf.xml
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.csprojAssemblyReference.cache
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.csproj.ResolveComReference.cache
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.CertificatePreview.resources
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.CertificateSerialForm.resources
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.Form1.resources
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.frmClaimRegister.resources
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.frmLicence.resources
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.frmLicenseQuote.resources
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.frmNewQuote.resources
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.frmRenewPolicy.resources
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.frmQuote.resources
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.License_PrintPreview.resources
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.MyMessageBox.resources
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.PrintPreview1.resources
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.Properties.Resources.resources
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.QuickPrintPreview.resources
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.csproj.GenerateResource.cache
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.csproj.CopyComplete
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.exe
+C:\Users\walte\Downloads\GeneInsureWindow_12_dec\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.pdb
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\bin\Debug\Gene.exe.config
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\obj\Debug\Interop.AcroPDFLib.dll
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\obj\Debug\AxInterop.AcroPDFLib.dll
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.csproj.ResolveComReference.cache
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.exe
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.pdb
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\bin\Debug\Gene.exe
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\bin\Debug\Gene.pdb
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\bin\Debug\MetroFramework.dll
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\bin\Debug\MetroFramework.Fonts.dll
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\bin\Debug\Newtonsoft.Json.dll
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\bin\Debug\RestSharp.dll
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\bin\Debug\Spire.License.dll
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\bin\Debug\Spire.Pdf.dll
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\bin\Debug\System.Threading.dll
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\bin\Debug\Microsoft.mshtml.dll
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\bin\Debug\Newtonsoft.Json.xml
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\bin\Debug\RestSharp.xml
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\bin\Debug\Spire.License.xml
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\bin\Debug\Spire.Pdf.xml
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\bin\Debug\System.Threading.xml
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\bin\Debug\Interop.AcroPDFLib.dll
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\bin\Debug\AxInterop.AcroPDFLib.dll
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.CertificatePreview.resources
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.CertificateSerialForm.resources
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.Form1.resources
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.frmClaimRegister.resources
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.frmLicence.resources
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.frmLicenseQuote.resources
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.frmNewQuote.resources
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.frmRenewPolicy.resources
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.frmQuote.resources
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.License_PrintPreview.resources
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.MyMessageBox.resources
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.PrintPreview1.resources
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.Properties.Resources.resources
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.QuickPrintPreview.resources
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.csproj.GenerateResource.Cache
+F:\ANKIT DHIMAN\BACKUP\walter_changes\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.csprojResolveAssemblyReference.cache
+F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\obj\Debug\Interop.AcroPDFLib.dll
+F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\obj\Debug\AxInterop.AcroPDFLib.dll
+F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\bin\Debug\Interop.AcroPDFLib.dll
+F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\bin\Debug\AxInterop.AcroPDFLib.dll

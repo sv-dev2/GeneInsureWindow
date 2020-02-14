@@ -123,7 +123,7 @@ namespace Gene
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // frmLicenceQuote
+            // frmLicence
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -134,7 +134,8 @@ namespace Gene
             this.Controls.Add(this.txtLicVrn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLicPrint);
-            this.Name = "frmLicenceQuote";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "frmLicence";
             this.Text = "frmLicenceQuote";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

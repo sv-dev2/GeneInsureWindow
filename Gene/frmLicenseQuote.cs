@@ -498,8 +498,8 @@ namespace Gene
                 }
                 if (CurrencyList != null)
                 {
-                    result.CurrencyModel= result.CurrencyModel.Where(c => c.Name.Contains("RTGS")).ToList();
-                   // result.CurrencyModel.Insert(0, new CurrencyModel { Id = 0, Name = "-Select-" });
+                    result.CurrencyModel = result.CurrencyModel.Where(c => c.Name.Contains("RTGS")).ToList();
+                    // result.CurrencyModel.Insert(0, new CurrencyModel { Id = 0, Name = "-Select-" });
                     cmbCurrency.DataSource = result.CurrencyModel;
                     cmbCurrency.DisplayMember = "Name";
                     cmbCurrency.ValueMember = "Id";
@@ -508,8 +508,8 @@ namespace Gene
                 {
                     result.TaxClassModel.Insert(0, new VehicleTaxClassModel { TaxClassId = 0, Description = "-Select-" });
                     //cmbTaxClasses.DataSource = result.TaxClassModel;
-                  //  cmbTaxClasses.DisplayMember = "Description";
-                   // cmbTaxClasses.ValueMember = "TaxClassId";
+                    //  cmbTaxClasses.DisplayMember = "Description";
+                    // cmbTaxClasses.ValueMember = "TaxClassId";
                 }
             }
         }
@@ -531,8 +531,8 @@ namespace Gene
                 result.Insert(0, new VehUsageObject { Id = 0, VehUsage = "-Select-" });
 
                 //cmbVehicleUsage.DataSource = result;
-              //  cmbVehicleUsage.DisplayMember = "vehUsage";
-               // cmbVehicleUsage.ValueMember = "id";
+                //  cmbVehicleUsage.DisplayMember = "vehUsage";
+                // cmbVehicleUsage.ValueMember = "id";
                 //cmbVehicleUsage.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             }
 
@@ -755,8 +755,12 @@ namespace Gene
             // cmbCurrency.SelectedIndex = 0;
 
 
-            cmbMake.SelectedIndex = 0;
-            cmbModel.SelectedIndex = -1;
+            //cmbMake.SelectedIndex = 0;
+            //cmbModel.SelectedIndex = -1;
+
+            cmbMake.SelectedIndex = 1;
+            cmbModel.SelectedIndex = 1;
+
             //txtYear.Text = string.Empty;
             //txtChasis.Text = string.Empty;
             //txtEngine.Text = string.Empty;
@@ -785,9 +789,9 @@ namespace Gene
             {
                 NewerrorProvider.SetError(txtFirstName, "Please enter first name.");
                 txtFirstName.Focus();
-                return;             
+                return;
             }
-          
+
             if (txtLastName.Text == string.Empty)
             {
                 NewerrorProvider.SetError(txtLastName, "Please enter last name.");
@@ -890,7 +894,7 @@ namespace Gene
                 pnlPersonalDetails2.Visible = false;
                 pnlRadioZinara.Visible = true;
 
-               // var strName = txtFirstName.Text.Split(' ');
+                // var strName = txtFirstName.Text.Split(' ');
                 customerInfo.FirstName = txtFirstName.Text;
                 customerInfo.LastName = txtLastName.Text;
 
@@ -937,7 +941,7 @@ namespace Gene
 
 
             txtTotalAmount.Text = totalVehicleLicenseAmount.ToString();
-            txtPartialAmount.Text = totalVehicleLicenseAmount.ToString();
+            //txtPartialAmount.Text = totalVehicleLicenseAmount.ToString();
 
             objRiskModel.VehicleLicenceFee = totalVehicleLicenseAmount;
             objRiskModel.RadioLicenseCost = txtradioAmount.Text == "" ? 0 : Convert.ToDecimal(txtradioAmount.Text);
@@ -949,7 +953,8 @@ namespace Gene
         {
             // pnlZinaraRadioSummary.vai
             pnlRadioZinaraSumary.Visible = false;
-            pnlConfirm.Visible = true;
+            pnlRadioZinara.Visible = true;
+            // pnlConfirm.Visible = true;
             // pnlPersonalDetails2.Visible = true;
         }
 
@@ -961,7 +966,7 @@ namespace Gene
 
             if (cmbProducts.SelectedIndex == 0)
             {
-                MyMessageBox.ShowBox("Please select vehicle type.");
+                MyMessageBox.ShowBox("Please select vehicle type.", "Message");
                 return;
             }
 
@@ -979,13 +984,13 @@ namespace Gene
 
             if (cmbMake.SelectedIndex == 0)
             {
-                MyMessageBox.ShowBox("Please select make.");
+                MyMessageBox.ShowBox("Please select make.", "Message");
                 return;
             }
 
             if (cmbModel.SelectedIndex == 0)
             {
-                MyMessageBox.ShowBox("Please select model.");
+                MyMessageBox.ShowBox("Please select model.", "Message");
                 return;
             }
 
@@ -1007,12 +1012,12 @@ namespace Gene
 
 
             objRiskModel.ProductId = Convert.ToInt32(cmbProducts.SelectedValue);
-          //  objRiskModel.VehicleUsage = Convert.ToInt32(cmbVehicleUsage.SelectedValue);
-          //  objRiskModel.TaxClassId = Convert.ToInt32(cmbTaxClasses.SelectedValue);
+            //  objRiskModel.VehicleUsage = Convert.ToInt32(cmbVehicleUsage.SelectedValue);
+            //  objRiskModel.TaxClassId = Convert.ToInt32(cmbTaxClasses.SelectedValue);
             objRiskModel.MakeId = cmbMake.SelectedValue.ToString();
             objRiskModel.ModelId = cmbModel.SelectedValue.ToString();
             objRiskModel.CurrencyId = Convert.ToInt32(cmbCurrency.SelectedValue);
-           // objRiskModel.VehicleYear = Convert.ToInt32(txtYear.Text);
+            // objRiskModel.VehicleYear = Convert.ToInt32(txtYear.Text);
             objRiskModel.SumInsured = 0;
             objRiskModel.Premium = 0;
             objRiskModel.ZTSCLevy = 0;
@@ -1044,12 +1049,13 @@ namespace Gene
                 var _quoteresponse = IcServiceobj.ZineraLICQuote(txtVrn.Text, parternToken, _clientIdType, paymentTerm, cmbProducts.SelectedValue.ToString(), customerInfo.NationalIdentificationNumber, customerInfo);
                 var _resObjects = _quoteresponse.Response;
 
-
+                if (_resObjects.Message.Contains("1 failed"))
+                    _iceCashErrorMsg = _resObjects.Quotes == null ? "Error Occured" : _resObjects.Quotes[0].Message;
 
                 //if token expire
                 if (_resObjects != null && _resObjects.Message.Contains("Partner Token has expired"))
                 {
-
+                    _iceCashErrorMsg = "";
                     //  ObjToken = CheckParterTokenExpire();
                     ObjToken = IcServiceobj.getToken();
                     if (ObjToken != null)
@@ -1060,6 +1066,9 @@ namespace Gene
 
                     _quoteresponse = IcServiceobj.ZineraLICQuote(txtVrn.Text, parternToken, _clientIdType, paymentTerm, cmbProducts.SelectedValue.ToString(), customerInfo.NationalIdentificationNumber, customerInfo);
                     _resObjects = _quoteresponse.Response;
+
+                    if (_resObjects.Message.Contains("1 failed"))
+                        _iceCashErrorMsg = _resObjects.Quotes == null ? "Error Occured" : _resObjects.Quotes[0].Message;
 
                 }
 
@@ -1077,7 +1086,7 @@ namespace Gene
                         var totalamount = objRiskModel.TotalLicAmount + objRiskModel.PenaltiesAmount;
                         txtZinTotalAmount.Text = Convert.ToString(totalamount);
                     }
-                  
+
                     if (ckhRadioOptional.Checked)
                     {
                         txtradioAmount.Text = Convert.ToString(_resObjects.Quotes[0].RadioTVAmt);
@@ -1100,7 +1109,7 @@ namespace Gene
                 if (_resObjects != null && _resObjects.Quotes != null && _resObjects.Message.Contains("1 failed"))
                 {
                     // lblConfirmMessage.Text = resObject.Quotes[0].Message;
-                    MyMessageBox.ShowBox(_resObjects.Quotes[0].Message, "Modal error message");
+                    MyMessageBox.ShowBox(_resObjects.Quotes[0].Message, "Message");
                 }
             }
             catch (Exception ex)
@@ -1163,10 +1172,13 @@ namespace Gene
 
         private void btnNextRadioZinara_Click(object sender, EventArgs e)
         {
+            if (cmbProducts.SelectedIndex == 0)
+            {
+                MyMessageBox.ShowBox("Please select vehicle type.", "Message");
+                return;
+            }
 
-
-            // to do
-
+            // to do             
             bool IsZinraCheckboxValidate = false;
 
 
@@ -1176,11 +1188,6 @@ namespace Gene
             if (chkZinaraOptional.Checked)
                 IsZinraCheckboxValidate = true;
 
-            
-
-
-           
-
 
             bool IsZinraValidate = false;
             if (ZnrRadioPayTerm.SelectedIndex != 0)
@@ -1189,7 +1196,7 @@ namespace Gene
             if (ZinPaymentTrm.SelectedIndex != 0)
                 IsZinraValidate = true;
 
-            
+
 
             // validate checkbox and payment term for radio
 
@@ -1197,7 +1204,7 @@ namespace Gene
             {
                 if (ZnrRadioPayTerm.SelectedIndex == 0)
                 {
-                    MyMessageBox.ShowBox("Please select payment term for radio license because you have checked radio chekbox othewise please uncheck radio chekbox.");
+                    MyMessageBox.ShowBox("Please select payment term for radio license because you have checked radio chekbox othewise please uncheck radio chekbox.", "Message");
                     return;
                 }
             }
@@ -1206,7 +1213,7 @@ namespace Gene
             {
                 if (ckhRadioOptional.Checked)
                 {
-                    MyMessageBox.ShowBox("Please checked checkbox of radio license because you have selected radio payment term otherwise unselect payment term.");
+                    MyMessageBox.ShowBox("Please checked checkbox of radio license because you have selected radio payment term otherwise unselect payment term.", "Message");
                     return;
                 }
             }
@@ -1227,7 +1234,7 @@ namespace Gene
             {
                 if (chkZinaraOptional.Checked)
                 {
-                    MyMessageBox.ShowBox("Please checked checkbox of zinara license because you have selected zinara payment term otherwise unselect payment term.");
+                    MyMessageBox.ShowBox("Please checked checkbox of zinara license because you have selected zinara payment term otherwise unselect payment term.", "Message");
                     return;
                 }
             }
@@ -1235,13 +1242,13 @@ namespace Gene
 
             if (!IsZinraCheckboxValidate)
             {
-                MyMessageBox.ShowBox("Please select checkbox either for zinara or radio or both.");
+                MyMessageBox.ShowBox("Please select checkbox either for zinara or radio or both.", "Message");
                 return;
             }
 
             if (!IsZinraValidate)
             {
-                MyMessageBox.ShowBox("Please select payment term either for zinara or radio or both.");
+                MyMessageBox.ShowBox("Please select payment term either for zinara or radio or both.", "Message");
                 return;
             }
 
@@ -1252,15 +1259,14 @@ namespace Gene
                 {
                     //lblZinraErrMsg.Text = "System cannot process Radio Only.";
                     //lblZinraErrMsg.ForeColor = Color.Red;
-                    MyMessageBox.ShowBox("System cannot process Radio Only.");
+                    MyMessageBox.ShowBox("System cannot process Radio Only.", "Message");
 
                     //System cannot process Radio Only
                     return;
                 }
             }
 
-            pnlRadioZinara.Visible = false;
-            pnlConfirm.Visible = true;
+
 
 
             if (ZnrRadioPayTerm.SelectedIndex != 0)
@@ -1275,6 +1281,54 @@ namespace Gene
                 objRiskModel.PaymentTermId = Convert.ToInt32(ZinPaymentTrm.SelectedValue);
             }
 
+
+            btnNextRadioZinara.Text = "Processing..";
+            btnNextRadioZinara.Enabled = false;
+            pictureBoxZinara.Visible = true;
+            pictureBoxZinara.WaitOnLoad = true;
+
+
+
+
+            objRiskModel.ProductId = Convert.ToInt32(cmbProducts.SelectedValue);
+            //  objRiskModel.VehicleUsage = Convert.ToInt32(cmbVehicleUsage.SelectedValue);
+            //  objRiskModel.TaxClassId = Convert.ToInt32(cmbTaxClasses.SelectedValue);
+            // objRiskModel.MakeId = cmbMake.SelectedValue.ToString();
+            // objRiskModel.ModelId = cmbModel.SelectedValue.ToString();
+            objRiskModel.CurrencyId = Convert.ToInt32(cmbCurrency.SelectedValue);
+            // objRiskModel.VehicleYear = Convert.ToInt32(txtYear.Text);
+            objRiskModel.SumInsured = 0;
+            objRiskModel.Premium = 0;
+            objRiskModel.ZTSCLevy = 0;
+            objRiskModel.StampDuty = 0;
+
+
+            GetRadioLiceenseFee(objRiskModel.PaymentTermId.ToString());
+
+            if(_iceCashErrorMsg!="")
+            {
+                GoToVrnScreen();
+                return;
+            }
+
+            btnNextRadioZinara.Text = "Continue";
+            btnNextRadioZinara.Enabled = true;
+
+
+            pnlRadioZinara.Visible = false;
+            pnlRadioZinaraSumary.Visible = true;
+            pictureBoxZinara.Visible = false;
+
+
+        }
+
+        private void GoToVrnScreen()
+        {
+            pnlRadioZinara.Visible = false;
+            btnNextRadioZinara.Text = "Continue";
+            btnNextRadioZinara.Enabled = true;
+            pictureBoxZinara.Visible = false;
+            PnlVrn.Visible = true;
         }
 
         private void btnRadioZinaraBack_Click(object sender, EventArgs e)
@@ -1397,13 +1451,13 @@ namespace Gene
                 if (cmbProducts.SelectedValue != null && cmbProducts.SelectedValue.ToString() == _ProductId.ToString())
                 {
                     cmbProducts.Enabled = false;
-                  //  cmbTaxClasses.Enabled = false;
+                    //  cmbTaxClasses.Enabled = false;
                     //cmbTaxClasses.SelectedValue = _TaxClass;
                 }
                 else
                 {
                     cmbProducts.Enabled = true;
-                   // cmbTaxClasses.Enabled = true;
+                    // cmbTaxClasses.Enabled = true;
                 }
             }
         }
@@ -1423,19 +1477,19 @@ namespace Gene
             var filtredTaxClassList = TaxClassList.Where(c => c.VehicleType == vehicleTypeId).ToList();
             filtredTaxClassList.Insert(0, new VehicleTaxClassModel { TaxClassId = 0, Description = "-Select-" });
             //cmbTaxClasses.DataSource = filtredTaxClassList;
-          //  cmbTaxClasses.DisplayMember = "Description";
-           // cmbTaxClasses.ValueMember = "TaxClassId";
+            //  cmbTaxClasses.DisplayMember = "Description";
+            // cmbTaxClasses.ValueMember = "TaxClassId";
 
             return filtredTaxClassList;
         }
 
         private void btnConfirmPayment_Click(object sender, EventArgs e)
         {
-            if (txtPartialAmount.Text == "" || txtPartialAmount.Text == "0")
-            {
-                MyMessageBox.ShowBox("Please enter amount.");
-                return;
-            }
+            //if (txtPartialAmount.Text == "" || txtPartialAmount.Text == "0")
+            //{
+            //    MyMessageBox.ShowBox("Please enter amount.", "Message");
+            //    return;
+            //}
 
             summaryModel = new SummaryDetailModel();
 
@@ -1449,7 +1503,7 @@ namespace Gene
             //Save Payment info
             PaymentResult objResult = new PaymentResult();
             long TransactionId = 0;
-            TransactionId = GenerateTransactionId();
+            
             decimal transctionAmt = Convert.ToDecimal(txtTotalAmount.Text);
 
             string paymentTermName = "Swipe";
@@ -1462,18 +1516,21 @@ namespace Gene
             {
                 paymentTermName = "Mobile";
                 summaryModel.PaymentMethodId = Convert.ToInt32(ePaymentMethod.Mobile);
-                MyMessageBox.ShowBox("Please Enter Ecocash Mobile number on PinPad.");
+                MyMessageBox.ShowBox("Please Enter Ecocash Mobile number on PinPad.", "Message");
             }
             else
             {
-                MyMessageBox.ShowBox("Please swipe the card for making the payment.");
+                MyMessageBox.ShowBox("Please swipe the card for making the payment.", "Message");
             }
 
             Button btnConfirmPayment = (Button)sender;
             btnConfirmPayment.Text = "Processing.";
             btnConfirmPayment.Enabled = false;
-            pictureBox2.Visible = true;
-            pictureBox2.WaitOnLoad = true;
+            loadingImageConfirmPayment.Visible = true;
+            loadingImageConfirmPayment.WaitOnLoad = true;
+
+            TransactionId = GenerateTransactionId();
+
             SendSymbol(TransactionId, transctionAmt, paymentTermName);
         }
 
@@ -1486,44 +1543,43 @@ namespace Gene
 
             decimal amountIncents = (int)(transctionAmt * 100);
 
-            if (txtPartialAmount.Text != "")
-            {
-                //To do  
-                summaryModel.PaymentStatus = true;
-                amountIncents = (int)(Convert.ToDecimal(txtPartialAmount.Text) * 100);
+
+            //To do  
+            //summaryModel.PaymentStatus = true;
+            //  amountIncents = (int)(Convert.ToDecimal(txtPartialAmount.Text) * 100);
 
 
-                //Initialze Terminal
-                xmlString = @"<?xml version='1.0' encoding='UTF-8'?>
+            //Initialze Terminal
+            xmlString = @"<?xml version='1.0' encoding='UTF-8'?>
   <Esp:Interface Version='1.0' xmlns:Esp='http://www.mosaicsoftware.com/Postilion/eSocket.POS/'><Esp:Admin TerminalId='" + ConfigurationManager.AppSettings["TerminalId"] + "' Action='INIT'/></Esp:Interface>";
 
-                InitializeTermianl("" + ConfigurationManager.AppSettings["url"] + "", ConfigurationManager.AppSettings["Port"], xmlString);
+            InitializeTermianl("" + ConfigurationManager.AppSettings["url"] + "", ConfigurationManager.AppSettings["Port"], xmlString);
 
-                lblPaymentMsg.Text = "Please swipe card.";
+            lblPaymentMsg.Text = "Please swipe card.";
 
 
-                xmlString = @"<?xml version='1.0' encoding='UTF-8'?>
+            xmlString = @"<?xml version='1.0' encoding='UTF-8'?>
                 <Esp:Interface Version='1.0' xmlns:Esp='http://www.mosaicsoftware.com/Postilion/eSocket.POS/'><Esp:Transaction TerminalId='" + ConfigurationManager.AppSettings["TerminalId"] + "' TransactionId='" + TransactionId + "' Type='PURCHASE' TransactionAmount='" + amountIncents + "'><Esp:PurchasingCardData Description='blah'><Esp:LineItem Description='boh'/><Esp:LineItem Description='beh' Sign='C'><Esp:TaxAmount Type='04'/><Esp:TaxAmount Type='05'/></Esp:LineItem><Esp:Contact Type='BILL_FROM' Name='Ian'/><Esp:Contact Type='BILL_TO' Telephone='021'/><Esp:TaxAmount Type='02'/><Esp:TaxAmount Type='03'/></Esp:PurchasingCardData><Esp:PosStructuredData Name='name' Value='value'/><Esp:PosStructuredData Name='name2' Value='value2'/></Esp:Transaction></Esp:Interface>";
 
 
-                isPaymentDone = SendTransaction(ConfigurationManager.AppSettings["url"], ConfigurationManager.AppSettings["Port"], xmlString);
+           // isPaymentDone = SendTransaction(ConfigurationManager.AppSettings["url"], ConfigurationManager.AppSettings["Port"], xmlString);
 
-                // isPaymentDone = true;
-                PartialPaymentModel paymentDetail = SavePartialPayment();
+            // isPaymentDone = true;
+            //PartialPaymentModel paymentDetail = SavePartialPayment();
 
-                decimal balanceAmount = Convert.ToDecimal(summaryModel.TotalPremium - paymentDetail.CalulatedPremium);
+            //decimal balanceAmount = Convert.ToDecimal(summaryModel.TotalPremium - paymentDetail.CalulatedPremium);
 
-                if (balanceAmount > 0)
-                {
-                    // TransactionId = GenerateTransactionId();
-                    btnConfirmPayment.Enabled = true;
-                    pictureBox2.Visible = false;
-                    RadioSwipe.Checked = true;
-                    btnConfirmPayment.Text = "Pay.";
-                    txtPartialAmount.Text = balanceAmount.ToString();
-                    return;
-                }
-            }
+            //if (balanceAmount > 0)
+            //{
+            //    // TransactionId = GenerateTransactionId();
+            //    btnConfirmPayment.Enabled = true;
+            //    pictureBoxZinara.Visible = false;
+            //    RadioSwipe.Checked = true;
+            //    btnConfirmPayment.Text = "Pay.";
+            //  //  txtPartialAmount.Text = balanceAmount.ToString();
+            //    return;
+            //}
+
 
 
 
@@ -1544,8 +1600,7 @@ namespace Gene
             string msg = "";
             try
             {
-                //  if (SendTransaction(ConfigurationManager.AppSettings["url"], ConfigurationManager.AppSettings["Port"], xmlString)) // testing condition false
-                if (isPaymentDone)
+                if (SendTransaction(ConfigurationManager.AppSettings["url"], ConfigurationManager.AppSettings["Port"], xmlString)) // testing condition false            
                 {
                     //if (isPaymentDone) // testing condition false
 
@@ -1559,9 +1614,9 @@ namespace Gene
 
                         if (summaryDetails.Id == 0)
                         {
-                            MyMessageBox.ShowBox("Error occur, please contact to admistrator.");
+                            MyMessageBox.ShowBox("Error occur, please contact to admistrator.", "Message");
                             btnConfirmPayment.Enabled = true;
-                            pictureBox2.Visible = false;
+                            pictureBoxZinara.Visible = false;
                             return;
                         }
 
@@ -1634,6 +1689,12 @@ namespace Gene
                 else
                 {
 
+                  //  MyMessageBox.ShowBox("Error occured. " + responseMessage, "Message");
+                 //   TransactionId = GenerateTransactionId();
+
+
+
+
                     //lblPaymentMsg.Text = "";
                     //lblPaymentMsg.Text = "Transaction ID =" + TransactionId + ". " + responseMessage;
                     //lblPaymentMsg.Text += "\n";
@@ -1657,6 +1718,7 @@ namespace Gene
             }
             catch (Exception ex)
             {
+                //TransactionId = GenerateTransactionId();
                 WriteLog("InitializeTermianl :" + ex.Message);
                 lblPaymentMsg.Text += "InitializeTermianl: " + ex.Message;
 
@@ -1669,7 +1731,7 @@ namespace Gene
   <Esp:Interface Version='1.0' xmlns:Esp='http://www.mosaicsoftware.com/Postilion/eSocket.POS/'><Esp:Admin TerminalId='" + ConfigurationManager.AppSettings["TerminalId"] + "' Action ='CLOSE'/></Esp:Interface>";
                 InitializeTermianl("" + ConfigurationManager.AppSettings["url"] + "", ConfigurationManager.AppSettings["Port"], xmlString);
                 btnConfirmPayment.Enabled = true;
-                pictureBox2.Visible = false;
+                loadingImageConfirmPayment.Visible = false;
             }
         }
 
@@ -1833,7 +1895,7 @@ namespace Gene
             PartialPaymentModel partialPayment = new PartialPaymentModel();
             partialPayment.RegistratonNumber = objRiskModel.RegistrationNo;
             partialPayment.CustomerEmail = customerInfo.EmailAddress;
-            partialPayment.PartialAmount = Convert.ToDecimal(txtPartialAmount.Text);
+           // partialPayment.PartialAmount = Convert.ToDecimal(txtPartialAmount.Text);
             partialPayment.CreatedOn = DateTime.Now;
 
 
@@ -1960,7 +2022,7 @@ namespace Gene
                     catch (Exception ex)
                     {
                         //  MessageBox.Show("exceptoin :" + ex.ToString());
-                        MyMessageBox.ShowBox(ex.Message, "Modal error message");
+                        MyMessageBox.ShowBox(ex.Message, "Message");
 
                         WriteLog(ex.ToString());
                     }
@@ -1980,7 +2042,7 @@ namespace Gene
             }
             catch (ArgumentNullException e)
             {
-                MyMessageBox.ShowBox(e.Message, "Modal error message");
+                MyMessageBox.ShowBox(e.Message, "Message");
 
 
                 // MessageBox.Show(e.Message);
@@ -1991,7 +2053,7 @@ namespace Gene
             catch (SocketException e)
             {
 
-                MyMessageBox.ShowBox(e.Message, "Modal error message");
+                MyMessageBox.ShowBox(e.Message, "Message");
 
                 //Console.WriteLine("SocketException: " + e.Message);
                 //Console.ReadKey();
@@ -2000,7 +2062,7 @@ namespace Gene
             catch (Exception e)
             {
 
-                MyMessageBox.ShowBox(e.Message, "Modal error message");
+                MyMessageBox.ShowBox(e.Message, "Message");
                 //Console.WriteLine("SocketException: " + e.Message);
                 //Console.ReadKey();
                 // return result;
@@ -2096,15 +2158,12 @@ namespace Gene
                     {
                         j = 1;
                     }
-
                 }
-
             }
             catch (Exception ex)
             {
 
             }
-
             return CardNumber;
         }
 

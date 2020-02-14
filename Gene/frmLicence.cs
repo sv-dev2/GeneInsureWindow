@@ -42,7 +42,7 @@ namespace Gene
         string _registrationNumber = "";
         public string CertificateNumber { get; set; }
 
-
+        string _branchId="0";
         RiskDetailModel riskDetail;
 
         List<ResultLicenceIDResponse> licenseDiskList = new List<ResultLicenceIDResponse>();
@@ -54,18 +54,20 @@ namespace Gene
             objfrmQuote = new frmQuote("");
 
             InitializeComponent();
+
+            //_branchId = branchId;
             //this.Size = new System.Drawing.Size(1300, 720);
             //PnlLicenceVrn.Visible = true;
 
-          //  1572, 818
+            //  1572, 818
 
 
-           // PnlLicenceVrn.Location = new Point(335, 100);
-           //    PnlLicenceVrn.Size = new System.Drawing.Size(1300, 720);
-           // PnlLicenceVrn.Size = new System.Drawing.Size(1300, 1200);
-           //pnlPrintPreview.Visible = false;
-           //pnlPrintPreview.Location = new Point(335, 50);
-           //pnlPrintPreview.Size = new System.Drawing.Size(739, 800);
+            // PnlLicenceVrn.Location = new Point(335, 100);
+            //    PnlLicenceVrn.Size = new System.Drawing.Size(1300, 720);
+            // PnlLicenceVrn.Size = new System.Drawing.Size(1300, 1200);
+            //pnlPrintPreview.Visible = false;
+            //pnlPrintPreview.Location = new Point(335, 50);
+            //pnlPrintPreview.Size = new System.Drawing.Size(739, 800);
 
         }
 
@@ -95,7 +97,7 @@ namespace Gene
                 var vehicelDetails = GetVehicelDetials(txtLicVrn.Text);
 
                 //    vehicelDetails.LicenseId = 2743;
-                if (vehicelDetails != null && vehicelDetails.LicenseId != null)
+                if (vehicelDetails != null && vehicelDetails.CombinedID != null)
                 {
                     //ObjToken = IcServiceobj.getToken();
                     //if (ObjToken != null)
@@ -107,12 +109,31 @@ namespace Gene
                     if (ObjToken != null)
                         parternToken = token.Token;
 
-                     riskDetail = new RiskDetailModel { LicenseId = vehicelDetails.LicenseId.ToString(), RegistrationNo = vehicelDetails.RegistrationNo };
+                    // riskDetail = new RiskDetailModel { LicenseId = vehicelDetails.LicenseId.ToString(), RegistrationNo = vehicelDetails.RegistrationNo };
 
-                    if (!string.IsNullOrEmpty(vehicelDetails.LicenseId) && (vehicelDetails.LicenseId != "0"))
+                   // _branchId = _branchId==null? "0" : _branchId;
+
+                    riskDetail = new RiskDetailModel { CombinedID = vehicelDetails.CombinedID, LicenseId = vehicelDetails.LicenseId, RegistrationNo = vehicelDetails.RegistrationNo };
+
+                    if (!string.IsNullOrEmpty(vehicelDetails.CombinedID) && (vehicelDetails.CombinedID != "0"))
                     {
                         DisplayLicenseDisc(riskDetail, parternToken);
                     }                 
+                }
+                else if(vehicelDetails != null && vehicelDetails.LicenseId != null)
+                {
+                    RequestToke token = Service_db.GetLatestToken();
+                    if (ObjToken != null)
+                        parternToken = token.Token;
+
+                    // riskDetail = new RiskDetailModel { LicenseId = vehicelDetails.LicenseId.ToString(), RegistrationNo = vehicelDetails.RegistrationNo };
+
+                    riskDetail = new RiskDetailModel { LicenseId = vehicelDetails.LicenseId, RegistrationNo = vehicelDetails.RegistrationNo };
+
+                    if (!string.IsNullOrEmpty(vehicelDetails.LicenseId) && (vehicelDetails.LicenseId != "0"))
+                    {
+                        DisplayLicenseOnly(riskDetail, parternToken);
+                    }
                 }
                 else
                 {
@@ -145,8 +166,66 @@ namespace Gene
         {
             // List<ResultLicenceIDResponse> list = new List<ResultLicenceIDResponse>();
 
-            ResultLicenceIDRootObject quoteresponseResult = IcServiceobj.LICResult(riskDetailModel.LicenseId, parternToken);
+          //  ResultLicenceIDRootObject quoteresponseResult = IcServiceobj.LICResult(riskDetailModel.LicenseId, parternToken);
+
+            ResultLicenceIDRootObject quoteresponseResult = ICEcashService.TPILICResult(riskDetailModel, parternToken);
+
+
+            //TPILICResult
+
             if (quoteresponseResult != null && (quoteresponseResult.Response.Message.Contains("Partner Token has expired") || quoteresponseResult.Response.Message.Contains("Invalid Partner Token")) )
+            {
+                ObjToken = IcServiceobj.getToken();
+                if (ObjToken != null)
+                {
+                    parternToken = ObjToken.Response.PartnerToken;
+                    Service_db.UpdateToken(ObjToken);
+                    //  quoteresponse = IcServiceobj.RequestQuote(parternToken, RegistrationNo, suminsured, make, model, PaymentTermId, VehicleYear, CoverTypeId, VehicleUsage, "", (CustomerModel)customerInfo); // uncomment this line 
+                    quoteresponseResult = ICEcashService.TPILICResult(riskDetailModel, parternToken);
+
+                }
+            }
+
+            if (quoteresponseResult != null && quoteresponseResult.Response != null)
+            {
+                licenseDiskList.Add(quoteresponseResult.Response);
+
+
+
+                if (quoteresponseResult.Response.LicenceCert == null)
+                {
+                    //MessageBox.Show("Pdf not found for this  certificate.");
+                    MyMessageBox.ShowBox("Pdf not found for this  certificate.", "Message");
+
+                    pictureBox2.Visible = false;
+
+                    return licenseDiskList;
+                }
+
+
+                this.Close();
+                CertificateSerialForm obj = new CertificateSerialForm(riskDetailModel, parternToken, quoteresponseResult.Response.LicenceCert);
+                obj.Show();
+
+
+            }
+            // 
+            return licenseDiskList;
+        }
+
+
+
+
+
+        private List<ResultLicenceIDResponse> DisplayLicenseOnly(RiskDetailModel riskDetailModel, string parterToken) // only for license
+        {
+            // List<ResultLicenceIDResponse> list = new List<ResultLicenceIDResponse>();
+
+              ResultLicenceIDRootObject quoteresponseResult = IcServiceobj.LICResult(riskDetailModel.LicenseId, parternToken);
+
+            //TPILICResult
+
+            if (quoteresponseResult != null && (quoteresponseResult.Response.Message.Contains("Partner Token has expired") || quoteresponseResult.Response.Message.Contains("Invalid Partner Token")))
             {
                 ObjToken = IcServiceobj.getToken();
                 if (ObjToken != null)
@@ -168,7 +247,7 @@ namespace Gene
                 if (quoteresponseResult.Response.LicenceCert == null)
                 {
                     //MessageBox.Show("Pdf not found for this  certificate.");
-                    MyMessageBox.ShowBox("Pdf not found for this  certificate.", "Modal error message");
+                    MyMessageBox.ShowBox("Pdf not found for this  certificate.", "Message");
 
                     pictureBox2.Visible = false;
 
@@ -176,38 +255,11 @@ namespace Gene
                 }
 
 
-
-                //var pdfPath = SavePdf(quoteresponseResult.Response.LicenceCert);
-                //CreateLicenseFile(quoteresponseResult.Response.LicenceCert);
-
-
-                //PdfDocument doc = new PdfDocument();
-                //doc.LoadFromFile(pdfPath);
-                //doc.Pages.Insert(0);
-                //doc.Pages.Add();
-                //doc.Pages.RemoveAt(0);//Since First page have always Red Text if use Free Version.
-
-                //doc.SaveToFile(pdfPath);
-
-
-
-
-                //MessageBox.Show("Print licence disk.");
-
-                //printPDFWithAcrobat(pdfPath);
-
-
-
-
-
-                //  this.Hide();
-
                 this.Close();
                 CertificateSerialForm obj = new CertificateSerialForm(riskDetailModel, parternToken, quoteresponseResult.Response.LicenceCert);
                 obj.Show();
 
 
-                // var response = ICEcashService.LICCertConf(riskDetailModel, parternToken, quoteresponseResult.Response.ReceiptID);
             }
             // 
             return licenseDiskList;

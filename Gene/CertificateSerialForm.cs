@@ -318,5 +318,19 @@ namespace Gene
 
 
         }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            GotoHome();
+        }
+
+        public void GotoHome()
+        {
+            Form1 objFrm = new Form1(ObjToken);
+            objFrm.Show();
+            this.Close();
+        }
+
+
     }
 }

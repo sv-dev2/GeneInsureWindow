@@ -147,6 +147,8 @@ namespace Gene
 
         public string LicenseId { get; set; }
 
+        public string CombinedID { get; set; }
+
         public string RegistrationNo { get; set; }
 
         public string LicenseExpiryDate { get; set; }

@@ -65,6 +65,8 @@ namespace Gene
 
         List<ProductsModel> ProductsList;
 
+
+
         string parternToken = "";
         bool isVehicalDeleted = false;
         bool isbackclicked = false;
@@ -85,15 +87,21 @@ namespace Gene
         Int32 counter = 0;
         string _iceCashErrorMsg = "";
         const string _tba = "TBA";
+        int prior = 0;
+
         string _licenseId = "0";
         bool _insuranceAndLicense = true;
-      
+
 
         List<ResultLicenceIDResponse> licenseDiskList = new List<ResultLicenceIDResponse>();
 
         //private static frmQuote _mf;
         public frmQuote(string branch, ICEcashTokenResponse _ObjToken = null, bool insuranceAndLicense = true)
         {
+
+
+
+
             branchName = branch;
             // this for testing
             //Load += new EventHandler(frmQuote_Load);
@@ -135,7 +143,13 @@ namespace Gene
             PnlVrn.Visible = true;
             pnlconfimpaymeny.Visible = false;
             pnlErrormessage.Visible = false;
+            //cmbMake.Visible = false;
+            //cmbModel.Visible = false;
 
+            //vehicleMakeTxt.Visible = false;
+            //vehicleModeltxt.Visible = false;
+
+            cmbCurrency.Enabled = false;
             // pnlSummery.
             //pnlSum.Location = new Point(350, 100);
             //pnlSum.Size = new System.Drawing.Size(1390, 638);
@@ -158,20 +172,19 @@ namespace Gene
             //PnlVrn.Size = new System.Drawing.Size(2600, 638);
 
             //new Changes 24/05/2019
-            PnlVrn.Location = new Point(350, 20);
-            PnlVrn.Size = new System.Drawing.Size(2600, 638);
+            PnlVrn.Location = new Point(215, 20);
+            PnlVrn.Size = new System.Drawing.Size(1300, 400);
 
 
-            pnlInsurance.Location = new Point(355, 20);
-            pnlInsurance.Size = new System.Drawing.Size(1550, 750);
+            //pnlInsurance.Location = new Point(195, 20);
+            //// pnlInsurance.Size = new System.Drawing.Size(1550, 750);
+            //pnlInsurance.Size = new System.Drawing.Size(1300, 1200);
 
+            pnlInsurance.Location = new Point(210, 20);
+            pnlInsurance.Size = new System.Drawing.Size(1000, 400);
 
-
-
-
-
-            pnlLogo.Location = new Point(this.Width - 320, this.Height - 220);
-
+            // pnlLogo.Location = new Point(this.Width - 320, this.Height - 220);
+            pnlLogo.Location = new Point(this.Width - 300, this.Height - 300);
             pnlLogo.Size = new System.Drawing.Size(300, 220);
 
             //pnlRiskDetails.Location = new Point(120, 33);
@@ -182,8 +195,8 @@ namespace Gene
             //pnlRiskDetails.Size = new System.Drawing.Size(1550, 750);
             //New Code 
 
-            pnlRiskDetails.Location = new Point(335, 20);
-            pnlRiskDetails.Size = new System.Drawing.Size(1550, 750);
+            pnlRiskDetails.Location = new Point(205, 20);
+            pnlRiskDetails.Size = new System.Drawing.Size(1550, 400);
 
             //pnlOptionalCover.Location = new Point(200, 33);
             //pnlOptionalCover.Size = new System.Drawing.Size(800, 1040);
@@ -209,7 +222,7 @@ namespace Gene
             pnlZinara.Visible = false;
             pnlCorporate.Visible = false;
 
-            pnlRadioZinara.Location = new Point(335, 20);
+            pnlRadioZinara.Location = new Point(215, 20);
             //pnlRadioZinara.Size = new System.Drawing.Size(1390, 750);
             pnlRadioZinara.Size = new System.Drawing.Size(1590, 750);
 
@@ -234,11 +247,11 @@ namespace Gene
 
             //Old Code
 
-            pnlPersonalDetails.Location = new Point(355, 100);
-            pnlPersonalDetails.Size = new System.Drawing.Size(1550, 750);
+            // pnlPersonalDetails.Location = new Point(355, 100);
+            //  pnlPersonalDetails.Size = new System.Drawing.Size(1550, 750);
 
             //New Code
-            pnlPersonalDetails.Location = new Point(355, 20);
+            pnlPersonalDetails.Location = new Point(210, 20);
             pnlPersonalDetails.Size = new System.Drawing.Size(1550, 750);
 
             pnlTBAPersonalDetails.Location = new Point(355, 100);
@@ -254,7 +267,7 @@ namespace Gene
             //pnlPersonalDetails2.Size = new System.Drawing.Size(1550, 750);
 
             //New  Code
-            pnlPersonalDetails2.Location = new Point(355, 20);
+            pnlPersonalDetails2.Location = new Point(215, 20);
             pnlPersonalDetails2.Size = new System.Drawing.Size(1550, 750);
 
 
@@ -277,7 +290,7 @@ namespace Gene
             //pnlConfirm.Location = new Point(335, 100);
             //pnlConfirm.Size = new System.Drawing.Size(1550, 750);
             //New Code 24/05/19
-            pnlConfirm.Location = new Point(335, 20);
+            pnlConfirm.Location = new Point(215, 20);
             pnlConfirm.Size = new System.Drawing.Size(1550, 750);
 
             pnlThankyou.Location = new Point(300, 33);
@@ -294,11 +307,11 @@ namespace Gene
             //pnlconfimpaymeny.Size = new System.Drawing.Size(1380, 1040);
             //New Code 
             pnlconfimpaymeny.Location = new Point(300, 20);
-            pnlconfimpaymeny.Size = new System.Drawing.Size(1380, 1040);
+            pnlconfimpaymeny.Size = new System.Drawing.Size(1380, 600);
 
 
-            txtVrn.Text = "Car Registration Number";
-            textSearchVrn.Text = "Id Number";
+            txtVrn.Text = "Vehicle Registration Number";
+            textSearchVrn.Text = "ID Number";
 
             //txtVrn.Text = "AAD333";
             txtVrn.ForeColor = SystemColors.GrayText;
@@ -306,6 +319,9 @@ namespace Gene
 
             txtZipCode.Text = "00263";
             txtZipCode.ForeColor = SystemColors.GrayText;
+
+
+            // txtDOB.Size = new Size(292, 50);
 
             SetLocationButton();
 
@@ -319,6 +335,7 @@ namespace Gene
             txtChasis.Visible = false;
             txtEngine.Visible = false;
 
+            //txtPartialAmount.Enabled = false;// default
 
 
             // bindMake();
@@ -339,6 +356,27 @@ namespace Gene
 
         }
 
+
+
+        private void SetLoadingPnlInsurance(bool displayLoader)
+        {
+            if (displayLoader)
+            {
+                this.Invoke((MethodInvoker)delegate
+                {
+                    LoadingInsurance.Visible = true;
+                    this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+                });
+            }
+            else
+            {
+                this.Invoke((MethodInvoker)delegate
+                {
+                    LoadingInsurance.Visible = false;
+                    this.Cursor = System.Windows.Forms.Cursors.Default;
+                });
+            }
+        }
 
 
 
@@ -953,7 +991,7 @@ namespace Gene
             if (ObjToken == null)
             {
                 ObjToken = IcServiceobj.getToken();
-                ProcessICECashrequest(txtVrn.Text, txtSumInsured.Text, cmbMake.SelectedText, cmbModel.SelectedText, Convert.ToString(cmbPaymentTerm.SelectedValue), txtYear.Text, Convert.ToString(cmbCoverType.SelectedValue), Convert.ToString(cmbVehicleUsage.SelectedValue), "1");
+                ProcessICECashrequest(txtVrn.Text, txtSumInsured.Text, cmbMake.SelectedText, cmbModel.SelectedText, Convert.ToString(cmbPaymentTerm.SelectedValue), "", Convert.ToString(cmbCoverType.SelectedValue), Convert.ToString(cmbVehicleUsage.SelectedValue), "1");
 
             }
 
@@ -1298,8 +1336,9 @@ namespace Gene
             btnSave.Text = "Submit";
 
             var TBA = ConfigurationManager.AppSettings["tba"];
-            if (txtVrn.Text == TBA)
+            if (txtVrn.Text.ToUpper() == TBA)
             {
+
                 lblChas.Visible = true;
                 lblEngine.Visible = true;
                 txtChasis.Visible = true;
@@ -1321,7 +1360,7 @@ namespace Gene
             isbackclicked = false;
             // this.Invoke(new Action(() => pictureBox1.Visible = true));
             // first screen where enter vrn number
-            if (txtVrn.Text == string.Empty || txtVrn.Text == "Car Registration Number" || txtVrn.Text.Length == 0 || (string.IsNullOrWhiteSpace(txtVrn.Text)))
+            if (txtVrn.Text == string.Empty || txtVrn.Text == "Vehicle Registration Number" || txtVrn.Text.Length == 0 || (string.IsNullOrWhiteSpace(txtVrn.Text)))
             {
                 //MessageBox.Show("Please Enter Registration Number");
                 NewerrorProvider.SetError(txtVrn, "Please Enter Registration Number.");
@@ -1331,7 +1370,7 @@ namespace Gene
             }
             else
             {
-                txtIDNumber.Text = textSearchVrn.Text == "Id Number" ? "" : textSearchVrn.Text;
+                txtIDNumber.Text = textSearchVrn.Text == "ID Number" ? "" : textSearchVrn.Text;
                 if (VehicalIndex == -1)
                 {
                     var vehicalDetails = objlistRisk.FirstOrDefault(c => c.RegistrationNo == txtVrn.Text.Trim());
@@ -1359,6 +1398,7 @@ namespace Gene
 
                 objRiskModel = new RiskDetailModel();
                 objRiskModel.RegistrationNo = txtVrn.Text;
+                objRiskModel.ALMBranchId = branchName==""? 0: Convert.ToInt32(branchName);
                 if (objRiskModel != null)
                 {
                     if (rdCorporate.Checked)
@@ -1423,7 +1463,7 @@ namespace Gene
                     if (rdCorporate.Checked)
                     {
                         pnlCorporate.Visible = true;
-                        txtCmpBusinessId.Text = textSearchVrn.Text == "Id Number" ? "" : textSearchVrn.Text;
+                        txtCmpBusinessId.Text = textSearchVrn.Text == "ID Number" ? "" : textSearchVrn.Text;
                     }
                     else
                         pnlPersonalDetails.Visible = true;
@@ -1451,7 +1491,7 @@ namespace Gene
 
                 if (success == 4)
                 {
-                    lblVrnErrMsg.Text = "Car Registration number and Id number are not correct.";
+                    lblVrnErrMsg.Text = "Vehicle Registration Number and ID Number are not correct.";
                     lblVrnErrMsg.ForeColor = Color.Red;
                 }
             }
@@ -1557,7 +1597,7 @@ namespace Gene
                 if (resObject != null && resObject.Quotes != null && resObject.Message.Contains("1 failed"))
                 {
                     // lblConfirmMessage.Text = resObject.Quotes[0].Message;
-                    MyMessageBox.ShowBox(resObject.Quotes[0].Message, "Modal error message");
+                    MyMessageBox.ShowBox(resObject.Quotes[0].Message, "Message");
                 }
 
 
@@ -1693,9 +1733,15 @@ namespace Gene
 
                                 _ProductId = resObject.Quotes[0].Vehicle.VehicleType;
 
-                                txtYear.Text = resObject.Quotes[0].Vehicle.YearManufacture;
+                                // txtYear.Text = resObject.Quotes[0].Vehicle.YearManufacture;
                                 Int32 index = cmbMake.FindStringExact(resObject.Quotes[0].Vehicle.Make);
                                 cmbMake.SelectedIndex = index;
+
+                                //Populating The readOnly TextFields for Model And Make !!!
+                                vehicleMakeTxt.Text = resObject.Quotes[0].Vehicle.Make;
+                                vehicleModeltxt.Text = resObject.Quotes[0].Vehicle.Model;
+
+
                                 bindModel(cmbMake.SelectedValue.ToString());
                                 Int32 indexModel = cmbModel.FindString(resObject.Quotes[0].Vehicle.Model);
                                 cmbModel.SelectedIndex = indexModel;
@@ -1748,7 +1794,7 @@ namespace Gene
                                 //this.Invoke(new Action(() => txtCity.Text = resObject.Quotes[0].Client.Town));
                                 cmdCity.Text = resObject.Quotes[0].Client.Town;
                                 // txtIDNumber.Text = resObject.Quotes[0].Client.IDNumber; // 09_may_2019
-                                txtIDNumber.Text = textSearchVrn.Text == "Id Number" ? resObject.Quotes[0].Client.IDNumber : textSearchVrn.Text;
+                                txtIDNumber.Text = textSearchVrn.Text == "ID Number" ? resObject.Quotes[0].Client.IDNumber : textSearchVrn.Text;
                             }
 
 
@@ -1876,7 +1922,7 @@ namespace Gene
                                     cmbProducts.SelectedValue = resObject.Quotes[0].Vehicle.VehicleType;
 
 
-                                    txtYear.Text = resObject.Quotes[0].Vehicle.YearManufacture;
+                                    //txtYear.Text = resObject.Quotes[0].Vehicle.YearManufacture;
                                     Int32 index = cmbMake.FindStringExact(resObject.Quotes[0].Vehicle.Make);
                                     cmbMake.SelectedIndex = index;
 
@@ -1893,8 +1939,9 @@ namespace Gene
                                         bindModel(resObject.Quotes[0].Vehicle.Make);
 
                                     }
-
-
+                                    //Populate IceCash Make and Model data 
+                                    vehicleMakeTxt.Text = resObject.Quotes[0].Vehicle.Make;
+                                    vehicleModeltxt.Text = resObject.Quotes[0].Vehicle.Model;
 
                                     Int32 indexModel = cmbModel.FindString(resObject.Quotes[0].Vehicle.Model);
                                     cmbModel.SelectedIndex = indexModel;
@@ -2161,14 +2208,21 @@ namespace Gene
         {
             //  int CoverId = Convert.ToInt32(cmbCoverType.SelectedValue);
 
-            if (cmbVehicleUsage.SelectedIndex == 0)
+            if (cmbProducts.SelectedValue == null)
+            {
+                NewerrorProvider.SetError(cmbProducts, "Please select the Products");
+                cmbProducts.Focus();
+                return;
+            }
+
+            if (cmbVehicleUsage.SelectedValue == null)
             {
                 NewerrorProvider.SetError(cmbVehicleUsage, "Please select the vehicle usage");
                 cmbVehicleUsage.Focus();
                 return;
             }
 
-            if (cmbTaxClasses.SelectedIndex == 0)
+            if (cmbTaxClasses.SelectedValue == null)
             {
                 NewerrorProvider.SetError(cmbTaxClasses, "Please select Tax class");
                 cmbTaxClasses.Focus();
@@ -2181,12 +2235,7 @@ namespace Gene
             //    return;
             //}
 
-            if (cmbProducts.SelectedIndex == 0)
-            {
-                NewerrorProvider.SetError(cmbProducts, "Please select the Products");
-                cmbProducts.Focus();
-                return;
-            }
+
 
             //if (CoverId == 4) // for comprehensive
             //{
@@ -2229,7 +2278,7 @@ namespace Gene
             }
             // GetPremiumAmount_ChangeOfCoverType();
 
-            btnRiskCont.Text = "Continue";
+            
 
             if (VehicalIndex == -1)
             {
@@ -2298,15 +2347,47 @@ namespace Gene
                 chkRoadsideAssistance.Visible = true;
             }
 
-            if (_iceCashErrorMsg != "" && Convert.ToInt32(cmbCoverType.SelectedValue) != 4 && txtVrn.Text.Trim() != _tba)
+            if (_iceCashErrorMsg != "" && txtVrn.Text.Trim().ToUpper() != _tba)
             {
                 objRiskModel.isVehicleRegisteredonICEcash = false;
                 RequestVehicleDetails();
             }
 
+
+            btnRiskCont.Text = "Continue";
+
+            if (_iceCashErrorMsg!="")
+            {
+                MyMessageBox.ShowBox(_iceCashErrorMsg);
+                pnlRiskDetails.Visible = false;
+                PnlVrn.Visible = true;
+                return;
+            }
+
+
             //  pnlOptionalCover.Visible = true;
             pnlConfirm.Visible = true;
             pnlRiskDetails.Visible = false;
+
+            if (txtVrn.Text.Trim().ToUpper() != _tba)
+            {
+                // vehicleModeltxt.Visible = true; // getting not selected make and model
+                // vehicleMakeTxt.Visible = true;
+
+                //cmbMake.Visible = true; // 23_jan 20
+                //cmbModel.Visible = true;
+
+                //Int32 indexMake = cmbMake.FindStringExact(objRiskModel.MakeId);
+                //cmbMake.SelectedIndex = indexMake;
+                //Int32 indexModel = cmbModel.FindString(objRiskModel.ModelId);
+                //cmbModel.SelectedIndex = indexModel;
+
+            }
+            else
+            {
+              //  cmbMake.Visible = true;
+                //cmbModel.Visible = true;
+            }
 
         }
 
@@ -2315,8 +2396,18 @@ namespace Gene
         {
             //PnlVrn.Visible = true;
             // pnlConfirm.Visible = true;
-            pnlInsurance.Visible = true;
+            // pnlInsurance.Visible = true;
+
+
             pnlRiskDetails.Visible = false;
+
+            if (txtVrn.Text.ToUpper() == _tba || !_insuranceAndLicense)
+                pnlInsurance.Visible = true;
+            else
+                pnlRadioZinara.Visible = true;
+
+
+
 
         }
 
@@ -2461,6 +2552,11 @@ namespace Gene
         private void btnConfContinue_Click(object sender, EventArgs e)
         {
             // third screen confirm vehical details
+
+            btnConfContinue.Text = "Processing..";
+
+            // VehicalIndex= - 1; // uncomment when it will be run for multiple vehicle
+
             lblmessageConf.Text = "";
             if (cmbMake.SelectedIndex == 0)
             {
@@ -2474,76 +2570,216 @@ namespace Gene
                 cmbModel.Focus();
                 return;
             }
-            if (txtYear.Text == string.Empty)
+
+
+            objRiskModel.MakeId = Convert.ToString(cmbMake.SelectedValue);
+            objRiskModel.ModelId = Convert.ToString(cmbModel.SelectedValue);
+            objRiskModel.EngineNumber = Convert.ToString(txtEngine.Text);
+            objRiskModel.ChasisNumber = Convert.ToString(txtChasis.Text);
+
+            //if (VehicalIndex == -1)
+            //{
+
+            //    // objRiskModel.VehicleYear = txtYear.Text == "" ? 1900 : Convert.ToInt32(txtYear.Text);
+            //    objRiskModel.MakeId = Convert.ToString(cmbMake.SelectedValue);
+            //    objRiskModel.ModelId = Convert.ToString(cmbModel.SelectedValue);
+            //    objRiskModel.EngineNumber = Convert.ToString(txtEngine.Text);
+            //    objRiskModel.ChasisNumber = Convert.ToString(txtChasis.Text);
+
+            //}
+            //else
+            //{
+            //    // objlistRisk[VehicalIndex].VehicleYear = txtYear.Text == "" ? 1900 : Convert.ToInt32(txtYear.Text);
+            //    objlistRisk[VehicalIndex].MakeId = cmbMake.SelectedValue == null ? "0" : Convert.ToString(cmbMake.SelectedValue);
+            //    objlistRisk[VehicalIndex].ModelId = cmbModel.SelectedValue == null ? "0" : Convert.ToString(cmbModel.SelectedValue);
+            //    objlistRisk[VehicalIndex].EngineNumber = Convert.ToString(txtEngine.Text);
+            //    objlistRisk[VehicalIndex].ChasisNumber = Convert.ToString(txtChasis.Text);
+
+            //}
+
+
+
+            if (txtVrn.Text.ToUpper() == _tba)
             {
-                NewerrorProvider.SetError(txtYear, "Please enter the year");
-                txtYear.Focus();
-                return;
+                ObjToken = IcServiceobj.getToken();
+                if (ObjToken != null)
+                    parternToken = ObjToken.Response.PartnerToken;
+
+
+                ResultRootObject quoteresponse = IcServiceobj.RequestQuote(objRiskModel, customerInfo, parternToken);
+                if (quoteresponse != null && (quoteresponse.Response.Message.Contains("Partner Token has expired") || quoteresponse.Response.Message.Contains("Invalid Partner Token")))
+                {
+                    ObjToken = IcServiceobj.getToken();
+                    if (ObjToken != null)
+                    {
+                        parternToken = ObjToken.Response.PartnerToken;
+                        Service_db.UpdateToken(ObjToken);
+                        quoteresponse = IcServiceobj.RequestQuote(objRiskModel, customerInfo, parternToken);
+                    }
+                }
+                CaculatePreiumForTBA(quoteresponse);
             }
 
 
-            if (!IsNumeric(txtYear.Text))
+           
+            CalculatePremium();
+            if (VehicalIndex != -1)
             {
-                NewerrorProvider.SetError(txtYear, "Please enter valid year");
-                txtYear.Focus();
-                return;
-            }
-
-            if (txtVrn.Text == _tba)
-            {
-                RequestVehicleDetails();
-            }
-
-
-
-            if (VehicalIndex == -1)
-            {
-
-                //if (txtYear.Text == string.Empty || cmbModel.SelectedIndex == -1)
-                //{
-                //    MessageBox.Show("Please Enter the required fields");
-                //    return;
-                //}
-                //if (cmbCoverType.SelectedValue != null)
-                //{
-                //    var CoverType = Convert.ToInt32(cmbCoverType.SelectedValue);
-                //    if (CoverType == 4)
-                //    {
-                //        label2.Visible = true;
-                //        txtSumInsured.Visible = true;
-                //    }
-                //}
-
-                objRiskModel.VehicleYear = txtYear.Text == "" ? 1900 : Convert.ToInt32(txtYear.Text);
-                objRiskModel.MakeId = Convert.ToString(cmbMake.SelectedValue);
-                objRiskModel.ModelId = Convert.ToString(cmbModel.SelectedValue);
-                objRiskModel.EngineNumber = Convert.ToString(txtEngine.Text);
-                objRiskModel.ChasisNumber = Convert.ToString(txtChasis.Text);
-
+                //Update vehical list
+                SetValueForUpdate();
+                loadVRNPanel(); // 19_feb
+                VehicalIndex = -1;
             }
             else
             {
-                objlistRisk[VehicalIndex].VehicleYear = txtYear.Text == "" ? 1900 : Convert.ToInt32(txtYear.Text);
-                objlistRisk[VehicalIndex].MakeId = cmbMake.SelectedValue == null ? "0" : Convert.ToString(cmbMake.SelectedValue);
-                objlistRisk[VehicalIndex].ModelId = cmbModel.SelectedValue == null ? "0" : Convert.ToString(cmbModel.SelectedValue);
-                objlistRisk[VehicalIndex].EngineNumber = Convert.ToString(txtEngine.Text);
-                objlistRisk[VehicalIndex].ChasisNumber = Convert.ToString(txtChasis.Text);
 
-                //objlistRisk[VehicalIndex].MakeId = Convert.ToString(cmbMake.SelectedValue);
-                //objlistRisk[VehicalIndex].ModelId = Convert.ToString(cmbModel.SelectedValue);
+                objRiskModel.NoOfCarsCovered = 1;
+                objlistRisk.Add(objRiskModel);
 
+                isbackclicked = false;
+                loadVRNPanel();
             }
 
 
 
 
+            PaymentSummary();
 
-            //pnlOptionalCover.Visible = true;
-            //pnlConfirm.Visible = true;
-            // pnlRiskDetails.Visible = true;
+
+
             pnlConfirm.Visible = false;
-            pnlOptionalCover.Visible = true;
+            pnlsumary.Visible = true;
+            // pnlSum.Visible = true;
 
+
+
+            //if (prior == 0 && txtVrn.Text != _tba)
+            //if (txtVrn.Text != _tba)
+            //{
+            //    CalculatePremiumAndZinraLicense();
+            //    pictureBoxConfirm.Visible = false;
+
+            //    pnlConfirm.Visible = false;
+
+
+            //    btnConfContinue.Text = "Continue";
+
+            //}
+            //else
+            //{
+            //    pictureBoxConfirm.Visible = false;
+
+            //    pnlConfirm.Visible = false;
+            //    callPnlSummary();
+
+
+            //    //pnlOptionalCover.Visible = true;
+
+            //    btnConfContinue.Text = "Continue";
+            //}
+
+
+
+            btnConfContinue.Text = "Continue";
+        }
+
+
+        private void CaculatePreiumForTBA(ResultRootObject quoteresponse)
+        {
+            var response = quoteresponse.Response.Result;
+            if (quoteresponse != null && quoteresponse.Response.Quotes[0] != null)
+            {
+                objRiskModel.isVehicleRegisteredonICEcash = true;
+                objRiskModel.BasicPremiumICEcash = Convert.ToDecimal(quoteresponse.Response.Quotes[0].Policy.CoverAmount, System.Globalization.CultureInfo.InvariantCulture);
+                objRiskModel.Premium = Convert.ToDecimal(quoteresponse.Response.Quotes[0].Policy.CoverAmount, System.Globalization.CultureInfo.InvariantCulture);
+                objRiskModel.ZTSCLevy = Convert.ToDecimal(quoteresponse.Response.Quotes[0].Policy.GovernmentLevy, System.Globalization.CultureInfo.InvariantCulture);
+                objRiskModel.StampDuty = Convert.ToDecimal(quoteresponse.Response.Quotes[0].Policy.StampDuty, System.Globalization.CultureInfo.InvariantCulture);
+
+
+                //var discount = GetDiscount(Convert.ToDecimal(quoteresponse.Response.Quotes[0] == null ? "0.00" : quoteresponse.Response.Quotes[0].Policy.CoverAmount), Convert.ToInt32(cmbPaymentTerm.SelectedValue));
+                //objRiskModel.Discount = discount;
+
+                objRiskModel.Discount = 0;
+
+                objRiskModel.InsuranceId = quoteresponse.Response.Quotes[0].InsuranceID;
+
+            }
+        }
+
+
+
+
+        private void CalculatePremiumAndZinraLicense()
+        {
+            var tba = ConfigurationManager.AppSettings["tba"];
+            if (tba == txtVrn.Text.ToUpper())
+            {
+                pnlOptionalCover.Visible = false;
+
+
+
+                CalculatePremium();
+                pnlSum.Visible = true;
+
+                if (VehicalIndex != -1)
+                {
+                    //Update vehical list
+                    SetValueForUpdate();
+                    loadVRNPanel(); // 19_feb
+                    VehicalIndex = -1;
+                }
+                else
+                {
+
+                    objRiskModel.NoOfCarsCovered = objlistRisk.Count() + 1;
+                    objlistRisk.Add(objRiskModel);
+                    isbackclicked = false;
+                    loadVRNPanel();
+
+                }
+
+                return;
+            }
+
+            //if (Convert.ToInt32(cmbCoverType.SelectedValue) != (int)eCoverType.Comprehensive && objRiskModel.isVehicleRegisteredonICEcash)
+            //{
+            //    if (rdbFemale.Checked)
+            //        _clientIdType = "2";
+            //    else
+            //        _clientIdType = "1";
+
+            //    GetDefaultZinraLiceenseFee(Convert.ToString(cmbPaymentTerm.SelectedValue), _clientIdType, customerInfo.NationalIdentificationNumber);
+
+            //}
+
+
+            // pnlRadioZinara.Visible = true;
+
+            //if (chkRadioLicence.Checked && chkZinara.Checked)
+            //{
+            //    pnlRadio.Visible = true;
+            //    pnlZinara.Visible = true;
+            //}
+
+            //else if (chkRadioLicence.Checked)
+            //{
+            //    pnlRadio.Visible = true;
+            //    pnlZinara.Visible = false;
+
+            //}
+            //else if (chkZinara.Checked)
+            //{
+            //    pnlZinara.Visible = true;
+            //    pnlRadio.Visible = false;
+            //}
+            //else
+            //{
+            //    pnlRadio.Visible = false;
+            //    pnlZinara.Visible = false;
+
+            //}
+            // pnlOptionalCover.Visible = false;
+            var productid = objRiskModel.ProductId;
         }
 
         public static bool IsNumeric(string str)
@@ -2628,7 +2864,7 @@ namespace Gene
         private void btnConfBack_Click(object sender, EventArgs e)
         {
             //pnlRiskDetails.Visible = true;
-            if (txtVrn.Text == "TBA")
+            if (txtVrn.Text.ToUpper() == "TBA")
             {
                 pnlTBAPersonalDetails.Visible = true;
                 pnlConfirm.Visible = false;
@@ -2677,7 +2913,7 @@ namespace Gene
 
         public void btnPer2Con_Click(object sender, EventArgs e)
         {
-            
+
 
             if (txtAdd1.Text == string.Empty)
             {
@@ -2685,13 +2921,13 @@ namespace Gene
                 txtAdd1.Focus();
                 return;
             }
-            if (txtAdd2.Text == string.Empty)
-            {
+            //if (txtAdd2.Text == string.Empty)
+            //{
 
-                NewerrorProvider.SetError(txtAdd2, "Please enter the Address2");
-                txtAdd2.Focus();
-                return;
-            }
+            //    NewerrorProvider.SetError(txtAdd2, "Please enter the Address2");
+            //    txtAdd2.Focus();
+            //    return;
+            //}
             if (cmdCity.SelectedIndex == -1)
             {
                 NewerrorProvider.SetError(cmdCity, "Please select the city");
@@ -2708,7 +2944,7 @@ namespace Gene
 
             if (txtIDNumber.Text == string.Empty)
             {
-                NewerrorProvider.SetError(txtIDNumber, "Please enter the Id number");
+                NewerrorProvider.SetError(txtIDNumber, "Please enter the ID Number");
                 txtIDNumber.Focus();
                 return;
             }
@@ -2718,7 +2954,7 @@ namespace Gene
                 txtZipCode.Focus();
                 return;
             }
-           
+
             if (txtAdd1.Text != string.Empty && txtAdd2.Text != string.Empty && cmdCity.SelectedIndex != -1 && txtIDNumber.Text != string.Empty && txtZipCode.Text != string.Empty)
             {
 
@@ -2753,7 +2989,7 @@ namespace Gene
                 customerInfo.BranchId = branchName == "" ? 0 : Convert.ToInt32(branchName);
 
 
-             
+
             }
         }
         public void SetUserInput()
@@ -2804,7 +3040,7 @@ namespace Gene
 
 
             //objU.ModelID = Convert.ToString(cmbModel.SelectedValue);
-            objU.Year = txtYear.Text;
+            // objU.Year = txtYear.Text;
             objU.ChasisNumber = txtChasis.Text;
             objU.EngineNumber = txtEngine.Text;
 
@@ -2843,17 +3079,20 @@ namespace Gene
 
             pnlsumary.Visible = false;
             VehicalIndex = objlistRisk.FindIndex(c => c.RegistrationNo == txtVrn.Text);
+            // VehicalIndex = -1; 
 
-            if (objlistRisk[VehicalIndex].IsCorporateField)
-            {
-                pnlCorporate.Visible = true;
+            pnlConfirm.Visible = true;
+            //if (objlistRisk[VehicalIndex].IsCorporateField)
+            //{
+            //    pnlCorporate.Visible = true;
 
-            }
-            else
-            {
-                // pnlPersonalDetails2.Visible = true;
-                pnlSum.Visible = true;
-            }
+            //}
+            //else
+            //{
+            //    // pnlPersonalDetails2.Visible = true;
+            //    // pnlSum.Visible = true;
+            //    pnlConfirm.Visible = true;
+            //}
 
         }
 
@@ -2875,14 +3114,14 @@ namespace Gene
 
             if (txtVrn.Text.Length == 0)
             {
-                txtVrn.Text = "Car Registration Number";
+                txtVrn.Text = "Vehicle Registration Number";
                 txtVrn.ForeColor = SystemColors.GrayText;
             }
         }
 
         private void txtVrn_Enter_1(object sender, EventArgs e)
         {
-            if (txtVrn.Text == "Car Registration Number")
+            if (txtVrn.Text == "Vehicle Registration Number")
             {
                 txtVrn.Text = "";
                 txtVrn.ForeColor = SystemColors.GrayText;
@@ -2934,8 +3173,6 @@ namespace Gene
                 else
                     _clientIdType = "1";
 
-
-
                 GetDefaultZinraLiceenseFee(Convert.ToString(cmbPaymentTerm.SelectedValue), _clientIdType, customerInfo.NationalIdentificationNumber);
 
             }
@@ -2968,40 +3205,6 @@ namespace Gene
             }
             pnlOptionalCover.Visible = false;
             var productid = objRiskModel.ProductId;
-
-
-
-
-
-
-
-            // for removing zinra license fee
-            //pnlOptionalCover.Visible = false;
-            //pnlSum.Visible = true;
-            //pnlAddMoreVehicle.Visible = true;
-
-            //CalculatePremium();
-
-
-            //if (VehicalIndex != -1)
-            //{
-            //    //Update vehical list
-            //    SetValueForUpdate();
-            //    loadVRNPanel(); // 19_feb
-            //    VehicalIndex = -1;
-            //}
-            //else
-            //{
-
-            //    objRiskModel.NoOfCarsCovered = objlistRisk.Count() + 1;
-            //    objlistRisk.Add(objRiskModel);
-            //    isbackclicked = false;
-            //    loadVRNPanel();
-
-            //}
-
-
-            //return;
 
         }
         public void SetValueForUpdate()
@@ -3072,17 +3275,21 @@ namespace Gene
 
         public void NewVRN()
         {
-            txtVrn.Text = "Car Registration Number";
+            txtVrn.Text = "Vehicle Registration Number";
             txtVrn.ForeColor = SystemColors.GrayText;
             txtSumInsured.Text = string.Empty;
             cmbVehicleUsage.SelectedIndex = 0;
             cmbPaymentTerm.SelectedIndex = 0;
             cmbCoverType.SelectedIndex = 0;
 
-            cmbMake.SelectedIndex = 0;
-            cmbModel.SelectedIndex = -1;
+            //cmbMake.SelectedIndex = 0;
+            //cmbModel.SelectedIndex = -1;
 
-            txtYear.Text = string.Empty;
+            cmbMake.SelectedIndex = 1;
+            cmbModel.SelectedIndex = 1;
+
+
+            //txtYear.Text = string.Empty;
             txtChasis.Text = string.Empty;
             txtEngine.Text = string.Empty;
 
@@ -3117,7 +3324,7 @@ namespace Gene
 
             cmbMake.SelectedIndex = 0;
             cmbModel.SelectedIndex = -1;
-            txtYear.Text = string.Empty;
+            //txtYear.Text = string.Empty;
             txtChasis.Text = string.Empty;
             txtEngine.Text = string.Empty;
 
@@ -3225,7 +3432,7 @@ namespace Gene
                     objExistingInput.MakeID = Convert.ToString(cmbMake.SelectedValue);
                     objExistingInput.Model = cmbModel.SelectedText;
                     objExistingInput.ModelID = Convert.ToString(cmbModel.SelectedValue);
-                    objExistingInput.Year = txtYear.Text;
+                    // objExistingInput.Year = txtYear.Text;
                     objExistingInput.ChasisNumber = txtChasis.Text;
                     objExistingInput.EngineNumber = txtEngine.Text;
 
@@ -3291,7 +3498,7 @@ namespace Gene
 
 
 
-                if (tba == txtVrn.Text)
+                if (tba == txtVrn.Text.ToUpper())
                 {
 
                     if (VehicalIndex == -1)
@@ -3311,29 +3518,44 @@ namespace Gene
 
                     pnlSum.Visible = false;
                     pnlAddMoreVehicle.Visible = false;
-                    pnlOptionalCover.Visible = true;
+                    pnlConfirm.Visible = true;
 
                     return;
                 }
 
 
-
-                pnlSum.Visible = false;
-                pnlAddMoreVehicle.Visible = false;
-                // pnlRadioZinara.Visible = true; // 21_feb
-                //  pnlRiskDetails.Visible = true;
-                pnlOptionalCover.Visible = true;
-                btnBacktoList.Visible = false;
-
-
-                if (chkRadioLicence.Checked)
+                if (prior == 0)
                 {
-                    pnlRadio.Visible = true;
+
+                    pnlSum.Visible = false;
+                    pnlAddMoreVehicle.Visible = false;
+                    // pnlRadioZinara.Visible = true; // 21_feb
+                    //  pnlRiskDetails.Visible = true;
+                    pnlRadioZinara.Visible = true;
+                    btnBacktoList.Visible = false;
+
+
+                    if (chkRadioLicence.Checked)
+                    {
+                        pnlRadio.Visible = true;
+                    }
+                    if (chkZinara.Checked)
+                    {
+                        pnlZinara.Visible = true;
+                    }
                 }
-                if (chkZinara.Checked)
+                else
                 {
-                    pnlZinara.Visible = true;
+                    pnlSum.Visible = false;
+                    pnlAddMoreVehicle.Visible = false;
+                    // pnlRadioZinara.Visible = true; // 21_feb
+                    //  pnlRiskDetails.Visible = true;
+                    pnlConfirm.Visible = true;
+                    btnBacktoList.Visible = false;
                 }
+
+
+
 
             }
             catch (Exception ex)
@@ -3359,7 +3581,6 @@ namespace Gene
                     txtSumInsured.Visible = false;
                     txtSumInsured.Text = "0.00";
                 }
-
             }
 
         }
@@ -3400,10 +3621,10 @@ namespace Gene
 
                 if (parternToken != "")
                 {
-                    if (String.IsNullOrEmpty(txtYear.Text))
-                    {
-                        txtYear.Text = "1900";
-                    }
+                    //if (String.IsNullOrEmpty(txtYear.Text))
+                    //{
+                    //    txtYear.Text = "1900";
+                    //}
                     if (String.IsNullOrEmpty(txtSumInsured.Text))
                     {
                         txtSumInsured.Text = "0";
@@ -3445,7 +3666,7 @@ namespace Gene
                     //int VehicleUsage = Convert.ToInt32(cmbVehicleUsage.SelectedValue);
 
 
-                    int VehicleYear = Convert.ToInt32(txtYear.Text);
+                    //   int VehicleYear = Convert.ToInt32(txtYear.Text);
                     string PartnerReference = ObjToken.PartnerReference;
 
                     //  ResultRootObject quoteresponse = IcServiceobj.RequestQuote(parternToken, RegistrationNo, suminsured, make, model, PaymentTermId, VehicleYear, CoverTypeId, VehicleUsage, "", (CustomerModel)customerInfo); // uncomment this line 
@@ -3568,39 +3789,7 @@ namespace Gene
 
                                     if (quoteresponseQuote.Response.Quotes[0].Vehicle != null)
                                     {
-                                        //cmbVehicleUsage.SelectedValue = quoteresponse.Response.Quotes[0].Vehicle.VehicleType;
-                                        //txtYear.Text = quoteresponse.Response.Quotes[0].Vehicle.YearManufacture;
 
-                                        //// bindModel(cmbMake.SelectedValue==null? "0" :  cmbMake.SelectedValue.ToString());
-
-                                        //bindModel(quoteresponse.Response.Quotes[0].Vehicle.Make);
-
-
-                                        ////if (cmbVehicleUsage.SelectedValue != null)
-                                        ////{
-                                        ////    bindProductid(Convert.ToInt32(cmbVehicleUsage.SelectedValue));
-
-                                        ////}
-
-
-                                        //if (VehicalIndex == -1)
-                                        //{
-                                        //    objRiskModel.MakeId = quoteresponse.Response.Quotes[0].Vehicle.Make;
-                                        //    objRiskModel.ModelId = quoteresponse.Response.Quotes[0].Vehicle.Model;
-                                        //}
-                                        //else
-                                        //{
-                                        //    objlistRisk[VehicalIndex].MakeId = quoteresponse.Response.Quotes[0].Vehicle.Make; ;
-                                        //    objlistRisk[VehicalIndex].ModelId = quoteresponse.Response.Quotes[0].Vehicle.Model;
-                                        //}
-
-
-                                        //Int32 index = cmbMake.FindStringExact(quoteresponse.Response.Quotes[0].Vehicle.Make);
-                                        //cmbMake.SelectedIndex = index;
-
-
-                                        //Int32 indexModel = cmbModel.FindString(quoteresponse.Response.Quotes[0].Vehicle.Model);
-                                        //cmbModel.SelectedIndex = indexModel;
 
 
                                     }
@@ -3608,10 +3797,7 @@ namespace Gene
                                     if (cmbVehicleUsage.SelectedValue != null)
                                     {
                                         cmVehicleValue = Convert.ToInt32(cmbVehicleUsage.SelectedValue);
-                                        //if (cmVehicleValue != 0)
-                                        //{
-                                        //    bindProductid(Convert.ToInt32(cmbVehicleUsage.SelectedValue));
-                                        //}
+
                                     }
 
                                     if (quoteresponseQuote.Response.Quotes[0].Client != null)
@@ -3624,7 +3810,7 @@ namespace Gene
                                         cmdCity.Text = quoteresponseQuote.Response.Quotes[0].Client.Town;
                                         //txtIDNumber.Text = quoteresponse.Response.Quotes[0].Client.IDNumber;
 
-                                        _clientIdType = textSearchVrn.Text == "Id Number" ? resObject.Quotes[0].Client.IDNumber : textSearchVrn.Text;
+                                        _clientIdType = textSearchVrn.Text == "ID Number" ? resObject.Quotes[0].Client.IDNumber : textSearchVrn.Text;
 
                                         txtIDNumber.Text = _clientIdType;
                                     }
@@ -3632,17 +3818,12 @@ namespace Gene
                                     // Session["InsuranceId"] = quoteresponse.Response.Quotes[0].InsuranceID;
                                 }
 
-
-                                // for zinara license 
-
-                                //GetZinraLiceenseFee(cmbPaymentTerm.SelectedValue.ToString()); // old
-
-                                //GetDefaultZinraLiceenseFee(cmbPaymentTerm.SelectedValue.ToString(), _clientIdType); // latest 15_may 2019
-
-
                             }
                         }
                     }
+
+
+
                 }
             }
             catch (Exception ex)
@@ -3652,20 +3833,13 @@ namespace Gene
         }
 
 
-
         private void RequestVehicleDetails()
         {
-            int CoverType = 0;
 
             checkVRNwithICEcashResponse response = new checkVRNwithICEcashResponse();
             //picbxCoverType.Visible = true;
             try
             {
-                //if (objRiskModel == null)
-                //    return;
-
-                //if (objRiskModel != null && objRiskModel.RegistrationNo == null)
-                //    return;
 
                 if (cmbPaymentTerm.SelectedValue == null && cmbCoverType.SelectedValue == null)
                     return;
@@ -3701,10 +3875,10 @@ namespace Gene
 
                 if (parternToken != "")
                 {
-                    if (String.IsNullOrEmpty(txtYear.Text))
-                    {
-                        txtYear.Text = "1900";
-                    }
+                    //if (String.IsNullOrEmpty(txtYear.Text))
+                    //{
+                    //    txtYear.Text = "1900";
+                    //}
                     if (String.IsNullOrEmpty(txtSumInsured.Text))
                     {
                         txtSumInsured.Text = "0";
@@ -3715,32 +3889,28 @@ namespace Gene
 
 
                     string RegistrationNo = txtVrn.Text;
-
                     //int PaymentTermId = Convert.ToInt32(cmbPaymentTerm.SelectedValue);
 
                     if (cmbPaymentTerm.SelectedValue != null)
-                    {
                         PaymentTermId = Convert.ToInt32(cmbPaymentTerm.SelectedValue);
-                    }
+
                     if (cmbCoverType.SelectedValue != null)
-                    {
                         CoverTypeId = Convert.ToInt32(cmbCoverType.SelectedValue);
-                    }
+
 
                     // to display selected value
-                    ZinPaymentDetail.SelectedValue = PaymentTermId;
-                    RadioPaymnetTerm.SelectedValue = PaymentTermId;
+                    ZinPaymentDetail.SelectedValue = ZinPaymentDetail.SelectedValue;
+                    RadioPaymnetTerm.SelectedValue = RadioPaymnetTerm.SelectedValue;
 
 
                     //int CoverTypeId = Convert.ToInt32(cmbCoverType.SelectedValue);
                     //int VehicleUsage = Convert.ToInt32(cmbVehicleUsage.SelectedValue);
 
 
-                    int VehicleYear = Convert.ToInt32(txtYear.Text);
+                    //  int VehicleYear = Convert.ToInt32(txtYear.Text);
                     string PartnerReference = ObjToken.PartnerReference;
 
                     //  ResultRootObject quoteresponse = IcServiceobj.RequestQuote(parternToken, RegistrationNo, suminsured, make, model, PaymentTermId, VehicleYear, CoverTypeId, VehicleUsage, "", (CustomerModel)customerInfo); // uncomment this line 
-
                     // objRiskModel.SumInsured = txtSumInsured.Text == "" ? 0 : Convert.ToDecimal(txtSumInsured.Text);
                     //  objRiskModel.MakeId = cmbMake.SelectedValue.ToString();
 
@@ -3752,25 +3922,59 @@ namespace Gene
 
                     objRiskModel.PaymentTermId = PaymentTermId;
                     objRiskModel.CoverTypeId = CoverTypeId;
+
                     // objRiskModel.VehicleUsage = VehicleUsage;
                     //  objRiskModel.TaxClassId = Convert.ToInt32(cmbTaxClasses.SelectedValue);
                     //  objRiskModel.CurrencyId = currencyId;
 
 
                     // objRiskModel.ProductId = ProductsList.FirstOrDefault(c => c.Id == objRiskModel.ProductId) == null ? 0 : ProductsList.FirstOrDefault(c => c.Id == objRiskModel.ProductId).VehicleTypeId; // For getting tax class for tba
-                    quoteresponseQuote = IcServiceobj.RequestQuote(objRiskModel, (CustomerModel)customerInfo, parternToken); // uncomment this line 
+                    //quoteresponseQuote = IcServiceobj.RequestQuote(objRiskModel, (CustomerModel)customerInfo, parternToken); // 15_jan
 
+
+                    //RadioTVUsage = item.RadioTVUsage,
+                    //RadioTVFrequency = item.RadioTVFrequency
+
+                    if (chkZinara.Checked)
+                    {
+                        objRiskModel.radioTvUsage = IcServiceobj.GetRadioTvUsage(Convert.ToString(objRiskModel.ProductId)).ToString();
+                        objRiskModel.licenseFreequency = IcServiceobj.GetMonthKey(Convert.ToInt32(ZinPaymentDetail.SelectedValue)).ToString();
+                    }
+
+                    if (chkRadioLicence.Checked)
+                    {
+                        objRiskModel.radioTvUsage = IcServiceobj.GetRadioTvUsage(Convert.ToString(objRiskModel.ProductId)).ToString();
+                        objRiskModel.RadioFreequency = IcServiceobj.GetMonthKey(Convert.ToInt32(RadioPaymnetTerm.SelectedValue)).ToString();
+                    }
+
+                    var product = ProductsList.FirstOrDefault(c => c.Id == objRiskModel.ProductId); // get vehilce type form table
+                    var temVehicleTypeId = objRiskModel.ProductId;
+                    if (product!=null)
+                        objRiskModel.ProductId = product.VehicleTypeId;
+                    
+
+                    if (_insuranceAndLicense && (chkZinara.Checked && chkRadioLicence.Checked))
+                        quoteresponseQuote = IcServiceobj.TPILICQuote(objRiskModel, (CustomerModel)customerInfo, parternToken); // combine insurance and license
+                    else if(_insuranceAndLicense && chkZinara.Checked)
+                        quoteresponseQuote = IcServiceobj.TPILICQuoteZinraOnly(objRiskModel, (CustomerModel)customerInfo, parternToken); // only for zinara
+                    else
+                        quoteresponseQuote = IcServiceobj.RequestQuote(objRiskModel, (CustomerModel)customerInfo, parternToken); //  insurance only
+
+                    objRiskModel.ProductId = temVehicleTypeId;  // set selected vehilceId
 
                     resObject = quoteresponseQuote.Response;
-                    if (resObject.Message.Contains("1 failed"))
-                    {
-                        _iceCashErrorMsg = "Error Occured";
-                    }
+                    if (resObject.Message.Contains("1 failed"))                
+                        _iceCashErrorMsg = resObject.Quotes == null ? "Error Occured" : resObject.Quotes[0].Message;
+
+                    if (resObject.Message.Contains("Your account is inactive"))
+                        _iceCashErrorMsg = resObject.Message;
+                    
 
 
                     //if token expire
                     if (resObject != null && (resObject.Message.Contains("Partner Token has expired") || resObject.Message.Contains("Invalid Partner Token")))
                     {
+                        _iceCashErrorMsg = "";
 
                         //ObjToken = CheckParterTokenExpire();
                         ObjToken = IcServiceobj.getToken();
@@ -3779,7 +3983,15 @@ namespace Gene
 
                         Service_db.UpdateToken(ObjToken);
 
-                        quoteresponseQuote = IcServiceobj.RequestQuote(objRiskModel, (CustomerModel)customerInfo, parternToken);
+
+                        if (_insuranceAndLicense && (chkZinara.Checked || chkRadioLicence.Checked))
+                            quoteresponseQuote = IcServiceobj.TPILICQuote(objRiskModel, (CustomerModel)customerInfo, parternToken); // combine insurance and license
+                        else
+                            quoteresponseQuote = IcServiceobj.RequestQuote(objRiskModel, (CustomerModel)customerInfo, parternToken); //  insurance only
+
+                        if (quoteresponseQuote.Response.Message.Contains("1 failed"))
+                            _iceCashErrorMsg = quoteresponseQuote.Response.Quotes == null ? "Error Occured" : quoteresponseQuote.Response.Quotes[0].Message;
+
 
 
                         //ObjToken = IcServiceobj.getToken();
@@ -3790,6 +4002,21 @@ namespace Gene
                         //    quoteresponse = IcServiceobj.RequestQuote(objRiskModel, (CustomerModel)customerInfo, parternToken);
                         //}
                     }
+
+                    //if(resObject!=null && resObject.Quotes[0]!=null && resObject.Quotes[0].Licence!=null &&  Convert.ToInt32(resObject.Quotes[0].Licence.PenaltiesAmt)>0)
+                    //{
+                    //    MyMessageBox.ShowBox("You have outstanding penalties, please contact our Contact Centre for assistance on 086 77 22 33 44.") ;
+                    //    pnlRadioZinara.Visible = false;
+                    //    PnlVrn.Visible = true;
+                    //    return;
+
+                    //}
+
+                    //if(_iceCashErrorMsg!="")
+                    //{
+                    //    MyMessageBox.ShowBox(_iceCashErrorMsg);
+                     
+                    //}
 
                     // picbxCoverType.Visible = false;
                     //picbxRiskDetail.Visible = false;
@@ -3808,59 +4035,61 @@ namespace Gene
 
                             if (response.result != 0)
                             {
-                                if (quoteresponseQuote.Response.Quotes[0] != null)
+                                if (quoteresponseQuote.Response.Quotes!=null && quoteresponseQuote.Response.Quotes[0] != null)
                                 {
                                     ////9Jan
                                     if (quoteresponseQuote.Response.Quotes[0].Policy != null)
                                     {
-                                        if (VehicalIndex == -1)
-                                        {
-                                            objRiskModel.isVehicleRegisteredonICEcash = true;
-                                            objRiskModel.BasicPremiumICEcash = Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Policy.CoverAmount, System.Globalization.CultureInfo.InvariantCulture);
-                                            objRiskModel.Premium = Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Policy.CoverAmount, System.Globalization.CultureInfo.InvariantCulture);
-                                            objRiskModel.ZTSCLevy = Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Policy.GovernmentLevy, System.Globalization.CultureInfo.InvariantCulture);
-                                            objRiskModel.StampDuty = Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Policy.StampDuty, System.Globalization.CultureInfo.InvariantCulture);
 
-                                            var discount = GetDiscount(Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0] == null ? "0.00" : quoteresponseQuote.Response.Quotes[0].Policy.CoverAmount), Convert.ToInt32(cmbPaymentTerm.SelectedValue));
-                                            objRiskModel.Discount = discount;
+                                        _iceCashErrorMsg = "";
 
+                                        objRiskModel.isVehicleRegisteredonICEcash = true;
+                                        objRiskModel.BasicPremiumICEcash = Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Policy.CoverAmount, System.Globalization.CultureInfo.InvariantCulture);
+                                        objRiskModel.Premium = Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Policy.CoverAmount, System.Globalization.CultureInfo.InvariantCulture);
+                                        objRiskModel.ZTSCLevy = Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Policy.GovernmentLevy, System.Globalization.CultureInfo.InvariantCulture);
+                                        objRiskModel.StampDuty = Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Policy.StampDuty, System.Globalization.CultureInfo.InvariantCulture);
 
-                                            objRiskModel.InsuranceId = quoteresponseQuote.Response.Quotes[0].InsuranceID;
+                                        //  var discount = GetDiscount(Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0] == null ? "0.00" : quoteresponseQuote.Response.Quotes[0].Policy.CoverAmount), Convert.ToInt32(cmbPaymentTerm.SelectedValue));
+                                        objRiskModel.Discount = 0;
+                                        objRiskModel.InsuranceId = quoteresponseQuote.Response.Quotes[0].InsuranceID;
+                                        objRiskModel.LicenseId = quoteresponseQuote.Response.Quotes[0].LicenceID;
+                                        objRiskModel.CombinedID = quoteresponseQuote.Response.Quotes[0].CombinedID;
 
-                                        }
-                                        else
-                                        {
-                                            objlistRisk[VehicalIndex].isVehicleRegisteredonICEcash = true;
-                                            objlistRisk[VehicalIndex].BasicPremiumICEcash = Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Policy.CoverAmount, System.Globalization.CultureInfo.InvariantCulture);
-                                            objlistRisk[VehicalIndex].Premium = Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Policy.CoverAmount, System.Globalization.CultureInfo.InvariantCulture);
-                                            objlistRisk[VehicalIndex].ZTSCLevy = Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Policy.GovernmentLevy, System.Globalization.CultureInfo.InvariantCulture);
-                                            objlistRisk[VehicalIndex].StampDuty = Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Policy.StampDuty, System.Globalization.CultureInfo.InvariantCulture);
-
-                                            var discount = GetDiscount(Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0] == null ? "0.00" : quoteresponseQuote.Response.Quotes[0].Policy.CoverAmount), Convert.ToInt32(cmbPaymentTerm.SelectedValue));
-                                            objlistRisk[VehicalIndex].Discount = discount;
-                                            objlistRisk[VehicalIndex].InsuranceId = quoteresponseQuote.Response.Quotes[0].InsuranceID;
-                                        }
                                     }
 
                                     if (quoteresponseQuote.Response.Quotes[0].Vehicle != null)
                                     {
-                                        cmbProducts.SelectedValue = quoteresponseQuote.Response.Quotes[0].Vehicle.VehicleType;
-                                        cmbTaxClasses.SelectedValue = quoteresponseQuote.Response.Quotes[0].Vehicle.TaxClass==null? 0 : Convert.ToInt32(quoteresponseQuote.Response.Quotes[0].Vehicle.TaxClass);
 
-                                       
-                                        txtYear.Text = quoteresponseQuote.Response.Quotes[0].Vehicle.YearManufacture;
+                                        cmbProducts.SelectedValue = quoteresponseQuote.Response.Quotes[0].Vehicle.VehicleType;
+
+                                        if (cmbProducts.SelectedValue != null)
+                                            cmbProducts.Enabled = false;
+                                        else
+                                            cmbProducts.Enabled = true;
+
+
+                                        cmbTaxClasses.SelectedValue = quoteresponseQuote.Response.Quotes[0].Vehicle.TaxClass == null ? 0 : Convert.ToInt32(quoteresponseQuote.Response.Quotes[0].Vehicle.TaxClass);
+
+                                        if (cmbTaxClasses.SelectedValue != null)
+                                            cmbTaxClasses.Enabled = false;
+                                        else
+                                            cmbTaxClasses.Enabled = true;
+
+
+                                        //txtYear.Text = quoteresponseQuote.Response.Quotes[0].Vehicle.YearManufacture;
 
                                         _TaxClass = quoteresponseQuote.Response.Quotes[0].Vehicle.TaxClass == null ? 0 : Convert.ToInt32(quoteresponseQuote.Response.Quotes[0].Vehicle.TaxClass);
 
-                                        
-                                       // cmbTaxClasses.SelectedIndex= cmbMake.FindStringExact(_TaxClass.ToString());
+                                        objRiskModel.TaxClassId = _TaxClass;
+                                        // cmbTaxClasses.SelectedIndex= cmbMake.FindStringExact(_TaxClass.ToString());
 
                                         string make = resObject.Quotes[0].Vehicle.Make;
                                         string model = resObject.Quotes[0].Vehicle.Model;
                                         if (!string.IsNullOrEmpty(make) && !string.IsNullOrEmpty(model))
                                         {
                                             SaveVehicalMakeAndModel(make, model);
-                                            bindMake();
+                                             bindMake();
+
                                         }
                                         else
                                         {
@@ -3884,18 +4113,69 @@ namespace Gene
 
                                         Int32 indexMake = cmbMake.FindStringExact(quoteresponseQuote.Response.Quotes[0].Vehicle.Make);
                                         cmbMake.SelectedIndex = indexMake;
+                                        //if(cmbMake.SelectedIndex>0)
+                                        if (quoteresponseQuote.Response.Quotes[0].Vehicle.Make!=null)
+                                        {
+                                           // cmbMake.Visible = false;
+                                            vehicleMakeTxt.Visible = true;
+                                            vehicleMakeTxt.Text = quoteresponseQuote.Response.Quotes[0].Vehicle.Make;                                          
+                                        }
+                                       
+
+                                        //vehicleMakeTxt.Text = quoteresponseQuote.Response.Quotes[0].Vehicle.Make;
 
                                         Int32 indexModel = cmbModel.FindString(quoteresponseQuote.Response.Quotes[0].Vehicle.Model);
                                         cmbModel.SelectedIndex = indexModel;
-
-
-                                        
+                                        // if(cmbModel.SelectedIndex>0)
+                                        if (quoteresponseQuote.Response.Quotes[0].Vehicle.Model!=null)
+                                        {
+                                           // cmbModel.Visible = false;
+                                            vehicleModeltxt.Visible = true;
+                                            vehicleModeltxt.Text = quoteresponseQuote.Response.Quotes[0].Vehicle.Model;                                           
+                                        }
+                                                                                                                                                               
+                                        // vehicleModeltxt.Text = quoteresponseQuote.Response.Quotes[0].Vehicle.Model;
 
                                         //_clientIdType = textSearchVrn.Text == "Id Number" ? quoteresponseQuote.Response.Quotes[0].Client.IDNumber : textSearchVrn.Text;
 
                                         _clientIdType = "1";
 
+                                    }
 
+
+                                    if (quoteresponseQuote.Response.Quotes[0].Licence != null)
+                                    {
+                                        decimal PenaltiesAmt = 0;
+
+                                        if (chkZinara.Checked)
+                                        {
+                                            PenaltiesAmt = quoteresponseQuote.Response.Quotes[0].Licence.PenaltiesAmt==null? 0 : Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Licence.PenaltiesAmt);
+
+                                            if(PenaltiesAmt>0)
+                                            {
+                                                MyMessageBox.ShowBox("You have outstanding penalties, please contact our Contact Centre for assistance on 086 77 22 33 44.");
+                                                pnlRadioZinara.Visible = false;
+                                                PnlVrn.Visible = true;
+                                                return;
+                                            }
+                                            
+                                            var TotalLicAmt = quoteresponseQuote.Response.Quotes[0].Licence.TotalLicAmt==null ? 0 : Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Licence.TotalLicAmt);
+                                            objRiskModel.VehicleLicenceFee = TotalLicAmt + PenaltiesAmt;
+                                        }
+
+                                        if (chkRadioLicence.Checked)
+                                        {
+                                            objRiskModel.RadioLicenseCost = Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Licence.TotalRadioTVAmt);
+                                            objRiskModel.IncludeRadioLicenseCost = true;
+                                        }
+
+                                        if(PenaltiesAmt>0)
+                                        {
+                                            MyMessageBox.ShowBox("You have outstanding penalties, please contact our Contact Centre for assistance on 086 77 22 33 44.");
+                                            pnlRadioZinara.Visible = false;
+                                            PnlVrn.Visible = true;
+                                            return;
+                                        }                               
                                     }
                                 }
 
@@ -3917,7 +4197,6 @@ namespace Gene
                 response.message = "Error occured.";
             }
         }
-
 
         public string getmessageresponse(int data)
         {
@@ -4513,11 +4792,17 @@ namespace Gene
         {
             try
             {
+                //  VehicalIndex = -1; // for now it's always
+
                 VehicleDetails obj = new VehicleDetails();
-                if (VehicalIndex != -1)
-                {
-                    objRiskModel = objlistRisk.FirstOrDefault(c => c.RegistrationNo == txtVrn.Text);
-                }
+                //if (VehicalIndex != -1)
+                //{
+                //    objRiskModel = objlistRisk.FirstOrDefault(c => c.RegistrationNo == txtVrn.Text);
+                //}
+
+
+                //  objRiskModel = objlistRisk.FirstOrDefault(c => c.RegistrationNo == txtVrn.Text);
+
 
                 if (cmbVehicleUsage.SelectedValue != null)
                 {
@@ -4570,38 +4855,8 @@ namespace Gene
                 IRestResponse response = client.Execute(request);
 
                 var result = JsonConvert.DeserializeObject<QuoteLogic>(response.Content);
-                if (VehicalIndex != -1)
-                {
-                    if (result != null)
-                    {
-                        objlistRisk[VehicalIndex].Premium = result.Premium == 0 ? 0 : Convert.ToDecimal(result.Premium, System.Globalization.CultureInfo.InvariantCulture);
 
-
-                        objlistRisk[VehicalIndex].Discount = result.Discount == 0 ? 0 : Convert.ToDecimal(result.Discount, System.Globalization.CultureInfo.InvariantCulture);
-                        objlistRisk[VehicalIndex].ZTSCLevy = result.ZtscLevy == 0 ? 0 : Convert.ToDecimal(result.ZtscLevy, System.Globalization.CultureInfo.InvariantCulture);
-                        objlistRisk[VehicalIndex].StampDuty = result.StamDuty == 0 ? 0 : Convert.ToDecimal(result.StamDuty, System.Globalization.CultureInfo.InvariantCulture);
-                        //9Jan
-                        objlistRisk[VehicalIndex].AnnualRiskPremium = result.AnnualRiskPremium == 0 ? 0 : result.AnnualRiskPremium;
-                        objlistRisk[VehicalIndex].TermlyRiskPremium = result.TermlyRiskPremium == 0 ? 0 : result.TermlyRiskPremium;
-                        objlistRisk[VehicalIndex].QuaterlyRiskPremium = result.QuaterlyRiskPremium == 0 ? 0 : result.QuaterlyRiskPremium;
-
-                        //10Jan
-
-                        objlistRisk[VehicalIndex].PassengerAccidentCoverAmountPerPerson = result.PassengerAccidentCoverAmountPerPerson == 0 ? 0 : result.PassengerAccidentCoverAmountPerPerson;
-                        objlistRisk[VehicalIndex].ExcessBuyBackPercentage = result.ExcessBuyBackPercentage == 0 ? 0 : result.ExcessBuyBackPercentage;
-                        objlistRisk[VehicalIndex].RoadsideAssistancePercentage = result.RoadsideAssistancePercentage == 0 ? 0 : result.RoadsideAssistancePercentage;
-                        objlistRisk[VehicalIndex].MedicalExpensesPercentage = result.MedicalExpensesPercentage == 0 ? 0 : result.MedicalExpensesPercentage;
-
-                        objlistRisk[VehicalIndex].PassengerAccidentCoverAmount = result.PassengerAccidentCoverAmount == 0 ? 0 : result.PassengerAccidentCoverAmount;
-                        objlistRisk[VehicalIndex].ExcessBuyBackAmount = result.ExcessBuyBackAmount == 0 ? 0 : result.ExcessBuyBackAmount;
-                        objlistRisk[VehicalIndex].RoadsideAssistanceAmount = result.RoadsideAssistanceAmount == 0 ? 0 : result.RoadsideAssistanceAmount;
-                        objlistRisk[VehicalIndex].MedicalExpensesAmount = result.MedicalExpensesAmount == 0 ? 0 : result.MedicalExpensesAmount;
-                        objlistRisk[VehicalIndex].NumberofPersons = cmbNoofPerson.Value == 0 ? 0 : Convert.ToInt32(cmbNoofPerson.Value);
-                        objlistRisk[VehicalIndex].ExcessAmount = result.ExcessAmount == 0 ? 0 : result.ExcessAmount;
-
-                    }
-                }
-                else if (result != null)
+                if (result != null)
                 {
                     objRiskModel.Premium = result.Premium == 0 ? 0 : Convert.ToDecimal(result.Premium, System.Globalization.CultureInfo.InvariantCulture);
                     objRiskModel.Discount = result.Discount == 0 ? 0 : Convert.ToDecimal(result.Discount, System.Globalization.CultureInfo.InvariantCulture);
@@ -4611,12 +4866,6 @@ namespace Gene
                     objRiskModel.AnnualRiskPremium = result.AnnualRiskPremium == 0 ? 0 : result.AnnualRiskPremium;
                     objRiskModel.TermlyRiskPremium = result.TermlyRiskPremium == 0 ? 0 : result.TermlyRiskPremium;
                     objRiskModel.QuaterlyRiskPremium = result.QuaterlyRiskPremium == 0 ? 0 : result.QuaterlyRiskPremium;
-
-                    //10Jan
-                    //objRiskModel.PassengerAccidentCoverAmountPerPerson = result.PassengerAccidentCoverAmountPerPerson == 0 ? 0 : result.PassengerAccidentCoverAmountPerPerson;
-                    //objRiskModel.ExcessBuyBackPercentage = result.ExcessBuyBackPercentage == 0 ? 0 : result.ExcessBuyBackPercentage;
-                    //objRiskModel.RoadsideAssistancePercentage = result.RoadsideAssistancePercentage == 0 ? 0 : result.RoadsideAssistancePercentage;
-                    //objRiskModel.MedicalExpensesPercentage = result.MedicalExpensesPercentage == 0 ? 0 : result.MedicalExpensesPercentage;
 
                     objRiskModel.PassengerAccidentCoverAmountPerPerson = result.PassengerAccidentCoverAmountPerPerson == 0 ? 0 : result.PassengerAccidentCoverAmountPerPerson;
                     objRiskModel.ExcessBuyBackPercentage = result.ExcessBuyBackPercentage == 0 ? 0 : result.ExcessBuyBackPercentage;
@@ -4631,6 +4880,71 @@ namespace Gene
                     objRiskModel.ExcessAmount = result.ExcessAmount == 0 ? 0 : result.ExcessAmount;
 
                 }
+
+
+
+
+
+
+                //if (VehicalIndex != -1)
+                //{
+                //    if (result != null)
+                //    {
+                //        objlistRisk[VehicalIndex].Premium = result.Premium == 0 ? 0 : Convert.ToDecimal(result.Premium, System.Globalization.CultureInfo.InvariantCulture);
+
+
+                //        objlistRisk[VehicalIndex].Discount = result.Discount == 0 ? 0 : Convert.ToDecimal(result.Discount, System.Globalization.CultureInfo.InvariantCulture);
+                //        objlistRisk[VehicalIndex].ZTSCLevy = result.ZtscLevy == 0 ? 0 : Convert.ToDecimal(result.ZtscLevy, System.Globalization.CultureInfo.InvariantCulture);
+                //        objlistRisk[VehicalIndex].StampDuty = result.StamDuty == 0 ? 0 : Convert.ToDecimal(result.StamDuty, System.Globalization.CultureInfo.InvariantCulture);
+                //        //9Jan
+                //        objlistRisk[VehicalIndex].AnnualRiskPremium = result.AnnualRiskPremium == 0 ? 0 : result.AnnualRiskPremium;
+                //        objlistRisk[VehicalIndex].TermlyRiskPremium = result.TermlyRiskPremium == 0 ? 0 : result.TermlyRiskPremium;
+                //        objlistRisk[VehicalIndex].QuaterlyRiskPremium = result.QuaterlyRiskPremium == 0 ? 0 : result.QuaterlyRiskPremium;
+
+                //        //10Jan
+
+                //        objlistRisk[VehicalIndex].PassengerAccidentCoverAmountPerPerson = result.PassengerAccidentCoverAmountPerPerson == 0 ? 0 : result.PassengerAccidentCoverAmountPerPerson;
+                //        objlistRisk[VehicalIndex].ExcessBuyBackPercentage = result.ExcessBuyBackPercentage == 0 ? 0 : result.ExcessBuyBackPercentage;
+                //        objlistRisk[VehicalIndex].RoadsideAssistancePercentage = result.RoadsideAssistancePercentage == 0 ? 0 : result.RoadsideAssistancePercentage;
+                //        objlistRisk[VehicalIndex].MedicalExpensesPercentage = result.MedicalExpensesPercentage == 0 ? 0 : result.MedicalExpensesPercentage;
+
+                //        objlistRisk[VehicalIndex].PassengerAccidentCoverAmount = result.PassengerAccidentCoverAmount == 0 ? 0 : result.PassengerAccidentCoverAmount;
+                //        objlistRisk[VehicalIndex].ExcessBuyBackAmount = result.ExcessBuyBackAmount == 0 ? 0 : result.ExcessBuyBackAmount;
+                //        objlistRisk[VehicalIndex].RoadsideAssistanceAmount = result.RoadsideAssistanceAmount == 0 ? 0 : result.RoadsideAssistanceAmount;
+                //        objlistRisk[VehicalIndex].MedicalExpensesAmount = result.MedicalExpensesAmount == 0 ? 0 : result.MedicalExpensesAmount;
+                //        objlistRisk[VehicalIndex].NumberofPersons = cmbNoofPerson.Value == 0 ? 0 : Convert.ToInt32(cmbNoofPerson.Value);
+                //        objlistRisk[VehicalIndex].ExcessAmount = result.ExcessAmount == 0 ? 0 : result.ExcessAmount;
+
+                //    }
+                //}
+                //else if (result != null)
+                //{
+                //    objRiskModel.Premium = result.Premium == 0 ? 0 : Convert.ToDecimal(result.Premium, System.Globalization.CultureInfo.InvariantCulture);
+                //    objRiskModel.Discount = result.Discount == 0 ? 0 : Convert.ToDecimal(result.Discount, System.Globalization.CultureInfo.InvariantCulture);
+                //    objRiskModel.ZTSCLevy = result.ZtscLevy == 0 ? 0 : Convert.ToDecimal(result.ZtscLevy, System.Globalization.CultureInfo.InvariantCulture);
+                //    objRiskModel.StampDuty = result.StamDuty == 0 ? 0 : Convert.ToDecimal(result.StamDuty, System.Globalization.CultureInfo.InvariantCulture);
+                //    //9Jan
+                //    objRiskModel.AnnualRiskPremium = result.AnnualRiskPremium == 0 ? 0 : result.AnnualRiskPremium;
+                //    objRiskModel.TermlyRiskPremium = result.TermlyRiskPremium == 0 ? 0 : result.TermlyRiskPremium;
+                //    objRiskModel.QuaterlyRiskPremium = result.QuaterlyRiskPremium == 0 ? 0 : result.QuaterlyRiskPremium;
+
+
+
+                //    objRiskModel.PassengerAccidentCoverAmountPerPerson = result.PassengerAccidentCoverAmountPerPerson == 0 ? 0 : result.PassengerAccidentCoverAmountPerPerson;
+                //    objRiskModel.ExcessBuyBackPercentage = result.ExcessBuyBackPercentage == 0 ? 0 : result.ExcessBuyBackPercentage;
+                //    objRiskModel.RoadsideAssistancePercentage = result.RoadsideAssistancePercentage == 0 ? 0 : result.RoadsideAssistancePercentage;
+                //    objRiskModel.MedicalExpensesPercentage = result.MedicalExpensesPercentage == 0 ? 0 : result.MedicalExpensesPercentage;
+
+                //    objRiskModel.PassengerAccidentCoverAmount = result.PassengerAccidentCoverAmount == 0 ? 0 : result.PassengerAccidentCoverAmount;
+                //    objRiskModel.ExcessBuyBackAmount = result.ExcessBuyBackAmount == 0 ? 0 : result.ExcessBuyBackAmount;
+                //    objRiskModel.RoadsideAssistanceAmount = result.RoadsideAssistanceAmount == 0 ? 0 : result.RoadsideAssistanceAmount;
+                //    objRiskModel.MedicalExpensesAmount = result.MedicalExpensesAmount == 0 ? 0 : result.MedicalExpensesAmount;
+                //    objRiskModel.NumberofPersons = cmbNoofPerson.Value == 0 ? 0 : Convert.ToInt32(cmbNoofPerson.Value);
+                //    objRiskModel.ExcessAmount = result.ExcessAmount == 0 ? 0 : result.ExcessAmount;
+
+                //}
+
+
 
 
             }
@@ -4869,11 +5183,11 @@ namespace Gene
                     txtStampDuty.Text = Convert.ToString(summaryModel.TotalStampDuty);
                     //txtTotalSumInsured.Text = Convert.ToString(summaryModel.TotalSumInsured);
                     //txtExcessAmount.Text = Convert.ToString(summaryModel.ExcessAmount);
-                    txtMedicalExcessAmount.Text = Convert.ToString(summaryModel.MedicalExpensesAmount);
+                    //txtMedicalExcessAmount.Text = Convert.ToString(summaryModel.MedicalExpensesAmount);
                     // txtPassengerAccidentAmt.Text = Convert.ToString(summaryModel.PassengerAccidentCoverAmount);
-                    txtRoadsideAssitAmt.Text = Convert.ToString(summaryModel.RoadsideAssistanceAmount);
+                    // txtRoadsideAssitAmt.Text = Convert.ToString(summaryModel.RoadsideAssistanceAmount);
                     txtZTSCLevies.Text = Convert.ToString(summaryModel.TotalZTSCLevies);
-                    txtExcessBuyBackAmt.Text = Convert.ToString(summaryModel.ExcessBuyBackAmount);
+                    //  txtExcessBuyBackAmt.Text = Convert.ToString(summaryModel.ExcessBuyBackAmount);
                     //txtRadioLicAmount.Text = Convert.ToString(summaryModel.TotalRadioLicenseCost);
                     txtZinaraAmount.Text = Convert.ToString(summaryModel.VehicleLicencefees);
                 }
@@ -4894,7 +5208,7 @@ namespace Gene
 
             txttotalamuntc.Text = txtTotalPremium.Text;
 
-            txtPartialAmount.Text = txtTotalPremium.Text;
+            //txtPartialAmount.Text = txtTotalPremium.Text;
 
             //checkVRNwithICEcashResponse response = new checkVRNwithICEcashResponse();
             //// Save all details
@@ -5178,8 +5492,6 @@ namespace Gene
             cmbCmpCity.SelectedValue = customer.CompanyCity == null ? "-1" : customer.CompanyCity;
 
 
-
-
         }
 
 
@@ -5304,44 +5616,44 @@ namespace Gene
             decimal amountIncents = (int)(transctionAmt * 100);
 
 
-            if (txtPartialAmount.Text != "")
-            {
-                //To do  
-                summaryModel.PaymentStatus = true;
-                amountIncents = (int)(Convert.ToDecimal(txtPartialAmount.Text) * 100);
+
+            //To do  
+            //summaryModel.PaymentStatus = true;
+            // amountIncents = (int)(Convert.ToDecimal(txtPartialAmount.Text) * 100); // it was for partail payment
 
 
-                //Initialze Terminal
-                xmlString = @"<?xml version='1.0' encoding='UTF-8'?>
+            //Initialze Terminal
+            xmlString = @"<?xml version='1.0' encoding='UTF-8'?>
   <Esp:Interface Version='1.0' xmlns:Esp='http://www.mosaicsoftware.com/Postilion/eSocket.POS/'><Esp:Admin TerminalId='" + ConfigurationManager.AppSettings["TerminalId"] + "' Action='INIT'/></Esp:Interface>";
 
-                InitializeTermianl("" + ConfigurationManager.AppSettings["url"] + "", ConfigurationManager.AppSettings["Port"], xmlString);
+            InitializeTermianl("" + ConfigurationManager.AppSettings["url"] + "", ConfigurationManager.AppSettings["Port"], xmlString);
 
-                lblPaymentMsg.Text = "Please swipe card.";
+            //  lblPaymentMsg.Text = "Please swipe card.";
+            //lblProcessingMsg.Text = "Please swipe card.";
 
 
-                xmlString = @"<?xml version='1.0' encoding='UTF-8'?>
+            xmlString = @"<?xml version='1.0' encoding='UTF-8'?>
                 <Esp:Interface Version='1.0' xmlns:Esp='http://www.mosaicsoftware.com/Postilion/eSocket.POS/'><Esp:Transaction TerminalId='" + ConfigurationManager.AppSettings["TerminalId"] + "' TransactionId='" + TransactionId + "' Type='PURCHASE' TransactionAmount='" + amountIncents + "'><Esp:PurchasingCardData Description='blah'><Esp:LineItem Description='boh'/><Esp:LineItem Description='beh' Sign='C'><Esp:TaxAmount Type='04'/><Esp:TaxAmount Type='05'/></Esp:LineItem><Esp:Contact Type='BILL_FROM' Name='Ian'/><Esp:Contact Type='BILL_TO' Telephone='021'/><Esp:TaxAmount Type='02'/><Esp:TaxAmount Type='03'/></Esp:PurchasingCardData><Esp:PosStructuredData Name='name' Value='value'/><Esp:PosStructuredData Name='name2' Value='value2'/></Esp:Transaction></Esp:Interface>";
 
 
-                isPaymentDone = SendTransaction(ConfigurationManager.AppSettings["url"], ConfigurationManager.AppSettings["Port"], xmlString);
+            //   isPaymentDone = SendTransaction(ConfigurationManager.AppSettings["url"], ConfigurationManager.AppSettings["Port"], xmlString);
 
-                // isPaymentDone = true;
-                PartialPaymentModel paymentDetail = SavePartialPayment();
+            // isPaymentDone = true;
+            //PartialPaymentModel paymentDetail = SavePartialPayment();
 
-                decimal balanceAmount = Convert.ToDecimal(summaryModel.TotalPremium - paymentDetail.CalulatedPremium);
+            //decimal balanceAmount = Convert.ToDecimal(summaryModel.TotalPremium - paymentDetail.CalulatedPremium);
 
-                if (balanceAmount > 0)
-                {
-                    TransactionId = GenerateTransactionId();
-                    btnConfirmPayment.Enabled = true;
-                    pictureBox2.Visible = false;
-                    RadioSwipe.Checked = true;
-                    btnConfirmPayment.Text = "Pay.";
-                    txtPartialAmount.Text = balanceAmount.ToString();
-                    return;
-                }
-            }
+            //if (balanceAmount > 0)
+            //{
+            //    TransactionId = GenerateTransactionId();
+            //    btnConfirmPayment.Enabled = true;
+            //    pictureBox2.Visible = false;
+            //    RadioSwipe.Checked = true;
+            //    btnConfirmPayment.Text = "Pay.";
+            //    txtPartialAmount.Text = balanceAmount.ToString();
+            //    return;
+            //}
+
 
 
 
@@ -5362,10 +5674,17 @@ namespace Gene
             string msg = "";
             try
             {
-                //  if (SendTransaction(ConfigurationManager.AppSettings["url"], ConfigurationManager.AppSettings["Port"], xmlString)) // testing condition false
-                if (isPaymentDone)
+                if (SendTransaction(ConfigurationManager.AppSettings["url"], ConfigurationManager.AppSettings["Port"], xmlString))
                 {
                     //if (isPaymentDone) // testing condition false
+
+                    // btnConfirmPayment.Text = "Saving Vehicle.";
+
+                    // this.Invoke(new Action(() => btnConfirmPayment.Text = "Saving Vehicle."));
+
+
+                    // btnConfirmPayment.Invoke((MethodInvoker)delegate { this.Text = "Saving Vehicle."; });
+
 
                     var summaryDetails = SaveCustomerVehical();
                     lblPaymentMsg.Text = "";
@@ -5377,12 +5696,13 @@ namespace Gene
 
                         if (summaryDetails.Id == 0)
                         {
-                            MyMessageBox.ShowBox("Error occur, please contact to admistrator.");
+                            MyMessageBox.ShowBox("Error occur, please contact to admistrator.", "Message");
                             btnConfirmPayment.Enabled = true;
-                            pictureBox2.Visible = false;
+                            picImageConfirmPayment.Visible = false;
                             return;
                         }
 
+                      //  btnConfirmPayment.Text = "Approving Insurance..";
                         ResultRootObject policyDetailsIceCash = ApproveVRNToIceCash(summaryDetails.Id);
 
                         string iceCashPolicyNumber = "";
@@ -5391,9 +5711,11 @@ namespace Gene
                             iceCashPolicyNumber = policyDetailsIceCash.Response.PolicyNo;
                         }
 
+                      //  btnConfirmPayment.Text = "Sending email..";
+
                         SavePaymentinformation(TransactionId.ToString(), summaryDetails.Id, paymentTermName, CardDetail, terninalid, transctionAmt, iceCashPolicyNumber);
 
-                      lblpayment.Text = "";
+                        lblpayment.Text = "";
                         lblpayment.Text += "Transaction ID =" + TransactionId;
                         lblpayment.Text += "\n";
                         lblpayment.Text = "Sucessfully ddddd";
@@ -5431,9 +5753,11 @@ namespace Gene
 
                         foreach (var item in objlistRisk)  // for now it's  commented
                         {
-                            item.LicenseId = _licenseId; //m latest license
-                            if (!string.IsNullOrEmpty(item.LicenseId) && (item.LicenseId!="0"))
+                           // item.LicenseId = _licenseId; //m latest license
+                            if (!string.IsNullOrEmpty(item.CombinedID) && (item.CombinedID != "0"))
                             {
+                                btnConfirmPayment.Text = "Approving license..";
+
                                 DisplayLicenseDisc(item, parternToken, item.Id);
                             }
                         }
@@ -5452,21 +5776,15 @@ namespace Gene
                 else
                 {
 
-                    //lblPaymentMsg.Text = "";
-                    //lblPaymentMsg.Text = "Transaction ID =" + TransactionId + ". " + responseMessage;
-                    //lblPaymentMsg.Text += "\n";
-                    pnlconfimpaymeny.Visible = false;
-                    pnlErrormessage.Visible = true;
-                    //lblErrMessage.Text = responseMessage;
-                    lblErrMessage.Text = responseMessage;
-                    lblErrMessage.ForeColor = Color.Red;
+
+                    MyMessageBox.ShowBox("Error occured. " + responseMessage, "Message");
+                    TransactionId = GenerateTransactionId();
+
+                    //  pnlconfimpaymeny.Visible = false;
+                    // pnlErrormessage.Visible = true;
+                    //  lblErrMessage.Text = responseMessage;
+                    //   lblErrMessage.ForeColor = Color.Red;
                     lblPaymentMsg.Text = "";
-                    //lblPaymentMsg.Text = responseMessage;
-                    //lblPaymentMsg.ForeColor = Color.Red;
-
-                    // MessageBox.Show("Error occurred during payment.");
-                    // btnConfirmPayment.Text = "Pay";
-
                     btnConfirmPayment.Text = "Pay";
 
                 }
@@ -5486,33 +5804,35 @@ namespace Gene
                 xmlString = @"<?xml version='1.0' encoding='UTF-8'?>
   <Esp:Interface Version='1.0' xmlns:Esp='http://www.mosaicsoftware.com/Postilion/eSocket.POS/'><Esp:Admin TerminalId='" + ConfigurationManager.AppSettings["TerminalId"] + "' Action ='CLOSE'/></Esp:Interface>";
                 InitializeTermianl("" + ConfigurationManager.AppSettings["url"] + "", ConfigurationManager.AppSettings["Port"], xmlString);
-                btnConfirmPayment.Enabled = true;
-                pictureBox2.Visible = false;
+                //btnConfirmPayment.Enabled = true;
+                //picImageConfirmPayment.Visible = false;
+
+                SetLoadingDuringPayment(false);
             }
         }
 
-        public PartialPaymentModel SavePartialPayment()
-        {
-            PartialPaymentModel partialPayment = new PartialPaymentModel();
-            partialPayment.RegistratonNumber = objlistRisk[0].RegistrationNo;
-            partialPayment.CustomerEmail = customerInfo.EmailAddress;
-            partialPayment.PartialAmount = Convert.ToDecimal(txtPartialAmount.Text);
-            partialPayment.CreatedOn = DateTime.Now;
+        //public PartialPaymentModel SavePartialPayment()
+        //{
+        //    PartialPaymentModel partialPayment = new PartialPaymentModel();
+        //    partialPayment.RegistratonNumber = objlistRisk[0].RegistrationNo;
+        //    partialPayment.CustomerEmail = customerInfo.EmailAddress;
+        //    partialPayment.PartialAmount = Convert.ToDecimal(txtPartialAmount.Text);
+        //    partialPayment.CreatedOn = DateTime.Now;
 
 
-            var client = new RestClient(IceCashRequestUrl + "SavePartailPayment");
-            var request = new RestRequest(Method.POST);
-            request.AddHeader("cache-control", "no-cache");
-            request.AddHeader("content-type", "application/json");
-            request.AddHeader("password", "Geninsure@123");
-            request.AddHeader("username", "ameyoApi@geneinsure.com");
-            request.RequestFormat = DataFormat.Json;
-            request.AddJsonBody(partialPayment);
-            IRestResponse response = client.Execute(request);
+        //    var client = new RestClient(IceCashRequestUrl + "SavePartailPayment");
+        //    var request = new RestRequest(Method.POST);
+        //    request.AddHeader("cache-control", "no-cache");
+        //    request.AddHeader("content-type", "application/json");
+        //    request.AddHeader("password", "Geninsure@123");
+        //    request.AddHeader("username", "ameyoApi@geneinsure.com");
+        //    request.RequestFormat = DataFormat.Json;
+        //    request.AddJsonBody(partialPayment);
+        //    IRestResponse response = client.Execute(request);
 
-            PartialPaymentModel detail = JsonConvert.DeserializeObject<PartialPaymentModel>(response.Content);
-            return detail;
-        }
+        //    PartialPaymentModel detail = JsonConvert.DeserializeObject<PartialPaymentModel>(response.Content);
+        //    return detail;
+        //}
 
         //public static string InitializeTermianl(String hostname, int port, string message)
         public static string InitializeTermianl(String hostname, string port, string message)
@@ -5623,7 +5943,7 @@ namespace Gene
                     catch (Exception ex)
                     {
                         //  MessageBox.Show("exceptoin :" + ex.ToString());
-                        MyMessageBox.ShowBox(ex.Message, "Modal error message");
+                        MyMessageBox.ShowBox(ex.Message, "Message");
 
                         WriteLog(ex.ToString());
                     }
@@ -5643,7 +5963,7 @@ namespace Gene
             }
             catch (ArgumentNullException e)
             {
-                MyMessageBox.ShowBox(e.Message, "Modal error message");
+                MyMessageBox.ShowBox(e.Message, "Message");
 
 
                 // MessageBox.Show(e.Message);
@@ -5654,7 +5974,7 @@ namespace Gene
             catch (SocketException e)
             {
 
-                MyMessageBox.ShowBox(e.Message, "Modal error message");
+                MyMessageBox.ShowBox(e.Message, "Message");
 
                 //Console.WriteLine("SocketException: " + e.Message);
                 //Console.ReadKey();
@@ -5663,7 +5983,7 @@ namespace Gene
             catch (Exception e)
             {
 
-                MyMessageBox.ShowBox(e.Message, "Modal error message");
+                MyMessageBox.ShowBox(e.Message, "Message");
                 //Console.WriteLine("SocketException: " + e.Message);
                 //Console.ReadKey();
                 // return result;
@@ -5748,40 +6068,34 @@ namespace Gene
 
                     if (_insuranceAndLicense) // if insurance and license both need to do approve
                     {
-                        if (item.InsuranceId != null)
+                        if (item.CombinedID != null)
                         {
-                            ResultRootObject quoteresponse = ICEcashService.TPIQuoteUpdate(Phonenumber, item, parternToken, 1);
+                            //ResultRootObject quoteresponse = ICEcashService.TPIQuoteUpdate(Phonenumber, item, parternToken, 1);
+                            ResultRootObject quoteresponse = ICEcashService.TPILICUpdate(Phonenumber, item, parternToken, 1);
                             if (quoteresponse != null)
                             {
-
                                 if (quoteresponse.Response != null && quoteresponse.Response.Message.Contains("Partner Token has expired"))
                                 {
-
                                     //  ObjToken = CheckParterTokenExpire();
                                     ObjToken = IcServiceobj.getToken();
                                     if (ObjToken != null)
                                         parternToken = ObjToken.Response.PartnerToken;
 
                                     Service_db.UpdateToken(ObjToken);
-                                    quoteresponse = ICEcashService.TPIQuoteUpdate(Phonenumber, item, parternToken, 1);
+                                    quoteresponse = ICEcashService.TPILICUpdate(Phonenumber, item, parternToken, 1);
 
 
-
-                                    //ObjToken = IcServiceobj.getToken();
-                                    //if (ObjToken != null)
-                                    //{
-                                    //    parternToken = ObjToken.Response.PartnerToken;
-                                    //    quoteresponse = ICEcashService.TPIQuoteUpdate(Phonenumber, item, parternToken, 1);
-                                    //}
                                 }
 
 
                                 //if (quoteresponse.Response != null && quoteresponse.Response.Message != "ICEcash System Error [O]")
                                 //{
-                                resultPolicy = ICEcashService.TPIPolicy(item, parternToken);
+                                //resultPolicy = ICEcashService.TPIPolicy(item, parternToken);
+
+                                ResultLicenceIDRootObject resultPolicyResponse = ICEcashService.TPILICResult(item, parternToken);
 
 
-                                if (resultPolicy.Response != null && resultPolicy.Response.Message.Contains("Partner Token has expired"))
+                                if (resultPolicyResponse.Response != null && resultPolicyResponse.Response.Message.Contains("Partner Token has expired"))
                                 {
 
                                     // ObjToken = CheckParterTokenExpire();
@@ -5791,189 +6105,240 @@ namespace Gene
 
                                     Service_db.UpdateToken(ObjToken);
 
-                                    resultPolicy = ICEcashService.TPIPolicy(item, parternToken);
+                                    resultPolicyResponse = ICEcashService.TPILICResult(item, parternToken);
 
-
-
-                                    //ObjToken = IcServiceobj.getToken();
-                                    //    if (ObjToken != null)
-                                    //    {
-                                    //        parternToken = ObjToken.Response.PartnerToken;
-
-                                    //        //  vichelDetails.CoverNote = ObjToken.Response.PolicyNo; // it's represent to Cover Note
-
-                                    //        //vichelDetails.CoverNote = ObjToken.Response.PolicyNo; // it's represent to Cover Note
-
-                                    //        resultPolicy = ICEcashService.TPIPolicy(item, parternToken);
-                                    //    }
                                 }
 
 
-                                if (resultPolicy.Response != null && resultPolicy.Response.Message.Contains("Policy Retrieved"))
+                                if (resultPolicyResponse.Response != null && resultPolicyResponse.Response.Message.Contains("Policy Retrieved"))
                                 {
                                     VehicleUpdateModel objVehicleUpdate = new VehicleUpdateModel();
                                     objVehicleUpdate.VRN = item.RegistrationNo;
                                     objVehicleUpdate.InsuranceStatus = "Approved";
-
-                                    objVehicleUpdate.CoverNote = resultPolicy.Response.PolicyNo;
-
+                                    objVehicleUpdate.CoverNote = resultPolicyResponse.Response.PolicyNo;
                                     objVehicleUpdate.SummaryId = Convert.ToString(SummaryId);
                                     UpdateVehicleInfo(objVehicleUpdate);
+
+                                    resultPolicy = new ResultRootObject();
+                                    resultPolicy.Response = new ResultResponse();
+
+                                    resultPolicy.Response.PolicyNo = resultPolicyResponse.Response.PolicyNo;
+                                    resultPolicy.Response.VRN = resultPolicyResponse.Response.VRN;
+                                    resultPolicy.Response.Status = resultPolicyResponse.Response.Status;
+
                                 }
                                 //}
                             }
                         }
 
                     }
-
-
-                    if (item.LicenseId != null)
+                    else
                     {
-                        _clientIdType = "1";
-                        if (rdCorporate.Checked)
-                            _clientIdType = "2";
+                        // insurance only
+                        ResultRootObject quoteresponse = ICEcashService.TPIQuoteUpdate(Phonenumber, item, parternToken, 1);
 
-
-                        if (item.RadioLicenseCost > 0 || item.VehicleLicenceFee > 0)
+                        if (quoteresponse != null)
                         {
-
-                            int licenseFreequency = IcServiceobj.GetMonthKey(Convert.ToInt32(item.PaymentTermId));
-
-                            int RadioTVUsage = 1; // for private car
-
-                            if (item.ProductId == 0)
+                            if (quoteresponse.Response != null && quoteresponse.Response.Message.Contains("Partner Token has expired"))
                             {
-                                RadioTVUsage = 1;
-                            }
-                            else if (item.ProductId == 3 || item.ProductId == 11) // for commercial vehicle
-                            {
-                                RadioTVUsage = 2;
-                            }
-
-
-                            List<VehicleLicQuote> obj = new List<VehicleLicQuote>();
-                            obj.Add(new VehicleLicQuote
-                            {
-                                VRN = txtVrn.Text,
-                                IDNumber = customerInfo.NationalIdentificationNumber,
-                                ClientIDType = _clientIdType,
-                                LicFrequency = licenseFreequency.ToString(),
-                                RadioTVUsage = RadioTVUsage.ToString(),
-                                RadioTVFrequency = licenseFreequency.ToString()
-                            });
-
-
-
-                            ResultRootObject quoteresponse = new ResultRootObject();
-                            if (item.VehicleLicenceFee > 0 && item.RadioLicenseCost > 0)
-                            {
-                                quoteresponse = IcServiceobj.LICQuote(obj, parternToken);
-
-                                if (quoteresponse != null && quoteresponse.Response.Message.Contains("Partner Token has expired"))
-                                {
-                                    // ObjToken = IcServiceobj.getToken();
-
-                                    //  ObjToken = CheckParterTokenExpire();
-                                    ObjToken = IcServiceobj.getToken();
-                                    if (ObjToken != null)
-                                        parternToken = ObjToken.Response.PartnerToken;
-
-                                    Service_db.UpdateToken(ObjToken);
-
-                                    quoteresponse = IcServiceobj.LICQuote(obj, parternToken);
-                                }
-                            }
-                            else if (item.VehicleLicenceFee > 0)
-                            {
-                                quoteresponse = IcServiceobj.RadioQuote(obj, parternToken);
-
-                                if (quoteresponse != null && quoteresponse.Response.Message.Contains("Partner Token has expired"))
-                                {
-                                    //  ObjToken = IcServiceobj.getToken();
-
-                                    //  ObjToken = CheckParterTokenExpire();
-                                    ObjToken = IcServiceobj.getToken();
-
-                                    if (ObjToken != null)
-                                        parternToken = ObjToken.Response.PartnerToken;
-
-                                    Service_db.UpdateToken(ObjToken);
-
-                                    quoteresponse = IcServiceobj.RadioQuote(obj, parternToken);
-                                }
-                            }
-
-                            else if (item.RadioLicenseCost > 0)
-                            {
-                                quoteresponse = IcServiceobj.LICQuote(obj, parternToken);
-
-                                if (quoteresponse != null && quoteresponse.Response.Message.Contains("Partner Token has expired"))
-                                {
-                                    // ObjToken = IcServiceobj.getToken();
-
-                                    //  ObjToken = CheckParterTokenExpire();
-                                    ObjToken = IcServiceobj.getToken();
-                                    if (ObjToken != null)
-                                        parternToken = ObjToken.Response.PartnerToken;
-
-                                    Service_db.UpdateToken(ObjToken);
-
-                                    quoteresponse = IcServiceobj.LICQuote(obj, parternToken);
-                                }
-                            }
-
-                            // int licenseId = 0;
-                            if (quoteresponse.Response != null && quoteresponse.Response.Quotes != null)
-                            {
-                                item.LicenseId = quoteresponse.Response.Quotes[0].LicenceID;
-                                if (quoteresponse.Response.Quotes != null && !(string.IsNullOrEmpty(quoteresponse.Response.Quotes[0].LicenceID)))
-                                {
-                                    _licenseId = quoteresponse.Response.Quotes[0].LicenceID;
-                                }
-                                VehicleUpdateModel objVehicleUpdate = new VehicleUpdateModel();
-                                objVehicleUpdate.VRN = item.RegistrationNo;
-                                objVehicleUpdate.SummaryId = Convert.ToString(SummaryId);
-                                objVehicleUpdate.LicenseId = Convert.ToInt32(_licenseId);
-                                UpdateVehicleInfo(objVehicleUpdate);
-                            }
-
-
-                            List<VehicleLicQuoteUpdate> vehicleLicenseList = new List<VehicleLicQuoteUpdate>();
-
-                            //PaymentMethod =1 for cash 
-                            //PaymentMethod =3 for icecash
-
-                            // VehicleLicQuoteUpdate vehicleLic = new VehicleLicQuoteUpdate { LicenceID = Convert.ToInt32(item.LicenseId), PaymentMethod = 1, DeliveryMethod = 3, Status = "1", LicenceCert = 1 };
-                            VehicleLicQuoteUpdate vehicleLic = new VehicleLicQuoteUpdate { LicenceID = Convert.ToInt32(_licenseId), PaymentMethod = 1, DeliveryMethod = 3, Status = "1", LicenceCert = 1 };
-                            vehicleLicenseList.Add(vehicleLic);
-
-                            ResultRootObject quoteresponseNew = IcServiceobj.LICQuoteUpdate(vehicleLicenseList, parternToken);
-
-                            if (quoteresponseNew != null && quoteresponseNew.Response.Message.Contains("Partner Token has expired"))
-                            {
-
-                                // ObjToken = CheckParterTokenExpire();
-
                                 ObjToken = IcServiceobj.getToken();
-
                                 if (ObjToken != null)
                                     parternToken = ObjToken.Response.PartnerToken;
 
                                 Service_db.UpdateToken(ObjToken);
-
-                                quoteresponseNew = IcServiceobj.LICQuoteUpdate(vehicleLicenseList, parternToken);
-                                //ObjToken = IcServiceobj.getToken();
-                                //if (ObjToken != null)
-                                //{
-                                //    parternToken = ObjToken.Response.PartnerToken;
-                                //    quoteresponseNew = IcServiceobj.LICQuoteUpdate(vehicleLicenseList, ObjToken.Response.PartnerToken);
-                                //}
+                                quoteresponse = ICEcashService.TPIQuoteUpdate(Phonenumber, item, parternToken, 1);
                             }
                         }
 
 
 
+                        resultPolicy = ICEcashService.TPIPolicy(item, parternToken);
+
+                        if (resultPolicy.Response != null && resultPolicy.Response.Message.Contains("Partner Token has expired"))
+                        {
+
+                            // ObjToken = CheckParterTokenExpire();
+                            ObjToken = IcServiceobj.getToken();
+                            if (ObjToken != null)
+                                parternToken = ObjToken.Response.PartnerToken;
+
+                            Service_db.UpdateToken(ObjToken);
+                            resultPolicy = ICEcashService.TPIPolicy(item, parternToken);
+
+                        }
+
+                        if (resultPolicy.Response != null)
+                        {
+
+                            VehicleUpdateModel objVehicleUpdate = new VehicleUpdateModel();
+                            objVehicleUpdate.VRN = item.RegistrationNo;
+                            objVehicleUpdate.InsuranceStatus = "Approved";
+                            objVehicleUpdate.CoverNote = resultPolicy.Response.PolicyNo;
+                            objVehicleUpdate.SummaryId = Convert.ToString(SummaryId);
+                            UpdateVehicleInfo(objVehicleUpdate);
+
+                        }
+
+
+
+
                     }
+
+
+
+
+
+                    //if (item.LicenseId != null)
+                    //{
+                    //    _clientIdType = "1";
+                    //    if (rdCorporate.Checked)
+                    //        _clientIdType = "2";
+
+
+                    //    if (item.RadioLicenseCost > 0 || item.VehicleLicenceFee > 0)
+                    //    {
+
+                    //        int licenseFreequency = IcServiceobj.GetMonthKey(Convert.ToInt32(item.PaymentTermId));
+
+                    //        int RadioTVUsage = 1; // for private car
+
+                    //        if (item.ProductId == 0)
+                    //        {
+                    //            RadioTVUsage = 1;
+                    //        }
+                    //        else if (item.ProductId == 3 || item.ProductId == 11) // for commercial vehicle
+                    //        {
+                    //            RadioTVUsage = 2;
+                    //        }
+
+
+                    //        List<VehicleLicQuote> obj = new List<VehicleLicQuote>();
+                    //        obj.Add(new VehicleLicQuote
+                    //        {
+                    //            VRN = txtVrn.Text,
+                    //            IDNumber = customerInfo.NationalIdentificationNumber,
+                    //            ClientIDType = _clientIdType,
+                    //            LicFrequency = licenseFreequency.ToString(),
+                    //            RadioTVUsage = RadioTVUsage.ToString(),
+                    //            RadioTVFrequency = licenseFreequency.ToString()
+                    //        });
+
+
+
+                    //        ResultRootObject quoteresponse = new ResultRootObject();
+                    //        if (item.VehicleLicenceFee > 0 && item.RadioLicenseCost > 0)
+                    //        {
+                    //         quoteresponse = IcServiceobj.LICQuote(obj, parternToken);
+
+                    //            if (quoteresponse != null && quoteresponse.Response.Message.Contains("Partner Token has expired"))
+                    //            {
+                    //                // ObjToken = IcServiceobj.getToken();
+
+                    //                //  ObjToken = CheckParterTokenExpire();
+                    //                ObjToken = IcServiceobj.getToken();
+                    //                if (ObjToken != null)
+                    //                    parternToken = ObjToken.Response.PartnerToken;
+
+                    //                Service_db.UpdateToken(ObjToken);
+
+                    //                quoteresponse = IcServiceobj.LICQuote(obj, parternToken);
+                    //            }
+                    //        }
+                    //        else if (item.VehicleLicenceFee > 0)
+                    //        {
+                    //          quoteresponse = IcServiceobj.RadioQuote(obj, parternToken);
+
+                    //            if (quoteresponse != null && quoteresponse.Response.Message.Contains("Partner Token has expired"))
+                    //            {
+                    //                //  ObjToken = IcServiceobj.getToken();
+
+                    //                //  ObjToken = CheckParterTokenExpire();
+                    //                ObjToken = IcServiceobj.getToken();
+
+                    //                if (ObjToken != null)
+                    //                    parternToken = ObjToken.Response.PartnerToken;
+
+                    //                Service_db.UpdateToken(ObjToken);
+
+                    //                quoteresponse = IcServiceobj.RadioQuote(obj, parternToken);
+                    //            }
+                    //        }
+
+                    //        else if (item.RadioLicenseCost > 0)
+                    //        {
+                    //            quoteresponse = IcServiceobj.LICQuote(obj, parternToken);
+
+                    //            if (quoteresponse != null && quoteresponse.Response.Message.Contains("Partner Token has expired"))
+                    //            {
+                    //                // ObjToken = IcServiceobj.getToken();
+
+                    //                //  ObjToken = CheckParterTokenExpire();
+                    //                ObjToken = IcServiceobj.getToken();
+                    //                if (ObjToken != null)
+                    //                    parternToken = ObjToken.Response.PartnerToken;
+
+                    //                Service_db.UpdateToken(ObjToken);
+
+                    //                quoteresponse = IcServiceobj.LICQuote(obj, parternToken);
+                    //            }
+                    //        }
+
+                    //        // int licenseId = 0;
+                    //        if (quoteresponse.Response != null && quoteresponse.Response.Quotes != null)
+                    //        {
+                    //            item.LicenseId = quoteresponse.Response.Quotes[0].LicenceID;
+                    //            if (quoteresponse.Response.Quotes != null && !(string.IsNullOrEmpty(quoteresponse.Response.Quotes[0].LicenceID)))
+                    //            {
+                    //                _licenseId = quoteresponse.Response.Quotes[0].LicenceID;
+                    //            }
+                    //            VehicleUpdateModel objVehicleUpdate = new VehicleUpdateModel();
+                    //            objVehicleUpdate.VRN = item.RegistrationNo;
+                    //            objVehicleUpdate.SummaryId = Convert.ToString(SummaryId);
+                    //            objVehicleUpdate.LicenseId = Convert.ToInt32(_licenseId);
+                    //            UpdateVehicleInfo(objVehicleUpdate);
+                    //        }
+
+
+                    //        List<VehicleLicQuoteUpdate> vehicleLicenseList = new List<VehicleLicQuoteUpdate>();
+
+                    //        //PaymentMethod =1 for cash 
+                    //        //PaymentMethod =3 for icecash
+
+                    //        // VehicleLicQuoteUpdate vehicleLic = new VehicleLicQuoteUpdate { LicenceID = Convert.ToInt32(item.LicenseId), PaymentMethod = 1, DeliveryMethod = 3, Status = "1", LicenceCert = 1 };
+                    //        VehicleLicQuoteUpdate vehicleLic = new VehicleLicQuoteUpdate { LicenceID = Convert.ToInt32(_licenseId), PaymentMethod = 1, DeliveryMethod = 3, Status = "1", LicenceCert = 1 };
+                    //        vehicleLicenseList.Add(vehicleLic);
+
+                    //        ResultRootObject quoteresponseNew = IcServiceobj.LICQuoteUpdate(vehicleLicenseList, parternToken);
+
+                    //        if (quoteresponseNew != null && quoteresponseNew.Response.Message.Contains("Partner Token has expired"))
+                    //        {
+
+                    //            // ObjToken = CheckParterTokenExpire();
+
+                    //            ObjToken = IcServiceobj.getToken();
+
+                    //            if (ObjToken != null)
+                    //                parternToken = ObjToken.Response.PartnerToken;
+
+                    //            Service_db.UpdateToken(ObjToken);
+
+                    //            quoteresponseNew = IcServiceobj.LICQuoteUpdate(vehicleLicenseList, parternToken);
+                    //            //ObjToken = IcServiceobj.getToken();
+                    //            //if (ObjToken != null)
+                    //            //{
+                    //            //    parternToken = ObjToken.Response.PartnerToken;
+                    //            //    quoteresponseNew = IcServiceobj.LICQuoteUpdate(vehicleLicenseList, ObjToken.Response.PartnerToken);
+                    //            //}
+                    //        }
+                    //    }
+
+
+
+                    //}
+
+
+
+
                 }
             }
             return resultPolicy;
@@ -6026,16 +6391,8 @@ namespace Gene
 
         }
 
-
-        private void OptNext_Click(object sender, EventArgs e)
+        public void callPnlSummary()
         {
-
-            //if (!chkRadioLicence.Checked && !chkZinara.Checked)
-            //{
-            //    MessageBox.Show("Please select the (RadioLicence/Zinara) type");
-            //    return;
-            //}
-
             try
             {
                 if (chkRadioLicence.Checked)
@@ -6044,7 +6401,7 @@ namespace Gene
                     {
                         //lblZinraErrMsg.Text = "System cannot process Radio Only.";
                         //lblZinraErrMsg.ForeColor = Color.Red;
-                        MyMessageBox.ShowBox("System cannot process Radio Only.");
+                        MyMessageBox.ShowBox("System cannot process Radio Only.", "Message");
                         return;
                     }
                 }
@@ -6123,7 +6480,7 @@ namespace Gene
 
                 CalculatePremium();
 
-
+                //VehicalIndex = -1; // to do uncomment when it will be for multiple vehicle
                 if (VehicalIndex != -1)
                 {
                     //Update vehical list
@@ -6205,16 +6562,237 @@ namespace Gene
             {
                 // MessageBox.Show(ex.Message);
 
-                MyMessageBox.ShowBox(ex.Message, "Modal error message");
+                MyMessageBox.ShowBox(ex.Message, "Message");
+            }
+
+        }
+
+
+        private void OptNext_Click(object sender, EventArgs e)
+        {
+
+            //if (!chkRadioLicence.Checked && !chkZinara.Checked)
+            //{
+            //    MessageBox.Show("Please select the (RadioLicence/Zinara) type");
+            //    return;
+            //}
+
+
+            try
+            {
+                if (chkRadioLicence.Checked)
+                {
+                    if (!chkZinara.Checked)
+                    {
+                        //lblZinraErrMsg.Text = "System cannot process Radio Only.";
+                        //lblZinraErrMsg.ForeColor = Color.Red;
+                        MyMessageBox.ShowBox("System cannot process Radio Only.", "Message");
+                        return;
+                    }
+                }
+
+
+                if (chkRadioLicence.Checked)
+                {
+                    if (RadioPaymnetTerm.SelectedIndex == 0)
+                    {
+                        MyMessageBox.ShowBox("Please select payment term for radio license because you have checked radio chekbox othewise please uncheck radio chekbox.", "Message");
+                        return;
+                    }
+                }
+
+                if (chkZinara.Checked)
+                {
+                    if (ZinPaymentDetail.SelectedIndex == 0)
+                    {
+                        MyMessageBox.ShowBox("Please checked checkbox of zinara license because you have selected zinara payment term otherwise unselect payment term.", "Message");
+                        return;
+                    }
+                }
+
+                if (chkRadioLicence.Checked)
+                {
+                    if (RadioPaymnetTerm.SelectedIndex > 0)
+                    {
+                        if (!IsPaymentTermValidForInsuranceLicense(Convert.ToInt32(cmbPaymentTerm.SelectedValue), Convert.ToInt32(RadioPaymnetTerm.SelectedValue)))
+                        {
+                            MyMessageBox.ShowBox("Licence payment term should be equal or less than Insurance payment term.", "Message");
+                            return;
+                        }
+                    }
+                }
+
+
+                if (chkZinara.Checked)
+                {
+                    if (ZinPaymentDetail.SelectedIndex > 0)
+                    {
+                        if (!IsPaymentTermValidForInsuranceLicense(Convert.ToInt32(cmbPaymentTerm.SelectedValue), Convert.ToInt32(ZinPaymentDetail.SelectedValue)))
+                        {
+                            MyMessageBox.ShowBox("Licence payment term should be equal or less than Insurance payment term.", "Message");
+                            return;
+                        }
+                    }
+                }
+
+
+                OptNext.Text = "Processing..";
+
+                loadingInsuraneImg.Visible = true;
+                loadingInsuraneImg.WaitOnLoad = true;
+                OptNext.Enabled = false;
+
+                if (txtVrn.Text.Trim().ToUpper() != _tba)
+                {
+                    RequestVehicleDetails();
+                }
+
+
+                if (resObject.Message.Contains("1 failed"))
+                    _iceCashErrorMsg = resObject.Quotes == null ? "Error Occured" : resObject.Quotes[0].Message;
+
+                if (_iceCashErrorMsg != "")
+                {
+                    MyMessageBox.ShowBox(_iceCashErrorMsg);
+
+                    if(_iceCashErrorMsg.Contains("Your account is inactive"))
+                    {
+                        GotoHome();
+                        return;
+                    }
+
+                    loadingInsuraneImg.Visible = false;
+                    OptNext.Enabled = true;
+                    OptNext.Text = "Continue";
+
+                    //pnlRadioZinara.Visible = false;
+                   // PnlVrn.Visible = true;
+
+                   // return;
+                }
+
+
+
+
+                //if (VehicalIndex == -1)
+                //{
+                //    if (chkRadioLicence.Checked)
+                //    {
+                //        objRiskModel.RadioLicenseCost = txtradioAmount.Text == "" ? 0 : Convert.ToDecimal(txtradioAmount.Text);
+                //        objRiskModel.IncludeRadioLicenseCost = true;
+                //    }
+                //    else
+                //    {
+                //        objRiskModel.RadioLicenseCost = 0;
+                //        objRiskModel.IncludeRadioLicenseCost = false;
+                //    }
+
+
+                //    if (chkZinara.Checked)
+                //        objRiskModel.VehicleLicenceFee = txtZinTotalAmount.Text == "" ? 0 : Convert.ToDecimal(txtZinTotalAmount.Text);
+                //    else
+                //        objRiskModel.VehicleLicenceFee = 0;
+                //}
+                //else
+                //{
+                //    if (chkRadioLicence.Checked)
+                //    {
+                //        objlistRisk[VehicalIndex].RadioLicenseCost = txtradioAmount.Text == "" ? 0 : Convert.ToDecimal(txtradioAmount.Text);
+                //        objRiskModel.IncludeRadioLicenseCost = true;
+                //    }
+                //    else
+                //    {
+                //        objlistRisk[VehicalIndex].RadioLicenseCost = 0;
+                //        objRiskModel.IncludeRadioLicenseCost = false;
+                //    }
+
+
+                //    if (chkZinara.Checked)
+                //        objlistRisk[VehicalIndex].VehicleLicenceFee = txtZinTotalAmount.Text == "" ? 0 : Convert.ToDecimal(txtZinTotalAmount.Text);
+                //    else
+                //        objlistRisk[VehicalIndex].VehicleLicenceFee = 0;
+                //}
+
+                //if (txtpenalty.Text != "" && Convert.ToDecimal(txtpenalty.Text) > 0)  // if penality amount
+                //{
+                //    objRiskModel.VehicleLicenceFee = 0;
+                //    objRiskModel.RadioLicenseCost = 0;
+                //    objRiskModel.IncludeRadioLicenseCost = false;
+                //}
+
+
+
+
+
+                //if (_iceCashErrorMsg != "")
+                //{
+                //    string errMsg = _iceCashErrorMsg + " You can also contact from Customer Service Centre (08677223344).";
+
+                //    MyMessageBox.ShowBox(errMsg, "Message");
+                //    btnInsCnt.Text = "Continue";
+                //    GoToVrnScreen();
+                //    return;
+                //}
+
+
+                //  pnlSum.Visible = true;
+                //  pnlAddMoreVehicle.Visible = true; comment for now while multiple vehilce will not work
+
+
+
+                pnlRiskDetails.Visible = true;
+                pnlAddMoreVehicle.Visible = false;
+                pnlRadioZinara.Visible = false;
+                pnlZinara.Visible = false;
+                pnlRadio.Visible = false;
+                //CalculatePremium();
+
+
+                var productid = objRiskModel.ProductId;
+
+
+                loadingInsuraneImg.Visible = false;
+                OptNext.Enabled = true;
+                OptNext.Text = "Continue";
+
+            }
+            catch (Exception ex)
+            {
+                // MessageBox.Show(ex.Message);
+
+
+                loadingInsuraneImg.Visible = false;
+                OptNext.Enabled = true;
+                OptNext.Text = "Continue";
+
+                MyMessageBox.ShowBox(ex.Message, "Message");
             }
 
 
         }
 
+
+
+        public bool IsPaymentTermValidForInsuranceLicense(int insurancePaymentTerm, int licesnePaymentTerm)
+        {
+            bool result = true;
+
+            if (insurancePaymentTerm != licesnePaymentTerm)
+            {
+                if (licesnePaymentTerm > insurancePaymentTerm)
+                {
+                    result = false;
+                }
+            }
+            return result;
+        }
+
         private void optBack_Click(object sender, EventArgs e)
         {
 
-            pnlOptionalCover.Visible = true;
+            //pnlOptionalCover.Visible = true;
+            // pnlConfirm.Visible = true;
+            pnlInsurance.Visible = true;
             pnlRadioZinara.Visible = false;
             //pnlRadio.Visible = false;
             //pnlZinara.Visible = false;
@@ -6225,7 +6803,7 @@ namespace Gene
             //btnAddMoreVehicle.Visible = true;
             //pnlConfirm.Visible = true;
             //pnlOptionalCover.Visible = false;
-            //VehicalIndex = objlistRisk.FindIndex(c => c.RegistrationNo == txtVrn.Text);
+            VehicalIndex = objlistRisk.FindIndex(c => c.RegistrationNo == txtVrn.Text);
 
         }
 
@@ -6384,9 +6962,9 @@ namespace Gene
 
                         //lblZinraErrMsg.ForeColor = Color.Red;
 
-                        MyMessageBox.ShowBox("You have outstanding penalties, please contact our Contact Centre for assistance on 086 77 22 33 44.", "Modal error message");
+                        MyMessageBox.ShowBox("You have outstanding penalties, please contact our Contact Centre for assistance on 086 77 22 33 44.", "Message");
 
-
+                        
                     }
 
                     if (_resObjects != null && _resObjects.Quotes != null)
@@ -6577,7 +7155,21 @@ namespace Gene
                     //lblZnrErrMsg.ForeColor = Color.Red;
 
 
-                    MyMessageBox.ShowBox(_resObjects.Quotes[0].Message, "Modal error message"); // need to do uncomment
+                    // MyMessageBox.ShowBox(_resObjects.Quotes[0].Message, "Error Message"); // need to do uncomment
+
+                    if (_resObjects.Quotes != null && _resObjects.Quotes[0].Message.Contains("8: Licensing is only allowed 2 months prior"))
+                    {
+                        var message = _resObjects.Quotes[0].Message + " However if you wish to acquire the Insurance only please continue.";
+                        MyMessageBox.ShowBox(message, "Message"); // need to do uncomment
+                        prior = 1;
+                    }
+                    else if (_resObjects.Quotes != null)
+                    {
+                        var message = _resObjects.Quotes[0].Message + " please contact our Contact Centre for assistance on 086 77 22 33 44.";
+                        MyMessageBox.ShowBox(message, "Message"); // need to do uncomment
+                        prior = 1;
+                    }
+
 
                 }
 
@@ -6625,7 +7217,7 @@ namespace Gene
 
                         //lblZinraErrMsg.Font = new Font("Arial", 14, FontStyle.Underline, GraphicsUnit.Point);
 
-                        MyMessageBox.ShowBox("You have outstanding penalties, please contact our Contact Centre for assistance on 086 77 22 33 44.", "Modal error message");
+                        MyMessageBox.ShowBox("You have outstanding penalties, please contact our Contact Centre for assistance on 086 77 22 33 44.", "Message");
                     }
 
 
@@ -7283,7 +7875,7 @@ namespace Gene
                 //lblEmailExist.Text = "Email already Exist";
                 //lblEmailExist.ForeColor = Color.Red;
 
-                MyMessageBox.ShowBox("Email already Exist", "Modal error message");
+                MyMessageBox.ShowBox("Email already Exist", "Message");
             }
             else
             {
@@ -7344,7 +7936,7 @@ namespace Gene
 
             if (txtTBAIDNumber.Text == "")
             {
-                NewerrorProvider.SetError(txtTBAIDNumber, "Please Enter Id Number.");
+                NewerrorProvider.SetError(txtTBAIDNumber, "Please Enter ID Number.");
                 return;
             }
 
@@ -7423,14 +8015,11 @@ namespace Gene
 
             if (cmbPaymentTerm.SelectedValue.ToString() != ZinPaymentDetail.SelectedValue.ToString())
             {
-                if (ZinPaymentDetail.SelectedValue != null && txtYear.Text != "")
+                if (ZinPaymentDetail.SelectedValue != null && cmbMake.SelectedIndex != 0)
                 {
-                    GetZinraLiceenseFee(ZinPaymentDetail.SelectedValue.ToString());
+                    // GetZinraLiceenseFee(ZinPaymentDetail.SelectedValue.ToString());
                 }
             }
-
-
-
         }
 
         private void RadioPaymnetTerm_SelectedIndexChanged(object sender, EventArgs e)
@@ -7443,9 +8032,9 @@ namespace Gene
 
             if (RadioPaymnetTerm.SelectedValue.ToString() != ZinPaymentDetail.SelectedValue.ToString())
             {
-                if (RadioPaymnetTerm.SelectedValue != null && txtYear.Text != "")
+                if (RadioPaymnetTerm.SelectedValue != null && cmbMake.SelectedIndex != 0)
                 {
-                    GetRadioLiceenseFee(RadioPaymnetTerm.SelectedValue.ToString());
+                    // GetRadioLiceenseFee(RadioPaymnetTerm.SelectedValue.ToString());
                 }
             }
 
@@ -7523,7 +8112,7 @@ namespace Gene
             }
             if (txtCmpBusinessId.Text == string.Empty)
             {
-                NewerrorProvider.SetError(txtCmpBusinessId, "Please enter business Id.");
+                NewerrorProvider.SetError(txtCmpBusinessId, "Please enter Business ID.");
                 txtCmpBusinessId.Focus();
                 return;
             }
@@ -7589,7 +8178,7 @@ namespace Gene
             {
                 //lblCmpErrMsg.Text = "Email already Exist";
                 //lblCmpErrMsg.ForeColor = Color.Red;
-                MyMessageBox.ShowBox("Email already Exist.", "Modal error message");
+                MyMessageBox.ShowBox("Email already Exist.", "Message");
             }
             else
             {
@@ -7601,19 +8190,19 @@ namespace Gene
         {
             if (textSearchVrn.Text.Length == 0)
             {
-                textSearchVrn.Text = "Id Number";
+                textSearchVrn.Text = "ID Number";
                 textSearchVrn.ForeColor = SystemColors.GrayText;
             }
         }
 
         private void textSearchVrn_Enter(object sender, EventArgs e)
         {
-            if (textSearchVrn.Text == "Id Number")
+            if (textSearchVrn.Text == "ID Number")
             {
                 textSearchVrn.Text = "";
                 textSearchVrn.ForeColor = SystemColors.GrayText;
             }
-            if (textSearchVrn.Text == "Business Id")
+            if (textSearchVrn.Text == "Business ID")
             {
                 textSearchVrn.Text = "";
                 textSearchVrn.ForeColor = SystemColors.GrayText;
@@ -7627,6 +8216,8 @@ namespace Gene
             objFrm.Show();
             this.Close();
         }
+
+
 
         private void btnHomeConfirm_Click(object sender, EventArgs e)
         {
@@ -7707,14 +8298,14 @@ namespace Gene
         {
             txtVrn.Visible = true;
             textSearchVrn.Visible = true;
-            textSearchVrn.Text = "Business Id";
+            textSearchVrn.Text = "Business ID";
         }
 
         private void rdPresonal_CheckedChanged(object sender, EventArgs e)
         {
             txtVrn.Visible = true;
             textSearchVrn.Visible = true;
-            textSearchVrn.Text = "Id Number";
+            textSearchVrn.Text = "ID Number";
         }
 
         private void cmbProducts_SelectedIndexChanged(object sender, EventArgs e)
@@ -7735,15 +8326,32 @@ namespace Gene
                 if (cmbProducts.SelectedValue != null && cmbProducts.SelectedValue.ToString() == _ProductId.ToString())
                 {
                     cmbProducts.Enabled = false;
-                    cmbTaxClasses.Enabled = false;
+
+                    if (cmbTaxClasses.SelectedValue != null)
+                        cmbTaxClasses.Enabled = false;
+                    else
+                        cmbTaxClasses.Enabled = true;
+
                     cmbTaxClasses.SelectedValue = _TaxClass;
                 }
                 else
                 {
-                    cmbProducts.Enabled = true;
-                    cmbTaxClasses.Enabled = true;
+                    if (txtVrn.Text.ToUpper() == "TBA")
+                    {
+                        cmbProducts.Enabled = true;
+                        cmbTaxClasses.Enabled = true;
+                    }
+                    else
+                    {
+                        cmbProducts.Enabled = false;
+                        if (cmbTaxClasses.SelectedValue != null && cmbTaxClasses.SelectedIndex != 0)
+                            cmbTaxClasses.Enabled = false;
+                        else
+                            cmbTaxClasses.Enabled = true;
+                    }
                 }
             }
+
         }
 
         private List<VehicleTaxClassModel> BindTaxClass(int vehicleType)
@@ -7756,8 +8364,6 @@ namespace Gene
 
             if (product != null)
                 vehicleTypeId = product.VehicleTypeId;
-
-
 
 
             var filtredTaxClassList = TaxClassList.Where(c => c.VehicleType == vehicleTypeId).ToList();
@@ -7773,19 +8379,14 @@ namespace Gene
         {
 
             var objlistRisk = objRiskdetail;
-
             pnlSummery.Controls.Clear(); //to remove all controls
-
             counter = objlistRisk.Count();
 
             for (int i = 0; i < counter; i++)
             {
-
                 if (counter == 1)
                 {
-
                     Panel Bottompnl = new Panel();
-
                     Label lblVehicleRegNum = new System.Windows.Forms.Label();
                     lblVehicleRegNum.Name = lblVehicleRegNum + i.ToString();
                     lblVehicleRegNum.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -7935,7 +8536,6 @@ namespace Gene
 
                     pnllicenceDiskSummary.Controls.Add(Bottompnl);
                 }
-
             }
         }
 
@@ -7944,7 +8544,8 @@ namespace Gene
         {
             // List<ResultLicenceIDResponse> list = new List<ResultLicenceIDResponse>();
 
-            ResultLicenceIDRootObject quoteresponseResult = IcServiceobj.LICResult(riskDetailModel.LicenseId, parternToken);
+            // ResultLicenceIDRootObject quoteresponseResult = IcServiceobj.LICResult(riskDetailModel.LicenseId, parternToken);
+            ResultLicenceIDRootObject quoteresponseResult = ICEcashService.TPILICResult(riskDetailModel, parternToken);
             if (quoteresponseResult != null && quoteresponseResult.Response.Message.Contains("Partner Token has expired"))
             {
                 ObjToken = IcServiceobj.getToken();
@@ -7953,7 +8554,7 @@ namespace Gene
                     parternToken = ObjToken.Response.PartnerToken;
                     Service_db.UpdateToken(ObjToken);
                     //  quoteresponse = IcServiceobj.RequestQuote(parternToken, RegistrationNo, suminsured, make, model, PaymentTermId, VehicleYear, CoverTypeId, VehicleUsage, "", (CustomerModel)customerInfo); // uncomment this line 
-                    quoteresponseResult = IcServiceobj.LICResult(riskDetailModel.LicenseId, parternToken);
+                    quoteresponseResult = ICEcashService.TPILICResult(riskDetailModel, parternToken);
 
                     if (quoteresponseResult.Response != null)
                     {
@@ -7965,6 +8566,9 @@ namespace Gene
 
             if (quoteresponseResult.Response != null && quoteresponseResult.Response.LicenceCert != null)
             {
+
+               
+
                 licenseDiskList.Add(quoteresponseResult.Response);
 
                 //var pdfPath = SavePdf(quoteresponseResult.Response.LicenceCert);
@@ -8005,7 +8609,7 @@ namespace Gene
             //{
             //    //   MessageBox.Show("Pdf not found for this  certificate."); // r
 
-            //    MyMessageBox.ShowBox("Pdf not found for this  certificate.", "Modal error message");
+            //    MyMessageBox.ShowBox("Pdf not found for this  certificate.", "Message");
 
             //}
 
@@ -8330,11 +8934,11 @@ namespace Gene
         private void btnConfirmPayment_Click_1(object sender, EventArgs e)
         {
 
-            if (txtPartialAmount.Text == "")
-            {
-                MyMessageBox.ShowBox("Please enter amount.");
-                return;
-            }
+            //if (txtPartialAmount.Text == "")
+            //{
+            //    MyMessageBox.ShowBox("Please enter amount.", "Message");
+            //    return;
+            //}
 
             checkVRNwithICEcashResponse response = new checkVRNwithICEcashResponse();
             // Save all details
@@ -8363,13 +8967,40 @@ namespace Gene
                 MyMessageBox.ShowBox("Please swipe the card for making the payment.");
             }
 
-            Button btnConfirmPayment = (Button)sender;
-            btnConfirmPayment.Text = "Processing.";
-            btnConfirmPayment.Enabled = false;
-            pictureBox2.Visible = true;
-            pictureBox2.WaitOnLoad = true;
+            //Button btnConfirmPayment = (Button)sender;
+            //btnConfirmPayment.Text = "Processing.";
+            //btnConfirmPayment.Enabled = false;
+            //picImageConfirmPayment.Visible = true;
+            //picImageConfirmPayment.WaitOnLoad = true;
+
+            SetLoadingDuringPayment(true);
+
+
             SendSymbol(TransactionId, transctionAmt, paymentTermName);
 
+        }
+
+
+        //picImageConfirmPayment
+
+        private void SetLoadingDuringPayment(bool displayLoader)
+        {
+            if (displayLoader)
+            {
+                this.Invoke((MethodInvoker)delegate
+                {
+                    picImageConfirmPayment.Visible = true;
+                    this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+                });
+            }
+            else
+            {
+                this.Invoke((MethodInvoker)delegate
+                {
+                    picImageConfirmPayment.Visible = false;
+                    this.Cursor = System.Windows.Forms.Cursors.Default;
+                });
+            }
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -8423,7 +9054,7 @@ namespace Gene
         private void txtIDNumber_Enter(object sender, EventArgs e)
         {
 
-            if (txtIDNumber.Text == "Id Number")
+            if (txtIDNumber.Text == "ID Number")
             {
                 txtIDNumber.Text = "";
             }
@@ -8441,8 +9072,7 @@ namespace Gene
 
         private void btnInsCnt_Click(object sender, EventArgs e)
         {
-            pnlInsurance.Visible = false;
-            pnlRiskDetails.Visible = true;
+
 
 
             if (cmbPaymentTerm.SelectedIndex == 0)
@@ -8484,7 +9114,7 @@ namespace Gene
             if (_insuranceAndLicense)
                 IceCashRequest = "InsuranceAndLicense";
             else
-                IceCashRequest = "License";
+                IceCashRequest = "Insurance";
 
 
             if (VehicalIndex == -1)
@@ -8508,10 +9138,74 @@ namespace Gene
                 }
             }
 
-            if (CoverId != (int)eCoverType.Comprehensive && txtVrn.Text.Trim() != _tba)
+            if (!_insuranceAndLicense && txtVrn.Text.ToUpper() != _tba)
             {
+                btnInsCnt.Text = "Processing..";
+
+                //btnInsCnt.Enabled = false;
+                //LoadingInsurance.Visible = true;
+                //loadingInsuraneImg.WaitOnLoad = true;
+
+                SetLoadingPnlInsurance(true);
+
                 RequestVehicleDetails();
+
+                if (_iceCashErrorMsg != "")
+                {
+                    MyMessageBox.ShowBox(_iceCashErrorMsg);
+
+                    //LoadingInsurance.Visible = false;
+                    //btnInsCnt.Enabled = true;
+
+                    SetLoadingPnlInsurance(false);
+                    btnInsCnt.Text = "Continue";
+
+                    //pnlInsurance.Visible = false;
+                    //PnlVrn.Visible = true;
+
+                   // return;
+                }
+
+
+                SetLoadingPnlInsurance(false);
+
+                //btnInsCnt.Enabled = true;
+                //LoadingInsurance.Visible = false;
+
             }
+
+
+            //if (_iceCashErrorMsg != "")
+            //{
+            //    string errMsg = _iceCashErrorMsg + " You can also contact from Customer Service Centre (08677223344).";
+
+            //    MyMessageBox.ShowBox(errMsg, "Message");
+            //    btnInsCnt.Text = "Continue";
+            //    GoToVrnScreen();
+            //    return;
+            //}
+
+            // loadingInsuraneImg.Visible = false;
+
+            pnlInsurance.Visible = false;
+
+            if (txtVrn.Text.Trim().ToUpper() == _tba || !_insuranceAndLicense)
+                pnlRiskDetails.Visible = true;
+            else
+                pnlRadioZinara.Visible = true;
+
+
+
+            //pnlRiskDetails.Visible = true;
+
+            btnInsCnt.Text = "Continue";
+        }
+
+        private void GoToVrnScreen()
+        {
+            loadingInsuraneImg.Visible = false;
+            pnlInsurance.Visible = false;
+            PnlVrn.Visible = true;
         }
 
         private void btnInsBack_Click(object sender, EventArgs e)
@@ -8524,15 +9218,39 @@ namespace Gene
                 pnlPersonalDetails2.Visible = true;
         }
 
-        private void rdBtnPartialPayment_CheckedChanged(object sender, EventArgs e)
+        private void txtDOB_DropDown(object sender, EventArgs e)
         {
-            txtPartialAmount.Text = "";
+            // MyDateTimePicker.OnDropDown(sender);
+            // txtDOB.CalendarFont.
+            // txtDOB.CalendarFont = new Font("Courier New", 25.25F, FontStyle.Italic, GraphicsUnit.Point, ((Byte)(0)));
+            // txtDOB.CalendarFont = 
+
+            // Application.EnableVisualStyles();
+            // txtDOB.CalendarFont = new Font("Courier New", 25.25F, FontStyle.Italic, GraphicsUnit.Point, ((Byte)(0)));
+
         }
 
-        private void rdBtnFullPayment_CheckedChanged(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
-            txtPartialAmount.Text = txtTotalPremium.Text;
+            GotoHome();
         }
+
+
+
+
+        //private void rdBtnPartialPayment_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    txtPartialAmount.Text = "";
+        //    txtPartialAmount.Enabled = true;
+        //}
+
+        //private void rdBtnFullPayment_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    txtPartialAmount.Text = txtTotalPremium.Text;
+        //    txtPartialAmount.Enabled = false;
+        //}
+
+
     }
 }
 

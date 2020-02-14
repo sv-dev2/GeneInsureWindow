@@ -1100,7 +1100,7 @@ namespace Gene
 
                     //lblermsgvr.Text = "Please enter vrn/policy no.";
                     //lblermsgvr.ForeColor = Color.Red;
-                    MyMessageBox.ShowBox("Please enter vrn/policy no.", "Modal error message");
+                    MyMessageBox.ShowBox("Please enter vrn/policy no.", "Message");
 
                     //if (btnSave.Text == "Processing..")
                     if (btnSave.Text == "Process..")
@@ -1116,7 +1116,7 @@ namespace Gene
                 //lblermsgvr.Text = "Please enter vrn/policy no.";
                 //lblermsgvr.ForeColor = Color.Red;
 
-                MyMessageBox.ShowBox("Please enter vrn/policy no.", "Modal error message");
+                MyMessageBox.ShowBox("Please enter vrn/policy no.", "Message");
 
                 return;
             }
@@ -1170,7 +1170,7 @@ namespace Gene
                     //lblermsgvr.Text = result.ErrorMessage;
                     //lblermsgvr.ForeColor = Color.Red;
 
-                    MyMessageBox.ShowBox(result.ErrorMessage);
+                    MyMessageBox.ShowBox(result.ErrorMessage, "Message");
 
                     btnSave.Text = "Submit";
                     return;
@@ -1181,7 +1181,7 @@ namespace Gene
                     //lblermsgvr.Text = "This VRN number doesn't exist for renew";
                     //lblermsgvr.ForeColor = Color.Red;
 
-                    MyMessageBox.ShowBox("This VRN number doesn't exist for renew.", "Modal error message");
+                    MyMessageBox.ShowBox("This VRN number doesn't exist for renew.", "Message");
 
 
                     btnSave.Text = "Submit";
@@ -1193,7 +1193,7 @@ namespace Gene
                 // MessageBox.Show("Please Enter The Correct VRN Number");
                 //lblermsgvr.Text = "This VRN number doesn't exist for renew";
                 //lblermsgvr.ForeColor = Color.Red;
-                MyMessageBox.ShowBox("This VRN number doesn't exist for renew.", "Modal error message");
+                MyMessageBox.ShowBox("This VRN number doesn't exist for renew.", "Message");
                 btnSave.Text = "Submit";
                 return;
             }
@@ -1235,9 +1235,13 @@ namespace Gene
             customerInfo = result.Cutomer;
             objRiskModel = result.riskdetail;
             summaryModel = result.SummaryDetails;
+
+            customerInfo.BranchId = branchName == "" ? 0 : Convert.ToInt32(branchName);
+            objRiskModel.ALMBranchId = branchName == "" ? 0 : Convert.ToInt32(branchName);
+
             bindMake();
 
-
+           
 
 
             bindvehiclemake(objRiskModel.MakeId);
@@ -1809,6 +1813,13 @@ namespace Gene
                 chkRoadsideAssistance.Visible = true;
             }
 
+            if(_iceCashErrorMsg.Contains("Your account is inactive"))
+            {
+                MyMessageBox.ShowBox(_iceCashErrorMsg);
+                GotoHome(); 
+                return;
+            }
+
 
             //pnlRenewConfirm.Visible = false;
             pnlRenewRiskDetails.Visible = false;
@@ -1922,7 +1933,8 @@ namespace Gene
 
                     if (quoteresponse.Response.Message.Contains("1 failed"))
                     {
-                        _iceCashErrorMsg = "Error Occured";
+                        //  _iceCashErrorMsg = "Error Occured";
+                        _iceCashErrorMsg = quoteresponse.Response.Message;
                     }
 
 
@@ -2051,7 +2063,7 @@ namespace Gene
             catch (Exception ex)
             {
                 // response.message = "Error occured.";
-                MyMessageBox.ShowBox("Error occured.");
+                MyMessageBox.ShowBox("Error occured.", "Message");
             }
         }
 
@@ -2122,7 +2134,7 @@ namespace Gene
 
                 if (_resObjects != null && _resObjects.Message.Contains("1 failed"))
                 {
-                    MyMessageBox.ShowBox(_resObjects.Quotes[0].Message, "Modal error message"); // need to do uncomment
+                    MyMessageBox.ShowBox(_resObjects.Quotes[0].Message, "Message"); // need to do uncomment
 
                 }
 
@@ -2146,7 +2158,7 @@ namespace Gene
                     {
                         //lblZinraRenewErr.Text = "You have outstanding penalties, please contact our Contact Centre for assistance on 086 77 22 33 44.";
                         //lblZinraRenewErr.ForeColor = Color.Red;
-                        MyMessageBox.ShowBox("You have outstanding penalties, please contact our Contact Centre for assistance on 086 77 22 33 44.");
+                        MyMessageBox.ShowBox("You have outstanding penalties, please contact our Contact Centre for assistance on 086 77 22 33 44.", "Message");
                     }
 
 
@@ -2336,6 +2348,8 @@ namespace Gene
         {
             // third screen confirm vehical details
 
+           // VehicalIndex = -1; // it will uncomment  while it will be run for multiple vehicle
+
             if (VehicalIndex == -1)
             {
 
@@ -2401,7 +2415,7 @@ namespace Gene
                 {
                     //MessageBox.Show("Please Enter the required fields");
 
-                    MyMessageBox.ShowBox("Please Enter the required fields");
+                    MyMessageBox.ShowBox("Please Enter the required fields", "Message");
                     return;
                 }
 
@@ -3731,7 +3745,7 @@ namespace Gene
 
                         if (summaryDetails.Id == 0)
                         {
-                            MyMessageBox.ShowBox("Error occur, please contact to admistrator.");
+                            MyMessageBox.ShowBox("Error occur, please contact to admistrator.", "Message");
                             btnReconformpaynxt.Enabled = true;
                             pictureBox2.Visible = false;
                             return;
@@ -3824,7 +3838,7 @@ namespace Gene
             }
             catch (Exception ex)
             {
-                MyMessageBox.ShowBox(ex.Message);
+                MyMessageBox.ShowBox(ex.Message, "Message");
                 //MessageBox.Show(ex.ToString());
             }
             finally
@@ -4704,7 +4718,7 @@ namespace Gene
                 {
                     //lblZinraErrMsg.Text = "System cannot process Radio Only.";
                     //lblZinraErrMsg.ForeColor = Color.Red;
-                    MyMessageBox.ShowBox("System cannot process Radio Only.");
+                    MyMessageBox.ShowBox("System cannot process Radio Only.", "Message");
                     return;
                 }
             }
@@ -5448,11 +5462,11 @@ namespace Gene
             {
                 paymentTermName = "Mobile";
                 summaryModel.PaymentMethodId = Convert.ToInt32(ePaymentMethod.Mobile);
-                MyMessageBox.ShowBox("Please Enter Ecocash Mobile number on PinPad.");
+                MyMessageBox.ShowBox("Please Enter Ecocash Mobile number on PinPad.", "Message");
             }
             else
             {
-                MyMessageBox.ShowBox("Please swipe the card for making the payment.");
+                MyMessageBox.ShowBox("Please swipe the card for making the payment.", "Message");
             }
 
             if (btnReconformpaynxt.Text == "Pay")

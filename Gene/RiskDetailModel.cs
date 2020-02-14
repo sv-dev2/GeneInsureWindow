@@ -113,6 +113,9 @@ namespace GensureAPIv2.Models
         //public bool? IncludeZineraCost { get; set; }
         public string LicenseId { get; set; }
 
+
+        public string CombinedID { get; set; }
+
         public int TaxClassId { get; set; }
         public bool IsCorporateField { get; set; }      
         public string IceCashRequest { get; set; }
@@ -124,6 +127,12 @@ namespace GensureAPIv2.Models
         public string LicExpiryDate { get; set; }
         public string RadioTVExpiryDate { get; set; }
 
+        public string licenseFreequency { get; set; }
+        public string RadioFreequency { get; set; }
+
+        public string radioTvUsage { get; set; }
+
+        public int ALMBranchId { get; set; }
 
     }
 

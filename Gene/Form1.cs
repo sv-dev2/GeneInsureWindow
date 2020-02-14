@@ -44,8 +44,12 @@ namespace Gene
 
         ICEcashTokenResponse _ObjToken;
 
+      
         public Form1(ICEcashTokenResponse ObjToken = null)
         {
+
+            //MyMessageBox.ShowBox("Please select branch.", "Modal error message");
+
             InitializeComponent();
             CultureInfo culture = new CultureInfo(ConfigurationManager.AppSettings["DefaultCulture"]);
             CultureInfo.DefaultThreadCurrentCulture = culture;
@@ -55,7 +59,6 @@ namespace Gene
             {
                 MyMessageBox.ShowBox("Internet connection is not available, please connect to Internet.");
             }
-
 
             _ObjToken = ObjToken;
 
@@ -74,6 +77,12 @@ namespace Gene
             // MyMessageBox.ShowBox("Do you want to exit?", "Exit");
 
         }
+
+
+
+        
+
+
 
         public void testPrintConfirmationMehtod()
         {
@@ -185,6 +194,8 @@ namespace Gene
             {
                 MyMessageBox.ShowBox("Please select branch.", "Modal error message");
                 cmbBranch.Focus();
+                cmbBranch.Visible = true;
+                lblBranch.Visible = true;
                 return;
             }
 
@@ -201,14 +212,13 @@ namespace Gene
 
 
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-            //  ChangeConfiguration("test");
+        private  void Form1_Load(object sender, EventArgs e)
+        {           
+            this.FormClosing += Form1_FormClosing_1;
         }
 
         private void btnQuickPrint_Click(object sender, EventArgs e)
-        {
+        {        
             frmLicence objLic = new frmLicence();
             objLic.Show();
             this.Hide();
@@ -216,7 +226,6 @@ namespace Gene
 
         private void btnRenew_Click(object sender, EventArgs e)
         {
-
             if (cmbBranch.SelectedValue == null)
             {
                 MyMessageBox.ShowBox("Please select branch.", "Modal error message");
@@ -224,21 +233,16 @@ namespace Gene
             }
             var branch = cmbBranch.SelectedValue == null ? "" : cmbBranch.SelectedValue.ToString();
 
-
-
             frmRenewPolicy objRE = new frmRenewPolicy(_ObjToken, branch);
             objRE.Show();
             this.Hide();
-
 
         }
 
         private void SetSelectedValue()
         {
-            
-
+           
             string branchId = ReadBranchFromLogFile();
-
             cmbBranch.SelectedValue = branchId == "" ? 0 : Convert.ToInt32(branchId);
 
             if (branchId != "" && Convert.ToInt32(branchId) > 0)
@@ -345,17 +349,12 @@ namespace Gene
                 request.AddParameter("application/json", "{\n\t\"Name\":\"ghj\"\n}", ParameterType.RequestBody);
                 IRestResponse response = client.Execute(request);
 
-                //  var bannerImage = new JavaScriptSerializer().Deserialize<BannerImage>(response.Content);
-
                 var bannerImage = JsonConvert.DeserializeObject<BannerImage>(response.Content);
 
                 if (bannerImage != null)
                 {
                     pictureBox2.Image = byteArrayToImage(bannerImage.Data);
                 }
-
-
-
             }
             catch (Exception ex)
             {
@@ -481,6 +480,29 @@ namespace Gene
             btnLicenseQuote.Text = "License";
         }
 
+        private void btnInsurance_Click(object sender, EventArgs e)
+        {
+            if (cmbBranch.SelectedValue == null)
+            {
+                MyMessageBox.ShowBox("Please select branch.", "Modal error message");
+                cmbBranch.Focus();
+                cmbBranch.Visible = true;
+                lblBranch.Visible = true;
+                return;
+            }
 
+            var branch = cmbBranch.SelectedValue == null ? "" : cmbBranch.SelectedValue.ToString();
+            btnInsurance.Text = "Processing..";
+
+            frmQuote obj = new frmQuote(branch, _ObjToken, false);
+            obj.Show();
+            this.Hide();
+            btnInsurance.Text = "Insurance Only";
+        }
+
+        private void Form1_FormClosing_1(object sender, FormClosingEventArgs e)
+        {
+           // e.Cancel = true;
+        }
     }
 }

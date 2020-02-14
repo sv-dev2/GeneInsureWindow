@@ -40,7 +40,8 @@
             this.lblMessage.Location = new System.Drawing.Point(0, 11);
             this.lblMessage.MaximumSize = new System.Drawing.Size(396, 0);
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(46, 17);
+            this.lblMessage.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.lblMessage.Size = new System.Drawing.Size(47, 17);
             this.lblMessage.TabIndex = 2;
             this.lblMessage.Text = "label1";
             // 
