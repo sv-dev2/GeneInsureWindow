@@ -79,11 +79,6 @@ namespace Gene
         }
 
 
-
-        
-
-
-
         public void testPrintConfirmationMehtod()
         {
 

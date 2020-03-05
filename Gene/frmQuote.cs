@@ -3984,10 +3984,15 @@ namespace Gene
                         Service_db.UpdateToken(ObjToken);
 
 
-                        if (_insuranceAndLicense && (chkZinara.Checked || chkRadioLicence.Checked))
+
+                        if (_insuranceAndLicense && (chkZinara.Checked && chkRadioLicence.Checked))
                             quoteresponseQuote = IcServiceobj.TPILICQuote(objRiskModel, (CustomerModel)customerInfo, parternToken); // combine insurance and license
+                        else if (_insuranceAndLicense && chkZinara.Checked)
+                            quoteresponseQuote = IcServiceobj.TPILICQuoteZinraOnly(objRiskModel, (CustomerModel)customerInfo, parternToken); // only for zinara
                         else
                             quoteresponseQuote = IcServiceobj.RequestQuote(objRiskModel, (CustomerModel)customerInfo, parternToken); //  insurance only
+
+
 
                         if (quoteresponseQuote.Response.Message.Contains("1 failed"))
                             _iceCashErrorMsg = quoteresponseQuote.Response.Quotes == null ? "Error Occured" : quoteresponseQuote.Response.Quotes[0].Message;
