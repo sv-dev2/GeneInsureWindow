@@ -213,64 +213,30 @@ namespace Gene
         private string SavePdf(string base64data)
         {
             string destinationFileName = "";
-
             try
-            {
-                /// https://svgvijay.blogspot.com/2013/02/how-to-save-image-into-folder-in-c.html
-                //string imagepath = pictureBox1.ImageLocation.ToString();
-                //string picname = imagepath.Substring(imagepath.LastIndexOf('\\'));
-                //string path = Application.StartupPath.Substring(0, Application.StartupPath.LastIndexOf("bin"));
-                //Bitmap imgImage = new Bitmap(pictureBox1.Image);    //Create an object of Bitmap class/
-                //imgImage.Save(path + "\\Image\\" + picname + ".pdf");
-                //MessageBox.Show("image svaed in :" + path + "'\'Image'\'" + picname);
-
-
-                //   string certificatePath = Application.StartupPath.Substring(0, Application.StartupPath.LastIndexOf("bin")) + "\\Certificate" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
-                //string certificatePath = HttpContext.Current.Server.MapPath("~/CertificatePDF");
-                //string fileFullPath = certificatePath + "\\Certificate" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
-                //string FinalCertificatePath = ConfigurationManager.AppSettings["CerificatePathBase"] + "/CertificatePDF/Certificate" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf"; ;
-
-
+            {               
                 List<string> pdfFiles = new List<string>();
-                //   byte[] bytes = Encoding.ASCII.GetBytes(base64data);
-
                 byte[] pdfbytes = Convert.FromBase64String(base64data);
-
-
-                //string installedPath = Application.StartupPath + "/pdf";
-                //string fileName = "Certificate1" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
-
 
                 // string installedPath = @"C:\";
                 string installedPath = @"C:\Users\Public\";
                 string fileName = "Certificate" + ".pdf";
 
-                //Check whether folder path is exist
-                //if (!System.IO.Directory.Exists(installedPath))
-                //{
-                //    // If not create new folder
-                //    System.IO.Directory.CreateDirectory(installedPath);
-                //}
-                //Save pdf files in installedPath
-
                 destinationFileName = System.IO.Path.Combine(installedPath, System.IO.Path.GetFileName(fileName));
+                byte[] readFile = File.ReadAllBytes("http://geneinsureclaim.kindlebit.com//Documents/29062/GMCC200002648-1/20200403155646,Invoice.pdf");
+
                 File.WriteAllBytes(destinationFileName, pdfbytes);
-
-
-                //    using (System.IO.StreamWriter file =
-                //new System.IO.StreamWriter(@"C:\Certificate.pdf"))
-                //    {                 
-                //                file.WriteLine(pdfbytes);                                      
-                //    }
 
             }
             catch (Exception ex)
             {
-                // MessageBox.Show(ex.Message);
                 MyMessageBox.ShowBox(ex.Message, "Modal error message");
             }
             return destinationFileName;
         }
+
+
+       
 
 
         private void btnScan_Click(object sender, EventArgs e)
@@ -295,6 +261,7 @@ namespace Gene
                 MyMessageBox.ShowBox("Please Print Licence Disk. ", "Print License Disk");
 
                 printPDFWithAcrobat(pdfPath);
+
                 CreateLicenseFile(_base64Data);
 
                 //  pictureBox2.WaitOnLoad = false;

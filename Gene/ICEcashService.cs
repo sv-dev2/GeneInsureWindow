@@ -19,14 +19,13 @@ namespace Insurance.Service
 {
     public class ICEcashService
     {
-
         //Test SANDBOX urL 
-        public static string PSK = "127782435202916376850511";
-        public static string SandboxIceCashApi = "http://api-test.icecash.com/request/20523588";
+        //public static string PSK = "127782435202916376850511";
+        //public static string SandboxIceCashApi = "http://api-test.icecash.com/request/20523588";
 
         // Live url
-       // public static string PSK = "565205790573235453203546";
-      // public static string SandboxIceCashApi = "https://api.icecash.co.zw/request/20350763";
+        public static string PSK = "565205790573235453203546";
+        public static string SandboxIceCashApi = "https://api.icecash.co.zw/request/20350763";
 
         private static string GetSHA512(string text)
         {
@@ -1337,9 +1336,7 @@ namespace Insurance.Service
             IRestResponse response = client.Execute(request);
 
             ResultLicenceIDRootObject json = JsonConvert.DeserializeObject<ResultLicenceIDRootObject>(response.Content);
-
-         
-
+    
             Service_db.WriteIceCashLog(data, json.Response.Message, "TPILICResult", vehicleDetails.RegistrationNo, vehicleDetails.ALMBranchId.ToString());
 
             return json;

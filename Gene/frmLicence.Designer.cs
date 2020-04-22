@@ -40,6 +40,8 @@ namespace Gene
             this.printDoc = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtLicPdfCode = new System.Windows.Forms.TextBox();
+            this.btnPdf = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -73,12 +75,13 @@ namespace Gene
             // 
             this.txtLicVrn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLicVrn.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLicVrn.Location = new System.Drawing.Point(449, 284);
+            this.txtLicVrn.Location = new System.Drawing.Point(1127, 273);
             this.txtLicVrn.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.txtLicVrn.Name = "txtLicVrn";
-            this.txtLicVrn.Size = new System.Drawing.Size(659, 53);
+            this.txtLicVrn.Size = new System.Drawing.Size(158, 53);
             this.txtLicVrn.TabIndex = 1;
             this.txtLicVrn.Text = "Enter Registration Number";
+            this.txtLicVrn.Visible = false;
             this.txtLicVrn.Enter += new System.EventHandler(this.txtLicVrn_Enter);
             // 
             // btnLicPrint
@@ -86,12 +89,13 @@ namespace Gene
             this.btnLicPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
             this.btnLicPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLicPrint.ForeColor = System.Drawing.Color.White;
-            this.btnLicPrint.Location = new System.Drawing.Point(950, 343);
+            this.btnLicPrint.Location = new System.Drawing.Point(1331, 273);
             this.btnLicPrint.Name = "btnLicPrint";
             this.btnLicPrint.Size = new System.Drawing.Size(158, 76);
             this.btnLicPrint.TabIndex = 0;
             this.btnLicPrint.Text = "Submit";
             this.btnLicPrint.UseVisualStyleBackColor = false;
+            this.btnLicPrint.Visible = false;
             this.btnLicPrint.Click += new System.EventHandler(this.btnLicPrint_Click);
             // 
             // label1
@@ -123,12 +127,39 @@ namespace Gene
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // txtLicPdfCode
+            // 
+            this.txtLicPdfCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtLicPdfCode.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLicPdfCode.Location = new System.Drawing.Point(449, 273);
+            this.txtLicPdfCode.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
+            this.txtLicPdfCode.Name = "txtLicPdfCode";
+            this.txtLicPdfCode.Size = new System.Drawing.Size(598, 53);
+            this.txtLicPdfCode.TabIndex = 114;
+            this.txtLicPdfCode.Text = "Enter Pdf Verfication Code";
+            this.txtLicPdfCode.Enter += new System.EventHandler(this.txtLicPdfCode_Enter);
+            // 
+            // btnPdf
+            // 
+            this.btnPdf.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
+            this.btnPdf.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPdf.ForeColor = System.Drawing.Color.White;
+            this.btnPdf.Location = new System.Drawing.Point(889, 369);
+            this.btnPdf.Name = "btnPdf";
+            this.btnPdf.Size = new System.Drawing.Size(158, 76);
+            this.btnPdf.TabIndex = 115;
+            this.btnPdf.Text = "Submit";
+            this.btnPdf.UseVisualStyleBackColor = false;
+            this.btnPdf.Click += new System.EventHandler(this.btnPdf_Click);
+            // 
             // frmLicence
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(212)))));
             this.ClientSize = new System.Drawing.Size(1556, 779);
+            this.Controls.Add(this.btnPdf);
+            this.Controls.Add(this.txtLicPdfCode);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btnHome);
             this.Controls.Add(this.txtLicVrn);
@@ -155,5 +186,7 @@ namespace Gene
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.TextBox txtLicPdfCode;
+        private System.Windows.Forms.Button btnPdf;
     }
 }

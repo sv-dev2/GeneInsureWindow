@@ -1305,7 +1305,7 @@ namespace Gene
 
             GetRadioLiceenseFee(objRiskModel.PaymentTermId.ToString());
 
-            if(_iceCashErrorMsg!="")
+            if (_iceCashErrorMsg != "")
             {
                 GoToVrnScreen();
                 return;
@@ -1334,7 +1334,11 @@ namespace Gene
         private void btnRadioZinaraBack_Click(object sender, EventArgs e)
         {
             pnlRadioZinara.Visible = false;
-            pnlPersonalDetails2.Visible = true;
+
+            if (rdCorporate.Checked)
+                pnlCorporate.Visible = true;
+            else
+                pnlPersonalDetails2.Visible = true;
         }
 
         private void btnHomeRadioZinara_Click(object sender, EventArgs e)
@@ -1503,7 +1507,7 @@ namespace Gene
             //Save Payment info
             PaymentResult objResult = new PaymentResult();
             long TransactionId = 0;
-            
+
             decimal transctionAmt = Convert.ToDecimal(txtTotalAmount.Text);
 
             string paymentTermName = "Swipe";
@@ -1562,7 +1566,7 @@ namespace Gene
                 <Esp:Interface Version='1.0' xmlns:Esp='http://www.mosaicsoftware.com/Postilion/eSocket.POS/'><Esp:Transaction TerminalId='" + ConfigurationManager.AppSettings["TerminalId"] + "' TransactionId='" + TransactionId + "' Type='PURCHASE' TransactionAmount='" + amountIncents + "'><Esp:PurchasingCardData Description='blah'><Esp:LineItem Description='boh'/><Esp:LineItem Description='beh' Sign='C'><Esp:TaxAmount Type='04'/><Esp:TaxAmount Type='05'/></Esp:LineItem><Esp:Contact Type='BILL_FROM' Name='Ian'/><Esp:Contact Type='BILL_TO' Telephone='021'/><Esp:TaxAmount Type='02'/><Esp:TaxAmount Type='03'/></Esp:PurchasingCardData><Esp:PosStructuredData Name='name' Value='value'/><Esp:PosStructuredData Name='name2' Value='value2'/></Esp:Transaction></Esp:Interface>";
 
 
-           // isPaymentDone = SendTransaction(ConfigurationManager.AppSettings["url"], ConfigurationManager.AppSettings["Port"], xmlString);
+            // isPaymentDone = SendTransaction(ConfigurationManager.AppSettings["url"], ConfigurationManager.AppSettings["Port"], xmlString);
 
             // isPaymentDone = true;
             //PartialPaymentModel paymentDetail = SavePartialPayment();
@@ -1689,8 +1693,8 @@ namespace Gene
                 else
                 {
 
-                  //  MyMessageBox.ShowBox("Error occured. " + responseMessage, "Message");
-                 //   TransactionId = GenerateTransactionId();
+                    //  MyMessageBox.ShowBox("Error occured. " + responseMessage, "Message");
+                    //   TransactionId = GenerateTransactionId();
 
 
 
@@ -1895,7 +1899,7 @@ namespace Gene
             PartialPaymentModel partialPayment = new PartialPaymentModel();
             partialPayment.RegistratonNumber = objRiskModel.RegistrationNo;
             partialPayment.CustomerEmail = customerInfo.EmailAddress;
-           // partialPayment.PartialAmount = Convert.ToDecimal(txtPartialAmount.Text);
+            // partialPayment.PartialAmount = Convert.ToDecimal(txtPartialAmount.Text);
             partialPayment.CreatedOn = DateTime.Now;
 
 
@@ -2877,7 +2881,160 @@ namespace Gene
 
         }
 
+        private void btnHomeCorporate_Click(object sender, EventArgs e)
+        {
+            GotoHome();
+        }
 
+        private void btnCorporateBack_Click(object sender, EventArgs e)
+        {
+            PnlVrn.Visible = true;
+            pnlCorporate.Visible = false;
+        }
+
+        private void btnCorporateContinue_Click(object sender, EventArgs e)
+        {
+
+
+            if (txtCompany.Text == string.Empty)
+            {
+                NewerrorProvider.SetError(txtCompany, "Please enter the Company name");
+                txtCompany.Focus();
+                return;
+            }
+            if (txtCmpEmail.Text == string.Empty)
+            {
+                NewerrorProvider.SetError(txtCmpEmail, "Please enter the email address");
+                txtCmpEmail.Focus();
+                return;
+            }
+
+            if (txtCmpAddress.Text == string.Empty)
+            {
+                NewerrorProvider.SetError(txtCmpAddress, "Please enter the comapany address");
+                txtCmpAddress.Focus();
+                return;
+            }
+
+            if (txtCmpPhone.Text == string.Empty)
+            {
+                NewerrorProvider.SetError(txtCmpPhone, "Please enter the phone number");
+                txtCmpPhone.Focus();
+                return;
+            }
+
+
+            if (cmbCmpCity.SelectedIndex == -1)
+            {
+                NewerrorProvider.SetError(cmbCmpCity, "Please select the city");
+                cmbCmpCity.Focus();
+                return;
+            }
+
+
+
+            if (txtCmpBusinessId.Text == string.Empty)
+            {
+                NewerrorProvider.SetError(txtIDNumber, "Please enter the Business Id");
+                txtCmpBusinessId.Focus();
+                return;
+            }
+            if (txtZipCode.Text == string.Empty)
+            {
+                NewerrorProvider.SetError(txtZipCode, "Please enter the zipcode");
+                txtZipCode.Focus();
+                return;
+            }
+
+
+            // pnlsumary.Visible = true;
+            //  pnlInsurance.Visible = true;
+            //  pnlZinara.Visible=true;
+
+
+            // var strName = txtFirstName.Text.Split(' ');
+            customerInfo.FirstName = txtCompany.Text;
+            customerInfo.LastName = txtCompany.Text;
+
+            customerInfo.EmailAddress = txtCmpEmail.Text;
+            customerInfo.AddressLine2 = txtCmpAddress.Text;
+            // customerInfo.DateOfBirth = Convert.ToDateTime(txtDOB.Text);
+            //customerInfo.City = txtCity.Text;
+            customerInfo.City = cmbCmpCity.Text;
+            customerInfo.PhoneNumber = txtCmpPhone.Text;
+            customerInfo.CountryCode = "+263";
+            customerInfo.AddressLine1 = txtCmpAddress.Text;
+            customerInfo.NationalIdentificationNumber = txtCmpBusinessId.Text;
+            customerInfo.CountryCode = cmbCmpCode.SelectedValue.ToString();
+            // customerInfo.Gender = rdbFemale
+
+
+
+            // customerInfo.Zipcode = txtZipCode.Text;
+            customerInfo.BranchId = branchName == "" ? 0 : Convert.ToInt32(branchName);
+
+            pnlCorporate.Visible = false;
+            pnlRadioZinara.Visible = true;
+
+
+        }
+
+        private void txtCompany_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidSpecailCharacter(e);
+        }
+
+
+        private bool ValidSpecailCharacter(KeyPressEventArgs e)
+        {
+            var regex = new Regex(@"[^a-zA-Z0-9\s\b]");
+            if (regex.IsMatch(e.KeyChar.ToString()))
+            {
+                e.Handled = true;
+            }
+            return e.Handled;
+        }
+
+        private void txtCmpAddress_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidSpecailCharacter(e);
+        }
+
+        private void txtFirstName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidSpecailCharacter(e);
+        }
+
+        private void txtLastName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidSpecailCharacter(e);
+        }
+
+        private void txtAdd1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidSpecailCharacter(e);
+        }
+
+        private void txtAdd2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidSpecailCharacter(e);
+        }
+
+        private void txtZipCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidSpecailCharacter(e);
+        }
+
+        private void txtVrn_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidSpecailCharacter(e);
+        }
+
+        private void btnPernalBack_Click(object sender, EventArgs e)
+        {
+            pnlPersonalDetails.Visible = false;
+            PnlVrn.Visible = true;
+        }
     }
 
 }

@@ -65,8 +65,6 @@ namespace Gene
 
         List<ProductsModel> ProductsList;
 
-
-
         string parternToken = "";
         bool isVehicalDeleted = false;
         bool isbackclicked = false;
@@ -77,7 +75,6 @@ namespace Gene
         string CardDetail = "";
         string TransactionAmount = "";
         string VRNnumForBack = "";
-
         string branchName = "0";
 
         public string _clientIdType;
@@ -98,9 +95,6 @@ namespace Gene
         //private static frmQuote _mf;
         public frmQuote(string branch, ICEcashTokenResponse _ObjToken = null, bool insuranceAndLicense = true)
         {
-
-
-
 
             branchName = branch;
             // this for testing
@@ -225,6 +219,12 @@ namespace Gene
             pnlRadioZinara.Location = new Point(215, 20);
             //pnlRadioZinara.Size = new System.Drawing.Size(1390, 750);
             pnlRadioZinara.Size = new System.Drawing.Size(1590, 750);
+
+
+            //pnlRadioZinaraIns.Location = new Point(215, 20);
+            ////pnlRadioZinara.Size = new System.Drawing.Size(1390, 750);
+            //pnlRadioZinaraIns.Size = new System.Drawing.Size(1590, 750);
+
 
 
             // pnlRadio.Location = new Point(14, 152);
@@ -1398,7 +1398,7 @@ namespace Gene
 
                 objRiskModel = new RiskDetailModel();
                 objRiskModel.RegistrationNo = txtVrn.Text;
-                objRiskModel.ALMBranchId = branchName==""? 0: Convert.ToInt32(branchName);
+                objRiskModel.ALMBranchId = branchName == "" ? 0 : Convert.ToInt32(branchName);
                 if (objRiskModel != null)
                 {
                     if (rdCorporate.Checked)
@@ -2278,7 +2278,7 @@ namespace Gene
             }
             // GetPremiumAmount_ChangeOfCoverType();
 
-            
+
 
             if (VehicalIndex == -1)
             {
@@ -2356,7 +2356,7 @@ namespace Gene
 
             btnRiskCont.Text = "Continue";
 
-            if (_iceCashErrorMsg!="")
+            if (_iceCashErrorMsg != "")
             {
                 MyMessageBox.ShowBox(_iceCashErrorMsg);
                 pnlRiskDetails.Visible = false;
@@ -2385,7 +2385,7 @@ namespace Gene
             }
             else
             {
-              //  cmbMake.Visible = true;
+                //  cmbMake.Visible = true;
                 //cmbModel.Visible = true;
             }
 
@@ -2401,12 +2401,12 @@ namespace Gene
 
             pnlRiskDetails.Visible = false;
 
-            if (txtVrn.Text.ToUpper() == _tba || !_insuranceAndLicense)
-                pnlInsurance.Visible = true;
-            else
-                pnlRadioZinara.Visible = true;
+            //if (txtVrn.Text.ToUpper() == _tba || !_insuranceAndLicense)
+            //    pnlInsurance.Visible = true;
+            //else
+            //    pnlRadioZinara.Visible = true;
 
-
+            pnlInsurance.Visible = true;
 
 
         }
@@ -2621,7 +2621,7 @@ namespace Gene
             }
 
 
-           
+
             CalculatePremium();
             if (VehicalIndex != -1)
             {
@@ -2958,9 +2958,13 @@ namespace Gene
             if (txtAdd1.Text != string.Empty && txtAdd2.Text != string.Empty && cmdCity.SelectedIndex != -1 && txtIDNumber.Text != string.Empty && txtZipCode.Text != string.Empty)
             {
 
-                // pnlsumary.Visible = true;
-                pnlInsurance.Visible = true;
                 pnlPersonalDetails2.Visible = false;
+                pnlInsurance.Visible = true;
+
+                if (_insuranceAndLicense && txtVrn.Text.ToUpper() != _tba)
+                    pnlRadioZinaraIns.Visible = true;
+                else
+                    pnlRadioZinaraIns.Visible = false;
 
 
                 //  var strName = txtFirstName.Text.Split(' ');
@@ -2987,10 +2991,10 @@ namespace Gene
                 customerInfo.Zipcode = txtZipCode.Text;
 
                 customerInfo.BranchId = branchName == "" ? 0 : Convert.ToInt32(branchName);
-
-
-
             }
+
+
+
         }
         public void SetUserInput()
         {
@@ -3949,13 +3953,13 @@ namespace Gene
 
                     var product = ProductsList.FirstOrDefault(c => c.Id == objRiskModel.ProductId); // get vehilce type form table
                     var temVehicleTypeId = objRiskModel.ProductId;
-                    if (product!=null)
+                    if (product != null)
                         objRiskModel.ProductId = product.VehicleTypeId;
-                    
+
 
                     if (_insuranceAndLicense && (chkZinara.Checked && chkRadioLicence.Checked))
                         quoteresponseQuote = IcServiceobj.TPILICQuote(objRiskModel, (CustomerModel)customerInfo, parternToken); // combine insurance and license
-                    else if(_insuranceAndLicense && chkZinara.Checked)
+                    else if (_insuranceAndLicense && chkZinara.Checked)
                         quoteresponseQuote = IcServiceobj.TPILICQuoteZinraOnly(objRiskModel, (CustomerModel)customerInfo, parternToken); // only for zinara
                     else
                         quoteresponseQuote = IcServiceobj.RequestQuote(objRiskModel, (CustomerModel)customerInfo, parternToken); //  insurance only
@@ -3963,12 +3967,12 @@ namespace Gene
                     objRiskModel.ProductId = temVehicleTypeId;  // set selected vehilceId
 
                     resObject = quoteresponseQuote.Response;
-                    if (resObject.Message.Contains("1 failed"))                
+                    if (resObject.Message.Contains("1 failed"))
                         _iceCashErrorMsg = resObject.Quotes == null ? "Error Occured" : resObject.Quotes[0].Message;
 
                     if (resObject.Message.Contains("Your account is inactive"))
                         _iceCashErrorMsg = resObject.Message;
-                    
+
 
 
                     //if token expire
@@ -3984,14 +3988,12 @@ namespace Gene
                         Service_db.UpdateToken(ObjToken);
 
 
-
                         if (_insuranceAndLicense && (chkZinara.Checked && chkRadioLicence.Checked))
                             quoteresponseQuote = IcServiceobj.TPILICQuote(objRiskModel, (CustomerModel)customerInfo, parternToken); // combine insurance and license
                         else if (_insuranceAndLicense && chkZinara.Checked)
                             quoteresponseQuote = IcServiceobj.TPILICQuoteZinraOnly(objRiskModel, (CustomerModel)customerInfo, parternToken); // only for zinara
                         else
                             quoteresponseQuote = IcServiceobj.RequestQuote(objRiskModel, (CustomerModel)customerInfo, parternToken); //  insurance only
-
 
 
                         if (quoteresponseQuote.Response.Message.Contains("1 failed"))
@@ -4020,7 +4022,7 @@ namespace Gene
                     //if(_iceCashErrorMsg!="")
                     //{
                     //    MyMessageBox.ShowBox(_iceCashErrorMsg);
-                     
+
                     //}
 
                     // picbxCoverType.Visible = false;
@@ -4040,7 +4042,7 @@ namespace Gene
 
                             if (response.result != 0)
                             {
-                                if (quoteresponseQuote.Response.Quotes!=null && quoteresponseQuote.Response.Quotes[0] != null)
+                                if (quoteresponseQuote.Response.Quotes != null && quoteresponseQuote.Response.Quotes[0] != null)
                                 {
                                     ////9Jan
                                     if (quoteresponseQuote.Response.Quotes[0].Policy != null)
@@ -4093,7 +4095,7 @@ namespace Gene
                                         if (!string.IsNullOrEmpty(make) && !string.IsNullOrEmpty(model))
                                         {
                                             SaveVehicalMakeAndModel(make, model);
-                                             bindMake();
+                                            bindMake();
 
                                         }
                                         else
@@ -4119,26 +4121,26 @@ namespace Gene
                                         Int32 indexMake = cmbMake.FindStringExact(quoteresponseQuote.Response.Quotes[0].Vehicle.Make);
                                         cmbMake.SelectedIndex = indexMake;
                                         //if(cmbMake.SelectedIndex>0)
-                                        if (quoteresponseQuote.Response.Quotes[0].Vehicle.Make!=null)
+                                        if (quoteresponseQuote.Response.Quotes[0].Vehicle.Make != null)
                                         {
-                                           // cmbMake.Visible = false;
-                                            vehicleMakeTxt.Visible = true;
-                                            vehicleMakeTxt.Text = quoteresponseQuote.Response.Quotes[0].Vehicle.Make;                                          
+                                            // cmbMake.Visible = false;
+                                            // vehicleMakeTxt.Visible = true;
+                                            vehicleMakeTxt.Text = quoteresponseQuote.Response.Quotes[0].Vehicle.Make;
                                         }
-                                       
+
 
                                         //vehicleMakeTxt.Text = quoteresponseQuote.Response.Quotes[0].Vehicle.Make;
 
                                         Int32 indexModel = cmbModel.FindString(quoteresponseQuote.Response.Quotes[0].Vehicle.Model);
                                         cmbModel.SelectedIndex = indexModel;
                                         // if(cmbModel.SelectedIndex>0)
-                                        if (quoteresponseQuote.Response.Quotes[0].Vehicle.Model!=null)
+                                        if (quoteresponseQuote.Response.Quotes[0].Vehicle.Model != null)
                                         {
-                                           // cmbModel.Visible = false;
-                                            vehicleModeltxt.Visible = true;
-                                            vehicleModeltxt.Text = quoteresponseQuote.Response.Quotes[0].Vehicle.Model;                                           
+                                            // cmbModel.Visible = false;
+                                            // vehicleModeltxt.Visible = true;
+                                            vehicleModeltxt.Text = quoteresponseQuote.Response.Quotes[0].Vehicle.Model;
                                         }
-                                                                                                                                                               
+
                                         // vehicleModeltxt.Text = quoteresponseQuote.Response.Quotes[0].Vehicle.Model;
 
                                         //_clientIdType = textSearchVrn.Text == "Id Number" ? quoteresponseQuote.Response.Quotes[0].Client.IDNumber : textSearchVrn.Text;
@@ -4154,17 +4156,17 @@ namespace Gene
 
                                         if (chkZinara.Checked)
                                         {
-                                            PenaltiesAmt = quoteresponseQuote.Response.Quotes[0].Licence.PenaltiesAmt==null? 0 : Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Licence.PenaltiesAmt);
+                                            PenaltiesAmt = quoteresponseQuote.Response.Quotes[0].Licence.PenaltiesAmt == null ? 0 : Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Licence.PenaltiesAmt);
 
-                                            if(PenaltiesAmt>0)
+                                            if (PenaltiesAmt > 0)
                                             {
                                                 MyMessageBox.ShowBox("You have outstanding penalties, please contact our Contact Centre for assistance on 086 77 22 33 44.");
                                                 pnlRadioZinara.Visible = false;
                                                 PnlVrn.Visible = true;
                                                 return;
                                             }
-                                            
-                                            var TotalLicAmt = quoteresponseQuote.Response.Quotes[0].Licence.TotalLicAmt==null ? 0 : Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Licence.TotalLicAmt);
+
+                                            var TotalLicAmt = quoteresponseQuote.Response.Quotes[0].Licence.TotalLicAmt == null ? 0 : Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Licence.TotalLicAmt);
                                             objRiskModel.VehicleLicenceFee = TotalLicAmt + PenaltiesAmt;
                                         }
 
@@ -4174,13 +4176,13 @@ namespace Gene
                                             objRiskModel.IncludeRadioLicenseCost = true;
                                         }
 
-                                        if(PenaltiesAmt>0)
+                                        if (PenaltiesAmt > 0)
                                         {
                                             MyMessageBox.ShowBox("You have outstanding penalties, please contact our Contact Centre for assistance on 086 77 22 33 44.");
                                             pnlRadioZinara.Visible = false;
                                             PnlVrn.Visible = true;
                                             return;
-                                        }                               
+                                        }
                                     }
                                 }
 
@@ -5707,7 +5709,7 @@ namespace Gene
                             return;
                         }
 
-                      //  btnConfirmPayment.Text = "Approving Insurance..";
+                        //  btnConfirmPayment.Text = "Approving Insurance..";
                         ResultRootObject policyDetailsIceCash = ApproveVRNToIceCash(summaryDetails.Id);
 
                         string iceCashPolicyNumber = "";
@@ -5716,7 +5718,7 @@ namespace Gene
                             iceCashPolicyNumber = policyDetailsIceCash.Response.PolicyNo;
                         }
 
-                      //  btnConfirmPayment.Text = "Sending email..";
+                        //  btnConfirmPayment.Text = "Sending email..";
 
                         SavePaymentinformation(TransactionId.ToString(), summaryDetails.Id, paymentTermName, CardDetail, terninalid, transctionAmt, iceCashPolicyNumber);
 
@@ -5758,7 +5760,7 @@ namespace Gene
 
                         foreach (var item in objlistRisk)  // for now it's  commented
                         {
-                           // item.LicenseId = _licenseId; //m latest license
+                            // item.LicenseId = _licenseId; //m latest license
                             if (!string.IsNullOrEmpty(item.CombinedID) && (item.CombinedID != "0"))
                             {
                                 btnConfirmPayment.Text = "Approving license..";
@@ -6582,7 +6584,6 @@ namespace Gene
             //    return;
             //}
 
-
             try
             {
                 if (chkRadioLicence.Checked)
@@ -6660,7 +6661,7 @@ namespace Gene
                 {
                     MyMessageBox.ShowBox(_iceCashErrorMsg);
 
-                    if(_iceCashErrorMsg.Contains("Your account is inactive"))
+                    if (_iceCashErrorMsg.Contains("Your account is inactive"))
                     {
                         GotoHome();
                         return;
@@ -6671,9 +6672,9 @@ namespace Gene
                     OptNext.Text = "Continue";
 
                     //pnlRadioZinara.Visible = false;
-                   // PnlVrn.Visible = true;
+                    // PnlVrn.Visible = true;
 
-                   // return;
+                    // return;
                 }
 
 
@@ -6777,10 +6778,78 @@ namespace Gene
         }
 
 
+        public bool CheckRadioAndZinara()
+        {
+
+            bool result = true;
+
+            if (chkRadioLicence.Checked)
+            {
+                if (!chkZinara.Checked)
+                {
+                    //lblZinraErrMsg.Text = "System cannot process Radio Only.";
+                    //lblZinraErrMsg.ForeColor = Color.Red;
+                    MyMessageBox.ShowBox("System cannot process Radio Only.", "Message");
+                    result = false;
+                }
+            }
+
+
+            if (chkRadioLicence.Checked)
+            {
+                if (RadioPaymnetTerm.SelectedIndex == 0)
+                {
+                    MyMessageBox.ShowBox("Please select payment term for radio license because you have checked radio chekbox othewise please uncheck radio chekbox.", "Message");
+                    result = false;
+                }
+            }
+
+            if (chkZinara.Checked)
+            {
+                if (ZinPaymentDetail.SelectedIndex == 0)
+                {
+                    MyMessageBox.ShowBox("Please checked checkbox of zinara license because you have selected zinara payment term otherwise unselect payment term.", "Message");
+                    result = false;
+                }
+            }
+
+            if (chkRadioLicence.Checked)
+            {
+                if (RadioPaymnetTerm.SelectedIndex > 0)
+                {
+                    if (!IsPaymentTermValidForInsuranceLicense(Convert.ToInt32(cmbPaymentTerm.SelectedValue), Convert.ToInt32(RadioPaymnetTerm.SelectedValue)))
+                    {
+                        MyMessageBox.ShowBox("Licence payment term should be equal or less than Insurance payment term.", "Message");
+                        result = false;
+                    }
+                }
+            }
+
+
+            if (chkZinara.Checked)
+            {
+                if (ZinPaymentDetail.SelectedIndex > 0)
+                {
+                    if (!IsPaymentTermValidForInsuranceLicense(Convert.ToInt32(cmbPaymentTerm.SelectedValue), Convert.ToInt32(ZinPaymentDetail.SelectedValue)))
+                    {
+                        MyMessageBox.ShowBox("Licence payment term should be equal or less than Insurance payment term.", "Message");
+                        result = false;
+                    }
+                }
+            }
+
+            return result;
+        }
 
         public bool IsPaymentTermValidForInsuranceLicense(int insurancePaymentTerm, int licesnePaymentTerm)
         {
             bool result = true;
+
+            if (insurancePaymentTerm == 1)
+                insurancePaymentTerm = 12;
+
+            if (licesnePaymentTerm == 1)
+                licesnePaymentTerm = 12;
 
             if (insurancePaymentTerm != licesnePaymentTerm)
             {
@@ -6969,7 +7038,7 @@ namespace Gene
 
                         MyMessageBox.ShowBox("You have outstanding penalties, please contact our Contact Centre for assistance on 086 77 22 33 44.", "Message");
 
-                        
+
                     }
 
                     if (_resObjects != null && _resObjects.Quotes != null)
@@ -7118,8 +7187,6 @@ namespace Gene
                 {
                     return;
                 }
-
-
 
                 var requestToken = Service_db.GetLatestToken();
                 if (requestToken != null)
@@ -7517,7 +7584,7 @@ namespace Gene
 
 
                 case 9791:
-                    Message = "Administrative response";
+                    Message = "w Administrative response";
                     break;
 
 
@@ -8149,6 +8216,7 @@ namespace Gene
                 customerInfo.PhoneNumber = txtCmpPhone.Text;
                 customerInfo.CountryCode = cmbCode.SelectedValue.ToString();
                 customerInfo.FirstName = txtCompany.Text;
+                customerInfo.LastName = txtCompany.Text;
                 customerInfo.NationalIdentificationNumber = txtCmpBusinessId.Text;
                 customerInfo.AddressLine1 = txtCmpAddress.Text;
 
@@ -8572,7 +8640,7 @@ namespace Gene
             if (quoteresponseResult.Response != null && quoteresponseResult.Response.LicenceCert != null)
             {
 
-               
+
 
                 licenseDiskList.Add(quoteresponseResult.Response);
 
@@ -9077,9 +9145,6 @@ namespace Gene
 
         private void btnInsCnt_Click(object sender, EventArgs e)
         {
-
-
-
             if (cmbPaymentTerm.SelectedIndex == 0)
             {
                 NewerrorProvider.SetError(cmbPaymentTerm, "Please select the payment term");
@@ -9095,7 +9160,6 @@ namespace Gene
 
 
             int CoverId = Convert.ToInt32(cmbCoverType.SelectedValue);
-
             if (CoverId == 4) // for comprehensive
             {
                 if (txtSumInsured.Text == string.Empty || txtSumInsured.Text == "0")
@@ -9122,6 +9186,22 @@ namespace Gene
                 IceCashRequest = "Insurance";
 
 
+            if (_insuranceAndLicense && txtVrn.Text.ToUpper() != _tba)
+            {
+                if (!CheckRadioAndZinara())
+                {
+                    return;
+                }
+
+                if(chkZinara.Checked==false)
+                {
+                    MyMessageBox.ShowBox("Please select license.", "Message");
+                    return;
+                }
+
+
+            }
+
             if (VehicalIndex == -1)
             {
                 if (cmbPaymentTerm.SelectedValue != null && cmbCoverType.SelectedValue != null)
@@ -9143,66 +9223,35 @@ namespace Gene
                 }
             }
 
-            if (!_insuranceAndLicense && txtVrn.Text.ToUpper() != _tba)
+
+            //if (!_insuranceAndLicense && txtVrn.Text.ToUpper() != _tba)
+            if (txtVrn.Text.ToUpper() != _tba)
             {
                 btnInsCnt.Text = "Processing..";
 
-                //btnInsCnt.Enabled = false;
-                //LoadingInsurance.Visible = true;
-                //loadingInsuraneImg.WaitOnLoad = true;
-
                 SetLoadingPnlInsurance(true);
-
                 RequestVehicleDetails();
 
                 if (_iceCashErrorMsg != "")
                 {
                     MyMessageBox.ShowBox(_iceCashErrorMsg);
-
-                    //LoadingInsurance.Visible = false;
-                    //btnInsCnt.Enabled = true;
-
                     SetLoadingPnlInsurance(false);
                     btnInsCnt.Text = "Continue";
-
-                    //pnlInsurance.Visible = false;
-                    //PnlVrn.Visible = true;
-
-                   // return;
                 }
-
-
                 SetLoadingPnlInsurance(false);
-
-                //btnInsCnt.Enabled = true;
-                //LoadingInsurance.Visible = false;
-
             }
 
-
-            //if (_iceCashErrorMsg != "")
-            //{
-            //    string errMsg = _iceCashErrorMsg + " You can also contact from Customer Service Centre (08677223344).";
-
-            //    MyMessageBox.ShowBox(errMsg, "Message");
-            //    btnInsCnt.Text = "Continue";
-            //    GoToVrnScreen();
-            //    return;
-            //}
-
-            // loadingInsuraneImg.Visible = false;
-
+            pnlRiskDetails.Visible = true;
             pnlInsurance.Visible = false;
 
-            if (txtVrn.Text.Trim().ToUpper() == _tba || !_insuranceAndLicense)
-                pnlRiskDetails.Visible = true;
-            else
-                pnlRadioZinara.Visible = true;
-
-
+            //if (txtVrn.Text.Trim().ToUpper() == _tba || !_insuranceAndLicense)
+            //    pnlRiskDetails.Visible = true;
+            //else
+            //{
+            //    pnlRadioZinara.Visible = true;
+            //}
 
             //pnlRiskDetails.Visible = true;
-
             btnInsCnt.Text = "Continue";
         }
 
@@ -9239,6 +9288,62 @@ namespace Gene
         {
             GotoHome();
         }
+
+        private void txtCmpBusinessId_MouseEnter(object sender, EventArgs e)
+        {
+            txtCmpBusinessId.Text = string.Empty;
+        }
+
+        private void txtVrn_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidSpecailCharacter(e);
+        }
+
+        private bool ValidSpecailCharacter(KeyPressEventArgs e)
+        {
+            var regex = new Regex(@"[^a-zA-Z0-9\s\b]");
+            if (regex.IsMatch(e.KeyChar.ToString()))
+            {
+                e.Handled = true;
+            }
+            return e.Handled;
+        }
+
+        private void txtAdd1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidSpecailCharacter(e);
+        }
+
+        private void txtAdd2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidSpecailCharacter(e);
+        }
+
+        private void txtZipCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidSpecailCharacter(e);
+        }
+
+        private void txtCompany_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidSpecailCharacter(e);
+        }
+
+        private void txtCmpAddress_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidSpecailCharacter(e);
+        }
+
+        private void txtFirstName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidSpecailCharacter(e);
+        }
+
+        private void txtLastName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidSpecailCharacter(e);
+        }
+
 
 
 

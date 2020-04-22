@@ -42,7 +42,7 @@ namespace Gene
         string _registrationNumber = "";
         public string CertificateNumber { get; set; }
 
-        string _branchId="0";
+        string _branchId = "0";
         RiskDetailModel riskDetail;
 
         List<ResultLicenceIDResponse> licenseDiskList = new List<ResultLicenceIDResponse>();
@@ -111,16 +111,16 @@ namespace Gene
 
                     // riskDetail = new RiskDetailModel { LicenseId = vehicelDetails.LicenseId.ToString(), RegistrationNo = vehicelDetails.RegistrationNo };
 
-                   // _branchId = _branchId==null? "0" : _branchId;
+                    // _branchId = _branchId==null? "0" : _branchId;
 
                     riskDetail = new RiskDetailModel { CombinedID = vehicelDetails.CombinedID, LicenseId = vehicelDetails.LicenseId, RegistrationNo = vehicelDetails.RegistrationNo };
 
                     if (!string.IsNullOrEmpty(vehicelDetails.CombinedID) && (vehicelDetails.CombinedID != "0"))
                     {
                         DisplayLicenseDisc(riskDetail, parternToken);
-                    }                 
+                    }
                 }
-                else if(vehicelDetails != null && vehicelDetails.LicenseId != null)
+                else if (vehicelDetails != null && vehicelDetails.LicenseId != null)
                 {
                     RequestToke token = Service_db.GetLatestToken();
                     if (ObjToken != null)
@@ -161,19 +161,34 @@ namespace Gene
             return result;
         }
 
+
+        private VehicleDetails GetVehicelDetialsByLicPdfCode(string code)
+        {
+            var client = new RestClient(IceCashRequestUrl + "GetVehicelDetailsByLicPdfCode?pdfCode=" + code);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("password", Pwd);
+            request.AddHeader("username", username);
+            request.AddParameter("application/json", "{\n\t\"Name\":\"ghj\"\n}", ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+
+            var result = JsonConvert.DeserializeObject<VehicleDetails>(response.Content);
+            return result;
+        }
+
+
         //uncomment after getting response from icecash
         private List<ResultLicenceIDResponse> DisplayLicenseDisc(RiskDetailModel riskDetailModel, string parterToken)
         {
             // List<ResultLicenceIDResponse> list = new List<ResultLicenceIDResponse>();
 
-          //  ResultLicenceIDRootObject quoteresponseResult = IcServiceobj.LICResult(riskDetailModel.LicenseId, parternToken);
+            //  ResultLicenceIDRootObject quoteresponseResult = IcServiceobj.LICResult(riskDetailModel.LicenseId, parternToken);
 
             ResultLicenceIDRootObject quoteresponseResult = ICEcashService.TPILICResult(riskDetailModel, parternToken);
 
 
             //TPILICResult
 
-            if (quoteresponseResult != null && (quoteresponseResult.Response.Message.Contains("Partner Token has expired") || quoteresponseResult.Response.Message.Contains("Invalid Partner Token")) )
+            if (quoteresponseResult != null && (quoteresponseResult.Response.Message.Contains("Partner Token has expired") || quoteresponseResult.Response.Message.Contains("Invalid Partner Token")))
             {
                 ObjToken = IcServiceobj.getToken();
                 if (ObjToken != null)
@@ -202,26 +217,19 @@ namespace Gene
                     return licenseDiskList;
                 }
 
-
                 this.Close();
                 CertificateSerialForm obj = new CertificateSerialForm(riskDetailModel, parternToken, quoteresponseResult.Response.LicenceCert);
                 obj.Show();
-
-
             }
             // 
             return licenseDiskList;
         }
 
-
-
-
-
         private List<ResultLicenceIDResponse> DisplayLicenseOnly(RiskDetailModel riskDetailModel, string parterToken) // only for license
         {
             // List<ResultLicenceIDResponse> list = new List<ResultLicenceIDResponse>();
 
-              ResultLicenceIDRootObject quoteresponseResult = IcServiceobj.LICResult(riskDetailModel.LicenseId, parternToken);
+            ResultLicenceIDRootObject quoteresponseResult = IcServiceobj.LICResult(riskDetailModel.LicenseId, parternToken);
 
             //TPILICResult
 
@@ -234,7 +242,6 @@ namespace Gene
                     Service_db.UpdateToken(ObjToken);
                     //  quoteresponse = IcServiceobj.RequestQuote(parternToken, RegistrationNo, suminsured, make, model, PaymentTermId, VehicleYear, CoverTypeId, VehicleUsage, "", (CustomerModel)customerInfo); // uncomment this line 
                     quoteresponseResult = IcServiceobj.LICResult(riskDetailModel.LicenseId, parternToken);
-
                 }
             }
 
@@ -242,13 +249,10 @@ namespace Gene
             {
                 licenseDiskList.Add(quoteresponseResult.Response);
 
-
-
                 if (quoteresponseResult.Response.LicenceCert == null)
                 {
                     //MessageBox.Show("Pdf not found for this  certificate.");
                     MyMessageBox.ShowBox("Pdf not found for this  certificate.", "Message");
-
                     pictureBox2.Visible = false;
 
                     return licenseDiskList;
@@ -515,10 +519,82 @@ namespace Gene
             txtLicVrn.Text = "";
         }
 
+        private void btnPdf_Click(object sender, EventArgs e)
+        {
+
+            if (txtLicPdfCode.Text == "" || txtLicPdfCode.Text == "Enter Pdf Verfication Code")
+            {
+                txtLicPdfCode.Focus();
+                errorProvider1.SetError(txtLicPdfCode, "Enter Pdf Verfication Code");
+                return;
+            }
+            else
+                errorProvider1.Clear();
+
+
+            var vehicelDetails = GetVehicelDetialsByLicPdfCode(txtLicPdfCode.Text);
+
+            if (vehicelDetails != null)
+            {
+                pictureBox2.Visible = true;
+                pictureBox2.WaitOnLoad = true;
+
+                String WebUrlPath = WebConfigurationManager.AppSettings["WebUrlPath"];
+                string filePath = WebUrlPath+"/"+ "Documents/License/"+ vehicelDetails.VehicelId + ".pdf";
+                //urlPath
+                var pdfPath = SavePdfFromUrl(filePath);
+                // var pdfPath = @"F:\sample.pdf";
+                PdfDocument doc = new PdfDocument();
+                doc.LoadFromFile(pdfPath);
+                doc.Pages.Insert(0);
+                doc.Pages.Add();
+                doc.Pages.RemoveAt(0);//Since First page have always Red Text if use Free Version.
+                doc.SaveToFile(pdfPath);
+
+            
+                MyMessageBox.ShowBox("Please Print Licence Disk. ", "Print License Disk");
+
+                printPDFWithAcrobat(pdfPath);
+
+                pictureBox2.Visible = false;
+            }
+
+        }
+
+
+        private string SavePdfFromUrl(string filePath)
+        {
+        
+            string destinationFileName = "";
+            try
+            {
+                List<string> pdfFiles = new List<string>();
+                byte[] pdfbytes;
+
+                using (var webClient = new WebClient())
+                {
+                    pdfbytes = webClient.DownloadData(filePath);
+                }
 
 
 
+                // string installedPath = @"C:\";
+                string installedPath = @"C:\Users\Public\";
+                string fileName = "Certificate" + ".pdf";
 
+                destinationFileName = System.IO.Path.Combine(installedPath, System.IO.Path.GetFileName(fileName));
+                File.WriteAllBytes(destinationFileName, pdfbytes);
+            }
+            catch (Exception ex)
+            {
+                MyMessageBox.ShowBox(ex.Message, "Modal error message");
+            }
+            return destinationFileName;
+        }
 
+        private void txtLicPdfCode_Enter(object sender, EventArgs e)
+        {
+            txtLicPdfCode.Text = "";
+        }
     }
 }

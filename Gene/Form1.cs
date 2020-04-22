@@ -41,10 +41,8 @@ namespace Gene
 
         int selectedBranchId = 0;
         List<Branch> branchList = new List<Branch>();
-
         ICEcashTokenResponse _ObjToken;
-
-      
+     
         public Form1(ICEcashTokenResponse ObjToken = null)
         {
 
@@ -231,21 +229,33 @@ namespace Gene
             frmRenewPolicy objRE = new frmRenewPolicy(_ObjToken, branch);
             objRE.Show();
             this.Hide();
-
         }
 
-        private void SetSelectedValue()
-        {
-           
+        private void SetSelectedValue(List<Branch> branchList)
+        {     
             string branchId = ReadBranchFromLogFile();
+
+            if(branchId==null || branchId =="")
+            {
+                MyMessageBox.ShowBox("Branch is not set, please contact to admistrator.");
+                lblSelectedBranch.Text = "Select Branch";
+            }
+
             cmbBranch.SelectedValue = branchId == "" ? 0 : Convert.ToInt32(branchId);
 
             if (branchId != "" && Convert.ToInt32(branchId) > 0)
             {
                 cmbBranch.Visible = false;
                 lblBranch.Visible = false;
-            }
 
+                var branchDetial = branchList.FirstOrDefault(c => c.Id == Convert.ToInt32(branchId));
+
+                if(branchDetial!=null)
+                    lblSelectedBranch.Text = branchDetial.BranchName;
+                else
+                    lblSelectedBranch.Text = "Select Branch";
+
+            }
         }
 
         public string ReadBranchFromLogFile()
@@ -324,7 +334,7 @@ namespace Gene
 
                 cmbBranch.SelectedIndex = 0;
 
-                SetSelectedValue();
+                SetSelectedValue(branchList);
             }
             catch (Exception ex)
             {

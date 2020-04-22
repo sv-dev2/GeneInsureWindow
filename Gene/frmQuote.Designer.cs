@@ -138,26 +138,10 @@ namespace Gene
             this.label33 = new System.Windows.Forms.Label();
             this.OptNext = new System.Windows.Forms.Button();
             this.optBack = new System.Windows.Forms.Button();
-            this.pnlRadio = new System.Windows.Forms.Panel();
-            this.txtradioAmount = new System.Windows.Forms.TextBox();
-            this.label38 = new System.Windows.Forms.Label();
-            this.RadioPaymnetTerm = new System.Windows.Forms.ComboBox();
-            this.label37 = new System.Windows.Forms.Label();
-            this.pnlZinara = new System.Windows.Forms.Panel();
-            this.txtZinTotalAmount = new System.Windows.Forms.TextBox();
-            this.txtpenalty = new System.Windows.Forms.TextBox();
-            this.txtAccessAmount = new System.Windows.Forms.TextBox();
-            this.label44 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.ZinPaymentDetail = new System.Windows.Forms.ComboBox();
-            this.label39 = new System.Windows.Forms.Label();
             this.pnlRadioZinara = new System.Windows.Forms.Panel();
             this.loadingInsuraneImg = new System.Windows.Forms.PictureBox();
             this.btnHomeOptional = new System.Windows.Forms.Button();
             this.lblZinraErrMsg = new System.Windows.Forms.Label();
-            this.chkZinara = new System.Windows.Forms.CheckBox();
-            this.chkRadioLicence = new System.Windows.Forms.CheckBox();
             this.lblAddressValue = new System.Windows.Forms.Label();
             this.btnSumContinue = new System.Windows.Forms.Button();
             this.btnSumBack = new System.Windows.Forms.Button();
@@ -277,9 +261,26 @@ namespace Gene
             this.label82 = new System.Windows.Forms.Label();
             this.label83 = new System.Windows.Forms.Label();
             this.pnlInsurance = new System.Windows.Forms.Panel();
+            this.pnlRadioZinaraIns = new System.Windows.Forms.Panel();
+            this.chkRadioLicence = new System.Windows.Forms.CheckBox();
+            this.chkZinara = new System.Windows.Forms.CheckBox();
+            this.pnlRadio = new System.Windows.Forms.Panel();
+            this.txtradioAmount = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.RadioPaymnetTerm = new System.Windows.Forms.ComboBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.pnlZinara = new System.Windows.Forms.Panel();
+            this.txtZinTotalAmount = new System.Windows.Forms.TextBox();
+            this.txtpenalty = new System.Windows.Forms.TextBox();
+            this.txtAccessAmount = new System.Windows.Forms.TextBox();
+            this.label44 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.ZinPaymentDetail = new System.Windows.Forms.ComboBox();
+            this.label39 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
             this.LoadingInsurance = new System.Windows.Forms.PictureBox();
+            this.label27 = new System.Windows.Forms.Label();
             this.btnInsuranceHome = new System.Windows.Forms.Button();
             this.label90 = new System.Windows.Forms.Label();
             this.btnInsBack = new System.Windows.Forms.Button();
@@ -312,8 +313,6 @@ namespace Gene
             this.pnlAddMoreVehicle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnAddMoreVehicle)).BeginInit();
             this.pnlSum.SuspendLayout();
-            this.pnlRadio.SuspendLayout();
-            this.pnlZinara.SuspendLayout();
             this.pnlRadioZinara.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.loadingInsuraneImg)).BeginInit();
             this.pnlsumary.SuspendLayout();
@@ -326,6 +325,9 @@ namespace Gene
             this.pnlTBAPersonalDetails.SuspendLayout();
             this.pnlCorporate.SuspendLayout();
             this.pnlInsurance.SuspendLayout();
+            this.pnlRadioZinaraIns.SuspendLayout();
+            this.pnlRadio.SuspendLayout();
+            this.pnlZinara.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LoadingInsurance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbNoofPerson)).BeginInit();
             this.pnlOptionalCover.SuspendLayout();
@@ -349,9 +351,9 @@ namespace Gene
             this.PnlVrn.Controls.Add(this.txtVrn);
             this.PnlVrn.Controls.Add(this.btnSave);
             this.PnlVrn.Controls.Add(this.label1);
-            this.PnlVrn.Location = new System.Drawing.Point(24, 235);
+            this.PnlVrn.Location = new System.Drawing.Point(24, 345);
             this.PnlVrn.Name = "PnlVrn";
-            this.PnlVrn.Size = new System.Drawing.Size(60, 93);
+            this.PnlVrn.Size = new System.Drawing.Size(57, 54);
             this.PnlVrn.TabIndex = 4;
             // 
             // rdCorporate
@@ -465,6 +467,7 @@ namespace Gene
             this.txtVrn.TabIndex = 1;
             this.txtVrn.TextChanged += new System.EventHandler(this.txtVrn_TextChanged);
             this.txtVrn.Enter += new System.EventHandler(this.txtVrn_Enter_1);
+            this.txtVrn.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVrn_KeyPress);
             this.txtVrn.Leave += new System.EventHandler(this.txtVrn_Leave_1);
             // 
             // btnSave
@@ -519,9 +522,9 @@ namespace Gene
             this.pnlConfirm.Controls.Add(this.lblChas);
             this.pnlConfirm.Controls.Add(this.lblmodel);
             this.pnlConfirm.Controls.Add(this.lblMakeModel);
-            this.pnlConfirm.Location = new System.Drawing.Point(24, 31);
+            this.pnlConfirm.Location = new System.Drawing.Point(830, 14);
             this.pnlConfirm.Name = "pnlConfirm";
-            this.pnlConfirm.Size = new System.Drawing.Size(64, 48);
+            this.pnlConfirm.Size = new System.Drawing.Size(61, 53);
             this.pnlConfirm.TabIndex = 69;
             // 
             // vehicleModeltxt
@@ -792,9 +795,9 @@ namespace Gene
             this.pnlPersonalDetails.Controls.Add(this.lblPhone);
             this.pnlPersonalDetails.Controls.Add(this.lblEmail);
             this.pnlPersonalDetails.Controls.Add(this.lblPName);
-            this.pnlPersonalDetails.Location = new System.Drawing.Point(941, 11);
+            this.pnlPersonalDetails.Location = new System.Drawing.Point(45, 602);
             this.pnlPersonalDetails.Name = "pnlPersonalDetails";
-            this.pnlPersonalDetails.Size = new System.Drawing.Size(70, 50);
+            this.pnlPersonalDetails.Size = new System.Drawing.Size(52, 62);
             this.pnlPersonalDetails.TabIndex = 60;
             // 
             // label5
@@ -815,6 +818,7 @@ namespace Gene
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(493, 53);
             this.txtLastName.TabIndex = 72;
+            this.txtLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLastName_KeyPress);
             // 
             // label4
             // 
@@ -981,6 +985,7 @@ namespace Gene
             this.txtFirstName.Size = new System.Drawing.Size(493, 53);
             this.txtFirstName.TabIndex = 71;
             this.txtFirstName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
+            this.txtFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFirstName_KeyPress);
             // 
             // lblDOBFormat
             // 
@@ -1156,9 +1161,9 @@ namespace Gene
             this.pnlPersonalDetails2.Controls.Add(this.label17);
             this.pnlPersonalDetails2.Controls.Add(this.label18);
             this.pnlPersonalDetails2.Controls.Add(this.label19);
-            this.pnlPersonalDetails2.Location = new System.Drawing.Point(12, 128);
+            this.pnlPersonalDetails2.Location = new System.Drawing.Point(29, 146);
             this.pnlPersonalDetails2.Name = "pnlPersonalDetails2";
-            this.pnlPersonalDetails2.Size = new System.Drawing.Size(39, 61);
+            this.pnlPersonalDetails2.Size = new System.Drawing.Size(68, 81);
             this.pnlPersonalDetails2.TabIndex = 69;
             this.pnlPersonalDetails2.Visible = false;
             this.pnlPersonalDetails2.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSummery_Paint);
@@ -1265,6 +1270,7 @@ namespace Gene
             this.txtAdd1.Size = new System.Drawing.Size(475, 53);
             this.txtAdd1.TabIndex = 71;
             this.txtAdd1.TextChanged += new System.EventHandler(this.txtAdd1_TextChanged);
+            this.txtAdd1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAdd1_KeyPress);
             // 
             // txtAdd2
             // 
@@ -1274,6 +1280,7 @@ namespace Gene
             this.txtAdd2.Size = new System.Drawing.Size(475, 53);
             this.txtAdd2.TabIndex = 73;
             this.txtAdd2.TextChanged += new System.EventHandler(this.txtAdd2_TextChanged);
+            this.txtAdd2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAdd2_KeyPress);
             // 
             // txtZipCode
             // 
@@ -1284,6 +1291,7 @@ namespace Gene
             this.txtZipCode.Size = new System.Drawing.Size(475, 53);
             this.txtZipCode.TabIndex = 75;
             this.txtZipCode.TextChanged += new System.EventHandler(this.txtZipCode_TextChanged);
+            this.txtZipCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtZipCode_KeyPress);
             // 
             // label7
             // 
@@ -1593,182 +1601,18 @@ namespace Gene
             this.optBack.UseVisualStyleBackColor = false;
             this.optBack.Click += new System.EventHandler(this.optBack_Click);
             // 
-            // pnlRadio
-            // 
-            this.pnlRadio.Controls.Add(this.txtradioAmount);
-            this.pnlRadio.Controls.Add(this.label38);
-            this.pnlRadio.Controls.Add(this.RadioPaymnetTerm);
-            this.pnlRadio.Controls.Add(this.label37);
-            this.pnlRadio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.pnlRadio.Location = new System.Drawing.Point(283, 167);
-            this.pnlRadio.Name = "pnlRadio";
-            this.pnlRadio.Size = new System.Drawing.Size(459, 304);
-            this.pnlRadio.TabIndex = 76;
-            this.pnlRadio.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlRadio_Paint);
-            // 
-            // txtradioAmount
-            // 
-            this.txtradioAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.txtradioAmount.Location = new System.Drawing.Point(201, 125);
-            this.txtradioAmount.Name = "txtradioAmount";
-            this.txtradioAmount.ReadOnly = true;
-            this.txtradioAmount.Size = new System.Drawing.Size(225, 38);
-            this.txtradioAmount.TabIndex = 4;
-            this.txtradioAmount.Visible = false;
-            this.txtradioAmount.TextChanged += new System.EventHandler(this.txtradioAmount_TextChanged);
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.Location = new System.Drawing.Point(17, 129);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(164, 31);
-            this.label38.TabIndex = 3;
-            this.label38.Text = "Amount Due";
-            this.label38.Visible = false;
-            // 
-            // RadioPaymnetTerm
-            // 
-            this.RadioPaymnetTerm.DropDownHeight = 400;
-            this.RadioPaymnetTerm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.RadioPaymnetTerm.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.RadioPaymnetTerm.FormattingEnabled = true;
-            this.RadioPaymnetTerm.IntegralHeight = false;
-            this.RadioPaymnetTerm.Location = new System.Drawing.Point(201, 56);
-            this.RadioPaymnetTerm.Name = "RadioPaymnetTerm";
-            this.RadioPaymnetTerm.Size = new System.Drawing.Size(225, 39);
-            this.RadioPaymnetTerm.TabIndex = 2;
-            this.RadioPaymnetTerm.SelectedIndexChanged += new System.EventHandler(this.RadioPaymnetTerm_SelectedIndexChanged);
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.Location = new System.Drawing.Point(17, 57);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(191, 31);
-            this.label37.TabIndex = 1;
-            this.label37.Text = "Payment Term";
-            // 
-            // pnlZinara
-            // 
-            this.pnlZinara.Controls.Add(this.txtZinTotalAmount);
-            this.pnlZinara.Controls.Add(this.txtpenalty);
-            this.pnlZinara.Controls.Add(this.txtAccessAmount);
-            this.pnlZinara.Controls.Add(this.label44);
-            this.pnlZinara.Controls.Add(this.label42);
-            this.pnlZinara.Controls.Add(this.label41);
-            this.pnlZinara.Controls.Add(this.ZinPaymentDetail);
-            this.pnlZinara.Controls.Add(this.label39);
-            this.pnlZinara.Location = new System.Drawing.Point(772, 165);
-            this.pnlZinara.Name = "pnlZinara";
-            this.pnlZinara.Size = new System.Drawing.Size(461, 357);
-            this.pnlZinara.TabIndex = 77;
-            this.pnlZinara.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlZinara_Paint);
-            // 
-            // txtZinTotalAmount
-            // 
-            this.txtZinTotalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.txtZinTotalAmount.Location = new System.Drawing.Point(207, 228);
-            this.txtZinTotalAmount.Name = "txtZinTotalAmount";
-            this.txtZinTotalAmount.ReadOnly = true;
-            this.txtZinTotalAmount.Size = new System.Drawing.Size(225, 38);
-            this.txtZinTotalAmount.TabIndex = 12;
-            this.txtZinTotalAmount.Visible = false;
-            // 
-            // txtpenalty
-            // 
-            this.txtpenalty.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.txtpenalty.Location = new System.Drawing.Point(208, 172);
-            this.txtpenalty.Name = "txtpenalty";
-            this.txtpenalty.ReadOnly = true;
-            this.txtpenalty.Size = new System.Drawing.Size(224, 38);
-            this.txtpenalty.TabIndex = 11;
-            this.txtpenalty.Visible = false;
-            // 
-            // txtAccessAmount
-            // 
-            this.txtAccessAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.txtAccessAmount.Location = new System.Drawing.Point(207, 112);
-            this.txtAccessAmount.Name = "txtAccessAmount";
-            this.txtAccessAmount.ReadOnly = true;
-            this.txtAccessAmount.Size = new System.Drawing.Size(225, 38);
-            this.txtAccessAmount.TabIndex = 10;
-            this.txtAccessAmount.Visible = false;
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.Location = new System.Drawing.Point(23, 236);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(75, 31);
-            this.label44.TabIndex = 9;
-            this.label44.Text = "Total";
-            this.label44.Visible = false;
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.Location = new System.Drawing.Point(23, 172);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(105, 31);
-            this.label42.TabIndex = 7;
-            this.label42.Text = "Penalty";
-            this.label42.Visible = false;
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label41.Location = new System.Drawing.Point(23, 108);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(103, 31);
-            this.label41.TabIndex = 6;
-            this.label41.Text = "Access";
-            this.label41.Visible = false;
-            // 
-            // ZinPaymentDetail
-            // 
-            this.ZinPaymentDetail.DropDownHeight = 400;
-            this.ZinPaymentDetail.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ZinPaymentDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.ZinPaymentDetail.FormattingEnabled = true;
-            this.ZinPaymentDetail.IntegralHeight = false;
-            this.ZinPaymentDetail.Location = new System.Drawing.Point(207, 54);
-            this.ZinPaymentDetail.Name = "ZinPaymentDetail";
-            this.ZinPaymentDetail.Size = new System.Drawing.Size(225, 39);
-            this.ZinPaymentDetail.TabIndex = 4;
-            this.ZinPaymentDetail.SelectedIndexChanged += new System.EventHandler(this.ZinPaymentDetail_SelectedIndexChanged_1);
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label39.Location = new System.Drawing.Point(23, 57);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(191, 31);
-            this.label39.TabIndex = 3;
-            this.label39.Text = "Payment Term";
-            // 
             // pnlRadioZinara
             // 
             this.pnlRadioZinara.Controls.Add(this.loadingInsuraneImg);
             this.pnlRadioZinara.Controls.Add(this.btnHomeOptional);
             this.pnlRadioZinara.Controls.Add(this.lblZinraErrMsg);
-            this.pnlRadioZinara.Controls.Add(this.chkZinara);
-            this.pnlRadioZinara.Controls.Add(this.chkRadioLicence);
-            this.pnlRadioZinara.Controls.Add(this.pnlZinara);
-            this.pnlRadioZinara.Controls.Add(this.pnlRadio);
             this.pnlRadioZinara.Controls.Add(this.optBack);
             this.pnlRadioZinara.Controls.Add(this.OptNext);
             this.pnlRadioZinara.Controls.Add(this.label33);
             this.pnlRadioZinara.ForeColor = System.Drawing.Color.White;
-            this.pnlRadioZinara.Location = new System.Drawing.Point(1569, 18);
+            this.pnlRadioZinara.Location = new System.Drawing.Point(112, 21);
             this.pnlRadioZinara.Name = "pnlRadioZinara";
-            this.pnlRadioZinara.Size = new System.Drawing.Size(57, 56);
+            this.pnlRadioZinara.Size = new System.Drawing.Size(39, 73);
             this.pnlRadioZinara.TabIndex = 76;
             this.pnlRadioZinara.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlRadioZinara_Paint);
             // 
@@ -1806,30 +1650,6 @@ namespace Gene
             this.lblZinraErrMsg.Name = "lblZinraErrMsg";
             this.lblZinraErrMsg.Size = new System.Drawing.Size(0, 24);
             this.lblZinraErrMsg.TabIndex = 80;
-            // 
-            // chkZinara
-            // 
-            this.chkZinara.AutoSize = true;
-            this.chkZinara.Font = new System.Drawing.Font("Microsoft Sans Serif", 36.75F);
-            this.chkZinara.Location = new System.Drawing.Point(754, 96);
-            this.chkZinara.Name = "chkZinara";
-            this.chkZinara.Size = new System.Drawing.Size(542, 61);
-            this.chkZinara.TabIndex = 79;
-            this.chkZinara.Text = "Zinara Vehicle Licence";
-            this.chkZinara.UseVisualStyleBackColor = true;
-            this.chkZinara.CheckedChanged += new System.EventHandler(this.chkZinara_CheckedChanged);
-            // 
-            // chkRadioLicence
-            // 
-            this.chkRadioLicence.AutoSize = true;
-            this.chkRadioLicence.Font = new System.Drawing.Font("Microsoft Sans Serif", 36.75F);
-            this.chkRadioLicence.Location = new System.Drawing.Point(282, 96);
-            this.chkRadioLicence.Name = "chkRadioLicence";
-            this.chkRadioLicence.Size = new System.Drawing.Size(355, 61);
-            this.chkRadioLicence.TabIndex = 78;
-            this.chkRadioLicence.Text = "Radio Licence";
-            this.chkRadioLicence.UseVisualStyleBackColor = true;
-            this.chkRadioLicence.CheckedChanged += new System.EventHandler(this.chkRadioLicence_CheckedChanged);
             // 
             // lblAddressValue
             // 
@@ -2036,7 +1856,7 @@ namespace Gene
             this.pnlsumary.Controls.Add(this.btnSumBack);
             this.pnlsumary.Controls.Add(this.btnSumContinue);
             this.pnlsumary.Controls.Add(this.lblAddressValue);
-            this.pnlsumary.Location = new System.Drawing.Point(485, 31);
+            this.pnlsumary.Location = new System.Drawing.Point(474, 18);
             this.pnlsumary.Name = "pnlsumary";
             this.pnlsumary.Size = new System.Drawing.Size(54, 41);
             this.pnlsumary.TabIndex = 68;
@@ -2305,11 +2125,11 @@ namespace Gene
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 36.75F);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(352, 384);
+            this.label2.Location = new System.Drawing.Point(362, 262);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(302, 57);
+            this.label2.Size = new System.Drawing.Size(244, 46);
             this.label2.TabIndex = 7;
             this.label2.Text = "Sum Insured";
             this.label2.Visible = false;
@@ -2404,9 +2224,9 @@ namespace Gene
             this.pnlRiskDetails.Controls.Add(this.label3);
             this.pnlRiskDetails.Controls.Add(this.cmbProducts);
             this.pnlRiskDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlRiskDetails.Location = new System.Drawing.Point(1439, 12);
+            this.pnlRiskDetails.Location = new System.Drawing.Point(1626, 23);
             this.pnlRiskDetails.Name = "pnlRiskDetails";
-            this.pnlRiskDetails.Size = new System.Drawing.Size(83, 56);
+            this.pnlRiskDetails.Size = new System.Drawing.Size(58, 49);
             this.pnlRiskDetails.TabIndex = 7;
             this.pnlRiskDetails.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -2544,7 +2364,7 @@ namespace Gene
             // txtSumInsured
             // 
             this.txtSumInsured.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSumInsured.Location = new System.Drawing.Point(736, 382);
+            this.txtSumInsured.Location = new System.Drawing.Point(736, 269);
             this.txtSumInsured.Name = "txtSumInsured";
             this.txtSumInsured.Size = new System.Drawing.Size(561, 53);
             this.txtSumInsured.TabIndex = 72;
@@ -2921,9 +2741,9 @@ namespace Gene
             this.pnlCorporate.Controls.Add(this.label81);
             this.pnlCorporate.Controls.Add(this.label82);
             this.pnlCorporate.Controls.Add(this.label83);
-            this.pnlCorporate.Location = new System.Drawing.Point(99, 19);
+            this.pnlCorporate.Location = new System.Drawing.Point(12, 466);
             this.pnlCorporate.Name = "pnlCorporate";
-            this.pnlCorporate.Size = new System.Drawing.Size(57, 67);
+            this.pnlCorporate.Size = new System.Drawing.Size(94, 68);
             this.pnlCorporate.TabIndex = 79;
             // 
             // btnHomeCorporate
@@ -3015,12 +2835,13 @@ namespace Gene
             // txtCmpBusinessId
             // 
             this.txtCmpBusinessId.BackColor = System.Drawing.SystemColors.Window;
-            this.txtCmpBusinessId.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCmpBusinessId.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.txtCmpBusinessId.Location = new System.Drawing.Point(628, 538);
             this.txtCmpBusinessId.MaxLength = 12;
             this.txtCmpBusinessId.Name = "txtCmpBusinessId";
             this.txtCmpBusinessId.Size = new System.Drawing.Size(493, 53);
             this.txtCmpBusinessId.TabIndex = 85;
+            this.txtCmpBusinessId.MouseEnter += new System.EventHandler(this.txtCmpBusinessId_MouseEnter);
             // 
             // label70
             // 
@@ -3130,6 +2951,7 @@ namespace Gene
             this.txtCmpAddress.Name = "txtCmpAddress";
             this.txtCmpAddress.Size = new System.Drawing.Size(493, 53);
             this.txtCmpAddress.TabIndex = 73;
+            this.txtCmpAddress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCmpAddress_KeyPress);
             // 
             // txtCmpEmail
             // 
@@ -3147,6 +2969,7 @@ namespace Gene
             this.txtCompany.Name = "txtCompany";
             this.txtCompany.Size = new System.Drawing.Size(493, 53);
             this.txtCompany.TabIndex = 71;
+            this.txtCompany.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCompany_KeyPress);
             // 
             // label77
             // 
@@ -3242,9 +3065,10 @@ namespace Gene
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlInsurance.BackColor = System.Drawing.Color.Transparent;
+            this.pnlInsurance.Controls.Add(this.pnlRadioZinaraIns);
             this.pnlInsurance.Controls.Add(this.label34);
-            this.pnlInsurance.Controls.Add(this.label27);
             this.pnlInsurance.Controls.Add(this.LoadingInsurance);
+            this.pnlInsurance.Controls.Add(this.label27);
             this.pnlInsurance.Controls.Add(this.btnInsuranceHome);
             this.pnlInsurance.Controls.Add(this.label90);
             this.pnlInsurance.Controls.Add(this.btnInsBack);
@@ -3257,45 +3081,237 @@ namespace Gene
             this.pnlInsurance.Controls.Add(this.label93);
             this.pnlInsurance.Controls.Add(this.label2);
             this.pnlInsurance.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlInsurance.Location = new System.Drawing.Point(196, 26);
+            this.pnlInsurance.Location = new System.Drawing.Point(26, 263);
             this.pnlInsurance.Name = "pnlInsurance";
-            this.pnlInsurance.Size = new System.Drawing.Size(61, 55);
+            this.pnlInsurance.Size = new System.Drawing.Size(55, 54);
             this.pnlInsurance.TabIndex = 80;
+            // 
+            // pnlRadioZinaraIns
+            // 
+            this.pnlRadioZinaraIns.Controls.Add(this.chkRadioLicence);
+            this.pnlRadioZinaraIns.Controls.Add(this.chkZinara);
+            this.pnlRadioZinaraIns.Controls.Add(this.pnlRadio);
+            this.pnlRadioZinaraIns.Controls.Add(this.pnlZinara);
+            this.pnlRadioZinaraIns.Location = new System.Drawing.Point(300, 343);
+            this.pnlRadioZinaraIns.Name = "pnlRadioZinaraIns";
+            this.pnlRadioZinaraIns.Size = new System.Drawing.Size(1001, 236);
+            this.pnlRadioZinaraIns.TabIndex = 120;
+            // 
+            // chkRadioLicence
+            // 
+            this.chkRadioLicence.AutoSize = true;
+            this.chkRadioLicence.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
+            this.chkRadioLicence.ForeColor = System.Drawing.Color.White;
+            this.chkRadioLicence.Location = new System.Drawing.Point(20, 15);
+            this.chkRadioLicence.Name = "chkRadioLicence";
+            this.chkRadioLicence.Size = new System.Drawing.Size(294, 50);
+            this.chkRadioLicence.TabIndex = 118;
+            this.chkRadioLicence.Text = "Radio Licence";
+            this.chkRadioLicence.UseVisualStyleBackColor = true;
+            this.chkRadioLicence.CheckedChanged += new System.EventHandler(this.chkRadioLicence_CheckedChanged);
+            // 
+            // chkZinara
+            // 
+            this.chkZinara.AutoSize = true;
+            this.chkZinara.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
+            this.chkZinara.ForeColor = System.Drawing.Color.White;
+            this.chkZinara.Location = new System.Drawing.Point(500, 15);
+            this.chkZinara.Name = "chkZinara";
+            this.chkZinara.Size = new System.Drawing.Size(444, 50);
+            this.chkZinara.TabIndex = 119;
+            this.chkZinara.Text = "Zinara Vehicle Licence";
+            this.chkZinara.UseVisualStyleBackColor = true;
+            this.chkZinara.CheckedChanged += new System.EventHandler(this.chkZinara_CheckedChanged);
+            // 
+            // pnlRadio
+            // 
+            this.pnlRadio.Controls.Add(this.txtradioAmount);
+            this.pnlRadio.Controls.Add(this.label38);
+            this.pnlRadio.Controls.Add(this.RadioPaymnetTerm);
+            this.pnlRadio.Controls.Add(this.label37);
+            this.pnlRadio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.pnlRadio.Location = new System.Drawing.Point(20, 89);
+            this.pnlRadio.Name = "pnlRadio";
+            this.pnlRadio.Size = new System.Drawing.Size(459, 175);
+            this.pnlRadio.TabIndex = 116;
+            // 
+            // txtradioAmount
+            // 
+            this.txtradioAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.txtradioAmount.Location = new System.Drawing.Point(201, 92);
+            this.txtradioAmount.Name = "txtradioAmount";
+            this.txtradioAmount.ReadOnly = true;
+            this.txtradioAmount.Size = new System.Drawing.Size(225, 38);
+            this.txtradioAmount.TabIndex = 4;
+            this.txtradioAmount.Visible = false;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.Location = new System.Drawing.Point(17, 96);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(164, 31);
+            this.label38.TabIndex = 3;
+            this.label38.Text = "Amount Due";
+            this.label38.Visible = false;
+            // 
+            // RadioPaymnetTerm
+            // 
+            this.RadioPaymnetTerm.DropDownHeight = 400;
+            this.RadioPaymnetTerm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.RadioPaymnetTerm.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.RadioPaymnetTerm.FormattingEnabled = true;
+            this.RadioPaymnetTerm.IntegralHeight = false;
+            this.RadioPaymnetTerm.Location = new System.Drawing.Point(201, 23);
+            this.RadioPaymnetTerm.Name = "RadioPaymnetTerm";
+            this.RadioPaymnetTerm.Size = new System.Drawing.Size(225, 39);
+            this.RadioPaymnetTerm.TabIndex = 2;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Location = new System.Drawing.Point(17, 24);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(191, 31);
+            this.label37.TabIndex = 1;
+            this.label37.Text = "Payment Term";
+            // 
+            // pnlZinara
+            // 
+            this.pnlZinara.Controls.Add(this.txtZinTotalAmount);
+            this.pnlZinara.Controls.Add(this.txtpenalty);
+            this.pnlZinara.Controls.Add(this.txtAccessAmount);
+            this.pnlZinara.Controls.Add(this.label44);
+            this.pnlZinara.Controls.Add(this.label42);
+            this.pnlZinara.Controls.Add(this.label41);
+            this.pnlZinara.Controls.Add(this.ZinPaymentDetail);
+            this.pnlZinara.Controls.Add(this.label39);
+            this.pnlZinara.Location = new System.Drawing.Point(518, 74);
+            this.pnlZinara.Name = "pnlZinara";
+            this.pnlZinara.Size = new System.Drawing.Size(461, 289);
+            this.pnlZinara.TabIndex = 117;
+            // 
+            // txtZinTotalAmount
+            // 
+            this.txtZinTotalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.txtZinTotalAmount.Location = new System.Drawing.Point(207, 199);
+            this.txtZinTotalAmount.Name = "txtZinTotalAmount";
+            this.txtZinTotalAmount.ReadOnly = true;
+            this.txtZinTotalAmount.Size = new System.Drawing.Size(225, 38);
+            this.txtZinTotalAmount.TabIndex = 12;
+            this.txtZinTotalAmount.Visible = false;
+            // 
+            // txtpenalty
+            // 
+            this.txtpenalty.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.txtpenalty.Location = new System.Drawing.Point(208, 143);
+            this.txtpenalty.Name = "txtpenalty";
+            this.txtpenalty.ReadOnly = true;
+            this.txtpenalty.Size = new System.Drawing.Size(224, 38);
+            this.txtpenalty.TabIndex = 11;
+            this.txtpenalty.Visible = false;
+            // 
+            // txtAccessAmount
+            // 
+            this.txtAccessAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.txtAccessAmount.Location = new System.Drawing.Point(207, 83);
+            this.txtAccessAmount.Name = "txtAccessAmount";
+            this.txtAccessAmount.ReadOnly = true;
+            this.txtAccessAmount.Size = new System.Drawing.Size(225, 38);
+            this.txtAccessAmount.TabIndex = 10;
+            this.txtAccessAmount.Visible = false;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label44.Location = new System.Drawing.Point(23, 207);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(75, 31);
+            this.label44.TabIndex = 9;
+            this.label44.Text = "Total";
+            this.label44.Visible = false;
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.Location = new System.Drawing.Point(23, 143);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(105, 31);
+            this.label42.TabIndex = 7;
+            this.label42.Text = "Penalty";
+            this.label42.Visible = false;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.Location = new System.Drawing.Point(23, 79);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(103, 31);
+            this.label41.TabIndex = 6;
+            this.label41.Text = "Access";
+            this.label41.Visible = false;
+            // 
+            // ZinPaymentDetail
+            // 
+            this.ZinPaymentDetail.DropDownHeight = 400;
+            this.ZinPaymentDetail.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ZinPaymentDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.ZinPaymentDetail.FormattingEnabled = true;
+            this.ZinPaymentDetail.IntegralHeight = false;
+            this.ZinPaymentDetail.Location = new System.Drawing.Point(207, 25);
+            this.ZinPaymentDetail.Name = "ZinPaymentDetail";
+            this.ZinPaymentDetail.Size = new System.Drawing.Size(225, 39);
+            this.ZinPaymentDetail.TabIndex = 4;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.Location = new System.Drawing.Point(23, 28);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(191, 31);
+            this.label39.TabIndex = 3;
+            this.label39.Text = "Payment Term";
             // 
             // label34
             // 
             this.label34.AutoSize = true;
             this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label34.ForeColor = System.Drawing.Color.Red;
-            this.label34.Location = new System.Drawing.Point(1302, 257);
+            this.label34.Location = new System.Drawing.Point(1302, 200);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(30, 39);
             this.label34.TabIndex = 115;
             this.label34.Text = "*";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.ForeColor = System.Drawing.Color.Red;
-            this.label27.Location = new System.Drawing.Point(1302, 162);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(30, 39);
-            this.label27.TabIndex = 114;
-            this.label27.Text = "*";
             // 
             // LoadingInsurance
             // 
             this.LoadingInsurance.ErrorImage = ((System.Drawing.Image)(resources.GetObject("LoadingInsurance.ErrorImage")));
             this.LoadingInsurance.Image = global::Gene.Properties.Resources.loadingImg1;
             this.LoadingInsurance.InitialImage = global::Gene.Properties.Resources.loadingImg1;
-            this.LoadingInsurance.Location = new System.Drawing.Point(783, 495);
+            this.LoadingInsurance.Location = new System.Drawing.Point(721, 594);
             this.LoadingInsurance.Name = "LoadingInsurance";
             this.LoadingInsurance.Size = new System.Drawing.Size(128, 106);
             this.LoadingInsurance.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.LoadingInsurance.TabIndex = 113;
             this.LoadingInsurance.TabStop = false;
             this.LoadingInsurance.Visible = false;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.Color.Red;
+            this.label27.Location = new System.Drawing.Point(1302, 135);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(30, 39);
+            this.label27.TabIndex = 114;
+            this.label27.Text = "*";
             // 
             // btnInsuranceHome
             // 
@@ -3318,7 +3334,7 @@ namespace Gene
             this.label90.AutoSize = true;
             this.label90.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, System.Drawing.FontStyle.Bold);
             this.label90.ForeColor = System.Drawing.Color.White;
-            this.label90.Location = new System.Drawing.Point(712, 33);
+            this.label90.Location = new System.Drawing.Point(712, 16);
             this.label90.Name = "label90";
             this.label90.Size = new System.Drawing.Size(450, 61);
             this.label90.TabIndex = 61;
@@ -3329,7 +3345,7 @@ namespace Gene
             this.btnInsBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(212)))));
             this.btnInsBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInsBack.ForeColor = System.Drawing.Color.White;
-            this.btnInsBack.Location = new System.Drawing.Point(46, 436);
+            this.btnInsBack.Location = new System.Drawing.Point(39, 306);
             this.btnInsBack.Name = "btnInsBack";
             this.btnInsBack.Size = new System.Drawing.Size(249, 95);
             this.btnInsBack.TabIndex = 59;
@@ -3342,7 +3358,7 @@ namespace Gene
             this.btnInsCnt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
             this.btnInsCnt.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInsCnt.ForeColor = System.Drawing.Color.White;
-            this.btnInsCnt.Location = new System.Drawing.Point(1336, 432);
+            this.btnInsCnt.Location = new System.Drawing.Point(1356, 304);
             this.btnInsCnt.Name = "btnInsCnt";
             this.btnInsCnt.Size = new System.Drawing.Size(249, 95);
             this.btnInsCnt.TabIndex = 7;
@@ -3355,7 +3371,7 @@ namespace Gene
             this.label91.AutoSize = true;
             this.label91.Font = new System.Drawing.Font("Comic Sans MS", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label91.ForeColor = System.Drawing.Color.White;
-            this.label91.Location = new System.Drawing.Point(439, 97);
+            this.label91.Location = new System.Drawing.Point(439, 126);
             this.label91.Name = "label91";
             this.label91.Size = new System.Drawing.Size(0, 45);
             this.label91.TabIndex = 58;
@@ -3369,7 +3385,7 @@ namespace Gene
             this.cmbCoverType.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.cmbCoverType.FormattingEnabled = true;
             this.cmbCoverType.IntegralHeight = false;
-            this.cmbCoverType.Location = new System.Drawing.Point(736, 262);
+            this.cmbCoverType.Location = new System.Drawing.Point(736, 198);
             this.cmbCoverType.Name = "cmbCoverType";
             this.cmbCoverType.Size = new System.Drawing.Size(561, 54);
             this.cmbCoverType.TabIndex = 57;
@@ -3384,7 +3400,7 @@ namespace Gene
             this.cmbPaymentTerm.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.cmbPaymentTerm.FormattingEnabled = true;
             this.cmbPaymentTerm.IntegralHeight = false;
-            this.cmbPaymentTerm.Location = new System.Drawing.Point(736, 162);
+            this.cmbPaymentTerm.Location = new System.Drawing.Point(736, 129);
             this.cmbPaymentTerm.Name = "cmbPaymentTerm";
             this.cmbPaymentTerm.Size = new System.Drawing.Size(561, 54);
             this.cmbPaymentTerm.TabIndex = 56;
@@ -3395,11 +3411,11 @@ namespace Gene
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label92.AutoSize = true;
-            this.label92.Font = new System.Drawing.Font("Microsoft Sans Serif", 36.75F);
+            this.label92.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.label92.ForeColor = System.Drawing.Color.White;
-            this.label92.Location = new System.Drawing.Point(352, 266);
+            this.label92.Location = new System.Drawing.Point(352, 197);
             this.label92.Name = "label92";
-            this.label92.Size = new System.Drawing.Size(290, 57);
+            this.label92.Size = new System.Drawing.Size(236, 46);
             this.label92.TabIndex = 10;
             this.label92.Text = "Cover Type ";
             // 
@@ -3409,11 +3425,11 @@ namespace Gene
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label93.AutoSize = true;
-            this.label93.Font = new System.Drawing.Font("Microsoft Sans Serif", 36.75F);
+            this.label93.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.label93.ForeColor = System.Drawing.Color.White;
-            this.label93.Location = new System.Drawing.Point(352, 162);
+            this.label93.Location = new System.Drawing.Point(352, 129);
             this.label93.Name = "label93";
-            this.label93.Size = new System.Drawing.Size(359, 57);
+            this.label93.Size = new System.Drawing.Size(291, 46);
             this.label93.TabIndex = 9;
             this.label93.Text = "Payment Term ";
             // 
@@ -3548,9 +3564,9 @@ namespace Gene
             this.pnlOptionalCover.Controls.Add(this.label23);
             this.pnlOptionalCover.Controls.Add(this.btnOptionCoverBack);
             this.pnlOptionalCover.Controls.Add(this.btnContionOptionalCover);
-            this.pnlOptionalCover.Location = new System.Drawing.Point(370, 18);
+            this.pnlOptionalCover.Location = new System.Drawing.Point(359, 17);
             this.pnlOptionalCover.Name = "pnlOptionalCover";
-            this.pnlOptionalCover.Size = new System.Drawing.Size(69, 49);
+            this.pnlOptionalCover.Size = new System.Drawing.Size(64, 62);
             this.pnlOptionalCover.TabIndex = 71;
             // 
             // errorProvider1
@@ -3616,10 +3632,6 @@ namespace Gene
             ((System.ComponentModel.ISupportInitialize)(this.btnAddMoreVehicle)).EndInit();
             this.pnlSum.ResumeLayout(false);
             this.pnlSum.PerformLayout();
-            this.pnlRadio.ResumeLayout(false);
-            this.pnlRadio.PerformLayout();
-            this.pnlZinara.ResumeLayout(false);
-            this.pnlZinara.PerformLayout();
             this.pnlRadioZinara.ResumeLayout(false);
             this.pnlRadioZinara.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.loadingInsuraneImg)).EndInit();
@@ -3641,6 +3653,12 @@ namespace Gene
             this.pnlCorporate.PerformLayout();
             this.pnlInsurance.ResumeLayout(false);
             this.pnlInsurance.PerformLayout();
+            this.pnlRadioZinaraIns.ResumeLayout(false);
+            this.pnlRadioZinaraIns.PerformLayout();
+            this.pnlRadio.ResumeLayout(false);
+            this.pnlRadio.PerformLayout();
+            this.pnlZinara.ResumeLayout(false);
+            this.pnlZinara.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LoadingInsurance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbNoofPerson)).EndInit();
             this.pnlOptionalCover.ResumeLayout(false);
@@ -3734,20 +3752,6 @@ namespace Gene
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Button OptNext;
         private System.Windows.Forms.Button optBack;
-        private System.Windows.Forms.Panel pnlRadio;
-        private System.Windows.Forms.TextBox txtradioAmount;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.ComboBox RadioPaymnetTerm;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Panel pnlZinara;
-        private System.Windows.Forms.TextBox txtZinTotalAmount;
-        private System.Windows.Forms.TextBox txtpenalty;
-        private System.Windows.Forms.TextBox txtAccessAmount;
-        private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.ComboBox ZinPaymentDetail;
-        private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Panel pnlRadioZinara;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label label45;
@@ -3770,8 +3774,6 @@ namespace Gene
         private System.Windows.Forms.TextBox txtZinaraAmount;
         private System.Windows.Forms.Panel pnlsumary;
         private System.Windows.Forms.Label lblPaymentMsg;
-        private System.Windows.Forms.CheckBox chkZinara;
-        private System.Windows.Forms.CheckBox chkRadioLicence;
         private System.Windows.Forms.Panel pnlErrormessage;
         private System.Windows.Forms.Label lblErrMessage;
         private System.Windows.Forms.Button btnErrormeg;
@@ -3941,6 +3943,23 @@ namespace Gene
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label87;
         private System.Windows.Forms.Label label85;
+        private System.Windows.Forms.CheckBox chkZinara;
+        private System.Windows.Forms.CheckBox chkRadioLicence;
+        private System.Windows.Forms.Panel pnlZinara;
+        private System.Windows.Forms.TextBox txtZinTotalAmount;
+        private System.Windows.Forms.TextBox txtpenalty;
+        private System.Windows.Forms.TextBox txtAccessAmount;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.ComboBox ZinPaymentDetail;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Panel pnlRadio;
+        private System.Windows.Forms.TextBox txtradioAmount;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.ComboBox RadioPaymnetTerm;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Panel pnlRadioZinaraIns;
 
         //private System.Windows.Forms.Label lblAmountDue;
     }

@@ -270,9 +270,9 @@
             this.PnlRenewVrn.Controls.Add(this.txtRenewVrn);
             this.PnlRenewVrn.Controls.Add(this.btnSave);
             this.PnlRenewVrn.Controls.Add(this.PnlVrn);
-            this.PnlRenewVrn.Location = new System.Drawing.Point(304, 164);
+            this.PnlRenewVrn.Location = new System.Drawing.Point(1561, 79);
             this.PnlRenewVrn.Name = "PnlRenewVrn";
-            this.PnlRenewVrn.Size = new System.Drawing.Size(1431, 402);
+            this.PnlRenewVrn.Size = new System.Drawing.Size(58, 57);
             this.PnlRenewVrn.TabIndex = 4;
             this.PnlRenewVrn.Paint += new System.Windows.Forms.PaintEventHandler(this.PnlVrn_Paint);
             // 
@@ -375,6 +375,7 @@
             this.txtRenewVrn.Paint += new System.Windows.Forms.PaintEventHandler(this.txtVrn_Paint);
             this.txtRenewVrn.TextChanged += new System.EventHandler(this.txtRenewVrn_TextChanged);
             this.txtRenewVrn.Enter += new System.EventHandler(this.txtVrn_Enter_1);
+            this.txtRenewVrn.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRenewVrn_KeyPress);
             // 
             // btnSave
             // 
@@ -1386,9 +1387,9 @@
             this.pnlRenewPersonalDetails.Controls.Add(this.lblPhone);
             this.pnlRenewPersonalDetails.Controls.Add(this.lblEmail);
             this.pnlRenewPersonalDetails.Controls.Add(this.lblPName);
-            this.pnlRenewPersonalDetails.Location = new System.Drawing.Point(396, 26);
+            this.pnlRenewPersonalDetails.Location = new System.Drawing.Point(405, 12);
             this.pnlRenewPersonalDetails.Name = "pnlRenewPersonalDetails";
-            this.pnlRenewPersonalDetails.Size = new System.Drawing.Size(58, 75);
+            this.pnlRenewPersonalDetails.Size = new System.Drawing.Size(66, 68);
             this.pnlRenewPersonalDetails.TabIndex = 60;
             this.pnlRenewPersonalDetails.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlPersonalDetails_Paint);
             // 
@@ -1410,6 +1411,7 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(493, 41);
             this.txtLastName.TabIndex = 87;
+            this.txtLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLastName_KeyPress);
             // 
             // label49
             // 
@@ -1568,6 +1570,7 @@
             this.txtFirstName.Size = new System.Drawing.Size(493, 41);
             this.txtFirstName.TabIndex = 71;
             this.txtFirstName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
+            this.txtFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFirstName_KeyPress);
             // 
             // lblDOBFormat
             // 
@@ -1705,9 +1708,9 @@
             this.pnlRenewPersonalDetails2.Controls.Add(this.label17);
             this.pnlRenewPersonalDetails2.Controls.Add(this.label18);
             this.pnlRenewPersonalDetails2.Controls.Add(this.label19);
-            this.pnlRenewPersonalDetails2.Location = new System.Drawing.Point(1239, 19);
+            this.pnlRenewPersonalDetails2.Location = new System.Drawing.Point(314, 131);
             this.pnlRenewPersonalDetails2.Name = "pnlRenewPersonalDetails2";
-            this.pnlRenewPersonalDetails2.Size = new System.Drawing.Size(57, 71);
+            this.pnlRenewPersonalDetails2.Size = new System.Drawing.Size(1342, 616);
             this.pnlRenewPersonalDetails2.TabIndex = 69;
             this.pnlRenewPersonalDetails2.Visible = false;
             this.pnlRenewPersonalDetails2.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSummery_Paint);
@@ -1819,6 +1822,7 @@
             this.txtAdd1.Size = new System.Drawing.Size(605, 53);
             this.txtAdd1.TabIndex = 71;
             this.txtAdd1.TextChanged += new System.EventHandler(this.txtAdd1_TextChanged);
+            this.txtAdd1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAdd1_KeyPress);
             // 
             // txtAdd2
             // 
@@ -1828,6 +1832,7 @@
             this.txtAdd2.Size = new System.Drawing.Size(605, 53);
             this.txtAdd2.TabIndex = 70;
             this.txtAdd2.TextChanged += new System.EventHandler(this.txtAdd2_TextChanged);
+            this.txtAdd2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAdd2_KeyPress);
             // 
             // txtZipCode
             // 
@@ -1838,6 +1843,7 @@
             this.txtZipCode.Size = new System.Drawing.Size(605, 53);
             this.txtZipCode.TabIndex = 68;
             this.txtZipCode.TextChanged += new System.EventHandler(this.txtZipCode_TextChanged);
+            this.txtZipCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtZipCode_KeyPress);
             // 
             // label7
             // 

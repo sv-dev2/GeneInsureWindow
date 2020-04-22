@@ -41,6 +41,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnLicenseQuote = new System.Windows.Forms.Button();
             this.btnInsurance = new System.Windows.Forms.Button();
+            this.lblSelectedBranch = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -215,12 +216,22 @@
             this.btnInsurance.UseVisualStyleBackColor = false;
             this.btnInsurance.Click += new System.EventHandler(this.btnInsurance_Click);
             // 
+            // lblSelectedBranch
+            // 
+            this.lblSelectedBranch.AutoSize = true;
+            this.lblSelectedBranch.Location = new System.Drawing.Point(1773, 900);
+            this.lblSelectedBranch.Name = "lblSelectedBranch";
+            this.lblSelectedBranch.Size = new System.Drawing.Size(35, 13);
+            this.lblSelectedBranch.TabIndex = 15;
+            this.lblSelectedBranch.Text = "label3";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(212)))));
-            this.ClientSize = new System.Drawing.Size(1431, 779);
+            this.ClientSize = new System.Drawing.Size(1831, 851);
+            this.Controls.Add(this.lblSelectedBranch);
             this.Controls.Add(this.btnInsurance);
             this.Controls.Add(this.lblErrMsg);
             this.Controls.Add(this.lblBranch);
@@ -264,6 +275,7 @@
         private System.Windows.Forms.Label lblErrMsg;
         private System.Windows.Forms.Button btnLicenseQuote;
         private System.Windows.Forms.Button btnInsurance;
+        private System.Windows.Forms.Label lblSelectedBranch;
     }
 }
 

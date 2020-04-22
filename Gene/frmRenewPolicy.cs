@@ -5717,6 +5717,48 @@ namespace Gene
         {
 
         }
+
+        private void txtRenewVrn_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidSpecailCharacter(e);
+        }
+
+
+        private bool ValidSpecailCharacter(KeyPressEventArgs e)
+        {
+            var regex = new Regex(@"[^a-zA-Z0-9\s\b]");
+            if (regex.IsMatch(e.KeyChar.ToString()))
+            {
+                e.Handled = true;
+            }
+            return e.Handled;
+        }
+
+        private void txtFirstName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidSpecailCharacter(e);
+        }
+
+        private void txtLastName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidSpecailCharacter(e);
+        }
+
+        private void txtAdd1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidSpecailCharacter(e);
+        }
+
+        private void txtAdd2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidSpecailCharacter(e);
+        }
+
+        private void txtZipCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidSpecailCharacter(e);
+        }
+
     }
 }
 

@@ -304,9 +304,9 @@
             this.pnlInsurance.Controls.Add(this.label93);
             this.pnlInsurance.Controls.Add(this.label2);
             this.pnlInsurance.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlInsurance.Location = new System.Drawing.Point(707, 25);
+            this.pnlInsurance.Location = new System.Drawing.Point(941, 30);
             this.pnlInsurance.Name = "pnlInsurance";
-            this.pnlInsurance.Size = new System.Drawing.Size(49, 59);
+            this.pnlInsurance.Size = new System.Drawing.Size(74, 59);
             this.pnlInsurance.TabIndex = 97;
             // 
             // button1
@@ -512,9 +512,9 @@
             this.pnlCorporate.Controls.Add(this.label81);
             this.pnlCorporate.Controls.Add(this.label82);
             this.pnlCorporate.Controls.Add(this.label83);
-            this.pnlCorporate.Location = new System.Drawing.Point(42, 18);
+            this.pnlCorporate.Location = new System.Drawing.Point(328, 25);
             this.pnlCorporate.Name = "pnlCorporate";
-            this.pnlCorporate.Size = new System.Drawing.Size(56, 76);
+            this.pnlCorporate.Size = new System.Drawing.Size(86, 57);
             this.pnlCorporate.TabIndex = 96;
             // 
             // btnHomeCorporate
@@ -528,6 +528,7 @@
             this.btnHomeCorporate.TabIndex = 93;
             this.btnHomeCorporate.Text = "Home";
             this.btnHomeCorporate.UseVisualStyleBackColor = false;
+            this.btnHomeCorporate.Click += new System.EventHandler(this.btnHomeCorporate_Click);
             // 
             // lblCmpErrMsg
             // 
@@ -697,6 +698,7 @@
             this.btnCorporateBack.TabIndex = 59;
             this.btnCorporateBack.Text = "Back";
             this.btnCorporateBack.UseVisualStyleBackColor = false;
+            this.btnCorporateBack.Click += new System.EventHandler(this.btnCorporateBack_Click);
             // 
             // label76
             // 
@@ -718,6 +720,7 @@
             this.txtCmpAddress.Name = "txtCmpAddress";
             this.txtCmpAddress.Size = new System.Drawing.Size(493, 53);
             this.txtCmpAddress.TabIndex = 73;
+            this.txtCmpAddress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCmpAddress_KeyPress);
             // 
             // txtCmpEmail
             // 
@@ -734,6 +737,7 @@
             this.txtCompany.Name = "txtCompany";
             this.txtCompany.Size = new System.Drawing.Size(493, 53);
             this.txtCompany.TabIndex = 71;
+            this.txtCompany.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCompany_KeyPress);
             // 
             // label77
             // 
@@ -777,6 +781,7 @@
             this.btnCorporateContinue.TabIndex = 7;
             this.btnCorporateContinue.Text = "Continue";
             this.btnCorporateContinue.UseVisualStyleBackColor = false;
+            this.btnCorporateContinue.Click += new System.EventHandler(this.btnCorporateContinue_Click);
             // 
             // label80
             // 
@@ -853,7 +858,7 @@
             this.pnlTBAPersonalDetails.Controls.Add(this.label61);
             this.pnlTBAPersonalDetails.Controls.Add(this.label62);
             this.pnlTBAPersonalDetails.Controls.Add(this.lbTBAFirstName);
-            this.pnlTBAPersonalDetails.Location = new System.Drawing.Point(165, 21);
+            this.pnlTBAPersonalDetails.Location = new System.Drawing.Point(67, 27);
             this.pnlTBAPersonalDetails.Name = "pnlTBAPersonalDetails";
             this.pnlTBAPersonalDetails.Size = new System.Drawing.Size(52, 78);
             this.pnlTBAPersonalDetails.TabIndex = 95;
@@ -1164,9 +1169,9 @@
             this.pnlconfimpaymeny.Controls.Add(this.txtTotalAmount);
             this.pnlconfimpaymeny.Controls.Add(this.label47);
             this.pnlconfimpaymeny.Controls.Add(this.label46);
-            this.pnlconfimpaymeny.Location = new System.Drawing.Point(324, 236);
+            this.pnlconfimpaymeny.Location = new System.Drawing.Point(37, 517);
             this.pnlconfimpaymeny.Name = "pnlconfimpaymeny";
-            this.pnlconfimpaymeny.Size = new System.Drawing.Size(1332, 531);
+            this.pnlconfimpaymeny.Size = new System.Drawing.Size(73, 58);
             this.pnlconfimpaymeny.TabIndex = 94;
             // 
             // loadingImageConfirmPayment
@@ -1341,9 +1346,9 @@
             this.pnlRadioZinaraSumary.Controls.Add(this.OptNext);
             this.pnlRadioZinaraSumary.Controls.Add(this.label33);
             this.pnlRadioZinaraSumary.ForeColor = System.Drawing.Color.White;
-            this.pnlRadioZinaraSumary.Location = new System.Drawing.Point(37, 407);
+            this.pnlRadioZinaraSumary.Location = new System.Drawing.Point(24, 260);
             this.pnlRadioZinaraSumary.Name = "pnlRadioZinaraSumary";
-            this.pnlRadioZinaraSumary.Size = new System.Drawing.Size(44, 66);
+            this.pnlRadioZinaraSumary.Size = new System.Drawing.Size(41, 72);
             this.pnlRadioZinaraSumary.TabIndex = 93;
             // 
             // btnHomeOptional
@@ -1859,9 +1864,9 @@
             this.pnlPersonalDetails.Controls.Add(this.lblPhone);
             this.pnlPersonalDetails.Controls.Add(this.lblEmail);
             this.pnlPersonalDetails.Controls.Add(this.lblPName);
-            this.pnlPersonalDetails.Location = new System.Drawing.Point(32, 259);
+            this.pnlPersonalDetails.Location = new System.Drawing.Point(610, 253);
             this.pnlPersonalDetails.Name = "pnlPersonalDetails";
-            this.pnlPersonalDetails.Size = new System.Drawing.Size(49, 89);
+            this.pnlPersonalDetails.Size = new System.Drawing.Size(739, 396);
             this.pnlPersonalDetails.TabIndex = 84;
             // 
             // label4
@@ -1882,6 +1887,7 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(493, 53);
             this.txtLastName.TabIndex = 72;
+            this.txtLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLastName_KeyPress);
             // 
             // label5
             // 
@@ -2042,6 +2048,7 @@
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(493, 53);
             this.txtFirstName.TabIndex = 71;
+            this.txtFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFirstName_KeyPress);
             // 
             // lblDOBFormat
             // 
@@ -2133,6 +2140,7 @@
             this.btnPernalBack.TabIndex = 59;
             this.btnPernalBack.Text = "Back";
             this.btnPernalBack.UseVisualStyleBackColor = false;
+            this.btnPernalBack.Click += new System.EventHandler(this.btnPernalBack_Click);
             // 
             // btnPersoanlContinue
             // 
@@ -2215,9 +2223,9 @@
             this.pnlPersonalDetails2.Controls.Add(this.label17);
             this.pnlPersonalDetails2.Controls.Add(this.label18);
             this.pnlPersonalDetails2.Controls.Add(this.label19);
-            this.pnlPersonalDetails2.Location = new System.Drawing.Point(346, 18);
+            this.pnlPersonalDetails2.Location = new System.Drawing.Point(1513, 38);
             this.pnlPersonalDetails2.Name = "pnlPersonalDetails2";
-            this.pnlPersonalDetails2.Size = new System.Drawing.Size(64, 74);
+            this.pnlPersonalDetails2.Size = new System.Drawing.Size(72, 50);
             this.pnlPersonalDetails2.TabIndex = 86;
             this.pnlPersonalDetails2.Visible = false;
             // 
@@ -2330,6 +2338,7 @@
             this.txtAdd1.Name = "txtAdd1";
             this.txtAdd1.Size = new System.Drawing.Size(475, 53);
             this.txtAdd1.TabIndex = 71;
+            this.txtAdd1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAdd1_KeyPress);
             // 
             // txtAdd2
             // 
@@ -2338,6 +2347,7 @@
             this.txtAdd2.Name = "txtAdd2";
             this.txtAdd2.Size = new System.Drawing.Size(475, 53);
             this.txtAdd2.TabIndex = 73;
+            this.txtAdd2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAdd2_KeyPress);
             // 
             // txtZipCode
             // 
@@ -2347,6 +2357,7 @@
             this.txtZipCode.Name = "txtZipCode";
             this.txtZipCode.Size = new System.Drawing.Size(475, 53);
             this.txtZipCode.TabIndex = 75;
+            this.txtZipCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtZipCode_KeyPress);
             // 
             // label7
             // 
@@ -2455,7 +2466,7 @@
             this.pnlLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlLogo.BackgroundImage = global::Gene.Properties.Resources.gene_logo;
             this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlLogo.Location = new System.Drawing.Point(915, 23);
+            this.pnlLogo.Location = new System.Drawing.Point(667, 23);
             this.pnlLogo.Name = "pnlLogo";
             this.pnlLogo.Size = new System.Drawing.Size(82, 24);
             this.pnlLogo.TabIndex = 88;
@@ -2477,9 +2488,9 @@
             this.PnlVrn.Controls.Add(this.txtVrn);
             this.PnlVrn.Controls.Add(this.btnSave);
             this.PnlVrn.Controls.Add(this.label1);
-            this.PnlVrn.Location = new System.Drawing.Point(48, 145);
+            this.PnlVrn.Location = new System.Drawing.Point(42, 622);
             this.PnlVrn.Name = "PnlVrn";
-            this.PnlVrn.Size = new System.Drawing.Size(56, 63);
+            this.PnlVrn.Size = new System.Drawing.Size(71, 84);
             this.PnlVrn.TabIndex = 82;
             // 
             // rdCorporate
@@ -2588,6 +2599,7 @@
             this.txtVrn.Size = new System.Drawing.Size(568, 53);
             this.txtVrn.TabIndex = 1;
             this.txtVrn.Enter += new System.EventHandler(this.txtVrn_Enter);
+            this.txtVrn.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVrn_KeyPress);
             // 
             // btnSave
             // 
@@ -2635,9 +2647,9 @@
             this.pnlRadioZinara.Controls.Add(this.btnNextRadioZinara);
             this.pnlRadioZinara.Controls.Add(this.label86);
             this.pnlRadioZinara.ForeColor = System.Drawing.Color.White;
-            this.pnlRadioZinara.Location = new System.Drawing.Point(608, 17);
+            this.pnlRadioZinara.Location = new System.Drawing.Point(29, 364);
             this.pnlRadioZinara.Name = "pnlRadioZinara";
-            this.pnlRadioZinara.Size = new System.Drawing.Size(54, 82);
+            this.pnlRadioZinara.Size = new System.Drawing.Size(64, 78);
             this.pnlRadioZinara.TabIndex = 98;
             // 
             // btnHomeRadioZinara
@@ -2989,7 +3001,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(212)))));
-            this.ClientSize = new System.Drawing.Size(1908, 754);
+            this.ClientSize = new System.Drawing.Size(1660, 754);
             this.Controls.Add(this.pnlConfirm);
             this.Controls.Add(this.pnlRadioZinara);
             this.Controls.Add(this.pnlInsurance);
