@@ -223,7 +223,7 @@ namespace Gene
                 string fileName = "Certificate" + ".pdf";
 
                 destinationFileName = System.IO.Path.Combine(installedPath, System.IO.Path.GetFileName(fileName));
-                byte[] readFile = File.ReadAllBytes("http://geneinsureclaim.kindlebit.com//Documents/29062/GMCC200002648-1/20200403155646,Invoice.pdf");
+               // byte[] readFile = File.ReadAllBytes("http://geneinsureclaim.kindlebit.com//Documents/29062/GMCC200002648-1/20200403155646,Invoice.pdf");
 
                 File.WriteAllBytes(destinationFileName, pdfbytes);
 

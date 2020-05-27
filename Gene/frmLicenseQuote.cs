@@ -1063,7 +1063,6 @@ namespace Gene
 
                     Service_db.UpdateToken(ObjToken);
 
-
                     _quoteresponse = IcServiceobj.ZineraLICQuote(txtVrn.Text, parternToken, _clientIdType, paymentTerm, cmbProducts.SelectedValue.ToString(), customerInfo.NationalIdentificationNumber, customerInfo);
                     _resObjects = _quoteresponse.Response;
 
@@ -1079,17 +1078,20 @@ namespace Gene
                     {
                         txtAccessAmount.Text = _resObjects.Quotes[0].TotalLicAmt.ToString();
                         txtpenalty.Text = _resObjects.Quotes[0].PenaltiesAmt.ToString();
+                        txtLicPenalitesAmt.Text = _resObjects.Quotes[0].PenaltiesAmt.ToString();
 
                         objRiskModel.TotalLicAmount = Convert.ToDecimal(_resObjects.Quotes[0].TotalLicAmt);
-                        objRiskModel.PenaltiesAmount = _resObjects.Quotes[0].PenaltiesAmt;
+                        objRiskModel.PenaltiesAmt = _resObjects.Quotes[0].PenaltiesAmt;
 
-                        var totalamount = objRiskModel.TotalLicAmount + objRiskModel.PenaltiesAmount;
+                        var totalamount = objRiskModel.TotalLicAmount + objRiskModel.PenaltiesAmt;
                         txtZinTotalAmount.Text = Convert.ToString(totalamount);
                     }
 
                     if (ckhRadioOptional.Checked)
                     {
                         txtradioAmount.Text = Convert.ToString(_resObjects.Quotes[0].RadioTVAmt);
+                        objRiskModel.RadioLicenseCost = _resObjects.Quotes[0].RadioTVAmt;
+                        objRiskModel.IncludeRadioLicenseCost = true;
                     }
 
                     objRiskModel.LicenseId = _resObjects.Quotes[0].LicenceID;
@@ -3027,7 +3029,7 @@ namespace Gene
 
         private void txtVrn_KeyPress(object sender, KeyPressEventArgs e)
         {
-            ValidSpecailCharacter(e);
+            //ValidSpecailCharacter(e);
         }
 
         private void btnPernalBack_Click(object sender, EventArgs e)

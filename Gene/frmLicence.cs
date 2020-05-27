@@ -54,13 +54,15 @@ namespace Gene
             objfrmQuote = new frmQuote("");
 
             InitializeComponent();
+            
+            //
 
             //_branchId = branchId;
             //this.Size = new System.Drawing.Size(1300, 720);
             //PnlLicenceVrn.Visible = true;
 
             //  1572, 818
-
+            
 
             // PnlLicenceVrn.Location = new Point(335, 100);
             //    PnlLicenceVrn.Size = new System.Drawing.Size(1300, 720);
@@ -136,7 +138,7 @@ namespace Gene
                     }
                 }
                 else
-                {
+                {           
                     pictureBox2.Visible = false;
                 }
                 //PrintPreview1 dlg1 = new PrintPreview1(licenseDiskList);
@@ -170,7 +172,7 @@ namespace Gene
             request.AddHeader("username", username);
             request.AddParameter("application/json", "{\n\t\"Name\":\"ghj\"\n}", ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
-
+           
             var result = JsonConvert.DeserializeObject<VehicleDetails>(response.Content);
             return result;
         }
@@ -205,15 +207,11 @@ namespace Gene
             {
                 licenseDiskList.Add(quoteresponseResult.Response);
 
-
-
                 if (quoteresponseResult.Response.LicenceCert == null)
                 {
                     //MessageBox.Show("Pdf not found for this  certificate.");
                     MyMessageBox.ShowBox("Pdf not found for this  certificate.", "Message");
-
                     pictureBox2.Visible = false;
-
                     return licenseDiskList;
                 }
 

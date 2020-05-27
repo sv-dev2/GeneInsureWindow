@@ -147,6 +147,8 @@
             this.lblpayment = new System.Windows.Forms.Label();
             this.lblThankyou = new System.Windows.Forms.Label();
             this.pnlsumary = new System.Windows.Forms.Panel();
+            this.txtLicPenalitesAmt = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.btnHomeSummary = new System.Windows.Forms.Button();
             this.txtTotalPremium = new System.Windows.Forms.TextBox();
@@ -304,9 +306,9 @@
             this.pnlInsurance.Controls.Add(this.label93);
             this.pnlInsurance.Controls.Add(this.label2);
             this.pnlInsurance.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlInsurance.Location = new System.Drawing.Point(941, 30);
+            this.pnlInsurance.Location = new System.Drawing.Point(928, 30);
             this.pnlInsurance.Name = "pnlInsurance";
-            this.pnlInsurance.Size = new System.Drawing.Size(74, 59);
+            this.pnlInsurance.Size = new System.Drawing.Size(66, 64);
             this.pnlInsurance.TabIndex = 97;
             // 
             // button1
@@ -1169,9 +1171,9 @@
             this.pnlconfimpaymeny.Controls.Add(this.txtTotalAmount);
             this.pnlconfimpaymeny.Controls.Add(this.label47);
             this.pnlconfimpaymeny.Controls.Add(this.label46);
-            this.pnlconfimpaymeny.Location = new System.Drawing.Point(37, 517);
+            this.pnlconfimpaymeny.Location = new System.Drawing.Point(461, 30);
             this.pnlconfimpaymeny.Name = "pnlconfimpaymeny";
-            this.pnlconfimpaymeny.Size = new System.Drawing.Size(73, 58);
+            this.pnlconfimpaymeny.Size = new System.Drawing.Size(89, 64);
             this.pnlconfimpaymeny.TabIndex = 94;
             // 
             // loadingImageConfirmPayment
@@ -1640,6 +1642,8 @@
             // pnlsumary
             // 
             this.pnlsumary.BackColor = System.Drawing.Color.Transparent;
+            this.pnlsumary.Controls.Add(this.txtLicPenalitesAmt);
+            this.pnlsumary.Controls.Add(this.label21);
             this.pnlsumary.Controls.Add(this.label10);
             this.pnlsumary.Controls.Add(this.btnHomeSummary);
             this.pnlsumary.Controls.Add(this.txtTotalPremium);
@@ -1656,10 +1660,30 @@
             this.pnlsumary.Controls.Add(this.btnSumBack);
             this.pnlsumary.Controls.Add(this.btnSumContinue);
             this.pnlsumary.Controls.Add(this.lblAddressValue);
-            this.pnlsumary.Location = new System.Drawing.Point(468, 15);
+            this.pnlsumary.Location = new System.Drawing.Point(17, 576);
             this.pnlsumary.Name = "pnlsumary";
-            this.pnlsumary.Size = new System.Drawing.Size(55, 72);
+            this.pnlsumary.Size = new System.Drawing.Size(83, 50);
             this.pnlsumary.TabIndex = 85;
+            // 
+            // txtLicPenalitesAmt
+            // 
+            this.txtLicPenalitesAmt.Font = new System.Drawing.Font("Arial Narrow", 24F);
+            this.txtLicPenalitesAmt.Location = new System.Drawing.Point(478, 122);
+            this.txtLicPenalitesAmt.Name = "txtLicPenalitesAmt";
+            this.txtLicPenalitesAmt.ReadOnly = true;
+            this.txtLicPenalitesAmt.Size = new System.Drawing.Size(171, 44);
+            this.txtLicPenalitesAmt.TabIndex = 112;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Arial Narrow", 20F);
+            this.label21.ForeColor = System.Drawing.Color.White;
+            this.label21.Location = new System.Drawing.Point(232, 130);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(185, 31);
+            this.label21.TabIndex = 111;
+            this.label21.Text = "Penalties Amount";
             // 
             // label10
             // 
@@ -1738,7 +1762,7 @@
             // txtTotalRadioCost
             // 
             this.txtTotalRadioCost.Font = new System.Drawing.Font("Arial Narrow", 24F);
-            this.txtTotalRadioCost.Location = new System.Drawing.Point(478, 118);
+            this.txtTotalRadioCost.Location = new System.Drawing.Point(478, 182);
             this.txtTotalRadioCost.Name = "txtTotalRadioCost";
             this.txtTotalRadioCost.ReadOnly = true;
             this.txtTotalRadioCost.Size = new System.Drawing.Size(173, 44);
@@ -1749,7 +1773,7 @@
             this.lblTotalRadioLicenseCost.AutoSize = true;
             this.lblTotalRadioLicenseCost.Font = new System.Drawing.Font("Arial Narrow", 20F);
             this.lblTotalRadioLicenseCost.ForeColor = System.Drawing.Color.White;
-            this.lblTotalRadioLicenseCost.Location = new System.Drawing.Point(232, 117);
+            this.lblTotalRadioLicenseCost.Location = new System.Drawing.Point(232, 181);
             this.lblTotalRadioLicenseCost.Name = "lblTotalRadioLicenseCost";
             this.lblTotalRadioLicenseCost.Size = new System.Drawing.Size(203, 31);
             this.lblTotalRadioLicenseCost.TabIndex = 72;
@@ -1770,7 +1794,7 @@
             this.lblZipValue.AutoSize = true;
             this.lblZipValue.Font = new System.Drawing.Font("Comic Sans MS", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblZipValue.ForeColor = System.Drawing.Color.White;
-            this.lblZipValue.Location = new System.Drawing.Point(323, 85);
+            this.lblZipValue.Location = new System.Drawing.Point(323, 149);
             this.lblZipValue.Name = "lblZipValue";
             this.lblZipValue.Size = new System.Drawing.Size(0, 45);
             this.lblZipValue.TabIndex = 68;
@@ -1780,7 +1804,7 @@
             this.lblIDValue.AutoSize = true;
             this.lblIDValue.Font = new System.Drawing.Font("Comic Sans MS", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIDValue.ForeColor = System.Drawing.Color.White;
-            this.lblIDValue.Location = new System.Drawing.Point(323, 148);
+            this.lblIDValue.Location = new System.Drawing.Point(323, 212);
             this.lblIDValue.Name = "lblIDValue";
             this.lblIDValue.Size = new System.Drawing.Size(0, 45);
             this.lblIDValue.TabIndex = 67;
@@ -1864,9 +1888,9 @@
             this.pnlPersonalDetails.Controls.Add(this.lblPhone);
             this.pnlPersonalDetails.Controls.Add(this.lblEmail);
             this.pnlPersonalDetails.Controls.Add(this.lblPName);
-            this.pnlPersonalDetails.Location = new System.Drawing.Point(610, 253);
+            this.pnlPersonalDetails.Location = new System.Drawing.Point(12, 127);
             this.pnlPersonalDetails.Name = "pnlPersonalDetails";
-            this.pnlPersonalDetails.Size = new System.Drawing.Size(739, 396);
+            this.pnlPersonalDetails.Size = new System.Drawing.Size(65, 56);
             this.pnlPersonalDetails.TabIndex = 84;
             // 
             // label4
@@ -2488,9 +2512,9 @@
             this.PnlVrn.Controls.Add(this.txtVrn);
             this.PnlVrn.Controls.Add(this.btnSave);
             this.PnlVrn.Controls.Add(this.label1);
-            this.PnlVrn.Location = new System.Drawing.Point(42, 622);
+            this.PnlVrn.Location = new System.Drawing.Point(17, 479);
             this.PnlVrn.Name = "PnlVrn";
-            this.PnlVrn.Size = new System.Drawing.Size(71, 84);
+            this.PnlVrn.Size = new System.Drawing.Size(52, 72);
             this.PnlVrn.TabIndex = 82;
             // 
             // rdCorporate
@@ -2647,9 +2671,9 @@
             this.pnlRadioZinara.Controls.Add(this.btnNextRadioZinara);
             this.pnlRadioZinara.Controls.Add(this.label86);
             this.pnlRadioZinara.ForeColor = System.Drawing.Color.White;
-            this.pnlRadioZinara.Location = new System.Drawing.Point(29, 364);
+            this.pnlRadioZinara.Location = new System.Drawing.Point(29, 384);
             this.pnlRadioZinara.Name = "pnlRadioZinara";
-            this.pnlRadioZinara.Size = new System.Drawing.Size(64, 78);
+            this.pnlRadioZinara.Size = new System.Drawing.Size(80, 46);
             this.pnlRadioZinara.TabIndex = 98;
             // 
             // btnHomeRadioZinara
@@ -3301,5 +3325,7 @@
         private System.Windows.Forms.RadioButton RadioSwipe;
         private System.Windows.Forms.RadioButton RadioMobile;
         private System.Windows.Forms.PictureBox loadingImageConfirmPayment;
+        private System.Windows.Forms.TextBox txtLicPenalitesAmt;
+        private System.Windows.Forms.Label label21;
     }
 }

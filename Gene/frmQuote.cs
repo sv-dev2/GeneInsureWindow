@@ -4158,13 +4158,13 @@ namespace Gene
                                         {
                                             PenaltiesAmt = quoteresponseQuote.Response.Quotes[0].Licence.PenaltiesAmt == null ? 0 : Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Licence.PenaltiesAmt);
 
-                                            if (PenaltiesAmt > 0)
-                                            {
-                                                MyMessageBox.ShowBox("You have outstanding penalties, please contact our Contact Centre for assistance on 086 77 22 33 44.");
-                                                pnlRadioZinara.Visible = false;
-                                                PnlVrn.Visible = true;
-                                                return;
-                                            }
+                                            //if (PenaltiesAmt > 0)
+                                            //{
+                                            //    MyMessageBox.ShowBox("You have outstanding penalties, please contact our Contact Centre for assistance on 086 77 22 33 44.");
+                                            //    pnlRadioZinara.Visible = false;
+                                            //    PnlVrn.Visible = true;
+                                            //    return;
+                                            //}
 
                                             var TotalLicAmt = quoteresponseQuote.Response.Quotes[0].Licence.TotalLicAmt == null ? 0 : Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Licence.TotalLicAmt);
                                             objRiskModel.VehicleLicenceFee = TotalLicAmt + PenaltiesAmt;
@@ -4176,13 +4176,17 @@ namespace Gene
                                             objRiskModel.IncludeRadioLicenseCost = true;
                                         }
 
-                                        if (PenaltiesAmt > 0)
-                                        {
-                                            MyMessageBox.ShowBox("You have outstanding penalties, please contact our Contact Centre for assistance on 086 77 22 33 44.");
-                                            pnlRadioZinara.Visible = false;
-                                            PnlVrn.Visible = true;
-                                            return;
-                                        }
+                                        objRiskModel.PenaltiesAmt = PenaltiesAmt;
+
+                                        //if (PenaltiesAmt > 0)
+                                        //{
+                                        //    MyMessageBox.ShowBox("You have outstanding penalties, please contact our Contact Centre for assistance on 086 77 22 33 44.");
+                                        //    pnlRadioZinara.Visible = false;
+                                        //    PnlVrn.Visible = true;
+                                        //    return;
+                                        //}
+
+
                                     }
                                 }
 
@@ -5148,13 +5152,16 @@ namespace Gene
 
                         // summaryModel.TotalPremium += item.Premium + item.ZTSCLevy + item.StampDuty;
 
-                        summaryModel.TotalPremium += item.Premium + item.ZTSCLevy + item.StampDuty + item.VehicleLicenceFee;
-                        summaryModel.VehicleLicencefees = item.VehicleLicenceFee;
+                         decimal totalPrem = Convert.ToDecimal(item.Premium) + Convert.ToDecimal(item.ZTSCLevy) + Convert.ToDecimal(item.StampDuty) + Convert.ToDecimal(item.VehicleLicenceFee) + Convert.ToDecimal(item.PenaltiesAmt);
+
+                       
+                        summaryModel.TotalPremium += totalPrem;
+                        summaryModel.VehicleLicencefees = Convert.ToDecimal(item.VehicleLicenceFee);
 
                         if (item.IncludeRadioLicenseCost)
                         {
-                            summaryModel.TotalPremium += item.RadioLicenseCost;
-                            summaryModel.TotalRadioLicenseCost += item.RadioLicenseCost;
+                            summaryModel.TotalPremium += Convert.ToDecimal(item.RadioLicenseCost);
+                            summaryModel.TotalRadioLicenseCost +=Convert.ToDecimal(item.RadioLicenseCost);
                         }
 
                         summaryModel.Discount += item.Discount;
@@ -5162,6 +5169,8 @@ namespace Gene
 
 
                     summaryModel.BasicPremium = objRiskDetail.Sum(c => c.Premium).Value;
+                    summaryModel.PenaltiesAmt = objRiskDetail.Sum(c => c.PenaltiesAmt).Value;
+
 
                     //summaryModel.TotalRadioLicenseCost = Math.Round(Convert.ToDecimal(summaryModel.TotalRadioLicenseCost, System.Globalization.CultureInfo.InvariantCulture), 2);
                     summaryModel.Discount = Math.Round(Convert.ToDecimal(summaryModel.Discount, System.Globalization.CultureInfo.InvariantCulture), 2);
@@ -5197,6 +5206,8 @@ namespace Gene
                     //  txtExcessBuyBackAmt.Text = Convert.ToString(summaryModel.ExcessBuyBackAmount);
                     //txtRadioLicAmount.Text = Convert.ToString(summaryModel.TotalRadioLicenseCost);
                     txtZinaraAmount.Text = Convert.ToString(summaryModel.VehicleLicencefees);
+
+                    txtLicPenalties.Text = Convert.ToString(summaryModel.PenaltiesAmt);
                 }
             }
             catch (Exception ex)
@@ -6889,6 +6900,7 @@ namespace Gene
                 pnlRadio.Visible = true;
                 pnlZinara.Visible = false;
                 objRiskModel.IncludeRadioLicenseCost = true;
+
                 //var RadioLicenceAmounts = 0;
                 //if (VehicalIndex == -1)
                 //{
@@ -6947,6 +6959,7 @@ namespace Gene
             {
                 if (resObject.Quotes != null && resObject.Quotes[0].Message == "Unable to retrieve vehicle info from Zimlic, please check the VRN is correct or try again later.")
                 {
+                    
                     return;
                 }
 
@@ -9296,7 +9309,7 @@ namespace Gene
 
         private void txtVrn_KeyPress(object sender, KeyPressEventArgs e)
         {
-            ValidSpecailCharacter(e);
+           // ValidSpecailCharacter(e);
         }
 
         private bool ValidSpecailCharacter(KeyPressEventArgs e)

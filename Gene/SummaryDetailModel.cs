@@ -46,6 +46,8 @@ namespace InsuranceClaim.Models
         public string InvoiceNumber { get; set; }
         public decimal VehicleLicencefees { get; set; }
 
+        public decimal PenaltiesAmt { get; set; }
+
         public int VehicleId { get; set; }
 
         public decimal BasicPremium { get; set; }
