@@ -57,6 +57,7 @@ namespace Gene
             this.pictureBox2.TabIndex = 113;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Visible = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // btnHome
             // 
@@ -82,6 +83,7 @@ namespace Gene
             this.txtLicVrn.TabIndex = 1;
             this.txtLicVrn.Text = "Enter Registration Number";
             this.txtLicVrn.Visible = false;
+            this.txtLicVrn.TextChanged += new System.EventHandler(this.txtLicVrn_TextChanged);
             this.txtLicVrn.Enter += new System.EventHandler(this.txtLicVrn_Enter);
             // 
             // btnLicPrint
@@ -108,6 +110,7 @@ namespace Gene
             this.label1.Size = new System.Drawing.Size(377, 37);
             this.label1.TabIndex = 0;
             this.label1.Text = "Let\'s get your vehicle details  !!";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // printDoc
             // 
@@ -122,6 +125,7 @@ namespace Gene
             this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
+            this.printPreviewDialog1.Load += new System.EventHandler(this.printPreviewDialog1_Load);
             // 
             // errorProvider1
             // 
@@ -137,6 +141,7 @@ namespace Gene
             this.txtLicPdfCode.Size = new System.Drawing.Size(598, 53);
             this.txtLicPdfCode.TabIndex = 114;
             this.txtLicPdfCode.Text = "Enter Pdf Verfication Code";
+            this.txtLicPdfCode.TextChanged += new System.EventHandler(this.txtLicPdfCode_TextChanged);
             this.txtLicPdfCode.Enter += new System.EventHandler(this.txtLicPdfCode_Enter);
             // 
             // btnPdf

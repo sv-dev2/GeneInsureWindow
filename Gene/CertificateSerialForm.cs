@@ -142,8 +142,6 @@ namespace Gene
 
                 proc.Close();
                 KillAdobe("AcroRd32");
-
-
             }
             catch (Exception ex)
             {
@@ -183,9 +181,6 @@ namespace Gene
                 var pdfPath = JsonConvert.DeserializeObject<string>(response.Content);
 
 
-
-
-
                 //using (WebClient webClient = new WebClient())
                 //{
                 //    byte[] data = webClient.DownloadData(pdfPath);
@@ -200,8 +195,6 @@ namespace Gene
                 //        doc.Pages.RemoveAt(0);//Since First page have always Red Text if use Free Version.
                 //        doc.PrintDocument.Print();
                 //    }
-
-
                 //}
             }
             catch (Exception ex)
@@ -235,16 +228,10 @@ namespace Gene
             return destinationFileName;
         }
 
-
-       
-
-
         private void btnScan_Click(object sender, EventArgs e)
         {
-
             try
             {
-
                 pictureBox2.Visible = true;
                 pictureBox2.WaitOnLoad = true;
                 var pdfPath = SavePdf(_base64Data);

@@ -317,8 +317,8 @@ namespace Gene
             txtVrn.ForeColor = SystemColors.GrayText;
             textSearchVrn.ForeColor = SystemColors.GrayText;
 
-            txtZipCode.Text = "00263";
-            txtZipCode.ForeColor = SystemColors.GrayText;
+            //txtZipCode.Text = "00263";
+            //txtZipCode.ForeColor = SystemColors.GrayText;
 
 
             // txtDOB.Size = new Size(292, 50);
@@ -1323,14 +1323,19 @@ namespace Gene
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
-
             NewObjectDuringEditOrBack();
-
-
             //btnSave.Text = "Processing.";
             btnSave.Text = "Process...";
             //pictureBox1.Visible = true;
+
+            //Service_db _service = new Service_db();
+            //if (!_service.CheckVehicleExistOrNot(txtVrn.Text))
+            //{
+            //    MyMessageBox.ShowBox("This vrn alrady exist.", "Message");
+            //    btnSave.Text = "Submit";
+            //    return;
+            //}
+
 
             Worker_DoWork();
             btnSave.Text = "Submit";
@@ -1354,6 +1359,9 @@ namespace Gene
             //  pictureBox1.Visible = false;
 
         }
+
+
+        
 
         private void Worker_DoWork()
         {
@@ -2948,14 +2956,9 @@ namespace Gene
                 txtIDNumber.Focus();
                 return;
             }
-            if (txtZipCode.Text == string.Empty)
-            {
-                NewerrorProvider.SetError(txtZipCode, "Please enter the zipcode");
-                txtZipCode.Focus();
-                return;
-            }
+           
 
-            if (txtAdd1.Text != string.Empty && txtAdd2.Text != string.Empty && cmdCity.SelectedIndex != -1 && txtIDNumber.Text != string.Empty && txtZipCode.Text != string.Empty)
+            if (txtAdd1.Text != string.Empty && txtAdd2.Text != string.Empty && cmdCity.SelectedIndex != -1 && txtIDNumber.Text != string.Empty )
             {
 
                 pnlPersonalDetails2.Visible = false;
@@ -2988,7 +2991,7 @@ namespace Gene
                 else if (rdbFemale.Checked)
                     customerInfo.Gender = "Female";
 
-                customerInfo.Zipcode = txtZipCode.Text;
+                customerInfo.Zipcode = "00263";
 
                 customerInfo.BranchId = branchName == "" ? 0 : Convert.ToInt32(branchName);
             }
@@ -3064,7 +3067,7 @@ namespace Gene
             objU.Address2 = txtAdd2.Text;
             //objU.City = txtCity.Text;
             objU.City = Convert.ToString(cmdCity.Text);
-            objU.Zip = txtZipCode.Text;
+            //objU.Zip = txtZipCode.Text;
             objU.IDNumber = txtIDNumber.Text;
 
 
@@ -3456,7 +3459,7 @@ namespace Gene
                     objExistingInput.Address2 = txtAdd2.Text;
                     //objExistingInput.City = txtCity.Text;
                     objExistingInput.City = Convert.ToString(cmdCity.Text);
-                    objExistingInput.Zip = txtZipCode.Text;
+                    //objExistingInput.Zip = txtZipCode.Text;
                     objExistingInput.IDNumber = txtIDNumber.Text;
 
 
@@ -4166,8 +4169,8 @@ namespace Gene
                                             //    return;
                                             //}
 
-                                            var TotalLicAmt = quoteresponseQuote.Response.Quotes[0].Licence.TotalLicAmt == null ? 0 : Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Licence.TotalLicAmt);
-                                            objRiskModel.VehicleLicenceFee = TotalLicAmt + PenaltiesAmt;
+                                            var TotalLicAmt = quoteresponseQuote.Response.Quotes[0].Licence.ArrearsAmt == null ? 0 : Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Licence.ArrearsAmt);
+                                            objRiskModel.VehicleLicenceFee = TotalLicAmt ;
                                         }
 
                                         if (chkRadioLicence.Checked)
@@ -5465,7 +5468,7 @@ namespace Gene
             txtAdd1.Text = customer.Address1;
             txtAdd2.Text = customer.Address2;
             cmdCity.SelectedText = customer.City;
-            txtZipCode.Text = customer.ZipCode;
+            //txtZipCode.Text = customer.ZipCode;
             txtIDNumber.Text = customer.IDNumber;
         }
 
@@ -5769,16 +5772,31 @@ namespace Gene
                         //loadLicenceDiskPanel(list);
 
 
-                        foreach (var item in objlistRisk)  // for now it's  commented
-                        {
-                            // item.LicenseId = _licenseId; //m latest license
-                            if (!string.IsNullOrEmpty(item.CombinedID) && (item.CombinedID != "0"))
-                            {
-                                btnConfirmPayment.Text = "Approving license..";
+                        //foreach (var item in objlistRisk)  // for now it's  commented
+                        //{
 
-                                DisplayLicenseDisc(item, parternToken, item.Id);
-                            }
+                        //    item.Id = summaryDetails.VehicleId;  
+
+                        //    if (!string.IsNullOrEmpty(item.CombinedID) && (item.CombinedID != "0"))
+                        //    {
+                        //        btnConfirmPayment.Text = "Approving license..";
+
+                        //        DisplayLicenseDisc(item, parternToken, item.Id);
+                        //    }
+                        //}
+
+
+                        var item = objlistRisk[0];
+                        item.Id = summaryDetails.VehicleId;
+
+                        if (!string.IsNullOrEmpty(item.CombinedID) && (item.CombinedID != "0"))
+                        {
+                            btnConfirmPayment.Text = "Approving license..";
+
+                            DisplayLicenseDisc(item, parternToken, item.Id);
                         }
+
+
 
                         //if (licenseDiskList.Count > 0)
                         //    btnPrint.Visible = true;
@@ -8641,13 +8659,15 @@ namespace Gene
                     Service_db.UpdateToken(ObjToken);
                     //  quoteresponse = IcServiceobj.RequestQuote(parternToken, RegistrationNo, suminsured, make, model, PaymentTermId, VehicleYear, CoverTypeId, VehicleUsage, "", (CustomerModel)customerInfo); // uncomment this line 
                     quoteresponseResult = ICEcashService.TPILICResult(riskDetailModel, parternToken);
-
-                    if (quoteresponseResult.Response != null)
-                    {
-                        UpdateVehicleLiceneExpiryDate(summaryModel.VehicleId, quoteresponseResult.Response.LicExpiryDate);
-                    }
-
+               
                 }
+            }
+
+
+
+            if (quoteresponseResult.Response != null && quoteresponseResult.Response.LicExpiryDate!=null)
+            {
+                UpdateVehicleLiceneExpiryDate(vehicleId, quoteresponseResult.Response.LicExpiryDate);
             }
 
             if (quoteresponseResult.Response != null && quoteresponseResult.Response.LicenceCert != null)
@@ -9247,6 +9267,20 @@ namespace Gene
 
                 if (_iceCashErrorMsg != "")
                 {
+                    if (_iceCashErrorMsg.Contains("Licensing is only allowed"))
+                    {
+                        _iceCashErrorMsg = _iceCashErrorMsg + " You can get Insurance only.";
+
+                        SetLoadingPnlInsurance(false);
+                        btnInsCnt.Text = "Continue";
+
+                        MyMessageBox.ShowBox(_iceCashErrorMsg);
+                        GoToVrnScreen();
+                        return;
+                    }
+                       
+                    
+
                     MyMessageBox.ShowBox(_iceCashErrorMsg);
                     SetLoadingPnlInsurance(false);
                     btnInsCnt.Text = "Continue";

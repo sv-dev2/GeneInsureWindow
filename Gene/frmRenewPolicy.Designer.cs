@@ -270,9 +270,9 @@
             this.PnlRenewVrn.Controls.Add(this.txtRenewVrn);
             this.PnlRenewVrn.Controls.Add(this.btnSave);
             this.PnlRenewVrn.Controls.Add(this.PnlVrn);
-            this.PnlRenewVrn.Location = new System.Drawing.Point(1561, 79);
+            this.PnlRenewVrn.Location = new System.Drawing.Point(308, 202);
             this.PnlRenewVrn.Name = "PnlRenewVrn";
-            this.PnlRenewVrn.Size = new System.Drawing.Size(58, 57);
+            this.PnlRenewVrn.Size = new System.Drawing.Size(1297, 376);
             this.PnlRenewVrn.TabIndex = 4;
             this.PnlRenewVrn.Paint += new System.Windows.Forms.PaintEventHandler(this.PnlVrn_Paint);
             // 
@@ -1708,9 +1708,9 @@
             this.pnlRenewPersonalDetails2.Controls.Add(this.label17);
             this.pnlRenewPersonalDetails2.Controls.Add(this.label18);
             this.pnlRenewPersonalDetails2.Controls.Add(this.label19);
-            this.pnlRenewPersonalDetails2.Location = new System.Drawing.Point(314, 131);
+            this.pnlRenewPersonalDetails2.Location = new System.Drawing.Point(49, 131);
             this.pnlRenewPersonalDetails2.Name = "pnlRenewPersonalDetails2";
-            this.pnlRenewPersonalDetails2.Size = new System.Drawing.Size(1342, 616);
+            this.pnlRenewPersonalDetails2.Size = new System.Drawing.Size(60, 49);
             this.pnlRenewPersonalDetails2.TabIndex = 69;
             this.pnlRenewPersonalDetails2.Visible = false;
             this.pnlRenewPersonalDetails2.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSummery_Paint);

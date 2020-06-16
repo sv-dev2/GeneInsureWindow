@@ -67,6 +67,23 @@ namespace Gene
             IRestResponse response = client.Execute(request);
         }
 
+        public bool CheckVehicleExistOrNot(string vrn)
+        {
+
+            var client = new RestClient(IceCashRequestUrl + "CheckVehicleExistOrNot?vrn='" + vrn + "'");
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("password", Pwd);
+            request.AddHeader("username", username);
+            request.AddParameter("application/json", "{\n\t\"Name\":\"ghj\"\n}", ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+
+            var result = Newtonsoft.Json.JsonConvert.DeserializeObject<bool>(response.Content);
+
+            return Convert.ToBoolean(result);
+        }
+
+
+
 
 
     }

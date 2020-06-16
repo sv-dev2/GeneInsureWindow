@@ -285,15 +285,15 @@ namespace Gene
             pnlconfimpaymeny.Size = new System.Drawing.Size(1380, 1040);
 
 
-            txtVrn.Text = "Car Registration Number";
-            textSearchVrn.Text = "Id Number";
+            txtVrn.Text = "Vehicle Registration Number";
+            textSearchVrn.Text = "ID Number";
 
             //txtVrn.Text = "AAD333";
             txtVrn.ForeColor = SystemColors.GrayText;
             textSearchVrn.ForeColor = SystemColors.GrayText;
 
-            txtZipCode.Text = "00263";
-            txtZipCode.ForeColor = SystemColors.GrayText;
+            //txtZipCode.Text = "00263";
+            //txtZipCode.ForeColor = SystemColors.GrayText;
 
             // SetLocationButton();
 
@@ -570,6 +570,14 @@ namespace Gene
         {
             NewObjectDuringEditOrBack();
             btnSave.Text = "Process...";
+
+            //Service_db _service = new Service_db();
+            //if (!_service.CheckVehicleExistOrNot(txtVrn.Text))
+            //{
+            //    MyMessageBox.ShowBox("This vrn alrady exist.", "Message");
+            //    return;
+            //}
+
 
             Worker_DoWork();
             btnSave.Text = "Submit";
@@ -878,14 +886,9 @@ namespace Gene
                 txtIDNumber.Focus();
                 return;
             }
-            if (txtZipCode.Text == string.Empty)
-            {
-                NewerrorProvider.SetError(txtZipCode, "Please enter the zipcode");
-                txtZipCode.Focus();
-                return;
-            }
+            
 
-            if (txtAdd1.Text != string.Empty && txtAdd2.Text != string.Empty && cmdCity.SelectedIndex != -1 && txtIDNumber.Text != string.Empty && txtZipCode.Text != string.Empty)
+            if (txtAdd1.Text != string.Empty && txtAdd2.Text != string.Empty && cmdCity.SelectedIndex != -1 && txtIDNumber.Text != string.Empty)
             {
 
                 // pnlsumary.Visible = true;
@@ -915,7 +918,7 @@ namespace Gene
                 else if (rdbFemale.Checked)
                     customerInfo.Gender = "Female";
 
-                customerInfo.Zipcode = txtZipCode.Text;
+                customerInfo.Zipcode = "00263";
                 customerInfo.BranchId = branchName == "" ? 0 : Convert.ToInt32(branchName);
             }
         }
@@ -1045,8 +1048,25 @@ namespace Gene
                 else
                     _clientIdType = "1";
 
+            
+                var _quoteresponse = new ResultRootObject();
 
-                var _quoteresponse = IcServiceobj.ZineraLICQuote(txtVrn.Text, parternToken, _clientIdType, paymentTerm, cmbProducts.SelectedValue.ToString(), customerInfo.NationalIdentificationNumber, customerInfo);
+                if ( chkZinaraOptional.Checked && !ckhRadioOptional.Checked)
+                {
+                    paymentTerm = ZinPaymentTrm.SelectedValue.ToString();
+                    _quoteresponse = IcServiceobj.ZineraLICQuoteOnly(txtVrn.Text, parternToken, _clientIdType, paymentTerm, cmbProducts.SelectedValue.ToString(), customerInfo.NationalIdentificationNumber, customerInfo);
+
+                }
+                else
+                {
+                    var radioPaymentTerm = ZnrRadioPayTerm.SelectedValue.ToString();
+                    var zinPaymentTrm = ZinPaymentTrm.SelectedValue.ToString();
+                    _quoteresponse = IcServiceobj.ZineraAndRadioLICQuote(txtVrn.Text, parternToken, _clientIdType, cmbProducts.SelectedValue.ToString(), customerInfo.NationalIdentificationNumber, customerInfo, zinPaymentTrm, radioPaymentTerm);
+
+                }
+
+
+
                 var _resObjects = _quoteresponse.Response;
 
                 if (_resObjects.Message.Contains("1 failed"))
@@ -1063,7 +1083,24 @@ namespace Gene
 
                     Service_db.UpdateToken(ObjToken);
 
-                    _quoteresponse = IcServiceobj.ZineraLICQuote(txtVrn.Text, parternToken, _clientIdType, paymentTerm, cmbProducts.SelectedValue.ToString(), customerInfo.NationalIdentificationNumber, customerInfo);
+                    //_quoteresponse = IcServiceobj.ZineraLICQuote(txtVrn.Text, parternToken, _clientIdType, paymentTerm, cmbProducts.SelectedValue.ToString(), customerInfo.NationalIdentificationNumber, customerInfo);
+
+                    if (chkZinaraOptional.Checked && !ckhRadioOptional.Checked)
+                    {
+                        paymentTerm = ZinPaymentTrm.SelectedValue.ToString();
+                        _quoteresponse = IcServiceobj.ZineraLICQuoteOnly(txtVrn.Text, parternToken, _clientIdType, paymentTerm, cmbProducts.SelectedValue.ToString(), customerInfo.NationalIdentificationNumber, customerInfo);
+
+                    }
+                    else
+                    {
+                        var radioPaymentTerm = ZnrRadioPayTerm.SelectedValue.ToString();
+                        var zinPaymentTrm = ZinPaymentTrm.SelectedValue.ToString();
+                        _quoteresponse = IcServiceobj.ZineraAndRadioLICQuote(txtVrn.Text, parternToken, _clientIdType, cmbProducts.SelectedValue.ToString(), customerInfo.NationalIdentificationNumber, customerInfo, zinPaymentTrm, radioPaymentTerm);
+
+                    }
+
+
+
                     _resObjects = _quoteresponse.Response;
 
                     if (_resObjects.Message.Contains("1 failed"))
@@ -1071,16 +1108,15 @@ namespace Gene
 
                 }
 
-
                 if (_resObjects != null && _resObjects.Quotes != null && _resObjects.Quotes[0].Message == "Success")
                 {
                     if (chkZinaraOptional.Checked)
                     {
-                        txtAccessAmount.Text = _resObjects.Quotes[0].TotalLicAmt.ToString();
+                        txtAccessAmount.Text = _resObjects.Quotes[0].ArrearsAmt.ToString();
                         txtpenalty.Text = _resObjects.Quotes[0].PenaltiesAmt.ToString();
                         txtLicPenalitesAmt.Text = _resObjects.Quotes[0].PenaltiesAmt.ToString();
 
-                        objRiskModel.TotalLicAmount = Convert.ToDecimal(_resObjects.Quotes[0].TotalLicAmt);
+                        objRiskModel.TotalLicAmount = Convert.ToDecimal(_resObjects.Quotes[0].ArrearsAmt);
                         objRiskModel.PenaltiesAmt = _resObjects.Quotes[0].PenaltiesAmt;
 
                         var totalamount = objRiskModel.TotalLicAmount + objRiskModel.PenaltiesAmt;
@@ -1151,7 +1187,7 @@ namespace Gene
 
         private void txtVrn_Enter(object sender, EventArgs e)
         {
-            if (txtVrn.Text == "Car Registration Number")
+            if (txtVrn.Text == "Vehicle Registration Number")
             {
                 txtVrn.Text = "";
                 txtVrn.ForeColor = SystemColors.GrayText;
@@ -1160,7 +1196,7 @@ namespace Gene
 
         private void textSearchVrn_Enter(object sender, EventArgs e)
         {
-            if (textSearchVrn.Text == "Id Number")
+            if (textSearchVrn.Text == "ID Number")
             {
                 textSearchVrn.Text = "";
                 textSearchVrn.ForeColor = SystemColors.GrayText;
@@ -1304,8 +1340,16 @@ namespace Gene
             objRiskModel.ZTSCLevy = 0;
             objRiskModel.StampDuty = 0;
 
+           
+                GetRadioLiceenseFee(objRiskModel.PaymentTermId.ToString());
+            
 
-            GetRadioLiceenseFee(objRiskModel.PaymentTermId.ToString());
+           
+           
+
+
+
+            
 
             if (_iceCashErrorMsg != "")
             {
@@ -1671,15 +1715,16 @@ namespace Gene
                         //licenseDiskList.Add(resresponse);
                         //loadLicenceDiskPanel(list);
 
+                        var item = objlistRisk[0];
 
-                        foreach (var item in objlistRisk)  // for now it's  commented
-                        {
+                        //foreach (var item in objlistRisk)  // for now it's  commented
+                        //{
                             item.LicenseId = _licenseId; //m latest license
                             if (!string.IsNullOrEmpty(item.LicenseId) && (item.LicenseId != "0"))
                             {
-                                DisplayLicenseDisc(item, parternToken, item.Id);
+                                DisplayLicenseDisc(item, parternToken, summaryDetails.VehicleId);
                             }
-                        }
+                        //}
 
                         //if (licenseDiskList.Count > 0)
                         //    btnPrint.Visible = true;
@@ -1758,13 +1803,17 @@ namespace Gene
                     //  quoteresponse = IcServiceobj.RequestQuote(parternToken, RegistrationNo, suminsured, make, model, PaymentTermId, VehicleYear, CoverTypeId, VehicleUsage, "", (CustomerModel)customerInfo); // uncomment this line 
                     quoteresponseResult = IcServiceobj.LICResult(riskDetailModel.LicenseId, parternToken);
 
-                    if (quoteresponseResult.Response != null)
-                    {
-                        UpdateVehicleLiceneExpiryDate(summaryModel.VehicleId, quoteresponseResult.Response.LicExpiryDate);
-                    }
+                    
 
                 }
             }
+
+            if (quoteresponseResult.Response != null && quoteresponseResult.Response.LicExpiryDate!=null)
+            {
+                UpdateVehicleLiceneExpiryDate(vehicleId, quoteresponseResult.Response.LicExpiryDate);
+            }
+
+
 
             if (quoteresponseResult.Response != null && quoteresponseResult.Response.LicenceCert != null)
             {
@@ -2941,12 +2990,12 @@ namespace Gene
                 txtCmpBusinessId.Focus();
                 return;
             }
-            if (txtZipCode.Text == string.Empty)
-            {
-                NewerrorProvider.SetError(txtZipCode, "Please enter the zipcode");
-                txtZipCode.Focus();
-                return;
-            }
+            //if (txtZipCode.Text == string.Empty)
+            //{
+            //    NewerrorProvider.SetError(txtZipCode, "Please enter the zipcode");
+            //    txtZipCode.Focus();
+            //    return;
+            //}
 
 
             // pnlsumary.Visible = true;
@@ -2968,6 +3017,7 @@ namespace Gene
             customerInfo.AddressLine1 = txtCmpAddress.Text;
             customerInfo.NationalIdentificationNumber = txtCmpBusinessId.Text;
             customerInfo.CountryCode = cmbCmpCode.SelectedValue.ToString();
+            customerInfo.Zipcode = "00263";
             // customerInfo.Gender = rdbFemale
 
 
@@ -3036,6 +3086,11 @@ namespace Gene
         {
             pnlPersonalDetails.Visible = false;
             PnlVrn.Visible = true;
+        }
+
+        private void txtIDNumber_Click(object sender, EventArgs e)
+        {
+            txtIDNumber.Text = string.Empty;
         }
     }
 

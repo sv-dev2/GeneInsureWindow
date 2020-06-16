@@ -197,6 +197,12 @@
     <Compile Include="UserInput.cs" />
     <Compile Include="VehicleLicenseModel.cs" />
     <Compile Include="VehicleLicQuote.cs" />
+    <Compile Include="WebCertificateSerial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WebCertificateSerial.Designer.cs">
+      <DependentUpon>WebCertificateSerial.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CertificatePreview.resx">
       <DependentUpon>CertificatePreview.cs</DependentUpon>
     </EmbeddedResource>
@@ -245,6 +251,9 @@
     </Compile>
     <EmbeddedResource Include="QuickPrintPreview.resx">
       <DependentUpon>QuickPrintPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WebCertificateSerial.resx">
+      <DependentUpon>WebCertificateSerial.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config">
       <SubType>Designer</SubType>

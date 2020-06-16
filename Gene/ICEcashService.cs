@@ -1565,6 +1565,221 @@ namespace Insurance.Service
 
 
 
+        public ResultRootObject ZineraAndRadioLICQuote(string RegistrationNo, string parternToken, string _clientIdType,  string ProductId, string IDsNumber, CustomerModel CustomerInfo, string zinaraPaymentTermId, string radioPaymentTermId)
+        {
+            var requestToken = Service_db.GetLatestToken();
+
+            if (requestToken != null)
+            {
+                parternToken = requestToken.Token;
+            }
+
+            int RadioTVUsage = 1; // for private car
+
+            if (ProductId == null)
+            {
+                RadioTVUsage = 1;
+            }
+            else if (ProductId == "3" || ProductId == "11") // fr 
+            {
+                RadioTVUsage = 2;
+            }
+
+
+            int licenseFreequency = GetMonthKey(Convert.ToInt32(zinaraPaymentTermId));
+
+            int radioFreequency = GetMonthKey(Convert.ToInt32(radioPaymentTermId));
+
+            //string PSK = "127782435202916376850511";
+            string _json = "";
+
+            List<VehicleLicObject> obj = new List<VehicleLicObject>();
+            //var CustomerInfo = (CustomerModel)HttpContext.Current.Session["CustomerDataModal"];
+
+            //foreach (var item in listofvehicles)
+            //{
+            obj.Add(new VehicleLicObject
+            {
+                VRN = RegistrationNo,
+                IDNumber = IDsNumber,
+                ClientIDType = _clientIdType,
+                FirstName = CustomerInfo.FirstName,
+                LastName = CustomerInfo.LastName,
+                Address1 = CustomerInfo.AddressLine1,
+                Address2 = CustomerInfo.AddressLine2,
+                SuburbID = "2",
+                LicFrequency = licenseFreequency,
+                RadioTVUsage = RadioTVUsage,
+                RadioTVFrequency = radioFreequency
+            });
+            //}
+
+            LICQuoteArguments objArg = new LICQuoteArguments();
+            objArg.PartnerReference = Guid.NewGuid().ToString();
+            objArg.Date = DateTime.Now.ToString("yyyyMMddhhmmss");
+            objArg.Version = "2.0";
+            objArg.PartnerToken = parternToken;
+            objArg.Request = new LICQuoteFunctionObject { Function = "LICQuote", Vehicles = obj };
+
+            _json = Newtonsoft.Json.JsonConvert.SerializeObject(objArg);
+
+            //string  = json.Reverse()
+            string reversejsonString = new string(_json.Reverse().ToArray());
+            string reversepartneridString = new string(PSK.Reverse().ToArray());
+
+            string concatinatedString = reversejsonString + reversepartneridString;
+
+            byte[] toEncodeAsBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(concatinatedString);
+
+            string returnValue = System.Convert.ToBase64String(toEncodeAsBytes);
+
+            string GetSHA512encrypted = SHA512(returnValue);
+
+            string MAC = "";
+
+            for (int i = 0; i < 16; i++)
+            {
+                MAC += GetSHA512encrypted.Substring((i * 8), 1);
+            }
+
+            MAC = MAC.ToUpper();
+
+            LICQuoteRequest objroot = new LICQuoteRequest();
+            objroot.Arguments = objArg;
+            objroot.MAC = MAC;
+            objroot.Mode = "SH";
+
+            var data = Newtonsoft.Json.JsonConvert.SerializeObject(objroot);
+
+            JObject jsonobject = JObject.Parse(data);
+
+            var client = new RestClient(SandboxIceCashApi);
+            //var client = new RestClient(LiveIceCashApi);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("content-type", "application/x-www-form-urlencoded");
+            request.AddParameter("application/x-www-form-urlencoded", jsonobject, ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+            ResultRootObject json = JsonConvert.DeserializeObject<ResultRootObject>(response.Content);
+
+            string branchId = CustomerInfo == null ? "" : Convert.ToString(CustomerInfo.BranchId);
+
+            Service_db.WriteIceCashLog(data, response.Content, "LICQuote", RegistrationNo, branchId);
+
+
+            return json;
+        }
+
+
+
+        public ResultRootObject ZineraLICQuoteOnly(string RegistrationNo, string parternToken, string _clientIdType, string PaymentTermId, string ProductId, string IDsNumber, CustomerModel CustomerInfo)
+        {
+            var requestToken = Service_db.GetLatestToken();
+
+            if (requestToken != null)
+            {
+                parternToken = requestToken.Token;
+            }
+
+            int RadioTVUsage = 1; // for private car
+
+            if (ProductId == null)
+            {
+                RadioTVUsage = 1;
+            }
+            else if (ProductId == "3" || ProductId == "11") // fr 
+            {
+                RadioTVUsage = 2;
+            }
+
+
+            int licenseFreequency = GetMonthKey(Convert.ToInt32(PaymentTermId));
+
+            //string PSK = "127782435202916376850511";
+            string _json = "";
+
+            List<VehicleLicOnlyObject> obj = new List<VehicleLicOnlyObject>();
+            //var CustomerInfo = (CustomerModel)HttpContext.Current.Session["CustomerDataModal"];
+
+            //foreach (var item in listofvehicles)
+            //{
+            obj.Add(new VehicleLicOnlyObject
+            {
+                VRN = RegistrationNo,
+                IDNumber = IDsNumber,
+                ClientIDType = _clientIdType,
+                FirstName = CustomerInfo.FirstName,
+                LastName = CustomerInfo.LastName,
+                Address1 = CustomerInfo.AddressLine1,
+                Address2 = CustomerInfo.AddressLine2,
+                SuburbID = "2",
+                LicFrequency = licenseFreequency
+                //RadioTVUsage = RadioTVUsage,
+                //RadioTVFrequency = licenseFreequency
+            });
+            //}
+
+            LICOnlyQuoteArguments objArg = new LICOnlyQuoteArguments();
+            objArg.PartnerReference = Guid.NewGuid().ToString();
+            objArg.Date = DateTime.Now.ToString("yyyyMMddhhmmss");
+            objArg.Version = "2.0";
+            objArg.PartnerToken = parternToken;
+            objArg.Request = new LICOnlyQuoteFunctionObject { Function = "LICQuote", Vehicles = obj };
+
+            _json = Newtonsoft.Json.JsonConvert.SerializeObject(objArg);
+
+            //string  = json.Reverse()
+            string reversejsonString = new string(_json.Reverse().ToArray());
+            string reversepartneridString = new string(PSK.Reverse().ToArray());
+
+            string concatinatedString = reversejsonString + reversepartneridString;
+
+            byte[] toEncodeAsBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(concatinatedString);
+
+            string returnValue = System.Convert.ToBase64String(toEncodeAsBytes);
+
+            string GetSHA512encrypted = SHA512(returnValue);
+
+            string MAC = "";
+
+            for (int i = 0; i < 16; i++)
+            {
+                MAC += GetSHA512encrypted.Substring((i * 8), 1);
+            }
+
+            MAC = MAC.ToUpper();
+
+            LICOnlyQuoteRequest objroot = new LICOnlyQuoteRequest();
+            objroot.Arguments = objArg;
+            objroot.MAC = MAC;
+            objroot.Mode = "SH";
+
+            var data = Newtonsoft.Json.JsonConvert.SerializeObject(objroot);
+
+            JObject jsonobject = JObject.Parse(data);
+
+            var client = new RestClient(SandboxIceCashApi);
+            //var client = new RestClient(LiveIceCashApi);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("content-type", "application/x-www-form-urlencoded");
+            request.AddParameter("application/x-www-form-urlencoded", jsonobject, ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+            ResultRootObject json = JsonConvert.DeserializeObject<ResultRootObject>(response.Content);
+
+            string branchId = CustomerInfo == null ? "" : Convert.ToString(CustomerInfo.BranchId);
+
+            Service_db.WriteIceCashLog(data, response.Content, "LICQuote", RegistrationNo, branchId);
+
+
+            return json;
+        }
+
+
+
+
+
+
         public int GetRadioTvUsage(string ProductId)
         {
             int RadioTVUsage = 1; // for private car
@@ -2136,6 +2351,7 @@ namespace Insurance.Service
         public string Message { get; set; }
         public decimal TotalLicAmt { get; set; }
         public decimal PenaltiesAmt { get; set; }
+        public decimal ArrearsAmt { get; set; }
         public decimal RadioTVAmt { get; set; }
         public string LicExpiryDate { get; set; }
 
@@ -2437,6 +2653,25 @@ namespace Insurance.Service
         public int RadioTVFrequency { get; set; }
 
     }
+
+
+
+    public class VehicleLicOnlyObject
+    {
+        public string VRN { get; set; }
+        public string IDNumber { get; set; }
+        public string ClientIDType { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
+        public string SuburbID { get; set; }
+        public int LicFrequency { get; set; }
+     
+
+    }
+
+
     public class LICQuoteArguments
     {
         public string PartnerReference { get; set; }
@@ -2445,16 +2680,48 @@ namespace Insurance.Service
         public string PartnerToken { get; set; }
         public LICQuoteFunctionObject Request { get; set; }
     }
+    public class LICOnlyQuoteArguments
+    {
+        public string PartnerReference { get; set; }
+        public string Date { get; set; }
+        public string Version { get; set; }
+        public string PartnerToken { get; set; }
+        public LICOnlyQuoteFunctionObject Request { get; set; }
+    }
+
+
     public class LICQuoteFunctionObject
     {
         public string Function { get; set; }
         public List<VehicleLicObject> Vehicles { get; set; }
     }
+
+
+    public class LICOnlyQuoteFunctionObject
+    {
+        public string Function { get; set; }
+        public List<VehicleLicOnlyObject> Vehicles { get; set; }
+    }
+
+
+    
+
+
     public class LICQuoteRequest
     {
         public LICQuoteArguments Arguments { get; set; }
         public string MAC { get; set; }
         public string Mode { get; set; }
     }
+
+    public class LICOnlyQuoteRequest
+    {
+        public LICOnlyQuoteArguments Arguments { get; set; }
+        public string MAC { get; set; }
+        public string Mode { get; set; }
+    }
+
+
+
 
 }

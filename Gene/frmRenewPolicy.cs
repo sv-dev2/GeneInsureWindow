@@ -210,7 +210,7 @@ namespace Gene
             pnlReconfimpaymeny.Size = new System.Drawing.Size(1450, 750);
 
 
-            txtRenewVrn.Text = "Car Registration Number";
+            txtRenewVrn.Text = "Vehicle Registration Number";
             txtRenewVrn.ForeColor = SystemColors.GrayText;
 
 
@@ -2693,7 +2693,7 @@ namespace Gene
 
         private void txtVrn_Enter_1(object sender, EventArgs e)
         {
-            if (txtRenewVrn.Text == "Car Registration Number")
+            if (txtRenewVrn.Text == "Vehicle Registration Number")
             {
                 txtRenewVrn.Text = "";
                 txtRenewVrn.ForeColor = SystemColors.GrayText;
@@ -3887,6 +3887,9 @@ namespace Gene
             // 
             return licenseDiskList;
         }
+
+
+
 
 
 

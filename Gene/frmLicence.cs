@@ -246,21 +246,17 @@ namespace Gene
             if (quoteresponseResult != null && quoteresponseResult.Response != null)
             {
                 licenseDiskList.Add(quoteresponseResult.Response);
-
                 if (quoteresponseResult.Response.LicenceCert == null)
                 {
                     //MessageBox.Show("Pdf not found for this  certificate.");
                     MyMessageBox.ShowBox("Pdf not found for this  certificate.", "Message");
                     pictureBox2.Visible = false;
-
                     return licenseDiskList;
                 }
-
 
                 this.Close();
                 CertificateSerialForm obj = new CertificateSerialForm(riskDetailModel, parternToken, quoteresponseResult.Response.LicenceCert);
                 obj.Show();
-
 
             }
             // 
@@ -519,7 +515,6 @@ namespace Gene
 
         private void btnPdf_Click(object sender, EventArgs e)
         {
-
             if (txtLicPdfCode.Text == "" || txtLicPdfCode.Text == "Enter Pdf Verfication Code")
             {
                 txtLicPdfCode.Focus();
@@ -534,6 +529,12 @@ namespace Gene
 
             if (vehicelDetails != null)
             {
+
+                RequestToke token = Service_db.GetLatestToken();
+                if (ObjToken != null)
+                    parternToken = token.Token;
+
+
                 pictureBox2.Visible = true;
                 pictureBox2.WaitOnLoad = true;
 
@@ -548,15 +549,27 @@ namespace Gene
                 doc.Pages.Add();
                 doc.Pages.RemoveAt(0);//Since First page have always Red Text if use Free Version.
                 doc.SaveToFile(pdfPath);
-
-            
+      
                 MyMessageBox.ShowBox("Please Print Licence Disk. ", "Print License Disk");
 
                 printPDFWithAcrobat(pdfPath);
-
                 pictureBox2.Visible = false;
+
+                riskDetail = new RiskDetailModel { CombinedID = vehicelDetails.CombinedID, LicenseId = vehicelDetails.LicenseId, RegistrationNo = vehicelDetails.RegistrationNo };
+
+
+                this.Close();
+                WebCertificateSerial obj = new WebCertificateSerial(riskDetail, parternToken);
+                obj.Show();
+
+            }
+            else
+            {
+                pictureBox2.Visible = false;
+                MyMessageBox.ShowBox("Certificate is not found for this code", "Message");
             }
 
+            pictureBox2.Visible = false;
         }
 
 
@@ -573,8 +586,6 @@ namespace Gene
                 {
                     pdfbytes = webClient.DownloadData(filePath);
                 }
-
-
 
                 // string installedPath = @"C:\";
                 string installedPath = @"C:\Users\Public\";
@@ -593,6 +604,31 @@ namespace Gene
         private void txtLicPdfCode_Enter(object sender, EventArgs e)
         {
             txtLicPdfCode.Text = "";
+        }
+
+        private void txtLicVrn_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void printPreviewDialog1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtLicPdfCode_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
