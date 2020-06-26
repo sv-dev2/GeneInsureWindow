@@ -699,7 +699,7 @@ namespace Insurance.Service
             IRestResponse response = client.Execute(request);
             ResultRootObject json = JsonConvert.DeserializeObject<ResultRootObject>(response.Content);
             string branchId = customerInfo == null ? "" : Convert.ToString(customerInfo.BranchId);
-            Service_db.WriteIceCashLog(data, response.Content, "TPILICQuote", riskDetail.RegistrationNo, branchId);
+            Service_db.WriteIceCashLog(data, response.Content, "TPILICQuoteZinraOnly", riskDetail.RegistrationNo, branchId);
 
             return json;
 
@@ -2350,6 +2350,7 @@ namespace Insurance.Service
         public string CombinedID { get; set; }
         public string Message { get; set; }
         public decimal TotalLicAmt { get; set; }
+        public decimal TransactionAmt { get; set; }
         public decimal PenaltiesAmt { get; set; }
         public decimal ArrearsAmt { get; set; }
         public decimal RadioTVAmt { get; set; }

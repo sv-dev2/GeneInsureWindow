@@ -2561,6 +2561,9 @@ namespace Gene
         {
             // third screen confirm vehical details
 
+            pictureBoxConfirm.Visible = true;
+
+
             btnConfContinue.Text = "Processing..";
 
             // VehicalIndex= - 1; // uncomment when it will be run for multiple vehicle
@@ -2578,6 +2581,8 @@ namespace Gene
                 cmbModel.Focus();
                 return;
             }
+
+            SetLoadingPnlRiskDetail(true);
 
 
             objRiskModel.MakeId = Convert.ToString(cmbMake.SelectedValue);
@@ -2648,12 +2653,7 @@ namespace Gene
                 loadVRNPanel();
             }
 
-
-
-
             PaymentSummary();
-
-
 
             pnlConfirm.Visible = false;
             pnlsumary.Visible = true;
@@ -2687,9 +2687,32 @@ namespace Gene
             //}
 
 
+            SetLoadingPnlRiskDetail(false);
 
             btnConfContinue.Text = "Continue";
         }
+
+
+        private void SetLoadingPnlRiskDetail(bool displayLoader)
+        {
+            if (displayLoader)
+            {
+                this.Invoke((MethodInvoker)delegate
+                {
+                    pictureBoxConfirm.Visible = true;
+                    this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+                });
+            }
+            else
+            {
+                this.Invoke((MethodInvoker)delegate
+                {
+                    pictureBoxConfirm.Visible = false;
+                    this.Cursor = System.Windows.Forms.Cursors.Default;
+                });
+            }
+        }
+
 
 
         private void CaculatePreiumForTBA(ResultRootObject quoteresponse)
@@ -4169,8 +4192,12 @@ namespace Gene
                                             //    return;
                                             //}
 
-                                            var TotalLicAmt = quoteresponseQuote.Response.Quotes[0].Licence.ArrearsAmt == null ? 0 : Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Licence.ArrearsAmt);
-                                            objRiskModel.VehicleLicenceFee = TotalLicAmt ;
+                                            objRiskModel.ArrearsAmt = quoteresponseQuote.Response.Quotes[0].Licence.ArrearsAmt == null ? 0 : Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Licence.ArrearsAmt);
+                                            objRiskModel.LicTransactionAmt = quoteresponseQuote.Response.Quotes[0].Licence.TransactionAmt == null ? 0 : Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Licence.TransactionAmt);
+                                          
+                                            objRiskModel.VehicleLicenceFee = Convert.ToDecimal( objRiskModel.ArrearsAmt + objRiskModel.LicTransactionAmt) ;
+
+
                                         }
 
                                         if (chkRadioLicence.Checked)
@@ -4208,6 +4235,9 @@ namespace Gene
             }
             catch (Exception ex)
             {
+            
+                Service_db.WriteIceCashLog("RequestVehicleDetails", ex.Message, "RequestVehicleDetails", objRiskModel.RegistrationNo, Convert.ToString(objRiskModel.ALMBranchId));
+
                 response.message = "Error occured.";
             }
         }
@@ -5149,17 +5179,24 @@ namespace Gene
             {
                 if (objRiskDetail != null && objRiskDetail.Count > 0)
                 {
+                  
+
+
                     foreach (var item in objRiskDetail)
                     {
                         //summaryModel.TotalPremium += item.Premium + item.ZTSCLevy + item.StampDuty + item.VehicleLicenceFee; 
 
                         // summaryModel.TotalPremium += item.Premium + item.ZTSCLevy + item.StampDuty;
 
-                         decimal totalPrem = Convert.ToDecimal(item.Premium) + Convert.ToDecimal(item.ZTSCLevy) + Convert.ToDecimal(item.StampDuty) + Convert.ToDecimal(item.VehicleLicenceFee) + Convert.ToDecimal(item.PenaltiesAmt);
+                         decimal totalPrem = Convert.ToDecimal(item.Premium) + Convert.ToDecimal(item.ZTSCLevy) + Convert.ToDecimal(item.StampDuty) + Convert.ToDecimal(item.VehicleLicenceFee) + Convert.ToDecimal(item.PenaltiesAmt) ;
 
-                       
+                        summaryModel.ArrearsAmt += Convert.ToDecimal(item.ArrearsAmt);
+                        summaryModel.LicTransactionAmt += Convert.ToDecimal(item.LicTransactionAmt);
+
+
+
                         summaryModel.TotalPremium += totalPrem;
-                        summaryModel.VehicleLicencefees = Convert.ToDecimal(item.VehicleLicenceFee);
+                        summaryModel.VehicleLicencefees += Convert.ToDecimal(item.VehicleLicenceFee);
 
                         if (item.IncludeRadioLicenseCost)
                         {
@@ -5167,12 +5204,14 @@ namespace Gene
                             summaryModel.TotalRadioLicenseCost +=Convert.ToDecimal(item.RadioLicenseCost);
                         }
 
-                        summaryModel.Discount += item.Discount;
+                        summaryModel.Discount += item.Discount;               
                     }
 
 
                     summaryModel.BasicPremium = objRiskDetail.Sum(c => c.Premium).Value;
                     summaryModel.PenaltiesAmt = objRiskDetail.Sum(c => c.PenaltiesAmt).Value;
+
+                    summaryModel.TotalLicAmount += Convert.ToDecimal(summaryModel.VehicleLicencefees + summaryModel.PenaltiesAmt + summaryModel.TotalRadioLicenseCost);
 
 
                     //summaryModel.TotalRadioLicenseCost = Math.Round(Convert.ToDecimal(summaryModel.TotalRadioLicenseCost, System.Globalization.CultureInfo.InvariantCulture), 2);
@@ -5208,9 +5247,16 @@ namespace Gene
                     txtZTSCLevies.Text = Convert.ToString(summaryModel.TotalZTSCLevies);
                     //  txtExcessBuyBackAmt.Text = Convert.ToString(summaryModel.ExcessBuyBackAmount);
                     //txtRadioLicAmount.Text = Convert.ToString(summaryModel.TotalRadioLicenseCost);
-                    txtZinaraAmount.Text = Convert.ToString(summaryModel.VehicleLicencefees);
+                    txtArrearsAmt.Text = Convert.ToString(summaryModel.ArrearsAmt);
+
+                    txtTransactionAmt.Text = Convert.ToString(summaryModel.LicTransactionAmt);
 
                     txtLicPenalties.Text = Convert.ToString(summaryModel.PenaltiesAmt);
+
+                    txtZinaraAmount.Text = Convert.ToString(summaryModel.VehicleLicencefees);
+
+                    txtTotalLicAmt.Text = Convert.ToString(summaryModel.TotalLicAmount);
+
                 }
             }
             catch (Exception ex)
@@ -8663,8 +8709,6 @@ namespace Gene
                 }
             }
 
-
-
             if (quoteresponseResult.Response != null && quoteresponseResult.Response.LicExpiryDate!=null)
             {
                 UpdateVehicleLiceneExpiryDate(vehicleId, quoteresponseResult.Response.LicExpiryDate);
@@ -8672,14 +8716,8 @@ namespace Gene
 
             if (quoteresponseResult.Response != null && quoteresponseResult.Response.LicenceCert != null)
             {
-
-
-
                 licenseDiskList.Add(quoteresponseResult.Response);
-
                 //var pdfPath = SavePdf(quoteresponseResult.Response.LicenceCert);
-
-
                 //PdfDocument doc = new PdfDocument();
                 //doc.LoadFromFile(pdfPath);
                 //doc.Pages.Insert(0);
@@ -8687,11 +8725,8 @@ namespace Gene
                 //doc.Pages.RemoveAt(0);//Since First page have always Red Text if use Free Version.
 
                 //doc.SaveToFile(pdfPath);
-
                 //MessageBox.Show("Print licence disk.");
-
                 //printPDFWithAcrobat(pdfPath);
-
                 //CreateLicenseFile(quoteresponseResult.Response.LicenceCert);
 
                 this.Hide();

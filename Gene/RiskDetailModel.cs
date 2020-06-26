@@ -111,6 +111,10 @@ namespace GensureAPIv2.Models
         public decimal? TotalLicAmount { get; set; }
         public decimal? PenaltiesAmt { get; set; }
 
+        public decimal? ArrearsAmt { get; set; }
+
+        public decimal? LicTransactionAmt { get; set; }
+
         //PenaltiesAmt
         //public bool? IncludeZineraCost { get; set; }
         public string LicenseId { get; set; }

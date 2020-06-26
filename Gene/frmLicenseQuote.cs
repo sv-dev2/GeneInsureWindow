@@ -783,9 +783,9 @@ namespace Gene
             txtradioAmount.Text = string.Empty;
             //chkRadioLicence.Checked = false;
             // chkZinara.Checked = false;
-            txtAccessAmount.Text = string.Empty;
-            txtpenalty.Text = string.Empty;
-            txtZinTotalAmount.Text = string.Empty;
+            txtTransactionAmt.Text = string.Empty;
+            txtLicPenalitesAmt.Text = string.Empty;
+            txtTotalZinaraAmount.Text = string.Empty;
 
             btnAddMoreVehicle.Visible = true;
         }
@@ -936,8 +936,8 @@ namespace Gene
             //pnlConfirm.Visible = true;
 
             decimal totalVehicleLicenseAmount = 0;
-            if (txtZinTotalAmount.Text != "")
-                totalVehicleLicenseAmount = Convert.ToDecimal(txtZinTotalAmount.Text);
+            if (txtTotalZinaraAmount.Text != "")
+                totalVehicleLicenseAmount = Convert.ToDecimal(txtTotalZinaraAmount.Text);
 
             if (txtradioAmount.Text != "")
                 totalVehicleLicenseAmount += Convert.ToDecimal(txtradioAmount.Text);
@@ -1112,15 +1112,30 @@ namespace Gene
                 {
                     if (chkZinaraOptional.Checked)
                     {
-                        txtAccessAmount.Text = _resObjects.Quotes[0].ArrearsAmt.ToString();
-                        txtpenalty.Text = _resObjects.Quotes[0].PenaltiesAmt.ToString();
-                        txtLicPenalitesAmt.Text = _resObjects.Quotes[0].PenaltiesAmt.ToString();
+                        //
+                      //  txtTransactionAmt.Text =   _resObjects.Quotes[0].ArrearsAmt.ToString();
+                        txtArrearsAmt.Text = _resObjects.Quotes[0].ArrearsAmt.ToString();
+                        objRiskModel.ArrearsAmt = Convert.ToDecimal( _resObjects.Quotes[0].ArrearsAmt.ToString());
 
-                        objRiskModel.TotalLicAmount = Convert.ToDecimal(_resObjects.Quotes[0].ArrearsAmt);
+                        txtTransactionAmt.Text = _resObjects.Quotes[0].TransactionAmt.ToString();
+                        objRiskModel.LicTransactionAmt = Convert.ToDecimal(_resObjects.Quotes[0].TransactionAmt.ToString());
+
+
+                        txtLicPenalitesAmt.Text = _resObjects.Quotes[0].PenaltiesAmt.ToString();
+                       // txtLicPenalitesAmt1.Text = _resObjects.Quotes[0].PenaltiesAmt.ToString();
+
+                        
                         objRiskModel.PenaltiesAmt = _resObjects.Quotes[0].PenaltiesAmt;
 
-                        var totalamount = objRiskModel.TotalLicAmount + objRiskModel.PenaltiesAmt;
-                        txtZinTotalAmount.Text = Convert.ToString(totalamount);
+                        var totalamount = objRiskModel.ArrearsAmt + objRiskModel.LicTransactionAmt;
+                        txtTotalZinaraAmount.Text = Convert.ToString(totalamount);
+
+                        objRiskModel.VehicleLicenceFee= Convert.ToDecimal(totalamount);
+
+                        txtTotalZinaraAmount.Text = Convert.ToString(totalamount + objRiskModel.PenaltiesAmt);
+                        objRiskModel.TotalLicAmount = Convert.ToDecimal(totalamount + objRiskModel.PenaltiesAmt);
+
+
                     }
 
                     if (ckhRadioOptional.Checked)
