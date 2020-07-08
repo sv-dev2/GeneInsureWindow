@@ -120,6 +120,8 @@
             this.btnErrormeg = new System.Windows.Forms.Button();
             this.lblErrMessage = new System.Windows.Forms.Label();
             this.pnlRadioZinaraSumary = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtZinaraAmount = new System.Windows.Forms.TextBox();
             this.btnHomeOptional = new System.Windows.Forms.Button();
             this.lblZinraErrMsg = new System.Windows.Forms.Label();
             this.pnlZinara = new System.Windows.Forms.Panel();
@@ -130,7 +132,9 @@
             this.label42 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
+            this.lblZinaraAmount = new System.Windows.Forms.Label();
             this.ZinPaymentDetail = new System.Windows.Forms.ComboBox();
+            this.txtArrearsAmt = new System.Windows.Forms.TextBox();
             this.label39 = new System.Windows.Forms.Label();
             this.pnlRadio = new System.Windows.Forms.Panel();
             this.txtradioAmount = new System.Windows.Forms.TextBox();
@@ -154,8 +158,6 @@
             this.txtTotalPremium = new System.Windows.Forms.TextBox();
             this.lblTotalPremium = new System.Windows.Forms.Label();
             this.lblPaymentMsg = new System.Windows.Forms.Label();
-            this.txtArrearsAmt = new System.Windows.Forms.TextBox();
-            this.lblZinaraAmount = new System.Windows.Forms.Label();
             this.txtTotalRadioCost1 = new System.Windows.Forms.TextBox();
             this.lblTotalRadioLicenseCost = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -257,8 +259,8 @@
             this.cmbMake = new System.Windows.Forms.ComboBox();
             this.lblmodel = new System.Windows.Forms.Label();
             this.lblMakeModel = new System.Windows.Forms.Label();
-            this.txtZinaraAmount = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
+            this.txtAdministrationAmt = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.pnlInsurance.SuspendLayout();
             this.pnlAddMoreVehicle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnAddMoreVehicle)).BeginInit();
@@ -311,7 +313,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.button1.Font = new System.Drawing.Font("Arial Narrow", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(18, 25);
             this.button1.Name = "button1";
@@ -326,18 +328,18 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label90.AutoSize = true;
-            this.label90.Font = new System.Drawing.Font("Arial Narrow", 39.75F, System.Drawing.FontStyle.Bold);
+            this.label90.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, System.Drawing.FontStyle.Bold);
             this.label90.ForeColor = System.Drawing.Color.White;
             this.label90.Location = new System.Drawing.Point(290, 7);
             this.label90.Name = "label90";
-            this.label90.Size = new System.Drawing.Size(386, 63);
+            this.label90.Size = new System.Drawing.Size(450, 61);
             this.label90.TabIndex = 61;
             this.label90.Text = "Insurance Details";
             // 
             // btnInsBack
             // 
             this.btnInsBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(212)))));
-            this.btnInsBack.Font = new System.Drawing.Font("Arial Narrow", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInsBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInsBack.ForeColor = System.Drawing.Color.White;
             this.btnInsBack.Location = new System.Drawing.Point(0, 218);
             this.btnInsBack.Name = "btnInsBack";
@@ -349,7 +351,7 @@
             // btnInsCnt
             // 
             this.btnInsCnt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.btnInsCnt.Font = new System.Drawing.Font("Arial Narrow", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInsCnt.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInsCnt.ForeColor = System.Drawing.Color.White;
             this.btnInsCnt.Location = new System.Drawing.Point(1271, 218);
             this.btnInsCnt.Name = "btnInsCnt";
@@ -373,7 +375,7 @@
             this.cmbCoverType.DisplayMember = "CityName";
             this.cmbCoverType.DropDownHeight = 400;
             this.cmbCoverType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCoverType.Font = new System.Drawing.Font("Arial Narrow", 30F);
+            this.cmbCoverType.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.cmbCoverType.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.cmbCoverType.FormattingEnabled = true;
             this.cmbCoverType.IntegralHeight = false;
@@ -387,7 +389,7 @@
             // 
             this.cmbPaymentTerm.DropDownHeight = 400;
             this.cmbPaymentTerm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPaymentTerm.Font = new System.Drawing.Font("Arial Narrow", 30F);
+            this.cmbPaymentTerm.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.cmbPaymentTerm.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.cmbPaymentTerm.FormattingEnabled = true;
             this.cmbPaymentTerm.IntegralHeight = false;
@@ -398,7 +400,7 @@
             // 
             // txtSumInsured
             // 
-            this.txtSumInsured.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSumInsured.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSumInsured.Location = new System.Drawing.Point(645, 275);
             this.txtSumInsured.Name = "txtSumInsured";
             this.txtSumInsured.Size = new System.Drawing.Size(601, 53);
@@ -411,11 +413,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label92.AutoSize = true;
-            this.label92.Font = new System.Drawing.Font("Arial Narrow", 36.75F);
+            this.label92.Font = new System.Drawing.Font("Microsoft Sans Serif", 36.75F);
             this.label92.ForeColor = System.Drawing.Color.White;
             this.label92.Location = new System.Drawing.Point(294, 175);
             this.label92.Name = "label92";
-            this.label92.Size = new System.Drawing.Size(242, 57);
+            this.label92.Size = new System.Drawing.Size(290, 57);
             this.label92.TabIndex = 10;
             this.label92.Text = "Cover Type ";
             // 
@@ -425,11 +427,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label93.AutoSize = true;
-            this.label93.Font = new System.Drawing.Font("Arial Narrow", 36.75F);
+            this.label93.Font = new System.Drawing.Font("Microsoft Sans Serif", 36.75F);
             this.label93.ForeColor = System.Drawing.Color.White;
             this.label93.Location = new System.Drawing.Point(294, 91);
             this.label93.Name = "label93";
-            this.label93.Size = new System.Drawing.Size(297, 57);
+            this.label93.Size = new System.Drawing.Size(359, 57);
             this.label93.TabIndex = 9;
             this.label93.Text = "Payment Term ";
             // 
@@ -439,11 +441,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial Narrow", 36.75F);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 36.75F);
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(294, 269);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(250, 57);
+            this.label2.Size = new System.Drawing.Size(302, 57);
             this.label2.TabIndex = 7;
             this.label2.Text = "Sum Insured";
             this.label2.Visible = false;
@@ -461,11 +463,11 @@
             // 
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
             this.label15.Location = new System.Drawing.Point(-214, 130);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(183, 37);
+            this.label15.Size = new System.Drawing.Size(216, 37);
             this.label15.TabIndex = 83;
             this.label15.Text = "Add Vehicles";
             // 
@@ -519,7 +521,7 @@
             // btnHomeCorporate
             // 
             this.btnHomeCorporate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.btnHomeCorporate.Font = new System.Drawing.Font("Arial Narrow", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHomeCorporate.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHomeCorporate.ForeColor = System.Drawing.Color.White;
             this.btnHomeCorporate.Location = new System.Drawing.Point(5, 3);
             this.btnHomeCorporate.Name = "btnHomeCorporate";
@@ -540,7 +542,7 @@
             // 
             // cmbCmpCode
             // 
-            this.cmbCmpCode.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCmpCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCmpCode.FormattingEnabled = true;
             this.cmbCmpCode.IntegralHeight = false;
             this.cmbCmpCode.Location = new System.Drawing.Point(630, 358);
@@ -573,7 +575,7 @@
             // txtCmpPhone
             // 
             this.txtCmpPhone.BackColor = System.Drawing.SystemColors.Window;
-            this.txtCmpPhone.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCmpPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCmpPhone.Location = new System.Drawing.Point(888, 358);
             this.txtCmpPhone.MaxLength = 9;
             this.txtCmpPhone.Name = "txtCmpPhone";
@@ -593,18 +595,18 @@
             // label69
             // 
             this.label69.AutoSize = true;
-            this.label69.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label69.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label69.ForeColor = System.Drawing.Color.White;
             this.label69.Location = new System.Drawing.Point(259, 349);
             this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(114, 46);
+            this.label69.Size = new System.Drawing.Size(136, 46);
             this.label69.TabIndex = 86;
             this.label69.Text = "Phone";
             // 
             // txtCmpBusinessId
             // 
             this.txtCmpBusinessId.BackColor = System.Drawing.SystemColors.Window;
-            this.txtCmpBusinessId.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCmpBusinessId.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCmpBusinessId.Location = new System.Drawing.Point(628, 538);
             this.txtCmpBusinessId.MaxLength = 12;
             this.txtCmpBusinessId.Name = "txtCmpBusinessId";
@@ -624,11 +626,11 @@
             // label71
             // 
             this.label71.AutoSize = true;
-            this.label71.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label71.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label71.ForeColor = System.Drawing.Color.White;
             this.label71.Location = new System.Drawing.Point(259, 529);
             this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(187, 46);
+            this.label71.Size = new System.Drawing.Size(225, 46);
             this.label71.TabIndex = 83;
             this.label71.Text = "Business Id";
             // 
@@ -636,7 +638,7 @@
             // 
             this.cmbCmpCity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCmpCity.DropDownWidth = 150;
-            this.cmbCmpCity.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCmpCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCmpCity.FormattingEnabled = true;
             this.cmbCmpCity.IntegralHeight = false;
             this.cmbCmpCity.Location = new System.Drawing.Point(626, 444);
@@ -689,7 +691,7 @@
             // btnCorporateBack
             // 
             this.btnCorporateBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(212)))));
-            this.btnCorporateBack.Font = new System.Drawing.Font("Arial Narrow", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCorporateBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCorporateBack.ForeColor = System.Drawing.Color.White;
             this.btnCorporateBack.Location = new System.Drawing.Point(0, 233);
             this.btnCorporateBack.Name = "btnCorporateBack";
@@ -713,7 +715,7 @@
             // txtCmpAddress
             // 
             this.txtCmpAddress.BackColor = System.Drawing.SystemColors.Window;
-            this.txtCmpAddress.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCmpAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCmpAddress.Location = new System.Drawing.Point(627, 277);
             this.txtCmpAddress.MaxLength = 100;
             this.txtCmpAddress.Name = "txtCmpAddress";
@@ -723,7 +725,7 @@
             // 
             // txtCmpEmail
             // 
-            this.txtCmpEmail.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCmpEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCmpEmail.Location = new System.Drawing.Point(626, 187);
             this.txtCmpEmail.Name = "txtCmpEmail";
             this.txtCmpEmail.Size = new System.Drawing.Size(493, 53);
@@ -731,7 +733,7 @@
             // 
             // txtCompany
             // 
-            this.txtCompany.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCompany.Location = new System.Drawing.Point(626, 89);
             this.txtCompany.Name = "txtCompany";
             this.txtCompany.Size = new System.Drawing.Size(493, 53);
@@ -761,18 +763,18 @@
             // label79
             // 
             this.label79.AutoSize = true;
-            this.label79.Font = new System.Drawing.Font("Arial Narrow", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label79.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label79.ForeColor = System.Drawing.Color.White;
             this.label79.Location = new System.Drawing.Point(249, 7);
             this.label79.Name = "label79";
-            this.label79.Size = new System.Drawing.Size(398, 64);
+            this.label79.Size = new System.Drawing.Size(465, 63);
             this.label79.TabIndex = 60;
             this.label79.Text = "Corporate Details";
             // 
             // btnCorporateContinue
             // 
             this.btnCorporateContinue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.btnCorporateContinue.Font = new System.Drawing.Font("Arial Narrow", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCorporateContinue.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCorporateContinue.ForeColor = System.Drawing.Color.White;
             this.btnCorporateContinue.Location = new System.Drawing.Point(1174, 228);
             this.btnCorporateContinue.Name = "btnCorporateContinue";
@@ -785,44 +787,44 @@
             // label80
             // 
             this.label80.AutoSize = true;
-            this.label80.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label80.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label80.ForeColor = System.Drawing.Color.White;
             this.label80.Location = new System.Drawing.Point(256, 447);
             this.label80.Name = "label80";
-            this.label80.Size = new System.Drawing.Size(76, 46);
+            this.label80.Size = new System.Drawing.Size(89, 46);
             this.label80.TabIndex = 10;
             this.label80.Text = "City";
             // 
             // label81
             // 
             this.label81.AutoSize = true;
-            this.label81.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label81.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label81.ForeColor = System.Drawing.Color.White;
             this.label81.Location = new System.Drawing.Point(258, 268);
             this.label81.Name = "label81";
-            this.label81.Size = new System.Drawing.Size(139, 46);
+            this.label81.Size = new System.Drawing.Size(166, 46);
             this.label81.TabIndex = 9;
             this.label81.Text = "Address";
             // 
             // label82
             // 
             this.label82.AutoSize = true;
-            this.label82.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label82.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label82.ForeColor = System.Drawing.Color.White;
             this.label82.Location = new System.Drawing.Point(255, 182);
             this.label82.Name = "label82";
-            this.label82.Size = new System.Drawing.Size(101, 46);
+            this.label82.Size = new System.Drawing.Size(120, 46);
             this.label82.TabIndex = 8;
             this.label82.Text = "Email";
             // 
             // label83
             // 
             this.label83.AutoSize = true;
-            this.label83.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label83.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label83.ForeColor = System.Drawing.Color.White;
             this.label83.Location = new System.Drawing.Point(255, 88);
             this.label83.Name = "label83";
-            this.label83.Size = new System.Drawing.Size(255, 46);
+            this.label83.Size = new System.Drawing.Size(308, 46);
             this.label83.TabIndex = 7;
             this.label83.Text = "Company Name";
             // 
@@ -874,7 +876,7 @@
             // btnHomeTBA
             // 
             this.btnHomeTBA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.btnHomeTBA.Font = new System.Drawing.Font("Arial Narrow", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHomeTBA.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHomeTBA.ForeColor = System.Drawing.Color.White;
             this.btnHomeTBA.Location = new System.Drawing.Point(5, 3);
             this.btnHomeTBA.Name = "btnHomeTBA";
@@ -908,7 +910,7 @@
             // txtTBAPhone
             // 
             this.txtTBAPhone.BackColor = System.Drawing.SystemColors.Window;
-            this.txtTBAPhone.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTBAPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTBAPhone.Location = new System.Drawing.Point(941, 355);
             this.txtTBAPhone.MaxLength = 10;
             this.txtTBAPhone.Name = "txtTBAPhone";
@@ -928,18 +930,18 @@
             // label65
             // 
             this.label65.AutoSize = true;
-            this.label65.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label65.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label65.ForeColor = System.Drawing.Color.White;
             this.label65.Location = new System.Drawing.Point(323, 344);
             this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(114, 46);
+            this.label65.Size = new System.Drawing.Size(136, 46);
             this.label65.TabIndex = 86;
             this.label65.Text = "Phone";
             // 
             // txtTBAIDNumber
             // 
             this.txtTBAIDNumber.BackColor = System.Drawing.SystemColors.Window;
-            this.txtTBAIDNumber.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTBAIDNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTBAIDNumber.Location = new System.Drawing.Point(701, 530);
             this.txtTBAIDNumber.MaxLength = 12;
             this.txtTBAIDNumber.Name = "txtTBAIDNumber";
@@ -959,11 +961,11 @@
             // label63
             // 
             this.label63.AutoSize = true;
-            this.label63.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label63.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label63.ForeColor = System.Drawing.Color.White;
             this.label63.Location = new System.Drawing.Point(319, 545);
             this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(169, 46);
+            this.label63.Size = new System.Drawing.Size(200, 46);
             this.label63.TabIndex = 83;
             this.label63.Text = "IDNumber";
             // 
@@ -972,7 +974,7 @@
             this.cmbTBACity.AllowDrop = true;
             this.cmbTBACity.DropDownHeight = 200;
             this.cmbTBACity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTBACity.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbTBACity.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTBACity.FormattingEnabled = true;
             this.cmbTBACity.IntegralHeight = false;
             this.cmbTBACity.Location = new System.Drawing.Point(701, 441);
@@ -1036,7 +1038,7 @@
             // txtTBAAddress
             // 
             this.txtTBAAddress.BackColor = System.Drawing.SystemColors.Window;
-            this.txtTBAAddress.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTBAAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTBAAddress.Location = new System.Drawing.Point(702, 274);
             this.txtTBAAddress.MaxLength = 100;
             this.txtTBAAddress.Name = "txtTBAAddress";
@@ -1045,7 +1047,7 @@
             // 
             // txtTBALastName
             // 
-            this.txtTBALastName.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTBALastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTBALastName.Location = new System.Drawing.Point(701, 184);
             this.txtTBALastName.Name = "txtTBALastName";
             this.txtTBALastName.Size = new System.Drawing.Size(493, 53);
@@ -1054,7 +1056,7 @@
             // btnTBABack
             // 
             this.btnTBABack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(212)))));
-            this.btnTBABack.Font = new System.Drawing.Font("Arial Narrow", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTBABack.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTBABack.ForeColor = System.Drawing.Color.White;
             this.btnTBABack.Location = new System.Drawing.Point(0, 202);
             this.btnTBABack.Name = "btnTBABack";
@@ -1065,7 +1067,7 @@
             // 
             // txtTBAFirstName
             // 
-            this.txtTBAFirstName.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTBAFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTBAFirstName.Location = new System.Drawing.Point(701, 85);
             this.txtTBAFirstName.Name = "txtTBAFirstName";
             this.txtTBAFirstName.Size = new System.Drawing.Size(493, 53);
@@ -1094,18 +1096,18 @@
             // label59
             // 
             this.label59.AutoSize = true;
-            this.label59.Font = new System.Drawing.Font("Arial Narrow", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label59.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label59.ForeColor = System.Drawing.Color.White;
             this.label59.Location = new System.Drawing.Point(312, 6);
             this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(374, 64);
+            this.label59.Size = new System.Drawing.Size(438, 63);
             this.label59.TabIndex = 60;
             this.label59.Text = "Personal Details";
             // 
             // btnTBAContinue
             // 
             this.btnTBAContinue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.btnTBAContinue.Font = new System.Drawing.Font("Arial Narrow", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTBAContinue.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTBAContinue.ForeColor = System.Drawing.Color.White;
             this.btnTBAContinue.Location = new System.Drawing.Point(1255, 202);
             this.btnTBAContinue.Name = "btnTBAContinue";
@@ -1117,44 +1119,44 @@
             // label60
             // 
             this.label60.AutoSize = true;
-            this.label60.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label60.ForeColor = System.Drawing.Color.White;
             this.label60.Location = new System.Drawing.Point(320, 442);
             this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(76, 46);
+            this.label60.Size = new System.Drawing.Size(89, 46);
             this.label60.TabIndex = 10;
             this.label60.Text = "City";
             // 
             // label61
             // 
             this.label61.AutoSize = true;
-            this.label61.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label61.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label61.ForeColor = System.Drawing.Color.White;
             this.label61.Location = new System.Drawing.Point(322, 263);
             this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(139, 46);
+            this.label61.Size = new System.Drawing.Size(166, 46);
             this.label61.TabIndex = 9;
             this.label61.Text = "Address";
             // 
             // label62
             // 
             this.label62.AutoSize = true;
-            this.label62.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label62.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label62.ForeColor = System.Drawing.Color.White;
             this.label62.Location = new System.Drawing.Point(319, 177);
             this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(177, 46);
+            this.label62.Size = new System.Drawing.Size(212, 46);
             this.label62.TabIndex = 8;
             this.label62.Text = "Last Name";
             // 
             // lbTBAFirstName
             // 
             this.lbTBAFirstName.AutoSize = true;
-            this.lbTBAFirstName.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTBAFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTBAFirstName.ForeColor = System.Drawing.Color.White;
             this.lbTBAFirstName.Location = new System.Drawing.Point(319, 82);
             this.lbTBAFirstName.Name = "lbTBAFirstName";
-            this.lbTBAFirstName.Size = new System.Drawing.Size(179, 46);
+            this.lbTBAFirstName.Size = new System.Drawing.Size(214, 46);
             this.lbTBAFirstName.TabIndex = 7;
             this.lbTBAFirstName.Text = "First Name";
             // 
@@ -1198,11 +1200,11 @@
             // 
             this.RadioSwipe.AutoSize = true;
             this.RadioSwipe.Checked = true;
-            this.RadioSwipe.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RadioSwipe.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RadioSwipe.ForeColor = System.Drawing.Color.White;
             this.RadioSwipe.Location = new System.Drawing.Point(7, 7);
             this.RadioSwipe.Name = "RadioSwipe";
-            this.RadioSwipe.Size = new System.Drawing.Size(207, 50);
+            this.RadioSwipe.Size = new System.Drawing.Size(244, 50);
             this.RadioSwipe.TabIndex = 105;
             this.RadioSwipe.TabStop = true;
             this.RadioSwipe.Text = "Swipe Card";
@@ -1211,11 +1213,11 @@
             // RadioMobile
             // 
             this.RadioMobile.AutoSize = true;
-            this.RadioMobile.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RadioMobile.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RadioMobile.ForeColor = System.Drawing.Color.White;
             this.RadioMobile.Location = new System.Drawing.Point(3, 84);
             this.RadioMobile.Name = "RadioMobile";
-            this.RadioMobile.Size = new System.Drawing.Size(270, 50);
+            this.RadioMobile.Size = new System.Drawing.Size(324, 50);
             this.RadioMobile.TabIndex = 106;
             this.RadioMobile.Text = "Mobile Payment";
             this.RadioMobile.UseVisualStyleBackColor = true;
@@ -1223,7 +1225,7 @@
             // btnConfirmPayment
             // 
             this.btnConfirmPayment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.btnConfirmPayment.Font = new System.Drawing.Font("Arial Narrow", 32.25F);
+            this.btnConfirmPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F);
             this.btnConfirmPayment.ForeColor = System.Drawing.Color.White;
             this.btnConfirmPayment.Location = new System.Drawing.Point(934, 325);
             this.btnConfirmPayment.Name = "btnConfirmPayment";
@@ -1236,7 +1238,7 @@
             // btnhomePay
             // 
             this.btnhomePay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.btnhomePay.Font = new System.Drawing.Font("Arial Narrow", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnhomePay.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnhomePay.ForeColor = System.Drawing.Color.White;
             this.btnhomePay.Location = new System.Drawing.Point(5, 31);
             this.btnhomePay.Name = "btnhomePay";
@@ -1249,7 +1251,7 @@
             // btnconformpayBack
             // 
             this.btnconformpayBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(212)))));
-            this.btnconformpayBack.Font = new System.Drawing.Font("Arial Narrow", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnconformpayBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnconformpayBack.ForeColor = System.Drawing.Color.White;
             this.btnconformpayBack.Location = new System.Drawing.Point(0, 325);
             this.btnconformpayBack.Name = "btnconformpayBack";
@@ -1261,7 +1263,7 @@
             // 
             // txtTotalAmount
             // 
-            this.txtTotalAmount.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalAmount.Location = new System.Drawing.Point(615, 165);
             this.txtTotalAmount.Name = "txtTotalAmount";
             this.txtTotalAmount.ReadOnly = true;
@@ -1271,22 +1273,22 @@
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label47.ForeColor = System.Drawing.Color.White;
             this.label47.Location = new System.Drawing.Point(317, 162);
             this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(213, 46);
+            this.label47.Size = new System.Drawing.Size(258, 46);
             this.label47.TabIndex = 1;
             this.label47.Text = "Total Amount";
             // 
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Font = new System.Drawing.Font("Arial Narrow", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label46.ForeColor = System.Drawing.Color.White;
             this.label46.Location = new System.Drawing.Point(315, 68);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(395, 64);
+            this.label46.Size = new System.Drawing.Size(459, 63);
             this.label46.TabIndex = 0;
             this.label46.Text = "Confirm Payment";
             // 
@@ -1347,15 +1349,36 @@
             this.pnlRadioZinaraSumary.Controls.Add(this.OptNext);
             this.pnlRadioZinaraSumary.Controls.Add(this.label33);
             this.pnlRadioZinaraSumary.ForeColor = System.Drawing.Color.White;
-            this.pnlRadioZinaraSumary.Location = new System.Drawing.Point(215, 137);
+            this.pnlRadioZinaraSumary.Location = new System.Drawing.Point(195, 131);
             this.pnlRadioZinaraSumary.Name = "pnlRadioZinaraSumary";
-            this.pnlRadioZinaraSumary.Size = new System.Drawing.Size(1498, 573);
+            this.pnlRadioZinaraSumary.Size = new System.Drawing.Size(1415, 579);
             this.pnlRadioZinaraSumary.TabIndex = 93;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(245, 453);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(191, 31);
+            this.label12.TabIndex = 83;
+            this.label12.Text = "Zinara Amount";
+            this.label12.Visible = false;
+            // 
+            // txtZinaraAmount
+            // 
+            this.txtZinaraAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.txtZinaraAmount.Location = new System.Drawing.Point(467, 443);
+            this.txtZinaraAmount.Name = "txtZinaraAmount";
+            this.txtZinaraAmount.ReadOnly = true;
+            this.txtZinaraAmount.Size = new System.Drawing.Size(177, 38);
+            this.txtZinaraAmount.TabIndex = 82;
+            this.txtZinaraAmount.Visible = false;
             // 
             // btnHomeOptional
             // 
             this.btnHomeOptional.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.btnHomeOptional.Font = new System.Drawing.Font("Arial Narrow", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHomeOptional.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHomeOptional.ForeColor = System.Drawing.Color.White;
             this.btnHomeOptional.Location = new System.Drawing.Point(5, 3);
             this.btnHomeOptional.Name = "btnHomeOptional";
@@ -1376,6 +1399,8 @@
             // 
             // pnlZinara
             // 
+            this.pnlZinara.Controls.Add(this.txtAdministrationAmt);
+            this.pnlZinara.Controls.Add(this.label16);
             this.pnlZinara.Controls.Add(this.txtTotalZinaraAmount);
             this.pnlZinara.Controls.Add(this.txtLicPenalitesAmt);
             this.pnlZinara.Controls.Add(this.txtTransactionAmt);
@@ -1395,70 +1420,81 @@
             // txtTotalZinaraAmount
             // 
             this.txtTotalZinaraAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.txtTotalZinaraAmount.Location = new System.Drawing.Point(247, 265);
+            this.txtTotalZinaraAmount.Location = new System.Drawing.Point(312, 310);
             this.txtTotalZinaraAmount.Name = "txtTotalZinaraAmount";
             this.txtTotalZinaraAmount.ReadOnly = true;
-            this.txtTotalZinaraAmount.Size = new System.Drawing.Size(177, 38);
+            this.txtTotalZinaraAmount.Size = new System.Drawing.Size(143, 38);
             this.txtTotalZinaraAmount.TabIndex = 12;
             // 
             // txtLicPenalitesAmt
             // 
             this.txtLicPenalitesAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.txtLicPenalitesAmt.Location = new System.Drawing.Point(244, 204);
+            this.txtLicPenalitesAmt.Location = new System.Drawing.Point(312, 204);
             this.txtLicPenalitesAmt.Name = "txtLicPenalitesAmt";
             this.txtLicPenalitesAmt.ReadOnly = true;
-            this.txtLicPenalitesAmt.Size = new System.Drawing.Size(180, 38);
+            this.txtLicPenalitesAmt.Size = new System.Drawing.Size(143, 38);
             this.txtLicPenalitesAmt.TabIndex = 11;
             // 
             // txtTransactionAmt
             // 
             this.txtTransactionAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.txtTransactionAmt.Location = new System.Drawing.Point(244, 91);
+            this.txtTransactionAmt.Location = new System.Drawing.Point(312, 91);
             this.txtTransactionAmt.Name = "txtTransactionAmt";
             this.txtTransactionAmt.ReadOnly = true;
-            this.txtTransactionAmt.Size = new System.Drawing.Size(180, 38);
+            this.txtTransactionAmt.Size = new System.Drawing.Size(143, 38);
             this.txtTransactionAmt.TabIndex = 10;
             // 
             // label44
             // 
             this.label44.AutoSize = true;
-            this.label44.Font = new System.Drawing.Font("Arial Narrow", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.Location = new System.Drawing.Point(27, 267);
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label44.Location = new System.Drawing.Point(27, 312);
             this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(207, 31);
+            this.label44.Size = new System.Drawing.Size(276, 31);
             this.label44.TabIndex = 9;
-            this.label44.Text = "Total License Aount";
+            this.label44.Text = "Total License Amount";
             // 
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Font = new System.Drawing.Font("Arial Narrow", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label42.Location = new System.Drawing.Point(23, 206);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(168, 31);
+            this.label42.Size = new System.Drawing.Size(205, 31);
             this.label42.TabIndex = 7;
             this.label42.Text = "Penalty Amount";
             // 
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Font = new System.Drawing.Font("Arial Narrow", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label41.Location = new System.Drawing.Point(15, 87);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(166, 31);
+            this.label41.Size = new System.Drawing.Size(203, 31);
             this.label41.TabIndex = 6;
             this.label41.Text = "Access Amount";
             // 
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Font = new System.Drawing.Font("Arial Narrow", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label40.ForeColor = System.Drawing.Color.White;
             this.label40.Location = new System.Drawing.Point(13, 28);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(187, 40);
+            this.label40.Size = new System.Drawing.Size(224, 39);
             this.label40.TabIndex = 5;
             this.label40.Text = "Zinara Detail";
+            // 
+            // lblZinaraAmount
+            // 
+            this.lblZinaraAmount.AutoSize = true;
+            this.lblZinaraAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.lblZinaraAmount.ForeColor = System.Drawing.Color.White;
+            this.lblZinaraAmount.Location = new System.Drawing.Point(18, 146);
+            this.lblZinaraAmount.Name = "lblZinaraAmount";
+            this.lblZinaraAmount.Size = new System.Drawing.Size(203, 31);
+            this.lblZinaraAmount.TabIndex = 97;
+            this.lblZinaraAmount.Text = "Arrears Amount";
             // 
             // ZinPaymentDetail
             // 
@@ -1467,19 +1503,28 @@
             this.ZinPaymentDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.ZinPaymentDetail.FormattingEnabled = true;
             this.ZinPaymentDetail.IntegralHeight = false;
-            this.ZinPaymentDetail.Location = new System.Drawing.Point(247, 328);
+            this.ZinPaymentDetail.Location = new System.Drawing.Point(312, 373);
             this.ZinPaymentDetail.Name = "ZinPaymentDetail";
-            this.ZinPaymentDetail.Size = new System.Drawing.Size(188, 39);
+            this.ZinPaymentDetail.Size = new System.Drawing.Size(154, 39);
             this.ZinPaymentDetail.TabIndex = 4;
             this.ZinPaymentDetail.Visible = false;
+            // 
+            // txtArrearsAmt
+            // 
+            this.txtArrearsAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.txtArrearsAmt.Location = new System.Drawing.Point(312, 147);
+            this.txtArrearsAmt.Name = "txtArrearsAmt";
+            this.txtArrearsAmt.ReadOnly = true;
+            this.txtArrearsAmt.Size = new System.Drawing.Size(142, 38);
+            this.txtArrearsAmt.TabIndex = 98;
             // 
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Font = new System.Drawing.Font("Arial Narrow", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label39.Location = new System.Drawing.Point(26, 331);
+            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.Location = new System.Drawing.Point(26, 376);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(157, 31);
+            this.label39.Size = new System.Drawing.Size(191, 31);
             this.label39.TabIndex = 3;
             this.label39.Text = "Payment Term";
             this.label39.Visible = false;
@@ -1509,10 +1554,10 @@
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Arial Narrow", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label38.Location = new System.Drawing.Point(22, 85);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(135, 31);
+            this.label38.Size = new System.Drawing.Size(164, 31);
             this.label38.TabIndex = 3;
             this.label38.Text = "Amount Due";
             // 
@@ -1532,10 +1577,10 @@
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Arial Narrow", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label37.Location = new System.Drawing.Point(22, 146);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(157, 31);
+            this.label37.Size = new System.Drawing.Size(191, 31);
             this.label37.TabIndex = 1;
             this.label37.Text = "Payment Term";
             this.label37.Visible = false;
@@ -1543,17 +1588,17 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("Arial Narrow", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label34.Location = new System.Drawing.Point(14, 22);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(209, 40);
+            this.label34.Size = new System.Drawing.Size(247, 39);
             this.label34.TabIndex = 0;
             this.label34.Text = "Radio Licence";
             // 
             // optBack
             // 
             this.optBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(212)))));
-            this.optBack.Font = new System.Drawing.Font("Arial Narrow", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.optBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.optBack.ForeColor = System.Drawing.Color.White;
             this.optBack.Location = new System.Drawing.Point(0, 196);
             this.optBack.Name = "optBack";
@@ -1566,7 +1611,7 @@
             // OptNext
             // 
             this.OptNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.OptNext.Font = new System.Drawing.Font("Arial Narrow", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OptNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OptNext.ForeColor = System.Drawing.Color.White;
             this.OptNext.Location = new System.Drawing.Point(1208, 200);
             this.OptNext.Name = "OptNext";
@@ -1580,11 +1625,11 @@
             // 
             this.label33.AutoSize = true;
             this.label33.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label33.Font = new System.Drawing.Font("Arial Narrow", 39.75F, System.Drawing.FontStyle.Bold);
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, System.Drawing.FontStyle.Bold);
             this.label33.ForeColor = System.Drawing.Color.White;
             this.label33.Location = new System.Drawing.Point(287, 9);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(337, 65);
+            this.label33.Size = new System.Drawing.Size(385, 63);
             this.label33.TabIndex = 0;
             this.label33.Text = "Zinara Amount";
             // 
@@ -1604,7 +1649,7 @@
             // btnThankHome
             // 
             this.btnThankHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.btnThankHome.Font = new System.Drawing.Font("Arial Narrow", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThankHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThankHome.ForeColor = System.Drawing.Color.White;
             this.btnThankHome.Location = new System.Drawing.Point(46, 31);
             this.btnThankHome.Name = "btnThankHome";
@@ -1663,14 +1708,14 @@
             this.pnlsumary.Controls.Add(this.btnSumBack);
             this.pnlsumary.Controls.Add(this.btnSumContinue);
             this.pnlsumary.Controls.Add(this.lblAddressValue);
-            this.pnlsumary.Location = new System.Drawing.Point(25, 335);
+            this.pnlsumary.Location = new System.Drawing.Point(24, 334);
             this.pnlsumary.Name = "pnlsumary";
-            this.pnlsumary.Size = new System.Drawing.Size(94, 128);
+            this.pnlsumary.Size = new System.Drawing.Size(56, 61);
             this.pnlsumary.TabIndex = 85;
             // 
             // txtLicPenalitesAmt1
             // 
-            this.txtLicPenalitesAmt1.Font = new System.Drawing.Font("Arial Narrow", 24F);
+            this.txtLicPenalitesAmt1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.txtLicPenalitesAmt1.Location = new System.Drawing.Point(478, 170);
             this.txtLicPenalitesAmt1.Name = "txtLicPenalitesAmt1";
             this.txtLicPenalitesAmt1.ReadOnly = true;
@@ -1680,29 +1725,29 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Arial Narrow", 20F);
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.label21.ForeColor = System.Drawing.Color.White;
             this.label21.Location = new System.Drawing.Point(232, 178);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(185, 31);
+            this.label21.Size = new System.Drawing.Size(226, 31);
             this.label21.TabIndex = 111;
             this.label21.Text = "Penalties Amount";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial Narrow", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
             this.label10.Location = new System.Drawing.Point(334, 10);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(199, 33);
+            this.label10.Size = new System.Drawing.Size(237, 33);
             this.label10.TabIndex = 110;
             this.label10.Text = "Zinara licencing";
             // 
             // btnHomeSummary
             // 
             this.btnHomeSummary.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.btnHomeSummary.Font = new System.Drawing.Font("Arial Narrow", 23.25F);
+            this.btnHomeSummary.Font = new System.Drawing.Font("Microsoft Sans Serif", 23.25F);
             this.btnHomeSummary.ForeColor = System.Drawing.Color.White;
             this.btnHomeSummary.Location = new System.Drawing.Point(5, 3);
             this.btnHomeSummary.Name = "btnHomeSummary";
@@ -1714,7 +1759,7 @@
             // 
             // txtTotalPremium
             // 
-            this.txtTotalPremium.Font = new System.Drawing.Font("Arial Narrow", 20F);
+            this.txtTotalPremium.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.txtTotalPremium.Location = new System.Drawing.Point(740, 330);
             this.txtTotalPremium.Name = "txtTotalPremium";
             this.txtTotalPremium.ReadOnly = true;
@@ -1724,11 +1769,11 @@
             // lblTotalPremium
             // 
             this.lblTotalPremium.AutoSize = true;
-            this.lblTotalPremium.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Bold);
+            this.lblTotalPremium.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
             this.lblTotalPremium.ForeColor = System.Drawing.Color.White;
             this.lblTotalPremium.Location = new System.Drawing.Point(376, 330);
             this.lblTotalPremium.Name = "lblTotalPremium";
-            this.lblTotalPremium.Size = new System.Drawing.Size(186, 37);
+            this.lblTotalPremium.Size = new System.Drawing.Size(222, 37);
             this.lblTotalPremium.TabIndex = 104;
             this.lblTotalPremium.Text = "Total Amount";
             // 
@@ -1742,29 +1787,9 @@
             this.lblPaymentMsg.Size = new System.Drawing.Size(0, 55);
             this.lblPaymentMsg.TabIndex = 103;
             // 
-            // txtArrearsAmt
-            // 
-            this.txtArrearsAmt.Font = new System.Drawing.Font("Arial Narrow", 20F);
-            this.txtArrearsAmt.Location = new System.Drawing.Point(243, 147);
-            this.txtArrearsAmt.Name = "txtArrearsAmt";
-            this.txtArrearsAmt.ReadOnly = true;
-            this.txtArrearsAmt.Size = new System.Drawing.Size(180, 38);
-            this.txtArrearsAmt.TabIndex = 98;
-            // 
-            // lblZinaraAmount
-            // 
-            this.lblZinaraAmount.AutoSize = true;
-            this.lblZinaraAmount.Font = new System.Drawing.Font("Arial Narrow", 20F);
-            this.lblZinaraAmount.ForeColor = System.Drawing.Color.White;
-            this.lblZinaraAmount.Location = new System.Drawing.Point(18, 146);
-            this.lblZinaraAmount.Name = "lblZinaraAmount";
-            this.lblZinaraAmount.Size = new System.Drawing.Size(166, 31);
-            this.lblZinaraAmount.TabIndex = 97;
-            this.lblZinaraAmount.Text = "Arrears Amount";
-            // 
             // txtTotalRadioCost1
             // 
-            this.txtTotalRadioCost1.Font = new System.Drawing.Font("Arial Narrow", 24F);
+            this.txtTotalRadioCost1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.txtTotalRadioCost1.Location = new System.Drawing.Point(478, 225);
             this.txtTotalRadioCost1.Name = "txtTotalRadioCost1";
             this.txtTotalRadioCost1.ReadOnly = true;
@@ -1774,11 +1799,11 @@
             // lblTotalRadioLicenseCost
             // 
             this.lblTotalRadioLicenseCost.AutoSize = true;
-            this.lblTotalRadioLicenseCost.Font = new System.Drawing.Font("Arial Narrow", 20F);
+            this.lblTotalRadioLicenseCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.lblTotalRadioLicenseCost.ForeColor = System.Drawing.Color.White;
             this.lblTotalRadioLicenseCost.Location = new System.Drawing.Point(232, 224);
             this.lblTotalRadioLicenseCost.Name = "lblTotalRadioLicenseCost";
-            this.lblTotalRadioLicenseCost.Size = new System.Drawing.Size(203, 31);
+            this.lblTotalRadioLicenseCost.Size = new System.Drawing.Size(250, 31);
             this.lblTotalRadioLicenseCost.TabIndex = 72;
             this.lblTotalRadioLicenseCost.Text = "Radio License Cost";
             // 
@@ -1825,7 +1850,7 @@
             // btnSumBack
             // 
             this.btnSumBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(212)))));
-            this.btnSumBack.Font = new System.Drawing.Font("Arial Narrow", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSumBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSumBack.ForeColor = System.Drawing.Color.White;
             this.btnSumBack.Location = new System.Drawing.Point(34, 309);
             this.btnSumBack.Name = "btnSumBack";
@@ -1838,7 +1863,7 @@
             // btnSumContinue
             // 
             this.btnSumContinue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.btnSumContinue.Font = new System.Drawing.Font("Arial Narrow", 27.25F);
+            this.btnSumContinue.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.25F);
             this.btnSumContinue.ForeColor = System.Drawing.Color.White;
             this.btnSumContinue.Location = new System.Drawing.Point(1140, 306);
             this.btnSumContinue.Name = "btnSumContinue";
@@ -1909,7 +1934,7 @@
             // 
             // txtLastName
             // 
-            this.txtLastName.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLastName.Location = new System.Drawing.Point(664, 158);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(493, 53);
@@ -1919,18 +1944,18 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(271, 157);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(177, 46);
+            this.label5.Size = new System.Drawing.Size(212, 46);
             this.label5.TabIndex = 85;
             this.label5.Text = "Last Name";
             // 
             // btnHomePernlDetail
             // 
             this.btnHomePernlDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.btnHomePernlDetail.Font = new System.Drawing.Font("Arial Narrow", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHomePernlDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHomePernlDetail.ForeColor = System.Drawing.Color.White;
             this.btnHomePernlDetail.Location = new System.Drawing.Point(5, 3);
             this.btnHomePernlDetail.Name = "btnHomePernlDetail";
@@ -1943,10 +1968,10 @@
             // chkCustomEmail
             // 
             this.chkCustomEmail.AutoSize = true;
-            this.chkCustomEmail.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkCustomEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkCustomEmail.Location = new System.Drawing.Point(663, 214);
             this.chkCustomEmail.Name = "chkCustomEmail";
-            this.chkCustomEmail.Size = new System.Drawing.Size(151, 27);
+            this.chkCustomEmail.Size = new System.Drawing.Size(176, 28);
             this.chkCustomEmail.TabIndex = 83;
             this.chkCustomEmail.Text = "No email address";
             this.chkCustomEmail.UseVisualStyleBackColor = true;
@@ -1955,12 +1980,12 @@
             // cmbCode
             // 
             this.cmbCode.DropDownHeight = 200;
-            this.cmbCode.Font = new System.Drawing.Font("Arial Narrow", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCode.FormattingEnabled = true;
             this.cmbCode.IntegralHeight = false;
             this.cmbCode.Location = new System.Drawing.Point(663, 318);
             this.cmbCode.Name = "cmbCode";
-            this.cmbCode.Size = new System.Drawing.Size(231, 48);
+            this.cmbCode.Size = new System.Drawing.Size(231, 46);
             this.cmbCode.TabIndex = 82;
             // 
             // lblEmailExist
@@ -2042,7 +2067,7 @@
             // txtDOB
             // 
             this.txtDOB.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 25F);
-            this.txtDOB.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDOB.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.txtDOB.Location = new System.Drawing.Point(665, 457);
             this.txtDOB.Name = "txtDOB";
@@ -2052,7 +2077,7 @@
             // txtPhone
             // 
             this.txtPhone.BackColor = System.Drawing.SystemColors.Window;
-            this.txtPhone.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhone.Location = new System.Drawing.Point(916, 318);
             this.txtPhone.MaxLength = 10;
             this.txtPhone.Name = "txtPhone";
@@ -2061,7 +2086,7 @@
             // 
             // txtEmailAddress
             // 
-            this.txtEmailAddress.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmailAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmailAddress.Location = new System.Drawing.Point(663, 242);
             this.txtEmailAddress.Name = "txtEmailAddress";
             this.txtEmailAddress.Size = new System.Drawing.Size(493, 53);
@@ -2070,7 +2095,7 @@
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFirstName.Location = new System.Drawing.Point(663, 86);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(493, 53);
@@ -2091,11 +2116,11 @@
             // rdbFemale
             // 
             this.rdbFemale.AutoSize = true;
-            this.rdbFemale.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbFemale.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbFemale.ForeColor = System.Drawing.Color.White;
             this.rdbFemale.Location = new System.Drawing.Point(830, 383);
             this.rdbFemale.Name = "rdbFemale";
-            this.rdbFemale.Size = new System.Drawing.Size(146, 50);
+            this.rdbFemale.Size = new System.Drawing.Size(170, 50);
             this.rdbFemale.TabIndex = 65;
             this.rdbFemale.TabStop = true;
             this.rdbFemale.Text = "Female";
@@ -2104,11 +2129,11 @@
             // rdbMale
             // 
             this.rdbMale.AutoSize = true;
-            this.rdbMale.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbMale.ForeColor = System.Drawing.Color.White;
             this.rdbMale.Location = new System.Drawing.Point(667, 383);
             this.rdbMale.Name = "rdbMale";
-            this.rdbMale.Size = new System.Drawing.Size(108, 50);
+            this.rdbMale.Size = new System.Drawing.Size(124, 50);
             this.rdbMale.TabIndex = 75;
             this.rdbMale.TabStop = true;
             this.rdbMale.Text = "Male";
@@ -2137,29 +2162,29 @@
             // lblDOB
             // 
             this.lblDOB.AutoSize = true;
-            this.lblDOB.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDOB.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDOB.ForeColor = System.Drawing.Color.White;
             this.lblDOB.Location = new System.Drawing.Point(270, 462);
             this.lblDOB.Name = "lblDOB";
-            this.lblDOB.Size = new System.Drawing.Size(209, 46);
+            this.lblDOB.Size = new System.Drawing.Size(250, 46);
             this.lblDOB.TabIndex = 61;
             this.lblDOB.Text = "Date Of Birth";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial Narrow", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(260, 9);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(374, 64);
+            this.label11.Size = new System.Drawing.Size(438, 63);
             this.label11.TabIndex = 60;
             this.label11.Text = "Personal Details";
             // 
             // btnPernalBack
             // 
             this.btnPernalBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(212)))));
-            this.btnPernalBack.Font = new System.Drawing.Font("Arial Narrow", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPernalBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPernalBack.ForeColor = System.Drawing.Color.White;
             this.btnPernalBack.Location = new System.Drawing.Point(0, 196);
             this.btnPernalBack.Name = "btnPernalBack";
@@ -2172,7 +2197,7 @@
             // btnPersoanlContinue
             // 
             this.btnPersoanlContinue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.btnPersoanlContinue.Font = new System.Drawing.Font("Arial Narrow", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPersoanlContinue.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPersoanlContinue.ForeColor = System.Drawing.Color.White;
             this.btnPersoanlContinue.Location = new System.Drawing.Point(1220, 208);
             this.btnPersoanlContinue.Name = "btnPersoanlContinue";
@@ -2185,44 +2210,44 @@
             // lblgender
             // 
             this.lblgender.AutoSize = true;
-            this.lblgender.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblgender.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblgender.ForeColor = System.Drawing.Color.White;
             this.lblgender.Location = new System.Drawing.Point(271, 388);
             this.lblgender.Name = "lblgender";
-            this.lblgender.Size = new System.Drawing.Size(129, 46);
+            this.lblgender.Size = new System.Drawing.Size(152, 46);
             this.lblgender.TabIndex = 10;
             this.lblgender.Text = "Gender";
             // 
             // lblPhone
             // 
             this.lblPhone.AutoSize = true;
-            this.lblPhone.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPhone.ForeColor = System.Drawing.Color.White;
             this.lblPhone.Location = new System.Drawing.Point(271, 309);
             this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(239, 46);
+            this.lblPhone.Size = new System.Drawing.Size(288, 46);
             this.lblPhone.TabIndex = 9;
             this.lblPhone.Text = "Phone Number";
             // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmail.ForeColor = System.Drawing.Color.White;
             this.lblEmail.Location = new System.Drawing.Point(270, 237);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(229, 46);
+            this.lblEmail.Size = new System.Drawing.Size(277, 46);
             this.lblEmail.TabIndex = 8;
             this.lblEmail.Text = "Email Address";
             // 
             // lblPName
             // 
             this.lblPName.AutoSize = true;
-            this.lblPName.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPName.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPName.ForeColor = System.Drawing.Color.White;
             this.lblPName.Location = new System.Drawing.Point(270, 85);
             this.lblPName.Name = "lblPName";
-            this.lblPName.Size = new System.Drawing.Size(179, 46);
+            this.lblPName.Size = new System.Drawing.Size(214, 46);
             this.lblPName.TabIndex = 7;
             this.lblPName.Text = "First Name";
             // 
@@ -2256,7 +2281,7 @@
             // btnHomePerDetail2
             // 
             this.btnHomePerDetail2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.btnHomePerDetail2.Font = new System.Drawing.Font("Arial Narrow", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHomePerDetail2.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHomePerDetail2.ForeColor = System.Drawing.Color.White;
             this.btnHomePerDetail2.Location = new System.Drawing.Point(18, 15);
             this.btnHomePerDetail2.Name = "btnHomePerDetail2";
@@ -2281,7 +2306,7 @@
             // 
             this.cmdCity.DropDownHeight = 400;
             this.cmdCity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmdCity.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdCity.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.cmdCity.FormattingEnabled = true;
             this.cmdCity.IntegralHeight = false;
@@ -2337,7 +2362,7 @@
             // txtIDNumber
             // 
             this.txtIDNumber.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.txtIDNumber.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIDNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIDNumber.Location = new System.Drawing.Point(732, 358);
             this.txtIDNumber.MaxLength = 12;
             this.txtIDNumber.Name = "txtIDNumber";
@@ -2347,7 +2372,7 @@
             // 
             // txtAdd1
             // 
-            this.txtAdd1.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAdd1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAdd1.Location = new System.Drawing.Point(732, 97);
             this.txtAdd1.Name = "txtAdd1";
             this.txtAdd1.Size = new System.Drawing.Size(475, 53);
@@ -2356,7 +2381,7 @@
             // 
             // txtAdd2
             // 
-            this.txtAdd2.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAdd2.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAdd2.Location = new System.Drawing.Point(732, 182);
             this.txtAdd2.Name = "txtAdd2";
             this.txtAdd2.Size = new System.Drawing.Size(475, 53);
@@ -2376,29 +2401,29 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
             this.label13.Location = new System.Drawing.Point(307, 346);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(178, 46);
+            this.label13.Size = new System.Drawing.Size(211, 46);
             this.label13.TabIndex = 61;
             this.label13.Text = "ID Number";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Arial Narrow", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.White;
             this.label14.Location = new System.Drawing.Point(292, 6);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(411, 64);
+            this.label14.Size = new System.Drawing.Size(484, 63);
             this.label14.TabIndex = 60;
             this.label14.Text = "Personal Details 2";
             // 
             // btnPerBack2
             // 
             this.btnPerBack2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(212)))));
-            this.btnPerBack2.Font = new System.Drawing.Font("Arial Narrow", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPerBack2.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPerBack2.ForeColor = System.Drawing.Color.White;
             this.btnPerBack2.Location = new System.Drawing.Point(9, 157);
             this.btnPerBack2.Name = "btnPerBack2";
@@ -2411,7 +2436,7 @@
             // btnPer2Con
             // 
             this.btnPer2Con.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.btnPer2Con.Font = new System.Drawing.Font("Arial Narrow", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPer2Con.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPer2Con.ForeColor = System.Drawing.Color.White;
             this.btnPer2Con.Location = new System.Drawing.Point(1280, 157);
             this.btnPer2Con.Name = "btnPer2Con";
@@ -2424,33 +2449,33 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.White;
             this.label17.Location = new System.Drawing.Point(307, 257);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(76, 46);
+            this.label17.Size = new System.Drawing.Size(89, 46);
             this.label17.TabIndex = 9;
             this.label17.Text = "City";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.White;
             this.label18.Location = new System.Drawing.Point(307, 172);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(166, 46);
+            this.label18.Size = new System.Drawing.Size(199, 46);
             this.label18.TabIndex = 8;
             this.label18.Text = "Address 2";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.White;
             this.label19.Location = new System.Drawing.Point(307, 94);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(166, 46);
+            this.label19.Size = new System.Drawing.Size(199, 46);
             this.label19.TabIndex = 7;
             this.label19.Text = "Address 1";
             // 
@@ -2481,30 +2506,31 @@
             this.PnlVrn.Controls.Add(this.txtVrn);
             this.PnlVrn.Controls.Add(this.btnSave);
             this.PnlVrn.Controls.Add(this.label1);
-            this.PnlVrn.Location = new System.Drawing.Point(40, 568);
+            this.PnlVrn.Location = new System.Drawing.Point(29, 464);
             this.PnlVrn.Name = "PnlVrn";
-            this.PnlVrn.Size = new System.Drawing.Size(79, 48);
+            this.PnlVrn.Size = new System.Drawing.Size(57, 58);
             this.PnlVrn.TabIndex = 82;
             // 
             // rdCorporate
             // 
             this.rdCorporate.AutoSize = true;
-            this.rdCorporate.Font = new System.Drawing.Font("Arial Narrow", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdCorporate.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdCorporate.Location = new System.Drawing.Point(556, 109);
             this.rdCorporate.Name = "rdCorporate";
-            this.rdCorporate.Size = new System.Drawing.Size(128, 35);
+            this.rdCorporate.Size = new System.Drawing.Size(153, 35);
             this.rdCorporate.TabIndex = 81;
             this.rdCorporate.Text = "Corporate";
             this.rdCorporate.UseVisualStyleBackColor = true;
+            this.rdCorporate.CheckedChanged += new System.EventHandler(this.rdCorporate_CheckedChanged);
             // 
             // rdPresonal
             // 
             this.rdPresonal.AutoSize = true;
             this.rdPresonal.Checked = true;
-            this.rdPresonal.Font = new System.Drawing.Font("Arial Narrow", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdPresonal.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdPresonal.Location = new System.Drawing.Point(413, 110);
             this.rdPresonal.Name = "rdPresonal";
-            this.rdPresonal.Size = new System.Drawing.Size(118, 35);
+            this.rdPresonal.Size = new System.Drawing.Size(139, 35);
             this.rdPresonal.TabIndex = 80;
             this.rdPresonal.TabStop = true;
             this.rdPresonal.Text = "Personal";
@@ -2524,7 +2550,7 @@
             this.textSearchVrn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.textSearchVrn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textSearchVrn.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textSearchVrn.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textSearchVrn.Location = new System.Drawing.Point(817, 275);
             this.textSearchVrn.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.textSearchVrn.Name = "textSearchVrn";
@@ -2535,7 +2561,7 @@
             // btnBacktoList
             // 
             this.btnBacktoList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(212)))));
-            this.btnBacktoList.Font = new System.Drawing.Font("Arial Narrow", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBacktoList.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBacktoList.ForeColor = System.Drawing.Color.White;
             this.btnBacktoList.Location = new System.Drawing.Point(420, -3);
             this.btnBacktoList.Name = "btnBacktoList";
@@ -2547,7 +2573,7 @@
             // btnCancel
             // 
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.btnCancel.Font = new System.Drawing.Font("Arial Narrow", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.White;
             this.btnCancel.Location = new System.Drawing.Point(0, 255);
             this.btnCancel.Name = "btnCancel";
@@ -2585,7 +2611,7 @@
             this.txtVrn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.txtVrn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtVrn.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVrn.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtVrn.Location = new System.Drawing.Point(234, 274);
             this.txtVrn.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.txtVrn.Name = "txtVrn";
@@ -2597,7 +2623,7 @@
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.btnSave.Font = new System.Drawing.Font("Arial Narrow", 32.25F);
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(1149, 255);
             this.btnSave.Name = "btnSave";
@@ -2613,11 +2639,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Narrow", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(225, 148);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(633, 64);
+            this.label1.Size = new System.Drawing.Size(761, 63);
             this.label1.TabIndex = 0;
             this.label1.Text = "Let\'s get your vehicle details  !!";
             // 
@@ -2648,7 +2674,7 @@
             // btnHomeRadioZinara
             // 
             this.btnHomeRadioZinara.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.btnHomeRadioZinara.Font = new System.Drawing.Font("Arial Narrow", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHomeRadioZinara.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHomeRadioZinara.ForeColor = System.Drawing.Color.White;
             this.btnHomeRadioZinara.Location = new System.Drawing.Point(5, 3);
             this.btnHomeRadioZinara.Name = "btnHomeRadioZinara";
@@ -2671,13 +2697,13 @@
             // 
             this.cmbProducts.DropDownHeight = 400;
             this.cmbProducts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbProducts.Font = new System.Drawing.Font("Arial Narrow", 25F);
+            this.cmbProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F);
             this.cmbProducts.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.cmbProducts.FormattingEnabled = true;
             this.cmbProducts.IntegralHeight = false;
             this.cmbProducts.Location = new System.Drawing.Point(523, 104);
             this.cmbProducts.Name = "cmbProducts";
-            this.cmbProducts.Size = new System.Drawing.Size(670, 48);
+            this.cmbProducts.Size = new System.Drawing.Size(670, 46);
             this.cmbProducts.TabIndex = 87;
             this.cmbProducts.SelectedIndexChanged += new System.EventHandler(this.cmbProducts_SelectedIndexChanged);
             // 
@@ -2687,21 +2713,21 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblProduct.AutoSize = true;
-            this.lblProduct.Font = new System.Drawing.Font("Arial Narrow", 30F);
+            this.lblProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.lblProduct.ForeColor = System.Drawing.Color.White;
             this.lblProduct.Location = new System.Drawing.Point(268, 105);
             this.lblProduct.Name = "lblProduct";
-            this.lblProduct.Size = new System.Drawing.Size(207, 46);
+            this.lblProduct.Size = new System.Drawing.Size(251, 46);
             this.lblProduct.TabIndex = 86;
             this.lblProduct.Text = "Vehicle Type";
             // 
             // chkZinaraOptional
             // 
             this.chkZinaraOptional.AutoSize = true;
-            this.chkZinaraOptional.Font = new System.Drawing.Font("Arial Narrow", 36.75F);
+            this.chkZinaraOptional.Font = new System.Drawing.Font("Microsoft Sans Serif", 36.75F);
             this.chkZinaraOptional.Location = new System.Drawing.Point(741, 176);
             this.chkZinaraOptional.Name = "chkZinaraOptional";
-            this.chkZinaraOptional.Size = new System.Drawing.Size(471, 61);
+            this.chkZinaraOptional.Size = new System.Drawing.Size(573, 61);
             this.chkZinaraOptional.TabIndex = 79;
             this.chkZinaraOptional.Text = "Zinara vehicle Licencing";
             this.chkZinaraOptional.UseVisualStyleBackColor = true;
@@ -2709,10 +2735,10 @@
             // ckhRadioOptional
             // 
             this.ckhRadioOptional.AutoSize = true;
-            this.ckhRadioOptional.Font = new System.Drawing.Font("Arial Narrow", 36.75F);
+            this.ckhRadioOptional.Font = new System.Drawing.Font("Microsoft Sans Serif", 36.75F);
             this.ckhRadioOptional.Location = new System.Drawing.Point(295, 176);
             this.ckhRadioOptional.Name = "ckhRadioOptional";
-            this.ckhRadioOptional.Size = new System.Drawing.Size(296, 61);
+            this.ckhRadioOptional.Size = new System.Drawing.Size(355, 61);
             this.ckhRadioOptional.TabIndex = 78;
             this.ckhRadioOptional.Text = "Radio Licence";
             this.ckhRadioOptional.UseVisualStyleBackColor = true;
@@ -2741,10 +2767,10 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Arial Narrow", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.Location = new System.Drawing.Point(20, 33);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(157, 31);
+            this.label23.Size = new System.Drawing.Size(191, 31);
             this.label23.TabIndex = 3;
             this.label23.Text = "Payment Term";
             // 
@@ -2773,17 +2799,17 @@
             // label84
             // 
             this.label84.AutoSize = true;
-            this.label84.Font = new System.Drawing.Font("Arial Narrow", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label84.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label84.Location = new System.Drawing.Point(20, 33);
             this.label84.Name = "label84";
-            this.label84.Size = new System.Drawing.Size(157, 31);
+            this.label84.Size = new System.Drawing.Size(191, 31);
             this.label84.TabIndex = 1;
             this.label84.Text = "Payment Term";
             // 
             // btnRadioZinaraBack
             // 
             this.btnRadioZinaraBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(212)))));
-            this.btnRadioZinaraBack.Font = new System.Drawing.Font("Arial Narrow", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRadioZinaraBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRadioZinaraBack.ForeColor = System.Drawing.Color.White;
             this.btnRadioZinaraBack.Location = new System.Drawing.Point(0, 258);
             this.btnRadioZinaraBack.Name = "btnRadioZinaraBack";
@@ -2796,7 +2822,7 @@
             // btnNextRadioZinara
             // 
             this.btnNextRadioZinara.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.btnNextRadioZinara.Font = new System.Drawing.Font("Arial Narrow", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNextRadioZinara.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNextRadioZinara.ForeColor = System.Drawing.Color.White;
             this.btnNextRadioZinara.Location = new System.Drawing.Point(1224, 251);
             this.btnNextRadioZinara.Name = "btnNextRadioZinara";
@@ -2809,11 +2835,11 @@
             // label86
             // 
             this.label86.AutoSize = true;
-            this.label86.Font = new System.Drawing.Font("Arial Narrow", 39.75F, System.Drawing.FontStyle.Bold);
+            this.label86.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, System.Drawing.FontStyle.Bold);
             this.label86.ForeColor = System.Drawing.Color.White;
             this.label86.Location = new System.Drawing.Point(377, 9);
             this.label86.Name = "label86";
-            this.label86.Size = new System.Drawing.Size(548, 63);
+            this.label86.Size = new System.Drawing.Size(632, 61);
             this.label86.TabIndex = 0;
             this.label86.Text = "Vehicle Licencing Details";
             // 
@@ -2840,29 +2866,29 @@
             // 
             this.cmbCurrency.DropDownHeight = 400;
             this.cmbCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCurrency.Font = new System.Drawing.Font("Arial Narrow", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCurrency.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCurrency.FormattingEnabled = true;
             this.cmbCurrency.IntegralHeight = false;
             this.cmbCurrency.Location = new System.Drawing.Point(639, 272);
             this.cmbCurrency.Name = "cmbCurrency";
-            this.cmbCurrency.Size = new System.Drawing.Size(600, 48);
+            this.cmbCurrency.Size = new System.Drawing.Size(600, 46);
             this.cmbCurrency.TabIndex = 89;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(279, 265);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(152, 46);
+            this.label9.Size = new System.Drawing.Size(182, 46);
             this.label9.TabIndex = 88;
             this.label9.Text = "Currency";
             // 
             // btnHomeConfirm
             // 
             this.btnHomeConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.btnHomeConfirm.Font = new System.Drawing.Font("Arial Narrow", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHomeConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHomeConfirm.ForeColor = System.Drawing.Color.White;
             this.btnHomeConfirm.Location = new System.Drawing.Point(5, 3);
             this.btnHomeConfirm.Name = "btnHomeConfirm";
@@ -2874,7 +2900,7 @@
             // lblmessageConf
             // 
             this.lblmessageConf.AutoSize = true;
-            this.lblmessageConf.Font = new System.Drawing.Font("Arial Narrow", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblmessageConf.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblmessageConf.ForeColor = System.Drawing.Color.Red;
             this.lblmessageConf.Location = new System.Drawing.Point(294, 680);
             this.lblmessageConf.Name = "lblmessageConf";
@@ -2884,18 +2910,18 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Arial Narrow", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.White;
             this.label20.Location = new System.Drawing.Point(278, 7);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(511, 63);
+            this.label20.Size = new System.Drawing.Size(593, 61);
             this.label20.TabIndex = 61;
             this.label20.Text = "Confirm Vehicle Details";
             // 
             // btnConfBack
             // 
             this.btnConfBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(212)))));
-            this.btnConfBack.Font = new System.Drawing.Font("Arial Narrow", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfBack.ForeColor = System.Drawing.Color.White;
             this.btnConfBack.Location = new System.Drawing.Point(0, 215);
             this.btnConfBack.Name = "btnConfBack";
@@ -2908,7 +2934,7 @@
             // btnConfContinue
             // 
             this.btnConfContinue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.btnConfContinue.Font = new System.Drawing.Font("Arial Narrow", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfContinue.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfContinue.ForeColor = System.Drawing.Color.White;
             this.btnConfContinue.Location = new System.Drawing.Point(1285, 215);
             this.btnConfContinue.Name = "btnConfContinue";
@@ -2922,70 +2948,68 @@
             // 
             this.cmbModel.DropDownHeight = 400;
             this.cmbModel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbModel.Font = new System.Drawing.Font("Arial Narrow", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbModel.FormattingEnabled = true;
             this.cmbModel.IntegralHeight = false;
             this.cmbModel.Location = new System.Drawing.Point(641, 205);
             this.cmbModel.Name = "cmbModel";
-            this.cmbModel.Size = new System.Drawing.Size(600, 48);
+            this.cmbModel.Size = new System.Drawing.Size(600, 46);
             this.cmbModel.TabIndex = 56;
             // 
             // cmbMake
             // 
             this.cmbMake.DropDownHeight = 400;
             this.cmbMake.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMake.Font = new System.Drawing.Font("Arial Narrow", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbMake.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMake.FormattingEnabled = true;
             this.cmbMake.IntegralHeight = false;
-            this.cmbMake.ItemHeight = 40;
+            this.cmbMake.ItemHeight = 38;
             this.cmbMake.Location = new System.Drawing.Point(641, 143);
             this.cmbMake.Name = "cmbMake";
-            this.cmbMake.Size = new System.Drawing.Size(600, 48);
+            this.cmbMake.Size = new System.Drawing.Size(600, 46);
             this.cmbMake.TabIndex = 55;
             this.cmbMake.SelectedIndexChanged += new System.EventHandler(this.cmbMake_SelectedIndexChanged);
             // 
             // lblmodel
             // 
             this.lblmodel.AutoSize = true;
-            this.lblmodel.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblmodel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblmodel.ForeColor = System.Drawing.Color.White;
             this.lblmodel.Location = new System.Drawing.Point(281, 198);
             this.lblmodel.Name = "lblmodel";
-            this.lblmodel.Size = new System.Drawing.Size(108, 46);
+            this.lblmodel.Size = new System.Drawing.Size(129, 46);
             this.lblmodel.TabIndex = 8;
             this.lblmodel.Text = "Model";
             // 
             // lblMakeModel
             // 
             this.lblMakeModel.AutoSize = true;
-            this.lblMakeModel.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMakeModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMakeModel.ForeColor = System.Drawing.Color.White;
             this.lblMakeModel.Location = new System.Drawing.Point(281, 136);
             this.lblMakeModel.Name = "lblMakeModel";
-            this.lblMakeModel.Size = new System.Drawing.Size(99, 46);
+            this.lblMakeModel.Size = new System.Drawing.Size(117, 46);
             this.lblMakeModel.TabIndex = 7;
             this.lblMakeModel.Text = "Make";
             // 
-            // txtZinaraAmount
+            // txtAdministrationAmt
             // 
-            this.txtZinaraAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.txtZinaraAmount.Location = new System.Drawing.Point(467, 443);
-            this.txtZinaraAmount.Name = "txtZinaraAmount";
-            this.txtZinaraAmount.ReadOnly = true;
-            this.txtZinaraAmount.Size = new System.Drawing.Size(177, 38);
-            this.txtZinaraAmount.TabIndex = 82;
-            this.txtZinaraAmount.Visible = false;
+            this.txtAdministrationAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.txtAdministrationAmt.Location = new System.Drawing.Point(312, 255);
+            this.txtAdministrationAmt.Name = "txtAdministrationAmt";
+            this.txtAdministrationAmt.ReadOnly = true;
+            this.txtAdministrationAmt.Size = new System.Drawing.Size(143, 38);
+            this.txtAdministrationAmt.TabIndex = 100;
             // 
-            // label12
+            // label16
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial Narrow", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(245, 453);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(157, 31);
-            this.label12.TabIndex = 83;
-            this.label12.Text = "Zinara Amount";
-            this.label12.Visible = false;
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(23, 257);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(286, 31);
+            this.label16.TabIndex = 99;
+            this.label16.Text = "Administration Amount";
             // 
             // frmLicenseQuote
             // 
@@ -3291,5 +3315,7 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox txtZinaraAmount;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtAdministrationAmt;
+        private System.Windows.Forms.Label label16;
     }
 }

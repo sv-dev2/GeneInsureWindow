@@ -75,7 +75,7 @@ namespace Gene
             // txtLicVrn
             // 
             this.txtLicVrn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtLicVrn.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLicVrn.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLicVrn.Location = new System.Drawing.Point(1127, 273);
             this.txtLicVrn.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.txtLicVrn.Name = "txtLicVrn";
@@ -103,11 +103,11 @@ namespace Gene
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(441, 202);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(377, 37);
+            this.label1.Size = new System.Drawing.Size(451, 37);
             this.label1.TabIndex = 0;
             this.label1.Text = "Let\'s get your vehicle details  !!";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -134,13 +134,13 @@ namespace Gene
             // txtLicPdfCode
             // 
             this.txtLicPdfCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtLicPdfCode.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLicPdfCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLicPdfCode.Location = new System.Drawing.Point(449, 273);
             this.txtLicPdfCode.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.txtLicPdfCode.Name = "txtLicPdfCode";
             this.txtLicPdfCode.Size = new System.Drawing.Size(598, 53);
             this.txtLicPdfCode.TabIndex = 114;
-            this.txtLicPdfCode.Text = "Enter Pdf Verfication Code";
+            this.txtLicPdfCode.Text = "Enter Pdf Verification Code";
             this.txtLicPdfCode.TextChanged += new System.EventHandler(this.txtLicPdfCode_TextChanged);
             this.txtLicPdfCode.Enter += new System.EventHandler(this.txtLicPdfCode_Enter);
             // 

@@ -57,8 +57,8 @@ namespace InsuranceClaim.Models
         public decimal BasicPremium { get; set; }
 
         public bool PaymentStatus { get; set; }
-
         public decimal TotalLicAmount { get; set; }
+        public decimal AdministrationAmt { get; set; }
 
     }
 

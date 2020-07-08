@@ -1120,6 +1120,10 @@ namespace Gene
                         txtTransactionAmt.Text = _resObjects.Quotes[0].TransactionAmt.ToString();
                         objRiskModel.LicTransactionAmt = Convert.ToDecimal(_resObjects.Quotes[0].TransactionAmt.ToString());
 
+                        txtAdministrationAmt.Text = _resObjects.Quotes[0].AdministrationAmt.ToString();
+                        objRiskModel.AdministrationAmt = Convert.ToDecimal(_resObjects.Quotes[0].AdministrationAmt.ToString());
+
+
 
                         txtLicPenalitesAmt.Text = _resObjects.Quotes[0].PenaltiesAmt.ToString();
                        // txtLicPenalitesAmt1.Text = _resObjects.Quotes[0].PenaltiesAmt.ToString();
@@ -1127,13 +1131,13 @@ namespace Gene
                         
                         objRiskModel.PenaltiesAmt = _resObjects.Quotes[0].PenaltiesAmt;
 
-                        var totalamount = objRiskModel.ArrearsAmt + objRiskModel.LicTransactionAmt;
-                        txtTotalZinaraAmount.Text = Convert.ToString(totalamount);
+                         var totalamount = objRiskModel.TotalLicAmount;
+                        txtTotalZinaraAmount.Text = Convert.ToString(objRiskModel.TotalLicAmount);
 
                         objRiskModel.VehicleLicenceFee= Convert.ToDecimal(totalamount);
 
-                        txtTotalZinaraAmount.Text = Convert.ToString(totalamount + objRiskModel.PenaltiesAmt);
-                        objRiskModel.TotalLicAmount = Convert.ToDecimal(totalamount + objRiskModel.PenaltiesAmt);
+                        txtTotalZinaraAmount.Text = Convert.ToString(totalamount);
+                        objRiskModel.TotalLicAmount = Convert.ToDecimal(totalamount);
 
 
                     }
@@ -3106,6 +3110,11 @@ namespace Gene
         private void txtIDNumber_Click(object sender, EventArgs e)
         {
             txtIDNumber.Text = string.Empty;
+        }
+
+        private void rdCorporate_CheckedChanged(object sender, EventArgs e)
+        {
+            textSearchVrn.Text = "Business ID";
         }
     }
 

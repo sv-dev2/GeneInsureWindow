@@ -183,14 +183,14 @@ namespace Gene
             //}
 
 
-            if (cmbBranch.SelectedValue == null)
-            {
-                MyMessageBox.ShowBox("Please select branch.", "Modal error message");
-                cmbBranch.Focus();
-                cmbBranch.Visible = true;
-                lblBranch.Visible = true;
-                return;
-            }
+            //if (cmbBranch.SelectedValue == null)
+            //{
+            //    MyMessageBox.ShowBox("Please select branch.", "Modal error message");
+            //    cmbBranch.Focus();
+            //    cmbBranch.Visible = true;
+            //    lblBranch.Visible = true;
+            //    return;
+            //}
 
 
             var branch = cmbBranch.SelectedValue == null ? "" : cmbBranch.SelectedValue.ToString();

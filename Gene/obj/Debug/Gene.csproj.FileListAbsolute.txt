@@ -448,3 +448,35 @@ F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\obj\Debug\AxInterop.AcroPDFLib.dll
 F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\bin\Debug\Interop.AcroPDFLib.dll
 F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\bin\Debug\AxInterop.AcroPDFLib.dll
 F:\ANKIT DHIMAN\GeneInsureWindow_24_Oct\Gene\obj\Debug\Gene.WebCertificateSerial.resources
+E:\GeneInsureWork\GeneInsure_window\Gene\bin\Debug\Gene.exe.config
+E:\GeneInsureWork\GeneInsure_window\Gene\bin\Debug\Gene.exe
+E:\GeneInsureWork\GeneInsure_window\Gene\bin\Debug\Gene.pdb
+E:\GeneInsureWork\GeneInsure_window\Gene\bin\Debug\Newtonsoft.Json.dll
+E:\GeneInsureWork\GeneInsure_window\Gene\bin\Debug\RestSharp.dll
+E:\GeneInsureWork\GeneInsure_window\Gene\bin\Debug\Spire.License.dll
+E:\GeneInsureWork\GeneInsure_window\Gene\bin\Debug\Spire.Pdf.dll
+E:\GeneInsureWork\GeneInsure_window\Gene\bin\Debug\Microsoft.mshtml.dll
+E:\GeneInsureWork\GeneInsure_window\Gene\bin\Debug\Newtonsoft.Json.xml
+E:\GeneInsureWork\GeneInsure_window\Gene\bin\Debug\RestSharp.xml
+E:\GeneInsureWork\GeneInsure_window\Gene\bin\Debug\Spire.License.xml
+E:\GeneInsureWork\GeneInsure_window\Gene\bin\Debug\Spire.Pdf.xml
+E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.csprojResolveAssemblyReference.cache
+E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.csproj.ResolveComReference.cache
+E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.CertificatePreview.resources
+E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.CertificateSerialForm.resources
+E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.Form1.resources
+E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.frmClaimRegister.resources
+E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.frmLicence.resources
+E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.frmLicenseQuote.resources
+E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.frmNewQuote.resources
+E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.frmRenewPolicy.resources
+E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.frmQuote.resources
+E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.License_PrintPreview.resources
+E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.MyMessageBox.resources
+E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.PrintPreview1.resources
+E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.Properties.Resources.resources
+E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.QuickPrintPreview.resources
+E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.WebCertificateSerial.resources
+E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.csproj.GenerateResource.Cache
+E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.exe
+E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.pdb

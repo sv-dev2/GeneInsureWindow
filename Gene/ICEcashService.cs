@@ -2351,6 +2351,8 @@ namespace Insurance.Service
         public string Message { get; set; }
         public decimal TotalLicAmt { get; set; }
         public decimal TransactionAmt { get; set; }
+
+        public decimal AdministrationAmt { get; set; }
         public decimal PenaltiesAmt { get; set; }
         public decimal ArrearsAmt { get; set; }
         public decimal RadioTVAmt { get; set; }

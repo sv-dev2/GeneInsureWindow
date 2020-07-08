@@ -110,10 +110,9 @@ namespace GensureAPIv2.Models
         public decimal? RadioLicenseCost { get; set; }
         public decimal? TotalLicAmount { get; set; }
         public decimal? PenaltiesAmt { get; set; }
-
         public decimal? ArrearsAmt { get; set; }
-
         public decimal? LicTransactionAmt { get; set; }
+        public decimal? AdministrationAmt { get; set; }
 
         //PenaltiesAmt
         //public bool? IncludeZineraCost { get; set; }

@@ -13,8 +13,8 @@ using RestSharp;
 using System.Web.Script.Serialization;
 using Newtonsoft.Json;
 using System.Runtime.InteropServices;
-using MetroFramework;
-using MetroFramework.Forms;
+//using MetroFramework;
+//using MetroFramework.Forms;
 using Newtonsoft.Json.Linq;
 using System.Drawing.Drawing2D;
 using System.Globalization;
@@ -175,7 +175,7 @@ namespace Gene
             //pnlInsurance.Size = new System.Drawing.Size(1300, 1200);
 
             pnlInsurance.Location = new Point(210, 20);
-            pnlInsurance.Size = new System.Drawing.Size(1000, 400);
+            pnlInsurance.Size = new System.Drawing.Size(1000, 600);
 
             // pnlLogo.Location = new Point(this.Width - 320, this.Height - 220);
             pnlLogo.Location = new Point(this.Width - 300, this.Height - 300);
@@ -190,7 +190,7 @@ namespace Gene
             //New Code 
 
             pnlRiskDetails.Location = new Point(205, 20);
-            pnlRiskDetails.Size = new System.Drawing.Size(1550, 400);
+            pnlRiskDetails.Size = new System.Drawing.Size(1550, 600);
 
             //pnlOptionalCover.Location = new Point(200, 33);
             //pnlOptionalCover.Size = new System.Drawing.Size(800, 1040);
@@ -4194,10 +4194,11 @@ namespace Gene
 
                                             objRiskModel.ArrearsAmt = quoteresponseQuote.Response.Quotes[0].Licence.ArrearsAmt == null ? 0 : Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Licence.ArrearsAmt);
                                             objRiskModel.LicTransactionAmt = quoteresponseQuote.Response.Quotes[0].Licence.TransactionAmt == null ? 0 : Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Licence.TransactionAmt);
-                                          
-                                            objRiskModel.VehicleLicenceFee = Convert.ToDecimal( objRiskModel.ArrearsAmt + objRiskModel.LicTransactionAmt) ;
+                                            objRiskModel.AdministrationAmt= quoteresponseQuote.Response.Quotes[0].Licence.AdministrationAmt == null ? 0 : Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Licence.AdministrationAmt);
 
+                                            objRiskModel.VehicleLicenceFee = Convert.ToDecimal(quoteresponseQuote.Response.Quotes[0].Licence.TotalLicAmt) ;
 
+                                           
                                         }
 
                                         if (chkRadioLicence.Checked)
@@ -5188,11 +5189,11 @@ namespace Gene
 
                         // summaryModel.TotalPremium += item.Premium + item.ZTSCLevy + item.StampDuty;
 
-                         decimal totalPrem = Convert.ToDecimal(item.Premium) + Convert.ToDecimal(item.ZTSCLevy) + Convert.ToDecimal(item.StampDuty) + Convert.ToDecimal(item.VehicleLicenceFee) + Convert.ToDecimal(item.PenaltiesAmt) ;
+                         decimal totalPrem = Convert.ToDecimal(item.Premium) + Convert.ToDecimal(item.ZTSCLevy) + Convert.ToDecimal(item.StampDuty) + Convert.ToDecimal(item.VehicleLicenceFee)  ;
 
                         summaryModel.ArrearsAmt += Convert.ToDecimal(item.ArrearsAmt);
                         summaryModel.LicTransactionAmt += Convert.ToDecimal(item.LicTransactionAmt);
-
+                        summaryModel.AdministrationAmt += Convert.ToDecimal(item.AdministrationAmt);
 
 
                         summaryModel.TotalPremium += totalPrem;
@@ -5210,8 +5211,7 @@ namespace Gene
 
                     summaryModel.BasicPremium = objRiskDetail.Sum(c => c.Premium).Value;
                     summaryModel.PenaltiesAmt = objRiskDetail.Sum(c => c.PenaltiesAmt).Value;
-
-                    summaryModel.TotalLicAmount += Convert.ToDecimal(summaryModel.VehicleLicencefees + summaryModel.PenaltiesAmt + summaryModel.TotalRadioLicenseCost);
+                    summaryModel.TotalLicAmount += Convert.ToDecimal(summaryModel.VehicleLicencefees  + summaryModel.TotalRadioLicenseCost);
 
 
                     //summaryModel.TotalRadioLicenseCost = Math.Round(Convert.ToDecimal(summaryModel.TotalRadioLicenseCost, System.Globalization.CultureInfo.InvariantCulture), 2);
@@ -5250,6 +5250,8 @@ namespace Gene
                     txtArrearsAmt.Text = Convert.ToString(summaryModel.ArrearsAmt);
 
                     txtTransactionAmt.Text = Convert.ToString(summaryModel.LicTransactionAmt);
+
+                    txtAdministrationAmt.Text = Convert.ToString(summaryModel.AdministrationAmt);
 
                     txtLicPenalties.Text = Convert.ToString(summaryModel.PenaltiesAmt);
 
