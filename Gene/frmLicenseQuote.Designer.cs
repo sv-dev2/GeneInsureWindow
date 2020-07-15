@@ -2525,9 +2525,9 @@
             this.PnlVrn.Controls.Add(this.txtVrn);
             this.PnlVrn.Controls.Add(this.btnSave);
             this.PnlVrn.Controls.Add(this.label1);
-            this.PnlVrn.Location = new System.Drawing.Point(29, 464);
+            this.PnlVrn.Location = new System.Drawing.Point(326, 295);
             this.PnlVrn.Name = "PnlVrn";
-            this.PnlVrn.Size = new System.Drawing.Size(57, 58);
+            this.PnlVrn.Size = new System.Drawing.Size(1367, 763);
             this.PnlVrn.TabIndex = 82;
             // 
             // rdCorporate

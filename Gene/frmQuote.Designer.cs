@@ -362,9 +362,9 @@ namespace Gene
             this.PnlVrn.Controls.Add(this.txtVrn);
             this.PnlVrn.Controls.Add(this.btnSave);
             this.PnlVrn.Controls.Add(this.label1);
-            this.PnlVrn.Location = new System.Drawing.Point(72, 212);
+            this.PnlVrn.Location = new System.Drawing.Point(359, 207);
             this.PnlVrn.Name = "PnlVrn";
-            this.PnlVrn.Size = new System.Drawing.Size(47, 54);
+            this.PnlVrn.Size = new System.Drawing.Size(1367, 763);
             this.PnlVrn.TabIndex = 4;
             // 
             // rdCorporate
@@ -1159,7 +1159,7 @@ namespace Gene
             this.pnlPersonalDetails2.Controls.Add(this.label19);
             this.pnlPersonalDetails2.Location = new System.Drawing.Point(35, 126);
             this.pnlPersonalDetails2.Name = "pnlPersonalDetails2";
-            this.pnlPersonalDetails2.Size = new System.Drawing.Size(71, 58);
+            this.pnlPersonalDetails2.Size = new System.Drawing.Size(52, 58);
             this.pnlPersonalDetails2.TabIndex = 69;
             this.pnlPersonalDetails2.Visible = false;
             this.pnlPersonalDetails2.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSummery_Paint);
@@ -1844,9 +1844,9 @@ namespace Gene
             this.pnlsumary.Controls.Add(this.btnSumBack);
             this.pnlsumary.Controls.Add(this.btnSumContinue);
             this.pnlsumary.Controls.Add(this.lblAddressValue);
-            this.pnlsumary.Location = new System.Drawing.Point(215, 137);
+            this.pnlsumary.Location = new System.Drawing.Point(164, 28);
             this.pnlsumary.Name = "pnlsumary";
-            this.pnlsumary.Size = new System.Drawing.Size(1570, 512);
+            this.pnlsumary.Size = new System.Drawing.Size(66, 67);
             this.pnlsumary.TabIndex = 68;
             this.pnlsumary.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlsumary_Paint);
             // 
@@ -3211,9 +3211,9 @@ namespace Gene
             this.pnlInsurance.Controls.Add(this.label93);
             this.pnlInsurance.Controls.Add(this.label2);
             this.pnlInsurance.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlInsurance.Location = new System.Drawing.Point(942, 15);
+            this.pnlInsurance.Location = new System.Drawing.Point(948, 20);
             this.pnlInsurance.Name = "pnlInsurance";
-            this.pnlInsurance.Size = new System.Drawing.Size(75, 48);
+            this.pnlInsurance.Size = new System.Drawing.Size(56, 43);
             this.pnlInsurance.TabIndex = 80;
             // 
             // pnlRadioZinaraIns

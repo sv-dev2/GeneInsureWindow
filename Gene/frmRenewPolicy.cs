@@ -65,6 +65,11 @@ namespace Gene
         List<ResultLicenceIDResponse> licenseDiskList = new List<ResultLicenceIDResponse>();
         public frmRenewPolicy(ICEcashTokenResponse _ObjToken = null, string branch="0")
         {
+            // Keep the current form active by calling the Activate
+            // method.
+            this.Activate();
+
+
             branchName = branch;
 
             objListUserInput = new List<UserInput>();

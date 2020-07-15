@@ -2750,7 +2750,7 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>38</value>
   </metadata>
-  <data name="picImageConfirmPayment.ErrorImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="LoadingInsurance.ErrorImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhRgBGAPf/AP7+/lVVVf39/fz8/Pv7+/n5+ff39/r6+vb29vj4+PT09PHx8fPz8wEBAfLy8vX1
         9QICAlRUVN/f3wMDA/Dw8AUFBUtLSwQEBAYGBlJSUggICO7u7u/v7wcHB1NTU1lZWRkZGeLi4kxMTOfn
@@ -3274,7 +3274,7 @@
         D0J8C7x+jEIDEIhAX18WEAA7
 </value>
   </data>
-  <data name="LoadingInsurance.ErrorImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="picImageConfirmPayment.ErrorImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhRgBGAPf/AP7+/lVVVf39/fz8/Pv7+/n5+ff39/r6+vb29vj4+PT09PHx8fPz8wEBAfLy8vX1
         9QICAlRUVN/f3wMDA/Dw8AUFBUtLSwQEBAYGBlJSUggICO7u7u/v7wcHB1NTU1lZWRkZGeLi4kxMTOfn

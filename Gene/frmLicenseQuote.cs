@@ -81,6 +81,11 @@ namespace Gene
 
         public frmLicenseQuote(string branch, ICEcashTokenResponse _ObjToken = null, bool insuranceAndLicense = true)
         {
+
+            // Keep the current form active by calling the Activate
+            // method.
+            this.Activate();
+
             branchName = branch;
             // this for testing
             //Load += new EventHandler(frmQuote_Load);
@@ -146,7 +151,7 @@ namespace Gene
 
             //new Changes 24/05/2019
             PnlVrn.Location = new Point(350, 20);
-            PnlVrn.Size = new System.Drawing.Size(2600, 638);
+            PnlVrn.Size = new System.Drawing.Size(1300, 700);
             //  PnlVrn.Size = new System.Drawing.Size(600, 200);
 
 
