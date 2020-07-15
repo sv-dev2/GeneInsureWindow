@@ -527,21 +527,21 @@ namespace Gene
 
             var vehicelDetails = GetVehicelDetialsByLicPdfCode(txtLicPdfCode.Text);
 
-            if (vehicelDetails != null)
+            if (vehicelDetails != null && vehicelDetails.VehicelId!=0)
             {
 
                 RequestToke token = Service_db.GetLatestToken();
                 if (ObjToken != null)
                     parternToken = token.Token;
 
-
                 pictureBox2.Visible = true;
                 pictureBox2.WaitOnLoad = true;
 
                 String WebUrlPath = WebConfigurationManager.AppSettings["WebUrlPath"];
                 string filePath = WebUrlPath+"/"+ "Documents/License/"+ vehicelDetails.VehicelId + ".pdf";
+                string optionalFilePath = WebUrlPath + "/" + "Documents/License/" + vehicelDetails.RegistrationNo + ".pdf";
                 //urlPath
-                var pdfPath = SavePdfFromUrl(filePath);
+                var pdfPath = SavePdfFromUrl(filePath, optionalFilePath);
                 // var pdfPath = @"F:\sample.pdf";
                 PdfDocument doc = new PdfDocument();
                 doc.LoadFromFile(pdfPath);
@@ -573,19 +573,32 @@ namespace Gene
         }
 
 
-        private string SavePdfFromUrl(string filePath)
+        private string SavePdfFromUrl(string filePath, string optionalFilePath)
         {
         
             string destinationFileName = "";
             try
             {
                 List<string> pdfFiles = new List<string>();
-                byte[] pdfbytes;
+                byte[] pdfbytes= new Byte[64]; 
 
-                using (var webClient = new WebClient())
+                try
                 {
-                    pdfbytes = webClient.DownloadData(filePath);
+                    using (var webClient = new WebClient())
+                    {
+                        pdfbytes = webClient.DownloadData(filePath);
+                    }
                 }
+                catch(Exception ex)
+                {
+                    // Handlng exception for geting pdf by vrn
+                    using (var webClient = new WebClient())
+                    {
+                        pdfbytes = webClient.DownloadData(optionalFilePath);
+                    }
+                }
+
+               
 
                 // string installedPath = @"C:\";
                 string installedPath = @"C:\Users\Public\";

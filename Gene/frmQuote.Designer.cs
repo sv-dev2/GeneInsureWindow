@@ -98,6 +98,7 @@ namespace Gene
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblPName = new System.Windows.Forms.Label();
             this.pnlPersonalDetails2 = new System.Windows.Forms.Panel();
+            this.label45 = new System.Windows.Forms.Label();
             this.btnHomePerDetail2 = new System.Windows.Forms.Button();
             this.label43 = new System.Windows.Forms.Label();
             this.cmdCity = new System.Windows.Forms.ComboBox();
@@ -156,6 +157,8 @@ namespace Gene
             this.lblZinaraAmount = new System.Windows.Forms.Label();
             this.txtArrearsAmt = new System.Windows.Forms.TextBox();
             this.pnlsumary = new System.Windows.Forms.Panel();
+            this.txtAdministrationAmt = new System.Windows.Forms.TextBox();
+            this.label98 = new System.Windows.Forms.Label();
             this.txtTotalLicAmt = new System.Windows.Forms.TextBox();
             this.label96 = new System.Windows.Forms.Label();
             this.label97 = new System.Windows.Forms.Label();
@@ -272,7 +275,6 @@ namespace Gene
             this.pnlRadioZinaraIns = new System.Windows.Forms.Panel();
             this.chkRadioLicence = new System.Windows.Forms.CheckBox();
             this.chkZinara = new System.Windows.Forms.CheckBox();
-            this.LoadingInsurance = new System.Windows.Forms.PictureBox();
             this.pnlRadio = new System.Windows.Forms.Panel();
             this.txtradioAmount = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
@@ -288,6 +290,7 @@ namespace Gene
             this.ZinPaymentDetail = new System.Windows.Forms.ComboBox();
             this.label39 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
+            this.LoadingInsurance = new System.Windows.Forms.PictureBox();
             this.label27 = new System.Windows.Forms.Label();
             this.btnInsuranceHome = new System.Windows.Forms.Button();
             this.label90 = new System.Windows.Forms.Label();
@@ -311,9 +314,6 @@ namespace Gene
             this.pnlOptionalCover = new System.Windows.Forms.Panel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnlLogo = new System.Windows.Forms.Panel();
-            this.label45 = new System.Windows.Forms.Label();
-            this.txtAdministrationAmt = new System.Windows.Forms.TextBox();
-            this.label98 = new System.Windows.Forms.Label();
             this.PnlVrn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlConfirm.SuspendLayout();
@@ -337,9 +337,9 @@ namespace Gene
             this.pnlCorporate.SuspendLayout();
             this.pnlInsurance.SuspendLayout();
             this.pnlRadioZinaraIns.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.LoadingInsurance)).BeginInit();
             this.pnlRadio.SuspendLayout();
             this.pnlZinara.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LoadingInsurance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbNoofPerson)).BeginInit();
             this.pnlOptionalCover.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -1164,6 +1164,17 @@ namespace Gene
             this.pnlPersonalDetails2.Visible = false;
             this.pnlPersonalDetails2.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSummery_Paint);
             // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.ForeColor = System.Drawing.Color.Red;
+            this.label45.Location = new System.Drawing.Point(1215, 185);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(30, 39);
+            this.label45.TabIndex = 82;
+            this.label45.Text = "*";
+            // 
             // btnHomePerDetail2
             // 
             this.btnHomePerDetail2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
@@ -1720,9 +1731,9 @@ namespace Gene
             this.lblTotalRadioLicenseCost.ForeColor = System.Drawing.Color.White;
             this.lblTotalRadioLicenseCost.Location = new System.Drawing.Point(724, 283);
             this.lblTotalRadioLicenseCost.Name = "lblTotalRadioLicenseCost";
-            this.lblTotalRadioLicenseCost.Size = new System.Drawing.Size(250, 31);
+            this.lblTotalRadioLicenseCost.Size = new System.Drawing.Size(186, 31);
             this.lblTotalRadioLicenseCost.TabIndex = 72;
-            this.lblTotalRadioLicenseCost.Text = "Radio License Cost";
+            this.lblTotalRadioLicenseCost.Text = "Radio License";
             // 
             // txtDiscount
             // 
@@ -1765,7 +1776,7 @@ namespace Gene
             // txtTotalRadioCost
             // 
             this.txtTotalRadioCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.txtTotalRadioCost.Location = new System.Drawing.Point(1016, 280);
+            this.txtTotalRadioCost.Location = new System.Drawing.Point(921, 280);
             this.txtTotalRadioCost.Name = "txtTotalRadioCost";
             this.txtTotalRadioCost.ReadOnly = true;
             this.txtTotalRadioCost.Size = new System.Drawing.Size(173, 38);
@@ -1778,14 +1789,14 @@ namespace Gene
             this.lblZinaraAmount.ForeColor = System.Drawing.Color.White;
             this.lblZinaraAmount.Location = new System.Drawing.Point(724, 148);
             this.lblZinaraAmount.Name = "lblZinaraAmount";
-            this.lblZinaraAmount.Size = new System.Drawing.Size(203, 31);
+            this.lblZinaraAmount.Size = new System.Drawing.Size(103, 31);
             this.lblZinaraAmount.TabIndex = 97;
-            this.lblZinaraAmount.Text = "Arrears Amount";
+            this.lblZinaraAmount.Text = "Arrears";
             // 
             // txtArrearsAmt
             // 
             this.txtArrearsAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.txtArrearsAmt.Location = new System.Drawing.Point(1016, 144);
+            this.txtArrearsAmt.Location = new System.Drawing.Point(921, 144);
             this.txtArrearsAmt.Name = "txtArrearsAmt";
             this.txtArrearsAmt.ReadOnly = true;
             this.txtArrearsAmt.Size = new System.Drawing.Size(171, 38);
@@ -1839,10 +1850,30 @@ namespace Gene
             this.pnlsumary.TabIndex = 68;
             this.pnlsumary.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlsumary_Paint);
             // 
+            // txtAdministrationAmt
+            // 
+            this.txtAdministrationAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.txtAdministrationAmt.Location = new System.Drawing.Point(921, 237);
+            this.txtAdministrationAmt.Name = "txtAdministrationAmt";
+            this.txtAdministrationAmt.ReadOnly = true;
+            this.txtAdministrationAmt.Size = new System.Drawing.Size(171, 38);
+            this.txtAdministrationAmt.TabIndex = 127;
+            // 
+            // label98
+            // 
+            this.label98.AutoSize = true;
+            this.label98.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.label98.ForeColor = System.Drawing.Color.White;
+            this.label98.Location = new System.Drawing.Point(724, 240);
+            this.label98.Name = "label98";
+            this.label98.Size = new System.Drawing.Size(186, 31);
+            this.label98.TabIndex = 126;
+            this.label98.Text = "Administration";
+            // 
             // txtTotalLicAmt
             // 
             this.txtTotalLicAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.txtTotalLicAmt.Location = new System.Drawing.Point(1016, 329);
+            this.txtTotalLicAmt.Location = new System.Drawing.Point(921, 329);
             this.txtTotalLicAmt.Name = "txtTotalLicAmt";
             this.txtTotalLicAmt.ReadOnly = true;
             this.txtTotalLicAmt.Size = new System.Drawing.Size(173, 38);
@@ -1855,9 +1886,9 @@ namespace Gene
             this.label96.ForeColor = System.Drawing.Color.White;
             this.label96.Location = new System.Drawing.Point(724, 328);
             this.label96.Name = "label96";
-            this.label96.Size = new System.Drawing.Size(276, 31);
+            this.label96.Size = new System.Drawing.Size(176, 31);
             this.label96.TabIndex = 124;
-            this.label96.Text = "Total License Amount";
+            this.label96.Text = "Total License";
             // 
             // label97
             // 
@@ -1874,7 +1905,7 @@ namespace Gene
             this.label89.AutoSize = true;
             this.label89.Font = new System.Drawing.Font("Comic Sans MS", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label89.ForeColor = System.Drawing.Color.White;
-            this.label89.Location = new System.Drawing.Point(707, 377);
+            this.label89.Location = new System.Drawing.Point(692, 377);
             this.label89.Name = "label89";
             this.label89.Size = new System.Drawing.Size(0, 45);
             this.label89.TabIndex = 122;
@@ -1882,7 +1913,7 @@ namespace Gene
             // txtZinaraAmount
             // 
             this.txtZinaraAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.txtZinaraAmount.Location = new System.Drawing.Point(1372, 82);
+            this.txtZinaraAmount.Location = new System.Drawing.Point(1335, 82);
             this.txtZinaraAmount.Name = "txtZinaraAmount";
             this.txtZinaraAmount.ReadOnly = true;
             this.txtZinaraAmount.Size = new System.Drawing.Size(88, 38);
@@ -1894,7 +1925,7 @@ namespace Gene
             this.label94.AutoSize = true;
             this.label94.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.label94.ForeColor = System.Drawing.Color.White;
-            this.label94.Location = new System.Drawing.Point(1224, 88);
+            this.label94.Location = new System.Drawing.Point(1187, 88);
             this.label94.Name = "label94";
             this.label94.Size = new System.Drawing.Size(145, 31);
             this.label94.TabIndex = 120;
@@ -1914,7 +1945,7 @@ namespace Gene
             // txtTransactionAmt
             // 
             this.txtTransactionAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.txtTransactionAmt.Location = new System.Drawing.Point(1016, 100);
+            this.txtTransactionAmt.Location = new System.Drawing.Point(921, 100);
             this.txtTransactionAmt.Name = "txtTransactionAmt";
             this.txtTransactionAmt.ReadOnly = true;
             this.txtTransactionAmt.Size = new System.Drawing.Size(171, 38);
@@ -1927,9 +1958,9 @@ namespace Gene
             this.label16.ForeColor = System.Drawing.Color.White;
             this.label16.Location = new System.Drawing.Point(724, 104);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(203, 31);
+            this.label16.Size = new System.Drawing.Size(103, 31);
             this.label16.TabIndex = 117;
-            this.label16.Text = "Access Amount";
+            this.label16.Text = "Access";
             // 
             // label30
             // 
@@ -1944,7 +1975,7 @@ namespace Gene
             // txtLicPenalties
             // 
             this.txtLicPenalties.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.txtLicPenalties.Location = new System.Drawing.Point(1016, 189);
+            this.txtLicPenalties.Location = new System.Drawing.Point(921, 189);
             this.txtLicPenalties.Name = "txtLicPenalties";
             this.txtLicPenalties.ReadOnly = true;
             this.txtLicPenalties.Size = new System.Drawing.Size(171, 38);
@@ -1957,9 +1988,9 @@ namespace Gene
             this.label88.ForeColor = System.Drawing.Color.White;
             this.label88.Location = new System.Drawing.Point(724, 192);
             this.label88.Name = "label88";
-            this.label88.Size = new System.Drawing.Size(226, 31);
+            this.label88.Size = new System.Drawing.Size(126, 31);
             this.label88.TabIndex = 114;
-            this.label88.Text = "Penalties Amount";
+            this.label88.Text = "Penalties";
             // 
             // txtBasicPremium
             // 
@@ -2019,7 +2050,7 @@ namespace Gene
             // txtTotalPremium
             // 
             this.txtTotalPremium.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.txtTotalPremium.Location = new System.Drawing.Point(710, 391);
+            this.txtTotalPremium.Location = new System.Drawing.Point(659, 391);
             this.txtTotalPremium.Name = "txtTotalPremium";
             this.txtTotalPremium.ReadOnly = true;
             this.txtTotalPremium.Size = new System.Drawing.Size(226, 38);
@@ -2030,7 +2061,7 @@ namespace Gene
             this.lblTotalPremium.AutoSize = true;
             this.lblTotalPremium.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
             this.lblTotalPremium.ForeColor = System.Drawing.Color.White;
-            this.lblTotalPremium.Location = new System.Drawing.Point(346, 391);
+            this.lblTotalPremium.Location = new System.Drawing.Point(331, 391);
             this.lblTotalPremium.Name = "lblTotalPremium";
             this.lblTotalPremium.Size = new System.Drawing.Size(222, 37);
             this.lblTotalPremium.TabIndex = 104;
@@ -3222,19 +3253,6 @@ namespace Gene
             this.chkZinara.UseVisualStyleBackColor = true;
             this.chkZinara.CheckedChanged += new System.EventHandler(this.chkZinara_CheckedChanged);
             // 
-            // LoadingInsurance
-            // 
-            this.LoadingInsurance.ErrorImage = ((System.Drawing.Image)(resources.GetObject("LoadingInsurance.ErrorImage")));
-            this.LoadingInsurance.Image = global::Gene.Properties.Resources.loadingImg1;
-            this.LoadingInsurance.InitialImage = global::Gene.Properties.Resources.loadingImg1;
-            this.LoadingInsurance.Location = new System.Drawing.Point(606, 135);
-            this.LoadingInsurance.Name = "LoadingInsurance";
-            this.LoadingInsurance.Size = new System.Drawing.Size(128, 106);
-            this.LoadingInsurance.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.LoadingInsurance.TabIndex = 113;
-            this.LoadingInsurance.TabStop = false;
-            this.LoadingInsurance.Visible = false;
-            // 
             // pnlRadio
             // 
             this.pnlRadio.Controls.Add(this.txtradioAmount);
@@ -3400,6 +3418,19 @@ namespace Gene
             this.label34.Size = new System.Drawing.Size(30, 39);
             this.label34.TabIndex = 115;
             this.label34.Text = "*";
+            // 
+            // LoadingInsurance
+            // 
+            this.LoadingInsurance.ErrorImage = ((System.Drawing.Image)(resources.GetObject("LoadingInsurance.ErrorImage")));
+            this.LoadingInsurance.Image = global::Gene.Properties.Resources.loadingImg1;
+            this.LoadingInsurance.InitialImage = global::Gene.Properties.Resources.loadingImg1;
+            this.LoadingInsurance.Location = new System.Drawing.Point(606, 135);
+            this.LoadingInsurance.Name = "LoadingInsurance";
+            this.LoadingInsurance.Size = new System.Drawing.Size(128, 106);
+            this.LoadingInsurance.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.LoadingInsurance.TabIndex = 113;
+            this.LoadingInsurance.TabStop = false;
+            this.LoadingInsurance.Visible = false;
             // 
             // label27
             // 
@@ -3682,37 +3713,6 @@ namespace Gene
             this.pnlLogo.Size = new System.Drawing.Size(82, 24);
             this.pnlLogo.TabIndex = 70;
             // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.ForeColor = System.Drawing.Color.Red;
-            this.label45.Location = new System.Drawing.Point(1215, 185);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(30, 39);
-            this.label45.TabIndex = 82;
-            this.label45.Text = "*";
-            // 
-            // txtAdministrationAmt
-            // 
-            this.txtAdministrationAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.txtAdministrationAmt.Location = new System.Drawing.Point(1016, 237);
-            this.txtAdministrationAmt.Name = "txtAdministrationAmt";
-            this.txtAdministrationAmt.ReadOnly = true;
-            this.txtAdministrationAmt.Size = new System.Drawing.Size(171, 38);
-            this.txtAdministrationAmt.TabIndex = 127;
-            // 
-            // label98
-            // 
-            this.label98.AutoSize = true;
-            this.label98.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.label98.ForeColor = System.Drawing.Color.White;
-            this.label98.Location = new System.Drawing.Point(724, 240);
-            this.label98.Name = "label98";
-            this.label98.Size = new System.Drawing.Size(286, 31);
-            this.label98.TabIndex = 126;
-            this.label98.Text = "Administration Amount";
-            // 
             // frmQuote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3785,11 +3785,11 @@ namespace Gene
             this.pnlInsurance.PerformLayout();
             this.pnlRadioZinaraIns.ResumeLayout(false);
             this.pnlRadioZinaraIns.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.LoadingInsurance)).EndInit();
             this.pnlRadio.ResumeLayout(false);
             this.pnlRadio.PerformLayout();
             this.pnlZinara.ResumeLayout(false);
             this.pnlZinara.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LoadingInsurance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbNoofPerson)).EndInit();
             this.pnlOptionalCover.ResumeLayout(false);
             this.pnlOptionalCover.PerformLayout();

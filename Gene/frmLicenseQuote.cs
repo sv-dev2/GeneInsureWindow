@@ -1126,13 +1126,14 @@ namespace Gene
 
 
                         txtLicPenalitesAmt.Text = _resObjects.Quotes[0].PenaltiesAmt.ToString();
-                       // txtLicPenalitesAmt1.Text = _resObjects.Quotes[0].PenaltiesAmt.ToString();
+                        // txtLicPenalitesAmt1.Text = _resObjects.Quotes[0].PenaltiesAmt.ToString();
 
                         
                         objRiskModel.PenaltiesAmt = _resObjects.Quotes[0].PenaltiesAmt;
 
-                         var totalamount = objRiskModel.TotalLicAmount;
-                        txtTotalZinaraAmount.Text = Convert.ToString(objRiskModel.TotalLicAmount);
+                         var totalamount = Convert.ToDecimal(_resObjects.Quotes[0].TotalLicAmt);
+                        txtTotalZinaraAmount.Text = Convert.ToString(totalamount);
+
 
                         objRiskModel.VehicleLicenceFee= Convert.ToDecimal(totalamount);
 
@@ -1759,27 +1760,14 @@ namespace Gene
                 else
                 {
 
-                    //  MyMessageBox.ShowBox("Error occured. " + responseMessage, "Message");
+                      MyMessageBox.ShowBox("Error occured. " + responseMessage, "Message");
                     //   TransactionId = GenerateTransactionId();
 
-
-
-
-                    //lblPaymentMsg.Text = "";
-                    //lblPaymentMsg.Text = "Transaction ID =" + TransactionId + ". " + responseMessage;
-                    //lblPaymentMsg.Text += "\n";
-                    pnlconfimpaymeny.Visible = false;
-                    pnlErrormessage.Visible = true;
+                    //pnlconfimpaymeny.Visible = false;
+                    //pnlErrormessage.Visible = true;
                     //lblErrMessage.Text = responseMessage;
-                    lblErrMessage.Text = responseMessage;
-                    lblErrMessage.ForeColor = Color.Red;
-                    lblPaymentMsg.Text = "";
-                    //lblPaymentMsg.Text = responseMessage;
-                    //lblPaymentMsg.ForeColor = Color.Red;
-
-                    // MessageBox.Show("Error occurred during payment.");
-                    // btnConfirmPayment.Text = "Pay";
-
+                    //lblErrMessage.ForeColor = Color.Red;
+                    //lblPaymentMsg.Text = "";
                     btnConfirmPayment.Text = "Pay";
 
                 }
