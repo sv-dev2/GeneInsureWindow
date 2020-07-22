@@ -264,7 +264,7 @@ namespace Gene
             //pnlTBAPersonalDetails.Size = new System.Drawing.Size(1450, 750);
             pnlTBAPersonalDetails.Size = new System.Drawing.Size(1550, 750);
 
-            pnlCorporate.Location = new Point(355, 100);
+            pnlCorporate.Location = new Point(355, 25);
             //pnlCorporate.Size = new System.Drawing.Size(1450, 750);
             pnlCorporate.Size = new System.Drawing.Size(1550, 750);
 
@@ -8294,6 +8294,13 @@ namespace Gene
 
             if (txtCompany.Text != string.Empty && txtCmpEmail.Text != string.Empty && txtCmpAddress.Text != string.Empty && txtCmpPhone.Text != string.Empty && txtCmpBusinessId.Text != string.Empty)
             {
+
+                if (_insuranceAndLicense && txtVrn.Text.ToUpper() != _tba)
+                    pnlRadioZinaraIns.Visible = true;
+                else
+                    pnlRadioZinaraIns.Visible = false;
+
+
                 customerInfo.EmailAddress = txtCmpEmail.Text;
                 customerInfo.PhoneNumber = txtCmpPhone.Text;
                 customerInfo.CountryCode = cmbCode.SelectedValue.ToString();

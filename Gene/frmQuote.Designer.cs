@@ -362,9 +362,9 @@ namespace Gene
             this.PnlVrn.Controls.Add(this.txtVrn);
             this.PnlVrn.Controls.Add(this.btnSave);
             this.PnlVrn.Controls.Add(this.label1);
-            this.PnlVrn.Location = new System.Drawing.Point(359, 207);
+            this.PnlVrn.Location = new System.Drawing.Point(34, 210);
             this.PnlVrn.Name = "PnlVrn";
-            this.PnlVrn.Size = new System.Drawing.Size(1367, 763);
+            this.PnlVrn.Size = new System.Drawing.Size(50, 75);
             this.PnlVrn.TabIndex = 4;
             // 
             // rdCorporate
@@ -805,9 +805,9 @@ namespace Gene
             this.pnlPersonalDetails.Controls.Add(this.lblPhone);
             this.pnlPersonalDetails.Controls.Add(this.lblEmail);
             this.pnlPersonalDetails.Controls.Add(this.lblPName);
-            this.pnlPersonalDetails.Location = new System.Drawing.Point(30, 417);
+            this.pnlPersonalDetails.Location = new System.Drawing.Point(35, 350);
             this.pnlPersonalDetails.Name = "pnlPersonalDetails";
-            this.pnlPersonalDetails.Size = new System.Drawing.Size(54, 83);
+            this.pnlPersonalDetails.Size = new System.Drawing.Size(64, 62);
             this.pnlPersonalDetails.TabIndex = 60;
             // 
             // label5
@@ -1157,9 +1157,9 @@ namespace Gene
             this.pnlPersonalDetails2.Controls.Add(this.label17);
             this.pnlPersonalDetails2.Controls.Add(this.label18);
             this.pnlPersonalDetails2.Controls.Add(this.label19);
-            this.pnlPersonalDetails2.Location = new System.Drawing.Point(35, 126);
+            this.pnlPersonalDetails2.Location = new System.Drawing.Point(918, 26);
             this.pnlPersonalDetails2.Name = "pnlPersonalDetails2";
-            this.pnlPersonalDetails2.Size = new System.Drawing.Size(52, 58);
+            this.pnlPersonalDetails2.Size = new System.Drawing.Size(67, 75);
             this.pnlPersonalDetails2.TabIndex = 69;
             this.pnlPersonalDetails2.Visible = false;
             this.pnlPersonalDetails2.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSummery_Paint);
@@ -2871,9 +2871,9 @@ namespace Gene
             this.pnlCorporate.Controls.Add(this.label81);
             this.pnlCorporate.Controls.Add(this.label82);
             this.pnlCorporate.Controls.Add(this.label83);
-            this.pnlCorporate.Location = new System.Drawing.Point(29, 319);
+            this.pnlCorporate.Location = new System.Drawing.Point(218, 152);
             this.pnlCorporate.Name = "pnlCorporate";
-            this.pnlCorporate.Size = new System.Drawing.Size(58, 68);
+            this.pnlCorporate.Size = new System.Drawing.Size(1536, 634);
             this.pnlCorporate.TabIndex = 79;
             // 
             // btnHomeCorporate
@@ -3211,9 +3211,9 @@ namespace Gene
             this.pnlInsurance.Controls.Add(this.label93);
             this.pnlInsurance.Controls.Add(this.label2);
             this.pnlInsurance.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlInsurance.Location = new System.Drawing.Point(948, 20);
+            this.pnlInsurance.Location = new System.Drawing.Point(35, 646);
             this.pnlInsurance.Name = "pnlInsurance";
-            this.pnlInsurance.Size = new System.Drawing.Size(56, 43);
+            this.pnlInsurance.Size = new System.Drawing.Size(63, 54);
             this.pnlInsurance.TabIndex = 80;
             // 
             // pnlRadioZinaraIns
