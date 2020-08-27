@@ -460,7 +460,6 @@ E:\GeneInsureWork\GeneInsure_window\Gene\bin\Debug\Newtonsoft.Json.xml
 E:\GeneInsureWork\GeneInsure_window\Gene\bin\Debug\RestSharp.xml
 E:\GeneInsureWork\GeneInsure_window\Gene\bin\Debug\Spire.License.xml
 E:\GeneInsureWork\GeneInsure_window\Gene\bin\Debug\Spire.Pdf.xml
-E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.csprojResolveAssemblyReference.cache
 E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.csproj.ResolveComReference.cache
 E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.CertificatePreview.resources
 E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.CertificateSerialForm.resources
@@ -480,3 +479,8 @@ E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.WebCertificateSerial.res
 E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.csproj.GenerateResource.Cache
 E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.exe
 E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.pdb
+E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Gene.csprojResolveAssemblyReference.cache
+E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\Interop.AcroPDFLib.dll
+E:\GeneInsureWork\GeneInsure_window\Gene\obj\Debug\AxInterop.AcroPDFLib.dll
+E:\GeneInsureWork\GeneInsure_window\Gene\bin\Debug\Interop.AcroPDFLib.dll
+E:\GeneInsureWork\GeneInsure_window\Gene\bin\Debug\AxInterop.AcroPDFLib.dll

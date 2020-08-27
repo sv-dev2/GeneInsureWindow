@@ -190,18 +190,43 @@ namespace Gene
 
             //TPILICResult
 
-            if (quoteresponseResult != null && (quoteresponseResult.Response.Message.Contains("Partner Token has expired") || quoteresponseResult.Response.Message.Contains("Invalid Partner Token")))
-            {
-                ObjToken = IcServiceobj.getToken();
-                if (ObjToken != null)
-                {
-                    parternToken = ObjToken.Response.PartnerToken;
-                    Service_db.UpdateToken(ObjToken);
-                    //  quoteresponse = IcServiceobj.RequestQuote(parternToken, RegistrationNo, suminsured, make, model, PaymentTermId, VehicleYear, CoverTypeId, VehicleUsage, "", (CustomerModel)customerInfo); // uncomment this line 
-                    quoteresponseResult = ICEcashService.TPILICResult(riskDetailModel, parternToken);
+            int i = 5;
 
+            while (true)
+            {
+                i++;
+                if (quoteresponseResult != null && (quoteresponseResult.Response.Message.Contains("Partner Token has expired") || quoteresponseResult.Response.Message.Contains("Invalid Partner Token")))
+                {
+                    ObjToken = IcServiceobj.getToken();
+                    if (ObjToken != null)
+                    {
+                        parternToken = ObjToken.Response.PartnerToken;
+                        Service_db.UpdateToken(ObjToken);
+                        //  quoteresponse = IcServiceobj.RequestQuote(parternToken, RegistrationNo, suminsured, make, model, PaymentTermId, VehicleYear, CoverTypeId, VehicleUsage, "", (CustomerModel)customerInfo); // uncomment this line 
+                        quoteresponseResult = ICEcashService.TPILICResult(riskDetailModel, parternToken);
+
+                    }
                 }
+
+                if (!quoteresponseResult.Response.Message.Contains("Partner Token has expired"))
+                    break;
             }
+
+
+
+
+            //if (quoteresponseResult != null && (quoteresponseResult.Response.Message.Contains("Partner Token has expired") || quoteresponseResult.Response.Message.Contains("Invalid Partner Token")))
+            //{
+            //    ObjToken = IcServiceobj.getToken();
+            //    if (ObjToken != null)
+            //    {
+            //        parternToken = ObjToken.Response.PartnerToken;
+            //        Service_db.UpdateToken(ObjToken);
+            //        //  quoteresponse = IcServiceobj.RequestQuote(parternToken, RegistrationNo, suminsured, make, model, PaymentTermId, VehicleYear, CoverTypeId, VehicleUsage, "", (CustomerModel)customerInfo); // uncomment this line 
+            //        quoteresponseResult = ICEcashService.TPILICResult(riskDetailModel, parternToken);
+
+            //    }
+            //}
 
             if (quoteresponseResult != null && quoteresponseResult.Response != null)
             {

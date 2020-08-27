@@ -5728,7 +5728,7 @@ namespace Gene
 
         private void txtRenewVrn_KeyPress(object sender, KeyPressEventArgs e)
         {
-            ValidSpecailCharacter(e);
+           // ValidSpecailCharacter(e);
         }
 
 

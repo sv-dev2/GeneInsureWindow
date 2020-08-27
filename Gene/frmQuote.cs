@@ -4033,13 +4033,7 @@ namespace Gene
 
 
 
-                        //ObjToken = IcServiceobj.getToken();
-                        //if (ObjToken != null)
-                        //{
-                        //    parternToken = ObjToken.Response.PartnerToken;
-                        //    //  quoteresponse = IcServiceobj.RequestQuote(parternToken, RegistrationNo, suminsured, make, model, PaymentTermId, VehicleYear, CoverTypeId, VehicleUsage, "", (CustomerModel)customerInfo); // uncomment this line 
-                        //    quoteresponse = IcServiceobj.RequestQuote(objRiskModel, (CustomerModel)customerInfo, parternToken);
-                        //}
+                       
                     }
 
                     //if(resObject!=null && resObject.Quotes[0]!=null && resObject.Quotes[0].Licence!=null &&  Convert.ToInt32(resObject.Quotes[0].Licence.PenaltiesAmt)>0)
@@ -6180,8 +6174,6 @@ namespace Gene
                                 //resultPolicy = ICEcashService.TPIPolicy(item, parternToken);
 
                                 ResultLicenceIDRootObject resultPolicyResponse = ICEcashService.TPILICResult(item, parternToken);
-
-
                                 if (resultPolicyResponse.Response != null && resultPolicyResponse.Response.Message.Contains("Partner Token has expired"))
                                 {
 
@@ -8721,8 +8713,12 @@ namespace Gene
                 }
             }
 
+
+            
+
             if (quoteresponseResult.Response != null && quoteresponseResult.Response.LicExpiryDate!=null)
             {
+
                 UpdateVehicleLiceneExpiryDate(vehicleId, quoteresponseResult.Response.LicExpiryDate);
             }
 
@@ -8773,6 +8769,7 @@ namespace Gene
         private void UpdateVehicleLiceneExpiryDate(int vehicleId, string vehicleExpiryDate)
         {
             //UpdateLicenseDate
+
 
             VehicleDetails model = new VehicleDetails();
             model.Id = vehicleId;
