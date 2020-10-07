@@ -27,6 +27,7 @@ namespace Insurance.Service
         //public static string PSK = "565205790573235453203546";
         //public static string SandboxIceCashApi = "https://api.icecash.co.zw/request/20350763";
 
+
         private static string GetSHA512(string text)
         {
             UnicodeEncoding UE = new UnicodeEncoding();

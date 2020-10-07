@@ -111,6 +111,7 @@ namespace Gene
             try
             {
 
+
                 //  string raderPath = ConfigurationManager.AppSettings["adobeReaderPath"];
 
                 //  Thread.Sleep(1000);
