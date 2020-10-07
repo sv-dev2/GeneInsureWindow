@@ -307,7 +307,7 @@
             this.pnlInsurance.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlInsurance.Location = new System.Drawing.Point(961, 30);
             this.pnlInsurance.Name = "pnlInsurance";
-            this.pnlInsurance.Size = new System.Drawing.Size(68, 51);
+            this.pnlInsurance.Size = new System.Drawing.Size(20, 51);
             this.pnlInsurance.TabIndex = 97;
             // 
             // button1
@@ -2503,7 +2503,7 @@
             this.pnlLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlLogo.BackgroundImage = global::Gene.Properties.Resources.gene_logo;
             this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlLogo.Location = new System.Drawing.Point(667, 23);
+            this.pnlLogo.Location = new System.Drawing.Point(619, 23);
             this.pnlLogo.Name = "pnlLogo";
             this.pnlLogo.Size = new System.Drawing.Size(82, 24);
             this.pnlLogo.TabIndex = 88;
@@ -2527,7 +2527,7 @@
             this.PnlVrn.Controls.Add(this.label1);
             this.PnlVrn.Location = new System.Drawing.Point(326, 295);
             this.PnlVrn.Name = "PnlVrn";
-            this.PnlVrn.Size = new System.Drawing.Size(1367, 763);
+            this.PnlVrn.Size = new System.Drawing.Size(1319, 763);
             this.PnlVrn.TabIndex = 82;
             // 
             // rdCorporate
@@ -2554,6 +2554,7 @@
             this.rdPresonal.TabStop = true;
             this.rdPresonal.Text = "Personal";
             this.rdPresonal.UseVisualStyleBackColor = true;
+            this.rdPresonal.CheckedChanged += new System.EventHandler(this.rdPresonal_CheckedChanged);
             // 
             // lblVrnErrMsg
             // 
@@ -3016,7 +3017,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(212)))));
-            this.ClientSize = new System.Drawing.Size(1660, 754);
+            this.ClientSize = new System.Drawing.Size(1612, 754);
             this.Controls.Add(this.pnlConfirm);
             this.Controls.Add(this.pnlRadioZinara);
             this.Controls.Add(this.pnlInsurance);

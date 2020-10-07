@@ -1136,13 +1136,20 @@ namespace Gene
                         
                         objRiskModel.PenaltiesAmt = _resObjects.Quotes[0].PenaltiesAmt;
 
-                         var totalamount = Convert.ToDecimal(_resObjects.Quotes[0].TotalLicAmt);
+                        // If icecash doesn't return administration amount
+                        if (objRiskModel.PenaltiesAmt > 0 && objRiskModel.AdministrationAmt == 0)
+                            objRiskModel.AdministrationAmt = Math.Round(Convert.ToDecimal(188.00M), 2);
+
+                        var totalamount = Convert.ToDecimal(objRiskModel.ArrearsAmt + objRiskModel.LicTransactionAmt + objRiskModel.AdministrationAmt + objRiskModel.PenaltiesAmt);
+
+
+                        // var totalamount = Convert.ToDecimal(_resObjects.Quotes[0].TotalLicAmt);
                         txtTotalZinaraAmount.Text = Convert.ToString(totalamount);
 
 
                         objRiskModel.VehicleLicenceFee= Convert.ToDecimal(totalamount);
 
-                        txtTotalZinaraAmount.Text = Convert.ToString(totalamount);
+                       // txtTotalZinaraAmount.Text = Convert.ToString(totalamount);
                         objRiskModel.TotalLicAmount = Convert.ToDecimal(totalamount);
 
 
@@ -1221,16 +1228,18 @@ namespace Gene
 
         private void textSearchVrn_Enter(object sender, EventArgs e)
         {
-            if (textSearchVrn.Text == "ID Number")
-            {
-                textSearchVrn.Text = "";
-                textSearchVrn.ForeColor = SystemColors.GrayText;
-            }
-            if (textSearchVrn.Text == "Business Id")
-            {
-                textSearchVrn.Text = "";
-                textSearchVrn.ForeColor = SystemColors.GrayText;
-            }
+
+            textSearchVrn.Text = string.Empty;
+            //if (textSearchVrn.Text == "ID Number")
+            //{
+            //    textSearchVrn.Text = "";
+            //    textSearchVrn.ForeColor = SystemColors.GrayText;
+            //}
+            //if (textSearchVrn.Text == "Business Id")
+            //{
+            //    textSearchVrn.Text = "";
+            //    textSearchVrn.ForeColor = SystemColors.GrayText;
+            //}
         }
 
         private void btnNextRadioZinara_Click(object sender, EventArgs e)
@@ -1803,6 +1812,8 @@ namespace Gene
         private List<ResultLicenceIDResponse> DisplayLicenseDisc(RiskDetailModel riskDetailModel, string parterToken, int vehicleId)
         {
             // List<ResultLicenceIDResponse> list = new List<ResultLicenceIDResponse>();
+
+            riskDetailModel.Id = vehicleId;
 
             ResultLicenceIDRootObject quoteresponseResult = IcServiceobj.LICResult(riskDetailModel.LicenseId, parternToken);
             if (quoteresponseResult != null && quoteresponseResult.Response.Message.Contains("Partner Token has expired"))
@@ -3109,6 +3120,17 @@ namespace Gene
         {
             textSearchVrn.Text = "Business ID";
         }
+
+        private void rdPresonal_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rdPresonal.Checked)
+                textSearchVrn.Text = "Vehicle Registration Number";
+            else
+                textSearchVrn.Text = string.Empty;
+        }
+
+
+
     }
 
 }

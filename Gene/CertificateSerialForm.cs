@@ -1,5 +1,7 @@
 ﻿using GensureAPIv2.Models;
 using Insurance.Service;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using Newtonsoft.Json;
 using RestSharp;
 using Spire.Pdf;
@@ -31,7 +33,7 @@ namespace Gene
         public string _base64Data = "";
        // static String ApiURL = "http://windowsapi.gene.co.zw/api/Account/";
         static String ApiURL = WebConfigurationManager.AppSettings["urlPath"] +"/api/Account/";
-
+        static String IceCashRequestUrl = WebConfigurationManager.AppSettings["urlPath"] + "/api/ICEcash/";
 
         [System.ComponentModel.Browsable(false)]
         public event EventHandler GotFocus;
@@ -213,7 +215,7 @@ namespace Gene
 
                 // string installedPath = @"C:\";
                 string installedPath = @"C:\Users\Public\";
-                string fileName = "Certificate" + ".pdf";
+                string fileName = "Certificatebk" + ".pdf";
 
                 destinationFileName = System.IO.Path.Combine(installedPath, System.IO.Path.GetFileName(fileName));
                // byte[] readFile = File.ReadAllBytes("http://geneinsureclaim.kindlebit.com//Documents/29062/GMCC200002648-1/20200403155646,Invoice.pdf");
@@ -235,29 +237,51 @@ namespace Gene
                 pictureBox2.Visible = true;
                 pictureBox2.WaitOnLoad = true;
                 var pdfPath = SavePdf(_base64Data);
-                // var pdfPath = @"F:\sample.pdf";
-                PdfDocument doc = new PdfDocument();
-                doc.LoadFromFile(pdfPath);
-                doc.Pages.Insert(0);
-                doc.Pages.Add();
-                doc.Pages.RemoveAt(0);//Since First page have always Red Text if use Free Version.
-                doc.SaveToFile(pdfPath);
+
+                //PdfDocument doc = new PdfDocument();
+                //doc.LoadFromFile(pdfPath);
+                //doc.Pages.Insert(0);
+                //doc.Pages.Add();
+                //doc.Pages.RemoveAt(0);//Since First page have always Red Text if use Free Version.
+                //doc.SaveToFile(pdfPath);
+
+                //string installedPath = @"C:\Users\Public\";
+                //string fileName = "Certificate" + ".pdf";
+                string installedPath = @"C:\Users\Public\";
+                string fileName = "Certificate" + ".pdf";
+
+                var destinationFileName = System.IO.Path.Combine(installedPath, System.IO.Path.GetFileName(fileName));
+
+                PdfReader reader = new PdfReader(pdfPath);
+                PdfStamper stamper = new PdfStamper(reader, new FileStream(destinationFileName, FileMode.Create));
+                int total = reader.NumberOfPages;
+                for (int pageNumber = total; pageNumber > 0; pageNumber--)
+                {
+                    stamper.InsertPage(pageNumber, PageSize.A4);
+                }
+                stamper.Close();
+                reader.Close();
+
 
                 //MessageBox.Show("Please Print Licence Disk.                                                                       ", "Print License Disk");
 
                 MyMessageBox.ShowBox("Please Print Licence Disk. ", "Print License Disk");
 
-                printPDFWithAcrobat(pdfPath);
+                printPDFWithAcrobat(destinationFileName);
 
                 CreateLicenseFile(_base64Data);
+
+                CertSerialNoDetailModel model = new CertSerialNoDetailModel();
+                model.VehicleId = RiskDetailModel.Id;
+                model.CertSerialNo = txtCertificateSerialNumber.Text;
+
+                SaveCertSerialNum(model);
 
                 //  pictureBox2.WaitOnLoad = false;
                 pictureBox2.Visible = false;
                 txtCertificateSerialNumber.ForeColor = Color.Gray;
 
-
                 txtCertificateSerialNumber.Focus();
-
 
             }
             catch (Exception ex)
@@ -268,10 +292,38 @@ namespace Gene
                 // MessageBox.Show(ex.Message);
                 MyMessageBox.ShowBox(ex.Message, "Modal error message");
             }
-
-
-
         }
+
+
+       
+
+        public void SaveCertSerialNum(CertSerialNoDetailModel model)
+        {
+
+            if (model.VehicleId != 0)
+            {
+                var client = new RestClient(IceCashRequestUrl + "SaveCertSerialNum");
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/json");
+                request.AddHeader("password", "Geninsure@123");
+                request.AddHeader("username", "ameyoApi@geneinsure.com");
+                request.RequestFormat = DataFormat.Json;
+                request.AddJsonBody(model);
+
+                //request.Timeout = 5000;
+                //request.ReadWriteTimeout = 5000;
+                IRestResponse response = client.Execute(request);
+
+               
+            }
+
+           
+        }
+
+
+
+
 
         private void btnHome_Click(object sender, EventArgs e)
         {

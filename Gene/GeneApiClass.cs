@@ -234,6 +234,13 @@ namespace Gene
         public SummaryDetailModel SummaryDetailModel { get; set; }
 
     }
+
+    public class CertSerialNoDetailModel
+    {
+        public int VehicleId { get; set; }
+        public string CertSerialNo { get; set; }
+        public string VRN { get; set; }
+    }
     //6 JAn Ds
     public class CustomerREVehicalModel
     {

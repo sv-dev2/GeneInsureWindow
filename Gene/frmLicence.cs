@@ -1,5 +1,7 @@
 ﻿using GensureAPIv2.Models;
 using Insurance.Service;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using Newtonsoft.Json;
 using RestSharp;
 using Spire.Pdf;
@@ -190,43 +192,18 @@ namespace Gene
 
             //TPILICResult
 
-            int i = 5;
-
-            while (true)
+            if (quoteresponseResult != null && (quoteresponseResult.Response.Message.Contains("Partner Token has expired") || quoteresponseResult.Response.Message.Contains("Invalid Partner Token")))
             {
-                i++;
-                if (quoteresponseResult != null && (quoteresponseResult.Response.Message.Contains("Partner Token has expired") || quoteresponseResult.Response.Message.Contains("Invalid Partner Token")))
+                ObjToken = IcServiceobj.getToken();
+                if (ObjToken != null)
                 {
-                    ObjToken = IcServiceobj.getToken();
-                    if (ObjToken != null)
-                    {
-                        parternToken = ObjToken.Response.PartnerToken;
-                        Service_db.UpdateToken(ObjToken);
-                        //  quoteresponse = IcServiceobj.RequestQuote(parternToken, RegistrationNo, suminsured, make, model, PaymentTermId, VehicleYear, CoverTypeId, VehicleUsage, "", (CustomerModel)customerInfo); // uncomment this line 
-                        quoteresponseResult = ICEcashService.TPILICResult(riskDetailModel, parternToken);
+                    parternToken = ObjToken.Response.PartnerToken;
+                    Service_db.UpdateToken(ObjToken);
+                    //  quoteresponse = IcServiceobj.RequestQuote(parternToken, RegistrationNo, suminsured, make, model, PaymentTermId, VehicleYear, CoverTypeId, VehicleUsage, "", (CustomerModel)customerInfo); // uncomment this line 
+                    quoteresponseResult = ICEcashService.TPILICResult(riskDetailModel, parternToken);
 
-                    }
                 }
-
-                if (!quoteresponseResult.Response.Message.Contains("Partner Token has expired"))
-                    break;
             }
-
-
-
-
-            //if (quoteresponseResult != null && (quoteresponseResult.Response.Message.Contains("Partner Token has expired") || quoteresponseResult.Response.Message.Contains("Invalid Partner Token")))
-            //{
-            //    ObjToken = IcServiceobj.getToken();
-            //    if (ObjToken != null)
-            //    {
-            //        parternToken = ObjToken.Response.PartnerToken;
-            //        Service_db.UpdateToken(ObjToken);
-            //        //  quoteresponse = IcServiceobj.RequestQuote(parternToken, RegistrationNo, suminsured, make, model, PaymentTermId, VehicleYear, CoverTypeId, VehicleUsage, "", (CustomerModel)customerInfo); // uncomment this line 
-            //        quoteresponseResult = ICEcashService.TPILICResult(riskDetailModel, parternToken);
-
-            //    }
-            //}
 
             if (quoteresponseResult != null && quoteresponseResult.Response != null)
             {
@@ -566,18 +543,36 @@ namespace Gene
                 string filePath = WebUrlPath+"/"+ "Documents/License/"+ vehicelDetails.VehicelId + ".pdf";
                 string optionalFilePath = WebUrlPath + "/" + "Documents/License/" + vehicelDetails.RegistrationNo + ".pdf";
                 //urlPath
-                var pdfPath = SavePdfFromUrl(filePath, optionalFilePath);
-                // var pdfPath = @"F:\sample.pdf";
-                PdfDocument doc = new PdfDocument();
-                doc.LoadFromFile(pdfPath);
-                doc.Pages.Insert(0);
-                doc.Pages.Add();
-                doc.Pages.RemoveAt(0);//Since First page have always Red Text if use Free Version.
-                doc.SaveToFile(pdfPath);
-      
+                //var pdfPath = SavePdfFromUrl(filePath, optionalFilePath);
+                //// var pdfPath = @"F:\sample.pdf";
+                //PdfDocument doc = new PdfDocument();
+                //doc.LoadFromFile(pdfPath);
+                //doc.Pages.Insert(0);
+                //doc.Pages.Add();
+                //doc.Pages.RemoveAt(0);//Since First page have always Red Text if use Free Version.
+                //doc.SaveToFile(pdfPath);
+
+
+                string installedPath = @"C:\Users\Public\";
+                string fileName = "Certificate" + ".pdf";
+
+                var destinationFileName = System.IO.Path.Combine(installedPath, System.IO.Path.GetFileName(fileName));
+
+
+                PdfReader reader = new PdfReader(filePath);
+                PdfStamper stamper = new PdfStamper(reader, new FileStream(destinationFileName, FileMode.Create));
+                int total = reader.NumberOfPages;
+                for (int pageNumber = total; pageNumber > 0; pageNumber--)
+                {
+                    stamper.InsertPage(pageNumber, PageSize.A4);
+                }
+                stamper.Close();
+                reader.Close();
+
+
                 MyMessageBox.ShowBox("Please Print Licence Disk. ", "Print License Disk");
 
-                printPDFWithAcrobat(pdfPath);
+                printPDFWithAcrobat(destinationFileName);
                 pictureBox2.Visible = false;
 
                 riskDetail = new RiskDetailModel { CombinedID = vehicelDetails.CombinedID, LicenseId = vehicelDetails.LicenseId, RegistrationNo = vehicelDetails.RegistrationNo };

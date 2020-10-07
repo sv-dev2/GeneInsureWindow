@@ -362,9 +362,9 @@ namespace Gene
             this.PnlVrn.Controls.Add(this.txtVrn);
             this.PnlVrn.Controls.Add(this.btnSave);
             this.PnlVrn.Controls.Add(this.label1);
-            this.PnlVrn.Location = new System.Drawing.Point(34, 210);
+            this.PnlVrn.Location = new System.Drawing.Point(50, 555);
             this.PnlVrn.Name = "PnlVrn";
-            this.PnlVrn.Size = new System.Drawing.Size(50, 75);
+            this.PnlVrn.Size = new System.Drawing.Size(80, 51);
             this.PnlVrn.TabIndex = 4;
             // 
             // rdCorporate
@@ -533,31 +533,33 @@ namespace Gene
             this.pnlConfirm.Controls.Add(this.lblChas);
             this.pnlConfirm.Controls.Add(this.lblmodel);
             this.pnlConfirm.Controls.Add(this.lblMakeModel);
-            this.pnlConfirm.Location = new System.Drawing.Point(29, 541);
+            this.pnlConfirm.Location = new System.Drawing.Point(274, 149);
             this.pnlConfirm.Name = "pnlConfirm";
-            this.pnlConfirm.Size = new System.Drawing.Size(58, 61);
+            this.pnlConfirm.Size = new System.Drawing.Size(1327, 581);
             this.pnlConfirm.TabIndex = 69;
             // 
             // vehicleModeltxt
             // 
             this.vehicleModeltxt.Enabled = false;
             this.vehicleModeltxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vehicleModeltxt.Location = new System.Drawing.Point(670, 202);
+            this.vehicleModeltxt.Location = new System.Drawing.Point(1112, 480);
             this.vehicleModeltxt.MaxLength = 15;
             this.vehicleModeltxt.Name = "vehicleModeltxt";
-            this.vehicleModeltxt.Size = new System.Drawing.Size(548, 53);
+            this.vehicleModeltxt.Size = new System.Drawing.Size(50, 53);
             this.vehicleModeltxt.TabIndex = 115;
+            this.vehicleModeltxt.Visible = false;
             // 
             // vehicleMakeTxt
             // 
             this.vehicleMakeTxt.AllowDrop = true;
             this.vehicleMakeTxt.Enabled = false;
             this.vehicleMakeTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vehicleMakeTxt.Location = new System.Drawing.Point(668, 121);
+            this.vehicleMakeTxt.Location = new System.Drawing.Point(1001, 484);
             this.vehicleMakeTxt.MaxLength = 15;
             this.vehicleMakeTxt.Name = "vehicleMakeTxt";
-            this.vehicleMakeTxt.Size = new System.Drawing.Size(550, 53);
+            this.vehicleMakeTxt.Size = new System.Drawing.Size(66, 53);
             this.vehicleMakeTxt.TabIndex = 114;
+            this.vehicleMakeTxt.Visible = false;
             // 
             // pictureBoxConfirm
             // 
@@ -719,11 +721,10 @@ namespace Gene
             this.cmbModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbModel.FormattingEnabled = true;
             this.cmbModel.IntegralHeight = false;
-            this.cmbModel.Location = new System.Drawing.Point(367, 467);
+            this.cmbModel.Location = new System.Drawing.Point(668, 203);
             this.cmbModel.Name = "cmbModel";
-            this.cmbModel.Size = new System.Drawing.Size(72, 54);
+            this.cmbModel.Size = new System.Drawing.Size(550, 54);
             this.cmbModel.TabIndex = 56;
-            this.cmbModel.Visible = false;
             // 
             // cmbMake
             // 
@@ -733,11 +734,10 @@ namespace Gene
             this.cmbMake.FormattingEnabled = true;
             this.cmbMake.IntegralHeight = false;
             this.cmbMake.ItemHeight = 46;
-            this.cmbMake.Location = new System.Drawing.Point(464, 468);
+            this.cmbMake.Location = new System.Drawing.Point(668, 112);
             this.cmbMake.Name = "cmbMake";
-            this.cmbMake.Size = new System.Drawing.Size(74, 54);
+            this.cmbMake.Size = new System.Drawing.Size(550, 54);
             this.cmbMake.TabIndex = 55;
-            this.cmbMake.Visible = false;
             this.cmbMake.SelectionChangeCommitted += new System.EventHandler(this.cmbMake_SelectionChangeCommitted);
             // 
             // lblChas
@@ -2356,7 +2356,7 @@ namespace Gene
             this.pnlRiskDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlRiskDetails.Location = new System.Drawing.Point(1527, 19);
             this.pnlRiskDetails.Name = "pnlRiskDetails";
-            this.pnlRiskDetails.Size = new System.Drawing.Size(65, 77);
+            this.pnlRiskDetails.Size = new System.Drawing.Size(0, 77);
             this.pnlRiskDetails.TabIndex = 7;
             this.pnlRiskDetails.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -2871,9 +2871,9 @@ namespace Gene
             this.pnlCorporate.Controls.Add(this.label81);
             this.pnlCorporate.Controls.Add(this.label82);
             this.pnlCorporate.Controls.Add(this.label83);
-            this.pnlCorporate.Location = new System.Drawing.Point(218, 152);
+            this.pnlCorporate.Location = new System.Drawing.Point(45, 163);
             this.pnlCorporate.Name = "pnlCorporate";
-            this.pnlCorporate.Size = new System.Drawing.Size(1536, 634);
+            this.pnlCorporate.Size = new System.Drawing.Size(67, 75);
             this.pnlCorporate.TabIndex = 79;
             // 
             // btnHomeCorporate
@@ -3213,7 +3213,7 @@ namespace Gene
             this.pnlInsurance.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlInsurance.Location = new System.Drawing.Point(35, 646);
             this.pnlInsurance.Name = "pnlInsurance";
-            this.pnlInsurance.Size = new System.Drawing.Size(63, 54);
+            this.pnlInsurance.Size = new System.Drawing.Size(0, 54);
             this.pnlInsurance.TabIndex = 80;
             // 
             // pnlRadioZinaraIns
@@ -3708,7 +3708,7 @@ namespace Gene
             this.pnlLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlLogo.BackgroundImage = global::Gene.Properties.Resources.gene_logo;
             this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlLogo.Location = new System.Drawing.Point(6724, -67);
+            this.pnlLogo.Location = new System.Drawing.Point(6516, -67);
             this.pnlLogo.Name = "pnlLogo";
             this.pnlLogo.Size = new System.Drawing.Size(82, 24);
             this.pnlLogo.TabIndex = 70;
@@ -3719,7 +3719,7 @@ namespace Gene
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(212)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1820, 763);
+            this.ClientSize = new System.Drawing.Size(1612, 763);
             this.Controls.Add(this.pnlErrormessage);
             this.Controls.Add(this.pnlRiskDetails);
             this.Controls.Add(this.pnlInsurance);
