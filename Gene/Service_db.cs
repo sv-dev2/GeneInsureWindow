@@ -82,6 +82,18 @@ namespace Gene
             return Convert.ToBoolean(result);
         }
 
+        public string ReadBranchFromLogFile()
+        {
+            string installedPath = @"C:\Users\Public\";
+            string fileName = "Branch" + ".txt";
+            var destinationFileName = System.IO.Path.Combine(installedPath, System.IO.Path.GetFileName(fileName));
+
+            var res = System.IO.File.ReadAllLines(destinationFileName);
+
+            return res[0];
+
+        }
+
 
 
 

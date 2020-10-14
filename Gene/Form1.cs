@@ -232,10 +232,11 @@ namespace Gene
         }
 
         private void SetSelectedValue(List<Branch> branchList)
-        {     
-            string branchId = ReadBranchFromLogFile();
+        {
+            Service_db service = new Service_db();
+            string branchId = service.ReadBranchFromLogFile();
 
-            if(branchId==null || branchId =="")
+            if (branchId==null || branchId =="")
             {
                 MyMessageBox.ShowBox("Branch is not set, please contact to admistrator.");
                 lblSelectedBranch.Text = "Select Branch";
@@ -258,17 +259,7 @@ namespace Gene
             }
         }
 
-        public string ReadBranchFromLogFile()
-        {
-            string installedPath = @"C:\Users\Public\";
-            string fileName = "Branch" + ".txt";
-            var destinationFileName = System.IO.Path.Combine(installedPath, System.IO.Path.GetFileName(fileName));
-
-            var res = System.IO.File.ReadAllLines(destinationFileName);
-
-            return res[0];
-
-        }
+        
 
 
 

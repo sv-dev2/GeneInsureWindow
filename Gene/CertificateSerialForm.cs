@@ -316,7 +316,21 @@ namespace Gene
                 //request.ReadWriteTimeout = 5000;
                 IRestResponse response = client.Execute(request);
 
-               
+                try
+                {
+                    Service_db service = new Service_db();
+                    string branchId = service.ReadBranchFromLogFile();
+                    var apiStock = new RestClient("http://api.gene.co.zw/inventory/api/paper/usage/" + branchId + "/" + model.CertSerialNo + "");
+                    var stockRequest = new RestRequest(Method.GET);
+                    IRestResponse responseAPI = apiStock.Execute(stockRequest);
+
+                }
+                catch (Exception e)
+                {
+
+                }
+
+
             }
 
            
