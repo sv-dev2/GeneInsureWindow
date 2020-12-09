@@ -77,9 +77,9 @@ namespace Gene
             request.AddParameter("application/json", "{\n\t\"Name\":\"ghj\"\n}", ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
 
-            var result = Newtonsoft.Json.JsonConvert.DeserializeObject<bool>(response.Content);
+            var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ResultRootObject>(response.Content);
 
-            return Convert.ToBoolean(result);
+            return Convert.ToBoolean(true);
         }
 
         public string ReadBranchFromLogFile()

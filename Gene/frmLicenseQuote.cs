@@ -33,7 +33,6 @@ namespace Gene
         static String Pwd = "Geninsure@123";
 
 
-
         ICEcashTokenResponse ObjToken;
         List<UserInput> objListUserInput;
         List<RiskDetailModel> objlistRisk;
@@ -1139,7 +1138,7 @@ namespace Gene
 
                         // If icecash doesn't return administration amount
                         if (objRiskModel.PenaltiesAmt > 0 && objRiskModel.AdministrationAmt == 0)
-                            objRiskModel.AdministrationAmt = Math.Round(Convert.ToDecimal(188.00M), 2);
+                            objRiskModel.AdministrationAmt = Math.Round(Convert.ToDecimal(450.00M), 2);
 
                         var totalamount = Convert.ToDecimal(objRiskModel.ArrearsAmt + objRiskModel.LicTransactionAmt + objRiskModel.AdministrationAmt + objRiskModel.PenaltiesAmt);
 

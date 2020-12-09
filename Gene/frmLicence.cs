@@ -132,7 +132,6 @@ namespace Gene
 
                     // riskDetail = new RiskDetailModel { LicenseId = vehicelDetails.LicenseId.ToString(), RegistrationNo = vehicelDetails.RegistrationNo };
 
-
                     riskDetail = new RiskDetailModel { LicenseId = vehicelDetails.LicenseId, RegistrationNo = vehicelDetails.RegistrationNo };
 
                     if (!string.IsNullOrEmpty(vehicelDetails.LicenseId) && (vehicelDetails.LicenseId != "0"))

@@ -234,9 +234,11 @@ namespace Gene
         private void SetSelectedValue(List<Branch> branchList)
         {
             Service_db service = new Service_db();
+
+
             string branchId = service.ReadBranchFromLogFile();
 
-            if (branchId==null || branchId =="")
+            if(branchId==null || branchId =="")
             {
                 MyMessageBox.ShowBox("Branch is not set, please contact to admistrator.");
                 lblSelectedBranch.Text = "Select Branch";
@@ -259,7 +261,7 @@ namespace Gene
             }
         }
 
-        
+      
 
 
 

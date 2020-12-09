@@ -69,7 +69,7 @@
             this.btnRenew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRenew.Font = new System.Drawing.Font("Microsoft Sans Serif", 38.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRenew.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.btnRenew.Location = new System.Drawing.Point(341, 410);
+            this.btnRenew.Location = new System.Drawing.Point(341, 277);
             this.btnRenew.Name = "btnRenew";
             this.btnRenew.Size = new System.Drawing.Size(229, 108);
             this.btnRenew.TabIndex = 1;
@@ -85,7 +85,7 @@
             this.btnQuickPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuickPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuickPrint.ForeColor = System.Drawing.Color.White;
-            this.btnQuickPrint.Location = new System.Drawing.Point(341, 547);
+            this.btnQuickPrint.Location = new System.Drawing.Point(341, 414);
             this.btnQuickPrint.Name = "btnQuickPrint";
             this.btnQuickPrint.Size = new System.Drawing.Size(480, 108);
             this.btnQuickPrint.TabIndex = 3;
@@ -99,7 +99,7 @@
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.label1.Location = new System.Drawing.Point(456, 472);
+            this.label1.Location = new System.Drawing.Point(456, 339);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 31);
             this.label1.TabIndex = 6;
@@ -113,7 +113,7 @@
             this.btnClaim.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClaim.Font = new System.Drawing.Font("Microsoft Sans Serif", 33.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClaim.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.btnClaim.Location = new System.Drawing.Point(593, 410);
+            this.btnClaim.Location = new System.Drawing.Point(593, 277);
             this.btnClaim.Name = "btnClaim";
             this.btnClaim.Size = new System.Drawing.Size(228, 106);
             this.btnClaim.TabIndex = 7;
@@ -127,7 +127,7 @@
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.label2.Location = new System.Drawing.Point(685, 472);
+            this.label2.Location = new System.Drawing.Point(685, 339);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(116, 31);
             this.label2.TabIndex = 8;
@@ -191,13 +191,14 @@
             this.btnLicenseQuote.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLicenseQuote.Font = new System.Drawing.Font("Microsoft Sans Serif", 33F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLicenseQuote.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.btnLicenseQuote.Location = new System.Drawing.Point(341, 273);
+            this.btnLicenseQuote.Location = new System.Drawing.Point(341, 698);
             this.btnLicenseQuote.Name = "btnLicenseQuote";
             this.btnLicenseQuote.Padding = new System.Windows.Forms.Padding(5);
             this.btnLicenseQuote.Size = new System.Drawing.Size(480, 108);
             this.btnLicenseQuote.TabIndex = 12;
             this.btnLicenseQuote.Text = "Licence Only";
             this.btnLicenseQuote.UseVisualStyleBackColor = false;
+            this.btnLicenseQuote.Visible = false;
             this.btnLicenseQuote.Click += new System.EventHandler(this.btnLicenseQuote_Click);
             // 
             // btnInsurance

@@ -74,6 +74,11 @@ namespace Gene
                         response = ICEcashService.LICCertConf(RiskDetailModel, ParternToken, txtCertificateSerialNumber.Text);
                     }
 
+                    CertSerialNoDetailModel model = new CertSerialNoDetailModel();
+                    model.VehicleId = RiskDetailModel.Id;
+                    model.CertSerialNo = txtCertificateSerialNumber.Text;
+
+                    SaveCertSerialNum(model);
 
                     MessageBox.Show(response.Response.Message);
                     this.Close();
@@ -110,7 +115,6 @@ namespace Gene
             // string Filepath = @"D:\Certificate120190724174642.pdf";
             try
             {
-
 
                 //  string raderPath = ConfigurationManager.AppSettings["adobeReaderPath"];
 
@@ -316,10 +320,14 @@ namespace Gene
                 //request.ReadWriteTimeout = 5000;
                 IRestResponse response = client.Execute(request);
 
+
                 try
                 {
+
                     Service_db service = new Service_db();
                     string branchId = service.ReadBranchFromLogFile();
+
+
                     var apiStock = new RestClient("http://api.gene.co.zw/inventory/api/paper/usage/" + branchId + "/" + model.CertSerialNo + "");
                     var stockRequest = new RestRequest(Method.GET);
                     IRestResponse responseAPI = apiStock.Execute(stockRequest);
@@ -331,9 +339,12 @@ namespace Gene
                 }
 
 
-            }
+               
 
-           
+              
+
+
+            }         
         }
 
 
