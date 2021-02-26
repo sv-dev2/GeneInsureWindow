@@ -285,7 +285,7 @@ namespace Insurance.Service
             return json;
         }
 
-
+ 
         public ResultRootObject RequestQuote(RiskDetailModel riskDetail, CustomerModel CustomerInfo, string PartnerToken)
         {
             //string PSK = "127782435202916376850511";
@@ -321,7 +321,7 @@ namespace Insurance.Service
             if (riskDetail.RegistrationNo == "TBA")
             {
                 string MSISDN = "+263" + CustomerInfo.PhoneNumber;
-                obj.Add(new VehicleObject { VRN = riskDetail.RegistrationNo, IDNumber = CustomerInfo.NationalIdentificationNumber, FirstName = CustomerInfo.FirstName, LastName = CustomerInfo.LastName, MSISDN = MSISDN, Address1 = CustomerInfo.AddressLine1, Town = CustomerInfo.AddressLine2, EntityType = "Corporate", DurationMonths = Convert.ToString(riskDetail.PaymentTermId == 1 ? 12 : riskDetail.PaymentTermId), InsuranceType = riskDetail.CoverTypeId.ToString(), VehicleType = riskDetail.ProductId.ToString(), Make = riskDetail.MakeId, Model = riskDetail.ModelId, YearManufacture = DateTime.Now.Year.ToString(), TaxClass = riskDetail.TaxClassId.ToString() });
+                obj.Add(new VehicleObject { VRN = riskDetail.RegistrationNo, VehicleValue= riskDetail.SumInsured==null? "0" : Convert.ToString( riskDetail.SumInsured), IDNumber = CustomerInfo.NationalIdentificationNumber, FirstName = CustomerInfo.FirstName, LastName = CustomerInfo.LastName, MSISDN = MSISDN, Address1 = CustomerInfo.AddressLine1, Town = CustomerInfo.AddressLine2, EntityType = "Corporate", DurationMonths = Convert.ToString(riskDetail.PaymentTermId == 1 ? 12 : riskDetail.PaymentTermId), InsuranceType = riskDetail.CoverTypeId.ToString(), VehicleType = riskDetail.ProductId.ToString(), Make = riskDetail.MakeId, Model = riskDetail.ModelId, YearManufacture = DateTime.Now.Year.ToString(), TaxClass = riskDetail.TaxClassId.ToString() });
                 //TaxClass = riskDetail.TaxClassId.ToString()
             }
             else
@@ -1145,6 +1145,7 @@ namespace Insurance.Service
             Service_db.WriteIceCashLog(data, response.Content, "TPIQuoteUpdate", item.RegistrationNo, item.ALMBranchId.ToString());
 
             return json;
+            
         }
 
 
@@ -2553,6 +2554,8 @@ namespace Insurance.Service
 
         public string TaxClass { get; set; }
         public string YearManufacture { get; set; }
+
+        public string Value_Amount { get; set; }
         //public int TaxClass { get; set; }
         //public int YearManufacture { get; set; }
     }

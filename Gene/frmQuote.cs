@@ -5793,7 +5793,7 @@ namespace Gene
                         ResultRootObject policyDetailsIceCash = ApproveVRNToIceCash(summaryDetails.Id);
 
                         string iceCashPolicyNumber = "";
-                        if (policyDetailsIceCash.Response != null)
+                        if (policyDetailsIceCash!=null && policyDetailsIceCash.Response != null)
                         {
                             iceCashPolicyNumber = policyDetailsIceCash.Response.PolicyNo;
                         }
@@ -6151,7 +6151,12 @@ namespace Gene
         {
 
             ResultRootObject resultPolicy = new ResultRootObject();
+          
 
+            try
+            {
+
+           
 
             //if (ObjToken != null)
             //{
@@ -6471,16 +6476,19 @@ namespace Gene
                     //            //}
                     //        }
                     //    }
-
-
-
                     //}
-
-
-
-
                 }
             }
+
+
+            }
+            catch (Exception ex)
+            {
+                MyMessageBox.ShowBox("Error occur during approve into IceCash.", "Message");
+
+                Service_db.WriteIceCashLog("ApproveIceCash ", ex.Message, "approvevrnintoIcecah", txtVrn.Text, branchName);
+            }
+
             return resultPolicy;
         }
 

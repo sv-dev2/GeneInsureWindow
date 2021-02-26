@@ -19,7 +19,6 @@ using System.Web.Configuration;
 using System.Windows.Forms;
 
 
-
 namespace Gene
 {
     public partial class CertificateSerialForm : Form
@@ -280,13 +279,14 @@ namespace Gene
                 model.VehicleId = RiskDetailModel.Id;
                 model.CertSerialNo = txtCertificateSerialNumber.Text;
 
+                txtCertificateSerialNumber.ForeColor = Color.Gray;
+                txtCertificateSerialNumber.Focus();
+
                 SaveCertSerialNum(model);
 
-                //  pictureBox2.WaitOnLoad = false;
+                pictureBox2.WaitOnLoad = false;
                 pictureBox2.Visible = false;
-                txtCertificateSerialNumber.ForeColor = Color.Gray;
-
-                txtCertificateSerialNumber.Focus();
+               
 
             }
             catch (Exception ex)

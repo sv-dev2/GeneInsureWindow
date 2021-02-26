@@ -191,7 +191,7 @@
             this.btnLicenseQuote.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLicenseQuote.Font = new System.Drawing.Font("Microsoft Sans Serif", 33F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLicenseQuote.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
-            this.btnLicenseQuote.Location = new System.Drawing.Point(341, 698);
+            this.btnLicenseQuote.Location = new System.Drawing.Point(341, 566);
             this.btnLicenseQuote.Name = "btnLicenseQuote";
             this.btnLicenseQuote.Padding = new System.Windows.Forms.Padding(5);
             this.btnLicenseQuote.Size = new System.Drawing.Size(480, 108);
