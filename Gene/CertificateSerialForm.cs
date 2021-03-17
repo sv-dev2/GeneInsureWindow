@@ -282,7 +282,7 @@ namespace Gene
                 txtCertificateSerialNumber.ForeColor = Color.Gray;
                 txtCertificateSerialNumber.Focus();
 
-                SaveCertSerialNum(model);
+               // SaveCertSerialNum(model);
 
                 pictureBox2.WaitOnLoad = false;
                 pictureBox2.Visible = false;

@@ -3708,7 +3708,7 @@ namespace Gene
             this.pnlLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlLogo.BackgroundImage = global::Gene.Properties.Resources.gene_logo;
             this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlLogo.Location = new System.Drawing.Point(6348, -67);
+            this.pnlLogo.Location = new System.Drawing.Point(6282, -67);
             this.pnlLogo.Name = "pnlLogo";
             this.pnlLogo.Size = new System.Drawing.Size(82, 24);
             this.pnlLogo.TabIndex = 70;
@@ -3719,7 +3719,7 @@ namespace Gene
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(212)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1444, 763);
+            this.ClientSize = new System.Drawing.Size(1378, 763);
             this.Controls.Add(this.pnlErrormessage);
             this.Controls.Add(this.pnlRiskDetails);
             this.Controls.Add(this.pnlInsurance);

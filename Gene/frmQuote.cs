@@ -5789,14 +5789,22 @@ namespace Gene
                             return;
                         }
 
-                        //  btnConfirmPayment.Text = "Approving Insurance..";
-                        ResultRootObject policyDetailsIceCash = ApproveVRNToIceCash(summaryDetails.Id);
-
+                        // to handle the exception
                         string iceCashPolicyNumber = "";
-                        if (policyDetailsIceCash!=null && policyDetailsIceCash.Response != null)
+                        ResultRootObject policyDetailsIceCash = new ResultRootObject();
+                        try
                         {
-                            iceCashPolicyNumber = policyDetailsIceCash.Response.PolicyNo;
+                            policyDetailsIceCash = ApproveVRNToIceCash(summaryDetails.Id);                           
+                            if (policyDetailsIceCash != null && policyDetailsIceCash.Response != null)
+                            {
+                                iceCashPolicyNumber = policyDetailsIceCash.Response.PolicyNo;
+                            }
                         }
+                        catch(Exception ex)
+                        {
+                            Service_db.WriteIceCashLog("ApproveIceCash 2 ", ex.Message, "during approvevrnintoIcecah", txtVrn.Text, branchName);
+                        }
+
 
                         //  btnConfirmPayment.Text = "Sending email..";
 
@@ -6151,8 +6159,8 @@ namespace Gene
         {
 
             ResultRootObject resultPolicy = new ResultRootObject();
-          
 
+           // return resultPolicy;
             try
             {
 
@@ -6487,6 +6495,7 @@ namespace Gene
                 MyMessageBox.ShowBox("Error occur during approve into IceCash.", "Message");
 
                 Service_db.WriteIceCashLog("ApproveIceCash ", ex.Message, "approvevrnintoIcecah", txtVrn.Text, branchName);
+
             }
 
             return resultPolicy;
