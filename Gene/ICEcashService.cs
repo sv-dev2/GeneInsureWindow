@@ -115,11 +115,7 @@ namespace Insurance.Service
                 IRestResponse response = client.Execute(request);
 
                 json = JsonConvert.DeserializeObject<ICEcashTokenResponse>(response.Content);
-
                 Service_db.WriteIceCashLog(data, response.Content, "PartnerToken");
-
-
-
 
             }
             catch (Exception ex)
@@ -219,11 +215,8 @@ namespace Insurance.Service
         {
 
             string _json = "";
-
-
             List<VehicleObjectVRN> obj = new List<VehicleObjectVRN>();
             obj.Add(new VehicleObjectVRN { VRN = item.RegistrationNo, CompanyName = "GeneInsure" });
-
 
 
             QuoteArgumentsVRN objArg = new QuoteArgumentsVRN();
@@ -285,7 +278,7 @@ namespace Insurance.Service
             return json;
         }
 
- 
+
         public ResultRootObject RequestQuote(RiskDetailModel riskDetail, CustomerModel CustomerInfo, string PartnerToken)
         {
             //string PSK = "127782435202916376850511";
