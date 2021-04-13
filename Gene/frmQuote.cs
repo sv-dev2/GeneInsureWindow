@@ -3616,12 +3616,14 @@ namespace Gene
                 if (CoverType == 4)
                 {
                     label2.Visible = true;
+                    lblRtgs.Visible = true;
                     txtSumInsured.Visible = true;
                     NewerrorProvider.Clear();
                 }
                 else
                 {
                     label2.Visible = false;
+                    lblRtgs.Visible = false;
                     txtSumInsured.Visible = false;
                     txtSumInsured.Text = "0.00";
                 }
@@ -3893,12 +3895,9 @@ namespace Gene
 
                 // ICEcashTokenResponse ObjToken = null;
                 #endregion
+
                 //List<RiskDetailModel> objVehicles = new List<RiskDetailModel>();
-
                 //objVehicles.Add(new RiskDetailModel { RegistrationNo = txtVrn.Text, PaymentTermId = Convert.ToInt32(cmbPaymentTerm.SelectedValue) });
-
-
-
                 //ObjToken = CheckParterTokenExpire();
                 //if (ObjToken != null)
                 //    parternToken = ObjToken.Response.PartnerToken;
@@ -3963,7 +3962,6 @@ namespace Gene
                     //else
                     //    objRiskModel.ModelId = cmbModel.SelectedValue.ToString();
 
-
                     objRiskModel.PaymentTermId = PaymentTermId;
                     objRiskModel.CoverTypeId = CoverTypeId;
 
@@ -3971,10 +3969,8 @@ namespace Gene
                     //  objRiskModel.TaxClassId = Convert.ToInt32(cmbTaxClasses.SelectedValue);
                     //  objRiskModel.CurrencyId = currencyId;
 
-
                     // objRiskModel.ProductId = ProductsList.FirstOrDefault(c => c.Id == objRiskModel.ProductId) == null ? 0 : ProductsList.FirstOrDefault(c => c.Id == objRiskModel.ProductId).VehicleTypeId; // For getting tax class for tba
                     //quoteresponseQuote = IcServiceobj.RequestQuote(objRiskModel, (CustomerModel)customerInfo, parternToken); // 15_jan
-
 
                     //RadioTVUsage = item.RadioTVUsage,
                     //RadioTVFrequency = item.RadioTVFrequency
@@ -4004,8 +4000,8 @@ namespace Gene
                     else
                         quoteresponseQuote = IcServiceobj.RequestQuote(objRiskModel, (CustomerModel)customerInfo, parternToken); //  insurance only
 
-                    objRiskModel.ProductId = temVehicleTypeId;  // set selected vehilceId
 
+                    objRiskModel.ProductId = temVehicleTypeId;  // set selected vehilceId
                     resObject = quoteresponseQuote.Response;
                     if (resObject.Message.Contains("1 failed"))
                         _iceCashErrorMsg = resObject.Quotes == null ? "Error Occured" : resObject.Quotes[0].Message;
@@ -5711,14 +5707,14 @@ namespace Gene
 
             //Initialze Terminal
 
-            if (!CheckPosInitOrNot())
-            {
+            //if (!CheckPosInitOrNot())
+            //{
                 xmlString = @"<?xml version='1.0' encoding='UTF-8'?>
   <Esp:Interface Version='1.0' xmlns:Esp='http://www.mosaicsoftware.com/Postilion/eSocket.POS/'><Esp:Admin TerminalId='" + ConfigurationManager.AppSettings["TerminalId"] + "' Action='INIT'/></Esp:Interface>";
 
                 InitializeTermianl("" + ConfigurationManager.AppSettings["url"] + "", ConfigurationManager.AppSettings["Port"], xmlString);
 
-            }
+            //}
 
 
             xmlString = @"<?xml version='1.0' encoding='UTF-8'?>
@@ -9348,6 +9344,7 @@ namespace Gene
             int CoverId = Convert.ToInt32(cmbCoverType.SelectedValue);
             if (CoverId == 4) // for comprehensive
             {
+               
                 if (txtSumInsured.Text == string.Empty || txtSumInsured.Text == "0")
                 {
                     //MessageBox.Show("Please Enter Sum Insured");
@@ -9362,6 +9359,17 @@ namespace Gene
                     txtSumInsured.Focus();
                     return;
                 }
+
+                 decimal  amount = 490000; // minimum suminsured for alm
+
+                if(Convert.ToDecimal( txtSumInsured.Text)< amount)
+                {
+                    NewerrorProvider.SetError(txtSumInsured, "Minimum sumInsured should be greater than or equal "+amount);
+                    txtSumInsured.Focus();
+                    return;
+                }
+
+
             }
 
             string IceCashRequest = "";

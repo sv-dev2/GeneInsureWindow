@@ -272,6 +272,7 @@ namespace Gene
             this.label82 = new System.Windows.Forms.Label();
             this.label83 = new System.Windows.Forms.Label();
             this.pnlInsurance = new System.Windows.Forms.Panel();
+            this.lblRtgs = new System.Windows.Forms.Label();
             this.pnlRadioZinaraIns = new System.Windows.Forms.Panel();
             this.chkRadioLicence = new System.Windows.Forms.CheckBox();
             this.chkZinara = new System.Windows.Forms.CheckBox();
@@ -364,7 +365,7 @@ namespace Gene
             this.PnlVrn.Controls.Add(this.label1);
             this.PnlVrn.Location = new System.Drawing.Point(50, 555);
             this.PnlVrn.Name = "PnlVrn";
-            this.PnlVrn.Size = new System.Drawing.Size(0, 51);
+            this.PnlVrn.Size = new System.Drawing.Size(395, 51);
             this.PnlVrn.TabIndex = 4;
             // 
             // rdCorporate
@@ -533,9 +534,9 @@ namespace Gene
             this.pnlConfirm.Controls.Add(this.lblChas);
             this.pnlConfirm.Controls.Add(this.lblmodel);
             this.pnlConfirm.Controls.Add(this.lblMakeModel);
-            this.pnlConfirm.Location = new System.Drawing.Point(274, 149);
+            this.pnlConfirm.Location = new System.Drawing.Point(35, 486);
             this.pnlConfirm.Name = "pnlConfirm";
-            this.pnlConfirm.Size = new System.Drawing.Size(1327, 581);
+            this.pnlConfirm.Size = new System.Drawing.Size(85, 46);
             this.pnlConfirm.TabIndex = 69;
             // 
             // vehicleModeltxt
@@ -2356,7 +2357,7 @@ namespace Gene
             this.pnlRiskDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlRiskDetails.Location = new System.Drawing.Point(1527, 19);
             this.pnlRiskDetails.Name = "pnlRiskDetails";
-            this.pnlRiskDetails.Size = new System.Drawing.Size(0, 77);
+            this.pnlRiskDetails.Size = new System.Drawing.Size(395, 77);
             this.pnlRiskDetails.TabIndex = 7;
             this.pnlRiskDetails.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -3195,6 +3196,7 @@ namespace Gene
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlInsurance.BackColor = System.Drawing.Color.Transparent;
+            this.pnlInsurance.Controls.Add(this.lblRtgs);
             this.pnlInsurance.Controls.Add(this.pnlRadioZinaraIns);
             this.pnlInsurance.Controls.Add(this.label34);
             this.pnlInsurance.Controls.Add(this.LoadingInsurance);
@@ -3211,10 +3213,25 @@ namespace Gene
             this.pnlInsurance.Controls.Add(this.label93);
             this.pnlInsurance.Controls.Add(this.label2);
             this.pnlInsurance.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlInsurance.Location = new System.Drawing.Point(35, 646);
+            this.pnlInsurance.Location = new System.Drawing.Point(220, 144);
             this.pnlInsurance.Name = "pnlInsurance";
-            this.pnlInsurance.Size = new System.Drawing.Size(0, 54);
+            this.pnlInsurance.Size = new System.Drawing.Size(1519, 522);
             this.pnlInsurance.TabIndex = 80;
+            // 
+            // lblRtgs
+            // 
+            this.lblRtgs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblRtgs.AutoSize = true;
+            this.lblRtgs.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.lblRtgs.ForeColor = System.Drawing.Color.White;
+            this.lblRtgs.Location = new System.Drawing.Point(609, 231);
+            this.lblRtgs.Name = "lblRtgs";
+            this.lblRtgs.Size = new System.Drawing.Size(115, 29);
+            this.lblRtgs.TabIndex = 121;
+            this.lblRtgs.Text = "(RTGS$) ";
+            this.lblRtgs.Visible = false;
             // 
             // pnlRadioZinaraIns
             // 
@@ -3708,7 +3725,7 @@ namespace Gene
             this.pnlLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlLogo.BackgroundImage = global::Gene.Properties.Resources.gene_logo;
             this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlLogo.Location = new System.Drawing.Point(6282, -67);
+            this.pnlLogo.Location = new System.Drawing.Point(6677, -67);
             this.pnlLogo.Name = "pnlLogo";
             this.pnlLogo.Size = new System.Drawing.Size(82, 24);
             this.pnlLogo.TabIndex = 70;
@@ -3719,7 +3736,7 @@ namespace Gene
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(212)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1378, 763);
+            this.ClientSize = new System.Drawing.Size(1773, 763);
             this.Controls.Add(this.pnlErrormessage);
             this.Controls.Add(this.pnlRiskDetails);
             this.Controls.Add(this.pnlInsurance);
@@ -4100,6 +4117,7 @@ namespace Gene
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.TextBox txtAdministrationAmt;
         private System.Windows.Forms.Label label98;
+        private System.Windows.Forms.Label lblRtgs;
 
         //private System.Windows.Forms.Label lblAmountDue;
     }
