@@ -5707,14 +5707,14 @@ namespace Gene
 
             //Initialze Terminal
 
-            //if (!CheckPosInitOrNot())
-            //{
+            if (!CheckPosInitOrNot())
+            {
                 xmlString = @"<?xml version='1.0' encoding='UTF-8'?>
   <Esp:Interface Version='1.0' xmlns:Esp='http://www.mosaicsoftware.com/Postilion/eSocket.POS/'><Esp:Admin TerminalId='" + ConfigurationManager.AppSettings["TerminalId"] + "' Action='INIT'/></Esp:Interface>";
 
                 InitializeTermianl("" + ConfigurationManager.AppSettings["url"] + "", ConfigurationManager.AppSettings["Port"], xmlString);
 
-            //}
+            }
 
 
             xmlString = @"<?xml version='1.0' encoding='UTF-8'?>
@@ -5913,12 +5913,11 @@ namespace Gene
             }
             finally
             {
-                //closing the terminal
-                xmlString = @"<?xml version='1.0' encoding='UTF-8'?>
-  <Esp:Interface Version='1.0' xmlns:Esp='http://www.mosaicsoftware.com/Postilion/eSocket.POS/'><Esp:Admin TerminalId='" + ConfigurationManager.AppSettings["TerminalId"] + "' Action ='CLOSE'/></Esp:Interface>";
-                InitializeTermianl("" + ConfigurationManager.AppSettings["url"] + "", ConfigurationManager.AppSettings["Port"], xmlString);
-                //btnConfirmPayment.Enabled = true;
-                //picImageConfirmPayment.Visible = false;
+                
+  //              xmlString = @"<?xml version='1.0' encoding='UTF-8'?>
+  //<Esp:Interface Version='1.0' xmlns:Esp='http://www.mosaicsoftware.com/Postilion/eSocket.POS/'><Esp:Admin TerminalId='" + ConfigurationManager.AppSettings["TerminalId"] + "' Action ='CLOSE'/></Esp:Interface>";
+  //              InitializeTermianl("" + ConfigurationManager.AppSettings["url"] + "", ConfigurationManager.AppSettings["Port"], xmlString);
+               
 
                 SetLoadingDuringPayment(false);
             }
@@ -6066,6 +6065,7 @@ namespace Gene
                         }
                         else
                         {
+                            Service_db.WriteIceCashLog("failure", responseData, "SendTransaction");
                             WriteLog("Status: " + "failure");
                         }
                         responseMessage = getmessageresponse(Convert.ToInt32(GetMessageCode(responseData)));
