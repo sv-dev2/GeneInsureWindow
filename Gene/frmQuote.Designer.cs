@@ -365,7 +365,7 @@ namespace Gene
             this.PnlVrn.Controls.Add(this.label1);
             this.PnlVrn.Location = new System.Drawing.Point(50, 555);
             this.PnlVrn.Name = "PnlVrn";
-            this.PnlVrn.Size = new System.Drawing.Size(395, 51);
+            this.PnlVrn.Size = new System.Drawing.Size(99, 51);
             this.PnlVrn.TabIndex = 4;
             // 
             // rdCorporate
@@ -3215,7 +3215,7 @@ namespace Gene
             this.pnlInsurance.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlInsurance.Location = new System.Drawing.Point(220, 144);
             this.pnlInsurance.Name = "pnlInsurance";
-            this.pnlInsurance.Size = new System.Drawing.Size(1519, 522);
+            this.pnlInsurance.Size = new System.Drawing.Size(95, 63);
             this.pnlInsurance.TabIndex = 80;
             // 
             // lblRtgs

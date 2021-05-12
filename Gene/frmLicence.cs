@@ -45,6 +45,7 @@ namespace Gene
         public string CertificateNumber { get; set; }
 
         string _branchId = "0";
+        bool IsSearchByVrn = false;
         RiskDetailModel riskDetail;
 
         List<ResultLicenceIDResponse> licenseDiskList = new List<ResultLicenceIDResponse>();
@@ -56,7 +57,7 @@ namespace Gene
             objfrmQuote = new frmQuote("");
 
             InitializeComponent();
-            
+
             //
 
             //_branchId = branchId;
@@ -64,7 +65,7 @@ namespace Gene
             //PnlLicenceVrn.Visible = true;
 
             //  1572, 818
-            
+
 
             // PnlLicenceVrn.Location = new Point(335, 100);
             //    PnlLicenceVrn.Size = new System.Drawing.Size(1300, 720);
@@ -140,7 +141,73 @@ namespace Gene
                     }
                 }
                 else
-                {           
+                {
+                    pictureBox2.Visible = false;
+                }
+                //PrintPreview1 dlg1 = new PrintPreview1(licenseDiskList);
+                //dlg1.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                pictureBox2.Visible = false;
+            }
+        }
+
+        private void PrintOutByVRN()
+        {
+            pictureBox2.Visible = true;
+            pictureBox2.WaitOnLoad = true;
+
+            try
+            {
+
+                pictureBox2.Visible = true;
+                pictureBox2.WaitOnLoad = true;
+                //PrintPreview1 dlg1 = new PrintPreview1(txtLicVrn.Text);
+                //dlg1.ShowDialog();
+                var vehicelDetails = GetVehicelDetials(txtLicVrn.Text);
+
+                //    vehicelDetails.LicenseId = 2743;
+                if (vehicelDetails != null && vehicelDetails.CombinedID != null)
+                {
+                    //ObjToken = IcServiceobj.getToken();
+                    //if (ObjToken != null)
+                    //{
+                    //    parternToken = ObjToken.Response.PartnerToken;
+                    //}
+
+                    RequestToke token = Service_db.GetLatestToken();
+                    if (ObjToken != null)
+                        parternToken = token.Token;
+
+                    // riskDetail = new RiskDetailModel { LicenseId = vehicelDetails.LicenseId.ToString(), RegistrationNo = vehicelDetails.RegistrationNo };
+
+                    // _branchId = _branchId==null? "0" : _branchId;
+
+                    riskDetail = new RiskDetailModel { CombinedID = vehicelDetails.CombinedID, LicenseId = vehicelDetails.LicenseId, RegistrationNo = vehicelDetails.RegistrationNo };
+
+                    if (!string.IsNullOrEmpty(vehicelDetails.CombinedID) && (vehicelDetails.CombinedID != "0"))
+                    {
+                        DisplayLicenseDisc(riskDetail, parternToken);
+                    }
+                }
+                else if (vehicelDetails != null && vehicelDetails.LicenseId != null)
+                {
+                    RequestToke token = Service_db.GetLatestToken();
+                    if (ObjToken != null)
+                        parternToken = token.Token;
+
+                    // riskDetail = new RiskDetailModel { LicenseId = vehicelDetails.LicenseId.ToString(), RegistrationNo = vehicelDetails.RegistrationNo };
+
+                    riskDetail = new RiskDetailModel { LicenseId = vehicelDetails.LicenseId, RegistrationNo = vehicelDetails.RegistrationNo };
+
+                    if (!string.IsNullOrEmpty(vehicelDetails.LicenseId) && (vehicelDetails.LicenseId != "0"))
+                    {
+                        DisplayLicenseOnly(riskDetail, parternToken);
+                    }
+                }
+                else
+                {
                     pictureBox2.Visible = false;
                 }
                 //PrintPreview1 dlg1 = new PrintPreview1(licenseDiskList);
@@ -174,9 +241,44 @@ namespace Gene
             request.AddHeader("username", username);
             request.AddParameter("application/json", "{\n\t\"Name\":\"ghj\"\n}", ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
-           
+
             var result = JsonConvert.DeserializeObject<VehicleDetails>(response.Content);
             return result;
+        }
+
+
+        private ALMRePrintModel GetAlmPrintDetialByCode(string otp)
+        {
+            var client = new RestClient(IceCashRequestUrl + "GetAlmPrintDetialByCode?otp=" + otp);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("password", Pwd);
+            request.AddHeader("username", username);
+            request.AddParameter("application/json", "{\n\t\"Name\":\"ghj\"\n}", ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+
+            var result = JsonConvert.DeserializeObject<ALMRePrintModel>(response.Content);
+            return result;
+        }
+
+        public void SaveAlmPrintDetial(ALMRePrint objPlanModel)
+        {
+
+            if (objPlanModel != null)
+            {
+                var client = new RestClient(IceCashRequestUrl + "SaveAlmPrintDetial");
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/json");
+                request.AddHeader("password", "Geninsure@123");
+                request.AddHeader("username", "ameyoApi@geneinsure.com");
+                request.RequestFormat = DataFormat.Json;
+                request.AddJsonBody(objPlanModel);
+
+                //request.Timeout = 5000;
+                //request.ReadWriteTimeout = 5000;
+                IRestResponse response = client.Execute(request);
+
+            }
         }
 
 
@@ -248,6 +350,7 @@ namespace Gene
             if (quoteresponseResult != null && quoteresponseResult.Response != null)
             {
                 licenseDiskList.Add(quoteresponseResult.Response);
+
                 if (quoteresponseResult.Response.LicenceCert == null)
                 {
                     //MessageBox.Show("Pdf not found for this  certificate.");
@@ -517,90 +620,115 @@ namespace Gene
 
         private void btnPdf_Click(object sender, EventArgs e)
         {
-            if (txtLicPdfCode.Text == "" || txtLicPdfCode.Text == "Enter Pdf Verfication Code")
+            if (txtLicPdfCode.Text == "" || txtLicPdfCode.Text == "Registration/Pdf Verification Code")
             {
                 txtLicPdfCode.Focus();
-                errorProvider1.SetError(txtLicPdfCode, "Enter Pdf Verfication Code");
+                errorProvider1.SetError(txtLicPdfCode, "Registration/Pdf Verification Code");
                 return;
             }
             else
                 errorProvider1.Clear();
 
-
-            var vehicelDetails = GetVehicelDetialsByLicPdfCode(txtLicPdfCode.Text);
-
-            if (vehicelDetails != null && vehicelDetails.VehicelId!=0)
+            if (IsSearchByVrn == true && (txtOtp.Text == "" || txtOtp.Text == "OTP"))
             {
+                txtOtp.Focus();
+                errorProvider1.SetError(txtOtp, "Please enter otp");
+                return;
+            }
 
-                RequestToke token = Service_db.GetLatestToken();
-                if (ObjToken != null)
-                    parternToken = token.Token;
+            var vehicelDetails = new VehicleDetails();
 
-                pictureBox2.Visible = true;
-                pictureBox2.WaitOnLoad = true;
-
-                String WebUrlPath = WebConfigurationManager.AppSettings["WebUrlPath"];
-                string filePath = WebUrlPath+"/"+ "Documents/License/"+ vehicelDetails.VehicelId + ".pdf";
-                string optionalFilePath = WebUrlPath + "/" + "Documents/License/" + vehicelDetails.RegistrationNo + ".pdf";
-                //urlPath
-                //var pdfPath = SavePdfFromUrl(filePath, optionalFilePath);
-                //// var pdfPath = @"F:\sample.pdf";
-                //PdfDocument doc = new PdfDocument();
-                //doc.LoadFromFile(pdfPath);
-                //doc.Pages.Insert(0);
-                //doc.Pages.Add();
-                //doc.Pages.RemoveAt(0);//Since First page have always Red Text if use Free Version.
-                //doc.SaveToFile(pdfPath);
-
-
-                string installedPath = @"C:\Users\Public\";
-                string fileName = "Certificate" + ".pdf";
-
-                var destinationFileName = System.IO.Path.Combine(installedPath, System.IO.Path.GetFileName(fileName));
-
-
-                PdfReader reader = new PdfReader(filePath);
-                PdfStamper stamper = new PdfStamper(reader, new FileStream(destinationFileName, FileMode.Create));
-                int total = reader.NumberOfPages;
-                for (int pageNumber = total; pageNumber > 0; pageNumber--)
+            if (txtLicPdfCode.Text != "" && (txtOtp.Text != "" && txtOtp.Text != "OTP"))
+            {
+                var reprintDetial = GetAlmPrintDetialByCode(txtOtp.Text);
+                if (reprintDetial.Id == 0)
                 {
-                    stamper.InsertPage(pageNumber, PageSize.A4);
+                    ALMRePrint reprint = new ALMRePrint();
+                    reprint.VRN = txtLicPdfCode.Text;
+                    reprint.IsActive = true;
+                    reprint.Id = reprintDetial.Id;
+                    SaveAlmPrintDetial(reprint);
                 }
-                stamper.Close();
-                reader.Close();
-
-
-                MyMessageBox.ShowBox("Please Print Licence Disk. ", "Print License Disk");
-
-                printPDFWithAcrobat(destinationFileName);
-                pictureBox2.Visible = false;
-
-                riskDetail = new RiskDetailModel { CombinedID = vehicelDetails.CombinedID, LicenseId = vehicelDetails.LicenseId, RegistrationNo = vehicelDetails.RegistrationNo };
-
-
-                this.Close();
-                WebCertificateSerial obj = new WebCertificateSerial(riskDetail, parternToken);
-                obj.Show();
-
+                PrintOutByVRN();
             }
             else
             {
-                pictureBox2.Visible = false;
-                MyMessageBox.ShowBox("Certificate is not found for this code", "Message");
+                vehicelDetails = GetVehicelDetialsByLicPdfCode(txtLicPdfCode.Text);
+                if (vehicelDetails != null && vehicelDetails.VehicelId != 0)
+                {
+
+                    RequestToke token = Service_db.GetLatestToken();
+                    if (ObjToken != null)
+                        parternToken = token.Token;
+
+                    pictureBox2.Visible = true;
+                    pictureBox2.WaitOnLoad = true;
+
+                    String WebUrlPath = WebConfigurationManager.AppSettings["WebUrlPath"];
+                    string filePath = WebUrlPath + "/" + "Documents/License/" + vehicelDetails.VehicelId + ".pdf";
+                    string optionalFilePath = WebUrlPath + "/" + "Documents/License/" + vehicelDetails.RegistrationNo + ".pdf";
+                    //urlPath
+                    //var pdfPath = SavePdfFromUrl(filePath, optionalFilePath);
+                    //// var pdfPath = @"F:\sample.pdf";
+                    //PdfDocument doc = new PdfDocument();
+                    //doc.LoadFromFile(pdfPath);
+                    //doc.Pages.Insert(0);
+                    //doc.Pages.Add();
+                    //doc.Pages.RemoveAt(0);//Since First page have always Red Text if use Free Version.
+                    //doc.SaveToFile(pdfPath);
+
+
+                    string installedPath = @"C:\Users\Public\";
+                    string fileName = "Certificate" + ".pdf";
+
+                    var destinationFileName = System.IO.Path.Combine(installedPath, System.IO.Path.GetFileName(fileName));
+
+
+                    PdfReader reader = new PdfReader(filePath);
+                    PdfStamper stamper = new PdfStamper(reader, new FileStream(destinationFileName, FileMode.Create));
+                    int total = reader.NumberOfPages;
+                    for (int pageNumber = total; pageNumber > 0; pageNumber--)
+                    {
+                        stamper.InsertPage(pageNumber, PageSize.A4);
+                    }
+                    stamper.Close();
+                    reader.Close();
+
+
+                    MyMessageBox.ShowBox("Please Print Licence Disk. ", "Print License Disk");
+
+                    printPDFWithAcrobat(destinationFileName);
+                    pictureBox2.Visible = false;
+
+                    riskDetail = new RiskDetailModel { CombinedID = vehicelDetails.CombinedID, LicenseId = vehicelDetails.LicenseId, RegistrationNo = vehicelDetails.RegistrationNo };
+
+
+                    this.Close();
+                    WebCertificateSerial obj = new WebCertificateSerial(riskDetail, parternToken);
+                    obj.Show();
+
+                }
+                else
+                {
+                    pictureBox2.Visible = false;
+                    MyMessageBox.ShowBox("Certificate is not found for this code", "Message");
+                }
+
             }
 
             pictureBox2.Visible = false;
         }
 
 
+
         private string SavePdfFromUrl(string filePath, string optionalFilePath)
         {
-        
+
             string destinationFileName = "";
             try
             {
                 List<string> pdfFiles = new List<string>();
-                byte[] pdfbytes= new Byte[64]; 
+                byte[] pdfbytes = new Byte[64];
 
                 try
                 {
@@ -609,7 +737,7 @@ namespace Gene
                         pdfbytes = webClient.DownloadData(filePath);
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     // Handlng exception for geting pdf by vrn
                     using (var webClient = new WebClient())
@@ -618,7 +746,7 @@ namespace Gene
                     }
                 }
 
-               
+
 
                 // string installedPath = @"C:\";
                 string installedPath = @"C:\Users\Public\";
@@ -663,5 +791,32 @@ namespace Gene
         {
 
         }
+
+        private void txtLicPdfCode_MouseLeave(object sender, EventArgs e)
+        {
+
+            pictureBox2.Visible = true;
+            pictureBox2.WaitOnLoad = true;
+
+            var vehicelDetails = GetVehicelDetials(txtLicPdfCode.Text);
+            if (vehicelDetails != null && vehicelDetails.CombinedID != null)
+            {
+                txtOtp.Visible = true;
+                IsSearchByVrn = true;
+            }
+            else
+            {
+                txtOtp.Visible = false;
+                IsSearchByVrn = false;
+            }
+
+            pictureBox2.Visible = false;
+        }
+
+        private void txtOtp_Enter(object sender, EventArgs e)
+        {
+            txtOtp.Text = "";
+        }
+
     }
 }

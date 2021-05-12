@@ -167,4 +167,19 @@ namespace GensureAPIv2.Models
     }
 
 
+    public class ALMRePrint 
+    {
+      
+        public int CreatedBy { get; set; }
+        public DateTime CreatedOn { get; set; }
+        public int Id { get; set; }
+        public bool IsActive { get; set; }
+        public int OTP { get; set; }
+        public int PolicyId { get; set; }
+        public string PolicyNum { get; set; }
+        public string RenewPolicyNum { get; set; }
+        public string VRN { get; set; }
+    }
+
+
 }

@@ -89,11 +89,7 @@ namespace Gene
         string _licenseId = "0";
         bool _insuranceAndLicense = true;
 
-
-
-
         List<ResultLicenceIDResponse> licenseDiskList = new List<ResultLicenceIDResponse>();
-
         //private static frmQuote _mf;
         public frmQuote(string branch, ICEcashTokenResponse _ObjToken = null, bool insuranceAndLicense = true)
         {
@@ -363,9 +359,6 @@ namespace Gene
             // cmbCmpCity.Height = 150;
 
         }
-
-
-
         private void SetLoadingPnlInsurance(bool displayLoader)
         {
             if (displayLoader)
@@ -385,9 +378,6 @@ namespace Gene
                 });
             }
         }
-
-
-
 
         private void SetLocationButton()
         {
@@ -1037,7 +1027,6 @@ namespace Gene
         }
         public void bindCoverType()
         {
-
             var client = new RestClient(ApiURL + "CoverTypes");
             var request = new RestRequest(Method.GET);
             request.AddHeader("password", Pwd);
@@ -1057,8 +1046,6 @@ namespace Gene
 
         public void bindMake()
         {
-
-
             var client = new RestClient(ApiURL + "Makes");
             var request = new RestRequest(Method.GET);
             request.AddHeader("password", Pwd);
@@ -1092,7 +1079,6 @@ namespace Gene
 
         public void bindModel(String MaKECode)
         {
-
             var client = new RestClient(ApiURL + "Models?makeCode=" + MaKECode);
             var request = new RestRequest(Method.GET);
             request.AddHeader("password", Pwd);

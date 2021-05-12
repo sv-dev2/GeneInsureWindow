@@ -42,6 +42,7 @@ namespace Gene
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.txtLicPdfCode = new System.Windows.Forms.TextBox();
             this.btnPdf = new System.Windows.Forms.Button();
+            this.txtOtp = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -50,7 +51,7 @@ namespace Gene
             // 
             this.pictureBox2.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.ErrorImage")));
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(621, 369);
+            this.pictureBox2.Location = new System.Drawing.Point(883, 101);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(128, 106);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -64,7 +65,7 @@ namespace Gene
             this.btnHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
             this.btnHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHome.ForeColor = System.Drawing.Color.White;
-            this.btnHome.Location = new System.Drawing.Point(449, 101);
+            this.btnHome.Location = new System.Drawing.Point(251, 76);
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(158, 76);
             this.btnHome.TabIndex = 2;
@@ -76,10 +77,10 @@ namespace Gene
             // 
             this.txtLicVrn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLicVrn.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLicVrn.Location = new System.Drawing.Point(1127, 273);
+            this.txtLicVrn.Location = new System.Drawing.Point(1368, 285);
             this.txtLicVrn.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.txtLicVrn.Name = "txtLicVrn";
-            this.txtLicVrn.Size = new System.Drawing.Size(158, 53);
+            this.txtLicVrn.Size = new System.Drawing.Size(367, 53);
             this.txtLicVrn.TabIndex = 1;
             this.txtLicVrn.Text = "Enter Registration Number";
             this.txtLicVrn.Visible = false;
@@ -91,7 +92,7 @@ namespace Gene
             this.btnLicPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
             this.btnLicPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLicPrint.ForeColor = System.Drawing.Color.White;
-            this.btnLicPrint.Location = new System.Drawing.Point(1331, 273);
+            this.btnLicPrint.Location = new System.Drawing.Point(1528, 367);
             this.btnLicPrint.Name = "btnLicPrint";
             this.btnLicPrint.Size = new System.Drawing.Size(158, 76);
             this.btnLicPrint.TabIndex = 0;
@@ -103,11 +104,11 @@ namespace Gene
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(441, 202);
+            this.label1.Location = new System.Drawing.Point(280, 214);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(451, 37);
+            this.label1.Size = new System.Drawing.Size(564, 46);
             this.label1.TabIndex = 0;
             this.label1.Text = "Let\'s get your vehicle details  !!";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -135,21 +136,22 @@ namespace Gene
             // 
             this.txtLicPdfCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLicPdfCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLicPdfCode.Location = new System.Drawing.Point(449, 273);
+            this.txtLicPdfCode.Location = new System.Drawing.Point(288, 285);
             this.txtLicPdfCode.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.txtLicPdfCode.Name = "txtLicPdfCode";
-            this.txtLicPdfCode.Size = new System.Drawing.Size(598, 53);
+            this.txtLicPdfCode.Size = new System.Drawing.Size(614, 53);
             this.txtLicPdfCode.TabIndex = 114;
-            this.txtLicPdfCode.Text = "Enter Pdf Verification Code";
+            this.txtLicPdfCode.Text = "Registration/Pdf Verification Code";
             this.txtLicPdfCode.TextChanged += new System.EventHandler(this.txtLicPdfCode_TextChanged);
             this.txtLicPdfCode.Enter += new System.EventHandler(this.txtLicPdfCode_Enter);
+            this.txtLicPdfCode.MouseLeave += new System.EventHandler(this.txtLicPdfCode_MouseLeave);
             // 
             // btnPdf
             // 
             this.btnPdf.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
             this.btnPdf.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPdf.ForeColor = System.Drawing.Color.White;
-            this.btnPdf.Location = new System.Drawing.Point(889, 369);
+            this.btnPdf.Location = new System.Drawing.Point(640, 381);
             this.btnPdf.Name = "btnPdf";
             this.btnPdf.Size = new System.Drawing.Size(158, 76);
             this.btnPdf.TabIndex = 115;
@@ -157,12 +159,26 @@ namespace Gene
             this.btnPdf.UseVisualStyleBackColor = false;
             this.btnPdf.Click += new System.EventHandler(this.btnPdf_Click);
             // 
+            // txtOtp
+            // 
+            this.txtOtp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtOtp.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOtp.Location = new System.Drawing.Point(954, 285);
+            this.txtOtp.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
+            this.txtOtp.Name = "txtOtp";
+            this.txtOtp.Size = new System.Drawing.Size(198, 53);
+            this.txtOtp.TabIndex = 116;
+            this.txtOtp.Text = "OTP";
+            this.txtOtp.Visible = false;
+            this.txtOtp.Enter += new System.EventHandler(this.txtOtp_Enter);
+            // 
             // frmLicence
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(212)))));
-            this.ClientSize = new System.Drawing.Size(1556, 779);
+            this.ClientSize = new System.Drawing.Size(1730, 779);
+            this.Controls.Add(this.txtOtp);
             this.Controls.Add(this.btnPdf);
             this.Controls.Add(this.txtLicPdfCode);
             this.Controls.Add(this.pictureBox2);
@@ -193,5 +209,6 @@ namespace Gene
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox txtLicPdfCode;
         private System.Windows.Forms.Button btnPdf;
+        private System.Windows.Forms.TextBox txtOtp;
     }
 }
