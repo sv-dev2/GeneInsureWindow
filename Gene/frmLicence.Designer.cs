@@ -144,7 +144,7 @@ namespace Gene
             this.txtLicPdfCode.Text = "Registration/Pdf Verification Code";
             this.txtLicPdfCode.TextChanged += new System.EventHandler(this.txtLicPdfCode_TextChanged);
             this.txtLicPdfCode.Enter += new System.EventHandler(this.txtLicPdfCode_Enter);
-            this.txtLicPdfCode.MouseLeave += new System.EventHandler(this.txtLicPdfCode_MouseLeave);
+            this.txtLicPdfCode.Leave += new System.EventHandler(this.txtLicPdfCode_Leave);
             // 
             // btnPdf
             // 

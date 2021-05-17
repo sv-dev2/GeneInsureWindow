@@ -636,20 +636,28 @@ namespace Gene
                 return;
             }
 
+           
+
             var vehicelDetails = new VehicleDetails();
 
             if (txtLicPdfCode.Text != "" && (txtOtp.Text != "" && txtOtp.Text != "OTP"))
-            {
+            {             
                 var reprintDetial = GetAlmPrintDetialByCode(txtOtp.Text);
-                if (reprintDetial.Id == 0)
+                if (reprintDetial!=null && reprintDetial.Id == 0)
                 {
                     ALMRePrint reprint = new ALMRePrint();
                     reprint.VRN = txtLicPdfCode.Text;
                     reprint.IsActive = true;
                     reprint.Id = reprintDetial.Id;
                     SaveAlmPrintDetial(reprint);
+                    PrintOutByVRN();
                 }
-                PrintOutByVRN();
+                else
+                {
+                    MyMessageBox.ShowBox("Certificate is not found for this code", "Message");
+
+                }
+
             }
             else
             {
@@ -712,6 +720,7 @@ namespace Gene
                 {
                     pictureBox2.Visible = false;
                     MyMessageBox.ShowBox("Certificate is not found for this code", "Message");
+
                 }
 
             }
@@ -792,9 +801,14 @@ namespace Gene
 
         }
 
-        private void txtLicPdfCode_MouseLeave(object sender, EventArgs e)
+      
+        private void txtOtp_Enter(object sender, EventArgs e)
         {
+            txtOtp.Text = "";
+        }
 
+        private void txtLicPdfCode_Leave(object sender, EventArgs e)
+        {
             pictureBox2.Visible = true;
             pictureBox2.WaitOnLoad = true;
 
@@ -812,11 +826,5 @@ namespace Gene
 
             pictureBox2.Visible = false;
         }
-
-        private void txtOtp_Enter(object sender, EventArgs e)
-        {
-            txtOtp.Text = "";
-        }
-
     }
 }
