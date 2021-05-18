@@ -153,7 +153,7 @@ namespace Gene
             }
         }
 
-        private void PrintOutByVRN()
+        private void PrintOutByVRN(string vrn)
         {
             pictureBox2.Visible = true;
             pictureBox2.WaitOnLoad = true;
@@ -165,7 +165,7 @@ namespace Gene
                 pictureBox2.WaitOnLoad = true;
                 //PrintPreview1 dlg1 = new PrintPreview1(txtLicVrn.Text);
                 //dlg1.ShowDialog();
-                var vehicelDetails = GetVehicelDetials(txtLicVrn.Text);
+                var vehicelDetails = GetVehicelDetials(vrn);
 
                 //    vehicelDetails.LicenseId = 2743;
                 if (vehicelDetails != null && vehicelDetails.CombinedID != null)
@@ -650,7 +650,7 @@ namespace Gene
                     reprint.IsActive = true;
                     reprint.Id = reprintDetial.Id;
                     SaveAlmPrintDetial(reprint);
-                    PrintOutByVRN();
+                    PrintOutByVRN(txtLicPdfCode.Text);
                 }
                 else
                 {
