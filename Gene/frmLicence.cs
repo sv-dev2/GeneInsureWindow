@@ -643,7 +643,7 @@ namespace Gene
             if (txtLicPdfCode.Text != "" && (txtOtp.Text != "" && txtOtp.Text != "OTP"))
             {             
                 var reprintDetial = GetAlmPrintDetialByCode(txtOtp.Text);
-                if (reprintDetial!=null && reprintDetial.Id == 0)
+                if (reprintDetial!=null && reprintDetial.Id != 0)
                 {
                     ALMRePrint reprint = new ALMRePrint();
                     reprint.VRN = txtLicPdfCode.Text;
