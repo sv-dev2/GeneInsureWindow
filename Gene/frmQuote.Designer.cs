@@ -363,9 +363,9 @@ namespace Gene
             this.PnlVrn.Controls.Add(this.txtVrn);
             this.PnlVrn.Controls.Add(this.btnSave);
             this.PnlVrn.Controls.Add(this.label1);
-            this.PnlVrn.Location = new System.Drawing.Point(50, 555);
+            this.PnlVrn.Location = new System.Drawing.Point(50, 571);
             this.PnlVrn.Name = "PnlVrn";
-            this.PnlVrn.Size = new System.Drawing.Size(99, 51);
+            this.PnlVrn.Size = new System.Drawing.Size(55, 69);
             this.PnlVrn.TabIndex = 4;
             // 
             // rdCorporate
@@ -3213,9 +3213,9 @@ namespace Gene
             this.pnlInsurance.Controls.Add(this.label93);
             this.pnlInsurance.Controls.Add(this.label2);
             this.pnlInsurance.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlInsurance.Location = new System.Drawing.Point(220, 144);
+            this.pnlInsurance.Location = new System.Drawing.Point(370, 237);
             this.pnlInsurance.Name = "pnlInsurance";
-            this.pnlInsurance.Size = new System.Drawing.Size(95, 63);
+            this.pnlInsurance.Size = new System.Drawing.Size(1197, 382);
             this.pnlInsurance.TabIndex = 80;
             // 
             // lblRtgs

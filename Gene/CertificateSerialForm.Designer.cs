@@ -63,6 +63,7 @@
             this.btnHome.TabIndex = 113;
             this.btnHome.Text = "Home";
             this.btnHome.UseVisualStyleBackColor = false;
+            this.btnHome.Visible = false;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // pictureBox2
@@ -79,32 +80,34 @@
             // 
             // btnScan
             // 
-            this.btnScan.Location = new System.Drawing.Point(1241, 175);
+            this.btnScan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
+            this.btnScan.Font = new System.Drawing.Font("Arial Narrow", 32.25F);
+            this.btnScan.ForeColor = System.Drawing.Color.White;
+            this.btnScan.Location = new System.Drawing.Point(986, 161);
             this.btnScan.Name = "btnScan";
-            this.btnScan.Size = new System.Drawing.Size(75, 23);
+            this.btnScan.Size = new System.Drawing.Size(243, 69);
             this.btnScan.TabIndex = 4;
-            this.btnScan.Text = "Scan";
-            this.btnScan.UseVisualStyleBackColor = true;
-            this.btnScan.Visible = false;
+            this.btnScan.Text = "Submit";
+            this.btnScan.UseVisualStyleBackColor = false;
             this.btnScan.Click += new System.EventHandler(this.btnScan_Click);
             // 
             // txtCertificateSerialNumber
             // 
-            this.txtCertificateSerialNumber.Font = new System.Drawing.Font("Arial Narrow", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCertificateSerialNumber.Font = new System.Drawing.Font("Arial Narrow", 30.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCertificateSerialNumber.Location = new System.Drawing.Point(562, 161);
             this.txtCertificateSerialNumber.Name = "txtCertificateSerialNumber";
-            this.txtCertificateSerialNumber.Size = new System.Drawing.Size(336, 38);
+            this.txtCertificateSerialNumber.Size = new System.Drawing.Size(336, 54);
             this.txtCertificateSerialNumber.TabIndex = 3;
             this.txtCertificateSerialNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCertificateSerialNumber_KeyDown);
             // 
             // lblCertificate
             // 
             this.lblCertificate.AutoSize = true;
-            this.lblCertificate.Font = new System.Drawing.Font("Arial Narrow", 20F);
+            this.lblCertificate.Font = new System.Drawing.Font("Arial Narrow", 25F);
             this.lblCertificate.ForeColor = System.Drawing.Color.White;
-            this.lblCertificate.Location = new System.Drawing.Point(179, 151);
+            this.lblCertificate.Location = new System.Drawing.Point(179, 168);
             this.lblCertificate.Name = "lblCertificate";
-            this.lblCertificate.Size = new System.Drawing.Size(253, 31);
+            this.lblCertificate.Size = new System.Drawing.Size(327, 40);
             this.lblCertificate.TabIndex = 2;
             this.lblCertificate.Text = "Certificate serial Number";
             // 

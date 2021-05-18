@@ -14,6 +14,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Configuration;
 using System.Windows.Forms;
@@ -30,8 +31,8 @@ namespace Gene
         ICEcashService IcServiceobj;
 
         public string _base64Data = "";
-       // static String ApiURL = "http://windowsapi.gene.co.zw/api/Account/";
-        static String ApiURL = WebConfigurationManager.AppSettings["urlPath"] +"/api/Account/";
+        // static String ApiURL = "http://windowsapi.gene.co.zw/api/Account/";
+        static String ApiURL = WebConfigurationManager.AppSettings["urlPath"] + "/api/Account/";
         static String IceCashRequestUrl = WebConfigurationManager.AppSettings["urlPath"] + "/api/ICEcash/";
 
         [System.ComponentModel.Browsable(false)]
@@ -61,28 +62,43 @@ namespace Gene
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    frmLicence quotObj = new frmLicence();
-                    quotObj.CertificateNumber = txtCertificateSerialNumber.Text;
-                    var response = ICEcashService.LICCertConf(RiskDetailModel, ParternToken, txtCertificateSerialNumber.Text);
-
-                    if (response != null && response.Response.Message.Contains("Partner Token has expired"))
+                    if (valatedSerialNumber(txtCertificateSerialNumber.Text))
                     {
-                        ObjToken = IcServiceobj.getToken();
-                        ParternToken = ObjToken.Response.PartnerToken;
-                        Service_db.UpdateToken(ObjToken);
-                        response = ICEcashService.LICCertConf(RiskDetailModel, ParternToken, txtCertificateSerialNumber.Text);
+
+
+                        //else
+                        //{
+                        //    MessageBox.Show("Please Eneter the correct Serial Number", "Error");
+                        //}
+
+                        frmLicence quotObj = new frmLicence();
+                        quotObj.CertificateNumber = txtCertificateSerialNumber.Text;
+                        var response = ICEcashService.LICCertConf(RiskDetailModel, ParternToken, txtCertificateSerialNumber.Text);
+
+                        if (response != null && response.Response.Message.Contains("Partner Token has expired"))
+                        {
+                            ObjToken = IcServiceobj.getToken();
+                            ParternToken = ObjToken.Response.PartnerToken;
+                            Service_db.UpdateToken(ObjToken);
+                            response = ICEcashService.LICCertConf(RiskDetailModel, ParternToken, txtCertificateSerialNumber.Text);
+                        }
+
+                        CertSerialNoDetailModel model = new CertSerialNoDetailModel();
+                        model.VehicleId = RiskDetailModel.Id;
+                        model.CertSerialNo = txtCertificateSerialNumber.Text;
+
+                        SaveCertSerialNum(model);
+
+                        MessageBox.Show(response.Response.Message);
+                        this.Close();
+                        Form1 obj = new Form1();
+                        obj.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please Eneter the correct Serial Number", "Error");
                     }
 
-                    CertSerialNoDetailModel model = new CertSerialNoDetailModel();
-                    model.VehicleId = RiskDetailModel.Id;
-                    model.CertSerialNo = txtCertificateSerialNumber.Text;
-
-                    SaveCertSerialNum(model);
-
-                    MessageBox.Show(response.Response.Message);
-                    this.Close();
-                    Form1 obj = new Form1();
-                    obj.Show();
 
                 }
             }
@@ -213,7 +229,7 @@ namespace Gene
         {
             string destinationFileName = "";
             try
-            {               
+            {
                 List<string> pdfFiles = new List<string>();
                 byte[] pdfbytes = Convert.FromBase64String(base64data);
 
@@ -222,7 +238,7 @@ namespace Gene
                 string fileName = "Certificatebk" + ".pdf";
 
                 destinationFileName = System.IO.Path.Combine(installedPath, System.IO.Path.GetFileName(fileName));
-               // byte[] readFile = File.ReadAllBytes("http://geneinsureclaim.kindlebit.com//Documents/29062/GMCC200002648-1/20200403155646,Invoice.pdf");
+                // byte[] readFile = File.ReadAllBytes("http://geneinsureclaim.kindlebit.com//Documents/29062/GMCC200002648-1/20200403155646,Invoice.pdf");
 
                 File.WriteAllBytes(destinationFileName, pdfbytes);
 
@@ -282,11 +298,11 @@ namespace Gene
                 txtCertificateSerialNumber.ForeColor = Color.Gray;
                 txtCertificateSerialNumber.Focus();
 
-               // SaveCertSerialNum(model);
+                // SaveCertSerialNum(model);
 
                 pictureBox2.WaitOnLoad = false;
                 pictureBox2.Visible = false;
-               
+
 
             }
             catch (Exception ex)
@@ -300,7 +316,13 @@ namespace Gene
         }
 
 
-       
+        public bool valatedSerialNumber(string serialNumber)
+        {
+            string pattern = @"^[a-zA-Z]{1}[0-9]{8}";
+            // Create a Regex  
+            Regex rg = new Regex(pattern, RegexOptions.IgnoreCase);
+            return rg.IsMatch(serialNumber);
+        }
 
         public void SaveCertSerialNum(CertSerialNoDetailModel model)
         {
@@ -339,12 +361,12 @@ namespace Gene
                 }
 
 
-               
-
-              
 
 
-            }         
+
+
+
+            }
         }
 
 
