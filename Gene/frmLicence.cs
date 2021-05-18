@@ -649,6 +649,7 @@ namespace Gene
                     reprint.VRN = txtLicPdfCode.Text;
                     reprint.IsActive = true;
                     reprint.Id = reprintDetial.Id;
+                    reprint.CreatedOn = DateTime.Now;
                     SaveAlmPrintDetial(reprint);
                     PrintOutByVRN(txtLicPdfCode.Text);
                 }
