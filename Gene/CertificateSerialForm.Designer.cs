@@ -81,6 +81,7 @@
             // btnScan
             // 
             this.btnScan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
+            this.btnScan.Enabled = false;
             this.btnScan.Font = new System.Drawing.Font("Arial Narrow", 32.25F);
             this.btnScan.ForeColor = System.Drawing.Color.White;
             this.btnScan.Location = new System.Drawing.Point(986, 161);
