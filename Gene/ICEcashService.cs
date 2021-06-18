@@ -20,12 +20,12 @@ namespace Insurance.Service
     public class ICEcashService
     {
         //Test SANDBOX urL 
-        //public static string PSK = "127782435202916376850511";
-        //public static string SandboxIceCashApi = "http://api-test.icecash.com/request/20523588";
+        public static string PSK = "127782435202916376850511";
+        public static string SandboxIceCashApi = "http://api-test.icecash.com/request/20523588";
 
         // Live url
-        public static string PSK = "565205790573235453203546";
-        public static string SandboxIceCashApi = "https://api.icecash.co.zw/request/20350763";
+        //public static string PSK = "565205790573235453203546";
+        //public static string SandboxIceCashApi = "https://api.icecash.co.zw/request/20350763";
 
         private static string GetSHA512(string text)
         {
@@ -1149,7 +1149,7 @@ namespace Insurance.Service
             List<VehicleObject> obj = new List<VehicleObject>();
             var item = vehicleDetails;
             List<QuoteCombineDetial> qut = new List<QuoteCombineDetial>();
-            qut.Add(new QuoteCombineDetial { CombinedID = item.CombinedID, Status = "1", DeliveryMethod = "3", LicenceCert="1" });
+            qut.Add(new QuoteCombineDetial { CombinedID = item.CombinedID, Status = "1", DeliveryMethod = "3", LicenceCert="1", LocationID= vehicleDetails.ALMBranchId.ToString() });
 
 
             var quotesDetial = new RequestTPILICUpdate { Function = "TPILICUpdate", PaymentMethod = Convert.ToString("1"), Identifier = "1", MSISDN = "01" + Phonenumber, Quotes = qut };
@@ -2472,6 +2472,8 @@ namespace Insurance.Service
         public string DeliveryMethod { get; set; }
 
         public string LicenceCert {get; set;}
+
+        public string LocationID { get; set; }
     }
 
     public class QuoteArgumentsTPIQuote
