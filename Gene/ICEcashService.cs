@@ -1149,7 +1149,7 @@ namespace Insurance.Service
             List<VehicleObject> obj = new List<VehicleObject>();
             var item = vehicleDetails;
             List<QuoteCombineDetial> qut = new List<QuoteCombineDetial>();
-            qut.Add(new QuoteCombineDetial { CombinedID = item.CombinedID, Status = "1", DeliveryMethod = "3", LicenceCert="1", LocationID= vehicleDetails.ALMBranchId.ToString() });
+            qut.Add(new QuoteCombineDetial { CombinedID = item.CombinedID, Status = "1", DeliveryMethod = "3", LicenceCert="1", LocationID= vehicleDetails.Location_Id });
 
 
             var quotesDetial = new RequestTPILICUpdate { Function = "TPILICUpdate", PaymentMethod = Convert.ToString("1"), Identifier = "1", MSISDN = "01" + Phonenumber, Quotes = qut };

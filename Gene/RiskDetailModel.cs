@@ -139,6 +139,8 @@ namespace GensureAPIv2.Models
 
         public int ALMBranchId { get; set; }
 
+        public string Location_Id { get; set; }
+
     }
 
 
@@ -146,6 +148,7 @@ namespace GensureAPIv2.Models
     {
         public int Id { get; set; }
         public string BranchName { get; set; }
+        public string Location_Id { get; set; }
     }
 
 

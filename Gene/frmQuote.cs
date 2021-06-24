@@ -90,6 +90,8 @@ namespace Gene
         bool _insuranceAndLicense = true;
 
         List<ResultLicenceIDResponse> licenseDiskList = new List<ResultLicenceIDResponse>();
+        List<Branch> branchList = new List<Branch>();
+
         //private static frmQuote _mf;
         public frmQuote(string branch, ICEcashTokenResponse _ObjToken = null, bool insuranceAndLicense = true)
         {
@@ -349,7 +351,7 @@ namespace Gene
             //bindAllClasses();   
             //bindCurrency();
             bindProduct();
-
+            GetBranch();
             // KeyDown event.
 
             // this.KeyPress += new KeyEventHandler(txtYear_KeyPress);
@@ -358,6 +360,26 @@ namespace Gene
 
             // cmbCmpCity.Height = 150;
 
+        }
+
+        public void GetBranch()
+        {
+            try
+            {
+                var client = new RestClient(ApiURL + "AllBranch");
+                var request = new RestRequest(Method.GET);
+                request.AddHeader("password", Pwd);
+                request.AddHeader("username", username);
+                request.AddParameter("application/json", "{\n\t\"Name\":\"ghj\"\n}", ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                branchList = (new JavaScriptSerializer()).Deserialize<List<Branch>>(response.Content);
+
+
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
         private void SetLoadingPnlInsurance(bool displayLoader)
         {
@@ -5899,11 +5921,11 @@ namespace Gene
             }
             finally
             {
-                
-  //              xmlString = @"<?xml version='1.0' encoding='UTF-8'?>
-  //<Esp:Interface Version='1.0' xmlns:Esp='http://www.mosaicsoftware.com/Postilion/eSocket.POS/'><Esp:Admin TerminalId='" + ConfigurationManager.AppSettings["TerminalId"] + "' Action ='CLOSE'/></Esp:Interface>";
-  //              InitializeTermianl("" + ConfigurationManager.AppSettings["url"] + "", ConfigurationManager.AppSettings["Port"], xmlString);
-               
+
+                //              xmlString = @"<?xml version='1.0' encoding='UTF-8'?>
+                //<Esp:Interface Version='1.0' xmlns:Esp='http://www.mosaicsoftware.com/Postilion/eSocket.POS/'><Esp:Admin TerminalId='" + ConfigurationManager.AppSettings["TerminalId"] + "' Action ='CLOSE'/></Esp:Interface>";
+                //              InitializeTermianl("" + ConfigurationManager.AppSettings["url"] + "", ConfigurationManager.AppSettings["Port"], xmlString);
+
 
                 SetLoadingDuringPayment(false);
             }
@@ -6188,6 +6210,11 @@ namespace Gene
                 {
                     foreach (var item in objlistRisk)
                     {
+
+                        var branchDetial = branchList.FirstOrDefault(c => c.Id == item.ALMBranchId);
+                        if(branchDetial!=null)
+                            item.Location_Id = branchDetial.Location_Id;
+
 
                         if (_insuranceAndLicense) // if insurance and license both need to do approve
                         {
@@ -9330,7 +9357,7 @@ namespace Gene
             int CoverId = Convert.ToInt32(cmbCoverType.SelectedValue);
             if (CoverId == 4) // for comprehensive
             {
-               
+
                 if (txtSumInsured.Text == string.Empty || txtSumInsured.Text == "0")
                 {
                     //MessageBox.Show("Please Enter Sum Insured");
@@ -9346,11 +9373,11 @@ namespace Gene
                     return;
                 }
 
-                 decimal  amount = 490000; // minimum suminsured for alm
+                decimal amount = 490000; // minimum suminsured for alm
 
-                if(Convert.ToDecimal( txtSumInsured.Text)< amount)
+                if (Convert.ToDecimal(txtSumInsured.Text) < amount)
                 {
-                    NewerrorProvider.SetError(txtSumInsured, "Minimum sumInsured should be greater than or equal "+amount);
+                    NewerrorProvider.SetError(txtSumInsured, "Minimum sumInsured should be greater than or equal " + amount);
                     txtSumInsured.Focus();
                     return;
                 }
