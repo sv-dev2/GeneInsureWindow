@@ -64,12 +64,15 @@ namespace Gene
                 {
                     if (valatedSerialNumber(txtCertificateSerialNumber.Text))
                     {
-
-
                         //else
                         //{
                         //    MessageBox.Show("Please Eneter the correct Serial Number", "Error");
                         //}
+
+                        CertSerialNoDetailModel model = new CertSerialNoDetailModel();
+                        model.VehicleId = RiskDetailModel.Id;
+                        model.CertSerialNo = txtCertificateSerialNumber.Text;
+                        SaveCertSerialNum(model);
 
                         frmLicence quotObj = new frmLicence();
                         quotObj.CertificateNumber = txtCertificateSerialNumber.Text;
@@ -82,12 +85,6 @@ namespace Gene
                             Service_db.UpdateToken(ObjToken);
                             response = ICEcashService.LICCertConf(RiskDetailModel, ParternToken, txtCertificateSerialNumber.Text);
                         }
-
-                        CertSerialNoDetailModel model = new CertSerialNoDetailModel();
-                        model.VehicleId = RiskDetailModel.Id;
-                        model.CertSerialNo = txtCertificateSerialNumber.Text;
-
-                        SaveCertSerialNum(model);
 
                         MessageBox.Show(response.Response.Message);
                         this.Close();
@@ -360,12 +357,6 @@ namespace Gene
 
                 }
 
-
-
-
-
-
-
             }
         }
 
@@ -383,6 +374,31 @@ namespace Gene
             Form1 objFrm = new Form1(ObjToken);
             objFrm.Show();
             this.Close();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (valatedSerialNumber(txtCertificateSerialNumber.Text))
+            {
+                //else
+                //{
+                //    MessageBox.Show("Please Eneter the correct Serial Number", "Error");
+                //}
+
+                CertSerialNoDetailModel model = new CertSerialNoDetailModel();
+                model.VehicleId = RiskDetailModel.Id;
+                model.CertSerialNo = txtCertificateSerialNumber.Text;
+                SaveCertSerialNum(model);
+
+
+                this.Close();
+                Form1 obj = new Form1();
+                obj.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please Eneter the correct Serial Number", "Error");
+            }
         }
 
 

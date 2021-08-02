@@ -1,5 +1,6 @@
 ﻿using GensureAPIv2.Models;
 using Insurance.Service;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,7 +26,7 @@ namespace Gene
         public string _base64Data = "";
         // static String ApiURL = "http://windowsapi.gene.co.zw/api/Account/";
         static String ApiURL = WebConfigurationManager.AppSettings["urlPath"] + "/api/Account/";
-
+        static String IceCashRequestUrl = WebConfigurationManager.AppSettings["urlPath"] + "/api/ICEcash/";
 
         public WebCertificateSerial(RiskDetailModel objRiskDetail, string Partnertoken )
         {
@@ -57,6 +58,14 @@ namespace Gene
                 {
                     if (valatedSerialNumber(txtCertificateSerialNumber.Text))
                     {
+
+                        CertSerialNoDetailModel model = new CertSerialNoDetailModel();
+                        model.VehicleId = RiskDetailModel.Id;
+                        model.CertSerialNo = txtCertificateSerialNumber.Text;
+                        SaveCertSerialNum(model);
+
+
+
                         frmLicence quotObj = new frmLicence();
                         quotObj.CertificateNumber = txtCertificateSerialNumber.Text;
                         var response = ICEcashService.LICCertConf(RiskDetailModel, ParternToken, txtCertificateSerialNumber.Text);
@@ -86,7 +95,46 @@ namespace Gene
             }
         }
 
-      
+
+        public void SaveCertSerialNum(CertSerialNoDetailModel model)
+        {
+
+            if (model.VehicleId != 0)
+            {
+                var client = new RestClient(IceCashRequestUrl + "SaveCertSerialNum");
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/json");
+                request.AddHeader("password", "Geninsure@123");
+                request.AddHeader("username", "ameyoApi@geneinsure.com");
+                request.RequestFormat = DataFormat.Json;
+                request.AddJsonBody(model);
+
+                //request.Timeout = 5000;
+                //request.ReadWriteTimeout = 5000;
+                IRestResponse response = client.Execute(request);
+
+
+                try
+                {
+
+                    Service_db service = new Service_db();
+                    string branchId = service.ReadBranchFromLogFile();
+                    var apiStock = new RestClient("http://api.gene.co.zw/inventory/api/paper/usage/" + branchId + "/" + model.CertSerialNo + "");
+                    var stockRequest = new RestRequest(Method.GET);
+                    IRestResponse responseAPI = apiStock.Execute(stockRequest);
+
+                }
+                catch (Exception e)
+                {
+
+                }
+
+            }
+        }
+
+
+
 
         private void WebCertificateSerial_Load(object sender, EventArgs e)
         {
@@ -101,6 +149,29 @@ namespace Gene
             return rg.IsMatch(serialNumber);
         }
 
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (valatedSerialNumber(txtCertificateSerialNumber.Text))
+            {
+                //else
+                //{
+                //    MessageBox.Show("Please Eneter the correct Serial Number", "Error");
+                //}
 
+                CertSerialNoDetailModel model = new CertSerialNoDetailModel();
+                model.VehicleId = RiskDetailModel.Id;
+                model.CertSerialNo = txtCertificateSerialNumber.Text;
+                SaveCertSerialNum(model);
+
+
+                this.Close();
+                Form1 obj = new Form1();
+                obj.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please Eneter the correct Serial Number", "Error");
+            }
+        }
     }
 }

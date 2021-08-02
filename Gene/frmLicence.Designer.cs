@@ -83,7 +83,6 @@ namespace Gene
             this.txtLicVrn.Size = new System.Drawing.Size(367, 53);
             this.txtLicVrn.TabIndex = 1;
             this.txtLicVrn.Text = "Enter Registration Number";
-            this.txtLicVrn.Visible = false;
             this.txtLicVrn.TextChanged += new System.EventHandler(this.txtLicVrn_TextChanged);
             this.txtLicVrn.Enter += new System.EventHandler(this.txtLicVrn_Enter);
             // 
@@ -98,7 +97,6 @@ namespace Gene
             this.btnLicPrint.TabIndex = 0;
             this.btnLicPrint.Text = "Submit";
             this.btnLicPrint.UseVisualStyleBackColor = false;
-            this.btnLicPrint.Visible = false;
             this.btnLicPrint.Click += new System.EventHandler(this.btnLicPrint_Click);
             // 
             // label1

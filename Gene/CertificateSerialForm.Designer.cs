@@ -35,6 +35,7 @@
             this.btnScan = new System.Windows.Forms.Button();
             this.txtCertificateSerialNumber = new System.Windows.Forms.TextBox();
             this.lblCertificate = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
             this.PnlLicenceVrn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -42,6 +43,7 @@
             // PnlLicenceVrn
             // 
             this.PnlLicenceVrn.BackColor = System.Drawing.Color.Transparent;
+            this.PnlLicenceVrn.Controls.Add(this.btnSave);
             this.PnlLicenceVrn.Controls.Add(this.btnHome);
             this.PnlLicenceVrn.Controls.Add(this.pictureBox2);
             this.PnlLicenceVrn.Controls.Add(this.btnScan);
@@ -84,12 +86,13 @@
             this.btnScan.Enabled = false;
             this.btnScan.Font = new System.Drawing.Font("Arial Narrow", 32.25F);
             this.btnScan.ForeColor = System.Drawing.Color.White;
-            this.btnScan.Location = new System.Drawing.Point(986, 161);
+            this.btnScan.Location = new System.Drawing.Point(1314, 272);
             this.btnScan.Name = "btnScan";
-            this.btnScan.Size = new System.Drawing.Size(243, 69);
+            this.btnScan.Size = new System.Drawing.Size(78, 69);
             this.btnScan.TabIndex = 4;
             this.btnScan.Text = "Submit";
             this.btnScan.UseVisualStyleBackColor = false;
+            this.btnScan.Visible = false;
             this.btnScan.Click += new System.EventHandler(this.btnScan_Click);
             // 
             // txtCertificateSerialNumber
@@ -111,6 +114,19 @@
             this.lblCertificate.Size = new System.Drawing.Size(327, 40);
             this.lblCertificate.TabIndex = 2;
             this.lblCertificate.Text = "Certificate serial Number";
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(183)))), ((int)(((byte)(83)))));
+            this.btnSave.Font = new System.Drawing.Font("Arial Narrow", 32.25F);
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Location = new System.Drawing.Point(968, 161);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(243, 69);
+            this.btnSave.TabIndex = 114;
+            this.btnSave.Text = "Submit";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // CertificateSerialForm
             // 
@@ -140,5 +156,6 @@
         private System.Windows.Forms.Button btnScan;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btnHome;
+        private System.Windows.Forms.Button btnSave;
     }
 }
