@@ -239,6 +239,9 @@ namespace Gene
 
                 File.WriteAllBytes(destinationFileName, pdfbytes);
 
+              
+
+
             }
             catch (Exception ex)
             {
@@ -247,6 +250,8 @@ namespace Gene
             return destinationFileName;
         }
 
+       
+
         private void btnScan_Click(object sender, EventArgs e)
         {
             try
@@ -254,6 +259,8 @@ namespace Gene
                 pictureBox2.Visible = true;
                 pictureBox2.WaitOnLoad = true;
                 var pdfPath = SavePdf(_base64Data);
+
+                System.Threading.Thread.Sleep(1000);
 
                 //PdfDocument doc = new PdfDocument();
                 //doc.LoadFromFile(pdfPath);
@@ -269,15 +276,22 @@ namespace Gene
 
                 var destinationFileName = System.IO.Path.Combine(installedPath, System.IO.Path.GetFileName(fileName));
 
-                PdfReader reader = new PdfReader(pdfPath);
-                PdfStamper stamper = new PdfStamper(reader, new FileStream(destinationFileName, FileMode.Create));
-                int total = reader.NumberOfPages;
-                for (int pageNumber = total; pageNumber > 0; pageNumber--)
+               // PdfReader reader = new PdfReader(pdfPath);
+                using (PdfReader reader = new PdfReader(pdfPath))
                 {
-                    stamper.InsertPage(pageNumber, PageSize.A4);
+                    using (PdfStamper stamper = new PdfStamper(reader, new FileStream(destinationFileName, FileMode.Create)))
+                    {
+                        int total = reader.NumberOfPages;
+                        for (int pageNumber = total; pageNumber > 0; pageNumber--)
+                        {
+                            stamper.InsertPage(pageNumber, PageSize.A4);
+                        }
+                    }
                 }
-                stamper.Close();
-                reader.Close();
+                   // PdfStamper stamper = new PdfStamper(reader, new FileStream(destinationFileName, FileMode.Create));
+                
+                //stamper.Close();
+                //reader.Close();
 
 
                 //MessageBox.Show("Please Print Licence Disk.                                                                       ", "Print License Disk");
