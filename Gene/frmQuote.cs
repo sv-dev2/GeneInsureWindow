@@ -5694,6 +5694,244 @@ namespace Gene
         // For Payment
         //public static void SendSymbol(long TransactionId, decimal transctionAmt)
         //public void SendSymbol(long TransactionId, decimal transctionAmt, int summaryId)
+        //      public void SendSymbol(long TransactionId, decimal transctionAmt, string paymentTermName)
+        //      {
+        //          string xmlString = "";
+        //          //// TransactionId = 100020; // need to do remove
+        //          bool isPaymentDone = false;
+
+        //          decimal amountIncents = (int)(transctionAmt * 100);
+
+        //          string logMsg = txtVrn.Text + "_" + paymentTermName + "_" + transctionAmt;
+
+        //          Service_db.WriteIceCashLog("init paymeent", logMsg, "SendSymbol", txtVrn.Text, branchName);
+
+
+
+        //          //To do  
+        //          //summaryModel.PaymentStatus = true;
+        //          // amountIncents = (int)(Convert.ToDecimal(txtPartialAmount.Text) * 100); // it was for partail payment
+
+
+        //          //Initialze Terminal
+
+        //          if (!CheckPosInitOrNot())
+        //          {
+        //              xmlString = @"<?xml version='1.0' encoding='UTF-8'?>
+        //<Esp:Interface Version='1.0' xmlns:Esp='http://www.mosaicsoftware.com/Postilion/eSocket.POS/'><Esp:Admin TerminalId='" + ConfigurationManager.AppSettings["TerminalId"] + "' Action='INIT'/></Esp:Interface>";
+
+        //              InitializeTermianl("" + ConfigurationManager.AppSettings["url"] + "", ConfigurationManager.AppSettings["Port"], xmlString);
+
+        //          }
+
+
+        //          xmlString = @"<?xml version='1.0' encoding='UTF-8'?>
+        //              <Esp:Interface Version='1.0' xmlns:Esp='http://www.mosaicsoftware.com/Postilion/eSocket.POS/'><Esp:Transaction TerminalId='" + ConfigurationManager.AppSettings["TerminalId"] + "' TransactionId='" + TransactionId + "' Type='PURCHASE' TransactionAmount='" + amountIncents + "'><Esp:PurchasingCardData Description='blah'><Esp:LineItem Description='boh'/><Esp:LineItem Description='beh' Sign='C'><Esp:TaxAmount Type='04'/><Esp:TaxAmount Type='05'/></Esp:LineItem><Esp:Contact Type='BILL_FROM' Name='Ian'/><Esp:Contact Type='BILL_TO' Telephone='021'/><Esp:TaxAmount Type='02'/><Esp:TaxAmount Type='03'/></Esp:PurchasingCardData><Esp:PosStructuredData Name='name' Value='value'/><Esp:PosStructuredData Name='name2' Value='value2'/></Esp:Transaction></Esp:Interface>";
+
+
+        //          //   isPaymentDone = SendTransaction(ConfigurationManager.AppSettings["url"], ConfigurationManager.AppSettings["Port"], xmlString);
+
+        //          // isPaymentDone = true;
+        //          //PartialPaymentModel paymentDetail = SavePartialPayment();
+
+        //          //decimal balanceAmount = Convert.ToDecimal(summaryModel.TotalPremium - paymentDetail.CalulatedPremium);
+
+        //          //if (balanceAmount > 0)
+        //          //{
+        //          //    TransactionId = GenerateTransactionId();
+        //          //    btnConfirmPayment.Enabled = true;
+        //          //    pictureBox2.Visible = false;
+        //          //    RadioSwipe.Checked = true;
+        //          //    btnConfirmPayment.Text = "Pay.";
+        //          //    txtPartialAmount.Text = balanceAmount.ToString();
+        //          //    return;
+        //          //}
+
+
+
+
+        //          //if (rdBtnPartialPayment.Checked && txtPartialPayment.Text != "")
+        //          //{
+        //          //    //To do  
+        //          //    summaryModel.PaymentStatus = true;
+        //          //    PartialPaymentModel paymentDetail = SavePartialPayment();
+
+        //          //    if ((summaryModel.TotalPremium - paymentDetail.CalulatedPremium) > 0)
+        //          //    {
+        //          //        txtPartialPayment.Text = Convert.ToString(summaryModel.TotalPremium - paymentDetail.CalulatedPremium);
+        //          //    }
+        //          //    return;
+        //          //}
+
+
+        //          string msg = "";
+        //          try
+        //          {
+        //              if (SendTransaction(ConfigurationManager.AppSettings["url"], ConfigurationManager.AppSettings["Port"], xmlString))
+        //              {
+        //                  //if (isPaymentDone) // testing condition false
+
+        //                  // btnConfirmPayment.Text = "Saving Vehicle.";
+
+        //                  // this.Invoke(new Action(() => btnConfirmPayment.Text = "Saving Vehicle."));
+
+
+        //                  // btnConfirmPayment.Invoke((MethodInvoker)delegate { this.Text = "Saving Vehicle."; });
+
+
+        //                  var summaryDetails = SaveCustomerVehical();
+        //                  lblPaymentMsg.Text = "";
+        //                  // Save information
+        //                  if (summaryDetails != null)
+        //                  {
+        //                      var terninalid = ConfigurationManager.AppSettings["TerminalId"];
+        //                      decimal tranjectionamt = amountIncents;
+
+        //                      if (summaryDetails.Id == 0)
+        //                      {
+        //                          MyMessageBox.ShowBox("Error occur, please contact to admistrator.", "Message");
+        //                          btnConfirmPayment.Enabled = true;
+        //                          picImageConfirmPayment.Visible = false;
+        //                          return;
+        //                      }
+
+        //                      // to handle the exception
+        //                      string iceCashPolicyNumber = "";
+        //                      ResultRootObject policyDetailsIceCash = new ResultRootObject();
+        //                      try
+        //                      {
+        //                          policyDetailsIceCash = ApproveVRNToIceCash(summaryDetails.Id);
+        //                          if (policyDetailsIceCash != null && policyDetailsIceCash.Response != null)
+        //                          {
+        //                              iceCashPolicyNumber = policyDetailsIceCash.Response.PolicyNo;
+        //                          }
+        //                      }
+        //                      catch (Exception ex)
+        //                      {
+        //                          Service_db.WriteIceCashLog("ApproveIceCash 2 ", ex.Message, "during approvevrnintoIcecah", txtVrn.Text, branchName);
+        //                      }
+
+
+        //                      //  btnConfirmPayment.Text = "Sending email..";
+
+        //                      SavePaymentinformation(TransactionId.ToString(), summaryDetails.Id, paymentTermName, CardDetail, terninalid, transctionAmt, iceCashPolicyNumber);
+
+        //                      lblpayment.Text = "";
+        //                      lblpayment.Text += "Transaction ID =" + TransactionId;
+        //                      lblpayment.Text += "\n";
+        //                      lblpayment.Text = "Sucessfully ddddd";
+
+
+        //                      lblThankyou.Text = "Thank you for Registration";
+        //                      lblThankyou.Text += "\n";
+        //                      lblThankyou.Text += "Transaction ID =" + TransactionId;
+        //                      lblThankyou.Text += "\n";
+        //                      lblThankyou.Text += responseMessage;
+
+        //                      if (policyDetailsIceCash.Response != null && !string.IsNullOrEmpty(policyDetailsIceCash.Response.PolicyNo))
+        //                      {
+        //                          lblThankyou.Text += "\n";
+        //                          lblThankyou.Text += "Cover note number =" + policyDetailsIceCash.Response.PolicyNo;
+
+        //                          lblThankyou.Text += "\n";
+        //                          lblThankyou.Text += "VRN =" + policyDetailsIceCash.Response.VRN;
+
+        //                          lblThankyou.Text += "\n";
+        //                          lblThankyou.Text += "Status =" + policyDetailsIceCash.Response.Status;
+        //                      }
+
+        //                      pnlThankyou.Visible = true;
+        //                      pnlconfimpaymeny.Visible = false;
+
+
+
+        //                      // display on thank you page  for testing
+        //                      //List<ResultLicenceIDResponse> list = new List<ResultLicenceIDResponse>();
+        //                      //ResultLicenceIDResponse resresponse = new ResultLicenceIDResponse { vrn = "aas9307", licenceid = "123456789", receiptid = "r123456789", status = "approved", transactionamt = "20.00", arrearsamt = "0", penaltiesamt = "0", administrationamt = "0", totallicamt = "20.00", radiotvamt = "5.00", make = "mazda", model = "mdl0663" };
+        //                      //licenseDiskList.Add(resresponse);
+        //                      //loadLicenceDiskPanel(list);
+
+
+        //                      //foreach (var item in objlistRisk)  // for now it's  commented
+        //                      //{
+
+        //                      //    item.Id = summaryDetails.VehicleId;  
+
+        //                      //    if (!string.IsNullOrEmpty(item.CombinedID) && (item.CombinedID != "0"))
+        //                      //    {
+        //                      //        btnConfirmPayment.Text = "Approving license..";
+
+        //                      //        DisplayLicenseDisc(item, parternToken, item.Id);
+        //                      //    }
+        //                      //}
+
+
+        //                      var item = objlistRisk[0];
+        //                      item.Id = summaryDetails.VehicleId;
+        //                      //  _vehicleId = summaryDetails.VehicleId;
+
+        //                      if (!string.IsNullOrEmpty(item.CombinedID) && (item.CombinedID != "0"))
+        //                      {
+        //                          btnConfirmPayment.Text = "Approving license..";
+        //                          DisplayLicenseDisc(item, parternToken, item.Id);
+        //                      }
+
+        //                      //if (licenseDiskList.Count > 0)
+        //                      //    btnPrint.Visible = true;
+        //                      //else
+        //                      //    btnPrint.Visible = false;
+
+        //                      // btnPrint.Visible = false;
+        //                      btnConfirmPayment.Text = "Pay";
+
+
+        //                  }
+        //              }
+        //              else
+        //              {
+
+
+        //                  MyMessageBox.ShowBox("Error occured. " + responseMessage, "Message");
+        //                  TransactionId = GenerateTransactionId();
+
+        //                  string logMsg1 = txtVrn.Text + "_" + paymentTermName + "_" + transctionAmt;
+
+        //                  Service_db.WriteIceCashLog("payment fail", logMsg1, "SendSymbol", txtVrn.Text, branchName);
+
+        //                  //  pnlconfimpaymeny.Visible = false;
+        //                  // pnlErrormessage.Visible = true;
+        //                  //  lblErrMessage.Text = responseMessage;
+        //                  //   lblErrMessage.ForeColor = Color.Red;
+        //                  lblPaymentMsg.Text = "";
+        //                  btnConfirmPayment.Text = "Pay";
+
+        //              }
+        //              //SendTransaction("" + ConfigurationManager.AppSettings["url"] + "", ConfigurationManager.AppSettings["Port"], xmlString);
+
+        //          }
+        //          catch (Exception ex)
+        //          {
+        //              // WriteLog("InitializeTermianl :" + ex.Message);
+
+
+        //              Service_db.WriteIceCashLog("payment exception", ex.Message, "SendSymbol", txtVrn.Text, branchName);
+        //              lblPaymentMsg.Text += "InitializeTermianl: " + ex.Message;
+
+        //              //MessageBox.Show(ex.ToString());
+        //          }
+        //          finally
+        //          {
+
+        //              //              xmlString = @"<?xml version='1.0' encoding='UTF-8'?>
+        //              //<Esp:Interface Version='1.0' xmlns:Esp='http://www.mosaicsoftware.com/Postilion/eSocket.POS/'><Esp:Admin TerminalId='" + ConfigurationManager.AppSettings["TerminalId"] + "' Action ='CLOSE'/></Esp:Interface>";
+        //              //              InitializeTermianl("" + ConfigurationManager.AppSettings["url"] + "", ConfigurationManager.AppSettings["Port"], xmlString);
+
+
+        //              SetLoadingDuringPayment(false);
+        //          }
+        //      }
+
+
         public void SendSymbol(long TransactionId, decimal transctionAmt, string paymentTermName)
         {
             string xmlString = "";
@@ -5714,15 +5952,13 @@ namespace Gene
 
 
             //Initialze Terminal
-
-            if (!CheckPosInitOrNot())
-            {
-                xmlString = @"<?xml version='1.0' encoding='UTF-8'?>
+            xmlString = @"<?xml version='1.0' encoding='UTF-8'?>
   <Esp:Interface Version='1.0' xmlns:Esp='http://www.mosaicsoftware.com/Postilion/eSocket.POS/'><Esp:Admin TerminalId='" + ConfigurationManager.AppSettings["TerminalId"] + "' Action='INIT'/></Esp:Interface>";
 
-                InitializeTermianl("" + ConfigurationManager.AppSettings["url"] + "", ConfigurationManager.AppSettings["Port"], xmlString);
+            InitializeTermianl("" + ConfigurationManager.AppSettings["url"] + "", ConfigurationManager.AppSettings["Port"], xmlString);
 
-            }
+            //  lblPaymentMsg.Text = "Please swipe card.";
+            //lblProcessingMsg.Text = "Please swipe card.";
 
 
             xmlString = @"<?xml version='1.0' encoding='UTF-8'?>
@@ -5921,15 +6157,17 @@ namespace Gene
             }
             finally
             {
-
-                //              xmlString = @"<?xml version='1.0' encoding='UTF-8'?>
-                //<Esp:Interface Version='1.0' xmlns:Esp='http://www.mosaicsoftware.com/Postilion/eSocket.POS/'><Esp:Admin TerminalId='" + ConfigurationManager.AppSettings["TerminalId"] + "' Action ='CLOSE'/></Esp:Interface>";
-                //              InitializeTermianl("" + ConfigurationManager.AppSettings["url"] + "", ConfigurationManager.AppSettings["Port"], xmlString);
-
+                //closing the terminal
+                xmlString = @"<?xml version='1.0' encoding='UTF-8'?>
+  <Esp:Interface Version='1.0' xmlns:Esp='http://www.mosaicsoftware.com/Postilion/eSocket.POS/'><Esp:Admin TerminalId='" + ConfigurationManager.AppSettings["TerminalId"] + "' Action ='CLOSE'/></Esp:Interface>";
+                InitializeTermianl("" + ConfigurationManager.AppSettings["url"] + "", ConfigurationManager.AppSettings["Port"], xmlString);
+                //btnConfirmPayment.Enabled = true;
+                //picImageConfirmPayment.Visible = false;
 
                 SetLoadingDuringPayment(false);
             }
         }
+
 
 
         public bool CheckPosInitOrNot()
