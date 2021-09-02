@@ -93,6 +93,11 @@ namespace Gene
                     }
                     else
                     {
+                        
+                        this.Close();
+                        Form1 obj = new Form1();
+                        obj.Show();
+
                         MessageBox.Show("Please Eneter the correct Serial Number", "Error");
                     }
 
@@ -101,6 +106,9 @@ namespace Gene
             }
             catch (Exception ex)
             {
+                this.Close();
+                Form1 obj = new Form1();
+                obj.Show();
                 MessageBox.Show(ex.Message);
             }
 
@@ -117,6 +125,7 @@ namespace Gene
             btnScan_Click(sender, e); // commented for now
 
             txtCertificateSerialNumber.Focus();
+            this.ActiveControl = txtCertificateSerialNumber;
 
 
         }
@@ -414,6 +423,24 @@ namespace Gene
                 MessageBox.Show("Please Eneter the correct Serial Number", "Error");
             }
         }
+
+        private void CertificateSerialForm_Deactivate(object sender, EventArgs e)
+        {
+            timer1.Enabled = true;
+        }
+
+        private void txtCertificateSerialNumber_Leave(object sender, EventArgs e)
+        {
+            txtCertificateSerialNumber.Focus();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Enabled = false;
+            Show();
+            Activate();
+        }
+
 
 
     }
