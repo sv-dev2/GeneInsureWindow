@@ -118,6 +118,7 @@
             this.txtCertificateSerialNumber.Size = new System.Drawing.Size(336, 54);
             this.txtCertificateSerialNumber.TabIndex = 3;
             this.txtCertificateSerialNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCertificateSerialNumber_KeyDown);
+            this.txtCertificateSerialNumber.Leave += new System.EventHandler(this.txtCertificateSerialNumber_Leave);
             // 
             // lblCertificate
             // 
@@ -129,6 +130,11 @@
             this.lblCertificate.Size = new System.Drawing.Size(327, 40);
             this.lblCertificate.TabIndex = 2;
             this.lblCertificate.Text = "Certificate serial Number";
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 500;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // CertificateSerialForm
             // 
@@ -142,6 +148,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CertificateSerialForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Deactivate += new System.EventHandler(this.CertificateSerialForm_Deactivate);
             this.Load += new System.EventHandler(this.CertificateSerialForm_Load);
             this.PnlLicenceVrn.ResumeLayout(false);
             this.PnlLicenceVrn.PerformLayout();
