@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="UTF-8"?
-<Esp:Interface Version="1.0" xmlns:Esp="http://www.mosaicsoftware.com/Postilion/eSocket.POS/"<Esp:Transaction Account="10" ActionCode="APPROVE" CardNumber="1111222233334444" CurrencyCode="840" DateTime="0721084817" ExpiryDate="0912" MerchantId="123456 " MessageReasonCode="9790" PanEntryMode="00" PosCondition="00" ResponseCode="91" ServiceRestrictionCode="101" TerminalId="Term1234" Track2="1111222233334444=09121011234" TransactionAmount="10000" TransactionId="123456" Type="PURCHASE"</Esp:Transaction</Esp:Interface>
