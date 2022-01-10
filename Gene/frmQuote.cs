@@ -3627,6 +3627,25 @@ namespace Gene
                     lblRtgs.Visible = true;
                     txtSumInsured.Visible = true;
                     NewerrorProvider.Clear();
+                    dtCoverStartDate.Visible = true;
+                    dtCoverEndDate.Visible = true;
+                    lblCoverStartDate.Visible = true;
+                    lblCoverEndDate.Visible = true;
+                    dtCoverStartDate.Text = DateTime.Now.ToShortDateString();
+
+                    if (cmbPaymentTerm.SelectedValue!=null)
+                    {
+                        int paymentTerm = Convert.ToInt32(cmbPaymentTerm.SelectedValue);
+                        DateTime endDate = DateTime.Now;
+                        if(paymentTerm==1)
+                            endDate= endDate.AddMonths(12);
+                        else
+                            endDate= endDate.AddMonths(paymentTerm);
+
+                        dtCoverEndDate.Text = endDate.ToShortDateString();                      
+                    } 
+
+                   // dtCoverEndDate.Text= 
                 }
                 else
                 {
@@ -3634,6 +3653,11 @@ namespace Gene
                     lblRtgs.Visible = false;
                     txtSumInsured.Visible = false;
                     txtSumInsured.Text = "0.00";
+                    dtCoverStartDate.Visible = false;
+                    dtCoverEndDate.Visible = false;
+
+                    lblCoverStartDate.Visible = false;
+                    lblCoverEndDate.Visible = false;
                 }
             }
 
@@ -4108,6 +4132,18 @@ namespace Gene
                                         objRiskModel.InsuranceId = quoteresponseQuote.Response.Quotes[0].InsuranceID;
                                         objRiskModel.LicenseId = quoteresponseQuote.Response.Quotes[0].LicenceID;
                                         objRiskModel.CombinedID = quoteresponseQuote.Response.Quotes[0].CombinedID;
+
+                                        string format = "yyyyMMdd";
+                                        DateTime StartDate = DateTime.ParseExact(quoteresponseQuote.Response.Quotes[0].Policy.StartDate, format, CultureInfo.InvariantCulture);
+                                        DateTime EndDate = DateTime.ParseExact(quoteresponseQuote.Response.Quotes[0].Policy.EndDate, format, CultureInfo.InvariantCulture);
+
+                                       if(objRiskModel.CoverTypeId!=(int)eCoverType.Comprehensive)
+                                        {
+                                            objRiskModel.CoverStartDate = StartDate;
+                                            objRiskModel.CoverEndDate = EndDate;
+                                        }
+                                        
+
 
                                     }
 
@@ -9643,18 +9679,23 @@ namespace Gene
                     MyMessageBox.ShowBox("Please select license.", "Message");
                     return;
                 }
-
-
             }
 
             if (VehicalIndex == -1)
-            {
+             {
                 if (cmbPaymentTerm.SelectedValue != null && cmbCoverType.SelectedValue != null)
                 {
                     objRiskModel.PaymentTermId = Convert.ToInt32(cmbPaymentTerm.SelectedValue);
                     objRiskModel.CoverTypeId = Convert.ToInt32(cmbCoverType.SelectedValue);
                     objRiskModel.SumInsured = Math.Round(Convert.ToDecimal(txtSumInsured.Text == "" ? 0 : Convert.ToDecimal(txtSumInsured.Text, System.Globalization.CultureInfo.InvariantCulture)), 2);
                     objRiskModel.IceCashRequest = IceCashRequest;
+
+                    if(Convert.ToInt32(cmbCoverType.SelectedValue) == 4)
+                    {
+                        objRiskModel.CoverStartDate = Convert.ToDateTime(dtCoverStartDate.Text);
+                        objRiskModel.CoverEndDate = Convert.ToDateTime(dtCoverEndDate.Text);
+                    }
+                    
                 }
             }
             else
@@ -9665,6 +9706,14 @@ namespace Gene
                     objlistRisk[VehicalIndex].PaymentTermId = Convert.ToInt32(cmbPaymentTerm.SelectedValue);
                     objlistRisk[VehicalIndex].CoverTypeId = Convert.ToInt32(cmbCoverType.SelectedValue);
                     objlistRisk[VehicalIndex].IceCashRequest = IceCashRequest;
+
+                    if (Convert.ToInt32(cmbCoverType.SelectedValue) == 4)
+                    {
+                        objlistRisk[VehicalIndex].CoverStartDate = Convert.ToDateTime(dtCoverStartDate.Text);
+                        objlistRisk[VehicalIndex].CoverEndDate = Convert.ToDateTime(dtCoverEndDate.Text);
+                    }
+                        
+
                 }
             }
 

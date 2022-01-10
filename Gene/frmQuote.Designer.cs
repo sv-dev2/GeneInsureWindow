@@ -315,6 +315,10 @@ namespace Gene
             this.pnlOptionalCover = new System.Windows.Forms.Panel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnlLogo = new System.Windows.Forms.Panel();
+            this.lblCoverStartDate = new System.Windows.Forms.Label();
+            this.lblCoverEndDate = new System.Windows.Forms.Label();
+            this.dtCoverStartDate = new System.Windows.Forms.DateTimePicker();
+            this.dtCoverEndDate = new System.Windows.Forms.DateTimePicker();
             this.PnlVrn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlConfirm.SuspendLayout();
@@ -806,9 +810,9 @@ namespace Gene
             this.pnlPersonalDetails.Controls.Add(this.lblPhone);
             this.pnlPersonalDetails.Controls.Add(this.lblEmail);
             this.pnlPersonalDetails.Controls.Add(this.lblPName);
-            this.pnlPersonalDetails.Location = new System.Drawing.Point(35, 350);
+            this.pnlPersonalDetails.Location = new System.Drawing.Point(39, 354);
             this.pnlPersonalDetails.Name = "pnlPersonalDetails";
-            this.pnlPersonalDetails.Size = new System.Drawing.Size(64, 62);
+            this.pnlPersonalDetails.Size = new System.Drawing.Size(81, 87);
             this.pnlPersonalDetails.TabIndex = 60;
             // 
             // label5
@@ -2258,7 +2262,7 @@ namespace Gene
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(359, 219);
+            this.label2.Location = new System.Drawing.Point(352, 205);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(244, 46);
             this.label2.TabIndex = 7;
@@ -2495,7 +2499,7 @@ namespace Gene
             // txtSumInsured
             // 
             this.txtSumInsured.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSumInsured.Location = new System.Drawing.Point(736, 226);
+            this.txtSumInsured.Location = new System.Drawing.Point(736, 212);
             this.txtSumInsured.Name = "txtSumInsured";
             this.txtSumInsured.Size = new System.Drawing.Size(561, 53);
             this.txtSumInsured.TabIndex = 72;
@@ -2872,7 +2876,7 @@ namespace Gene
             this.pnlCorporate.Controls.Add(this.label81);
             this.pnlCorporate.Controls.Add(this.label82);
             this.pnlCorporate.Controls.Add(this.label83);
-            this.pnlCorporate.Location = new System.Drawing.Point(45, 163);
+            this.pnlCorporate.Location = new System.Drawing.Point(45, 123);
             this.pnlCorporate.Name = "pnlCorporate";
             this.pnlCorporate.Size = new System.Drawing.Size(67, 75);
             this.pnlCorporate.TabIndex = 79;
@@ -3196,6 +3200,10 @@ namespace Gene
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlInsurance.BackColor = System.Drawing.Color.Transparent;
+            this.pnlInsurance.Controls.Add(this.dtCoverEndDate);
+            this.pnlInsurance.Controls.Add(this.dtCoverStartDate);
+            this.pnlInsurance.Controls.Add(this.lblCoverEndDate);
+            this.pnlInsurance.Controls.Add(this.lblCoverStartDate);
             this.pnlInsurance.Controls.Add(this.lblRtgs);
             this.pnlInsurance.Controls.Add(this.pnlRadioZinaraIns);
             this.pnlInsurance.Controls.Add(this.label34);
@@ -3213,9 +3221,9 @@ namespace Gene
             this.pnlInsurance.Controls.Add(this.label93);
             this.pnlInsurance.Controls.Add(this.label2);
             this.pnlInsurance.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlInsurance.Location = new System.Drawing.Point(370, 237);
+            this.pnlInsurance.Location = new System.Drawing.Point(212, 142);
             this.pnlInsurance.Name = "pnlInsurance";
-            this.pnlInsurance.Size = new System.Drawing.Size(1197, 382);
+            this.pnlInsurance.Size = new System.Drawing.Size(1541, 501);
             this.pnlInsurance.TabIndex = 80;
             // 
             // lblRtgs
@@ -3226,7 +3234,7 @@ namespace Gene
             this.lblRtgs.AutoSize = true;
             this.lblRtgs.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.lblRtgs.ForeColor = System.Drawing.Color.White;
-            this.lblRtgs.Location = new System.Drawing.Point(609, 231);
+            this.lblRtgs.Location = new System.Drawing.Point(609, 217);
             this.lblRtgs.Name = "lblRtgs";
             this.lblRtgs.Size = new System.Drawing.Size(115, 29);
             this.lblRtgs.TabIndex = 121;
@@ -3239,7 +3247,7 @@ namespace Gene
             this.pnlRadioZinaraIns.Controls.Add(this.chkZinara);
             this.pnlRadioZinaraIns.Controls.Add(this.pnlRadio);
             this.pnlRadioZinaraIns.Controls.Add(this.pnlZinara);
-            this.pnlRadioZinaraIns.Location = new System.Drawing.Point(349, 284);
+            this.pnlRadioZinaraIns.Location = new System.Drawing.Point(349, 405);
             this.pnlRadioZinaraIns.Name = "pnlRadioZinaraIns";
             this.pnlRadioZinaraIns.Size = new System.Drawing.Size(1001, 236);
             this.pnlRadioZinaraIns.TabIndex = 120;
@@ -3430,7 +3438,7 @@ namespace Gene
             this.label34.AutoSize = true;
             this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label34.ForeColor = System.Drawing.Color.Red;
-            this.label34.Location = new System.Drawing.Point(1302, 157);
+            this.label34.Location = new System.Drawing.Point(1302, 143);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(30, 39);
             this.label34.TabIndex = 115;
@@ -3441,7 +3449,7 @@ namespace Gene
             this.LoadingInsurance.ErrorImage = ((System.Drawing.Image)(resources.GetObject("LoadingInsurance.ErrorImage")));
             this.LoadingInsurance.Image = global::Gene.Properties.Resources.loadingImg1;
             this.LoadingInsurance.InitialImage = global::Gene.Properties.Resources.loadingImg1;
-            this.LoadingInsurance.Location = new System.Drawing.Point(606, 135);
+            this.LoadingInsurance.Location = new System.Drawing.Point(606, 121);
             this.LoadingInsurance.Name = "LoadingInsurance";
             this.LoadingInsurance.Size = new System.Drawing.Size(128, 106);
             this.LoadingInsurance.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3454,7 +3462,7 @@ namespace Gene
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.ForeColor = System.Drawing.Color.Red;
-            this.label27.Location = new System.Drawing.Point(1302, 92);
+            this.label27.Location = new System.Drawing.Point(1302, 78);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(30, 39);
             this.label27.TabIndex = 114;
@@ -3481,7 +3489,7 @@ namespace Gene
             this.label90.AutoSize = true;
             this.label90.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, System.Drawing.FontStyle.Bold);
             this.label90.ForeColor = System.Drawing.Color.White;
-            this.label90.Location = new System.Drawing.Point(712, 16);
+            this.label90.Location = new System.Drawing.Point(712, 7);
             this.label90.Name = "label90";
             this.label90.Size = new System.Drawing.Size(450, 61);
             this.label90.TabIndex = 61;
@@ -3518,7 +3526,7 @@ namespace Gene
             this.label91.AutoSize = true;
             this.label91.Font = new System.Drawing.Font("Comic Sans MS", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label91.ForeColor = System.Drawing.Color.White;
-            this.label91.Location = new System.Drawing.Point(439, 83);
+            this.label91.Location = new System.Drawing.Point(439, 69);
             this.label91.Name = "label91";
             this.label91.Size = new System.Drawing.Size(0, 45);
             this.label91.TabIndex = 58;
@@ -3532,7 +3540,7 @@ namespace Gene
             this.cmbCoverType.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.cmbCoverType.FormattingEnabled = true;
             this.cmbCoverType.IntegralHeight = false;
-            this.cmbCoverType.Location = new System.Drawing.Point(736, 155);
+            this.cmbCoverType.Location = new System.Drawing.Point(736, 141);
             this.cmbCoverType.Name = "cmbCoverType";
             this.cmbCoverType.Size = new System.Drawing.Size(561, 54);
             this.cmbCoverType.TabIndex = 57;
@@ -3547,7 +3555,7 @@ namespace Gene
             this.cmbPaymentTerm.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.cmbPaymentTerm.FormattingEnabled = true;
             this.cmbPaymentTerm.IntegralHeight = false;
-            this.cmbPaymentTerm.Location = new System.Drawing.Point(736, 86);
+            this.cmbPaymentTerm.Location = new System.Drawing.Point(736, 72);
             this.cmbPaymentTerm.Name = "cmbPaymentTerm";
             this.cmbPaymentTerm.Size = new System.Drawing.Size(561, 54);
             this.cmbPaymentTerm.TabIndex = 56;
@@ -3560,7 +3568,7 @@ namespace Gene
             this.label92.AutoSize = true;
             this.label92.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.label92.ForeColor = System.Drawing.Color.White;
-            this.label92.Location = new System.Drawing.Point(352, 154);
+            this.label92.Location = new System.Drawing.Point(352, 140);
             this.label92.Name = "label92";
             this.label92.Size = new System.Drawing.Size(236, 46);
             this.label92.TabIndex = 10;
@@ -3574,7 +3582,7 @@ namespace Gene
             this.label93.AutoSize = true;
             this.label93.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.label93.ForeColor = System.Drawing.Color.White;
-            this.label93.Location = new System.Drawing.Point(352, 86);
+            this.label93.Location = new System.Drawing.Point(352, 72);
             this.label93.Name = "label93";
             this.label93.Size = new System.Drawing.Size(291, 46);
             this.label93.TabIndex = 9;
@@ -3729,6 +3737,58 @@ namespace Gene
             this.pnlLogo.Name = "pnlLogo";
             this.pnlLogo.Size = new System.Drawing.Size(82, 24);
             this.pnlLogo.TabIndex = 70;
+            // 
+            // lblCoverStartDate
+            // 
+            this.lblCoverStartDate.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCoverStartDate.AutoSize = true;
+            this.lblCoverStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
+            this.lblCoverStartDate.ForeColor = System.Drawing.Color.White;
+            this.lblCoverStartDate.Location = new System.Drawing.Point(352, 272);
+            this.lblCoverStartDate.Name = "lblCoverStartDate";
+            this.lblCoverStartDate.Size = new System.Drawing.Size(316, 46);
+            this.lblCoverStartDate.TabIndex = 124;
+            this.lblCoverStartDate.Text = "Cover Start Date";
+            this.lblCoverStartDate.Visible = false;
+            // 
+            // lblCoverEndDate
+            // 
+            this.lblCoverEndDate.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCoverEndDate.AutoSize = true;
+            this.lblCoverEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
+            this.lblCoverEndDate.ForeColor = System.Drawing.Color.White;
+            this.lblCoverEndDate.Location = new System.Drawing.Point(352, 342);
+            this.lblCoverEndDate.Name = "lblCoverEndDate";
+            this.lblCoverEndDate.Size = new System.Drawing.Size(303, 46);
+            this.lblCoverEndDate.TabIndex = 125;
+            this.lblCoverEndDate.Text = "Cover End Date";
+            this.lblCoverEndDate.Visible = false;
+            // 
+            // dtCoverStartDate
+            // 
+            this.dtCoverStartDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 25F);
+            this.dtCoverStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtCoverStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtCoverStartDate.Location = new System.Drawing.Point(736, 281);
+            this.dtCoverStartDate.Name = "dtCoverStartDate";
+            this.dtCoverStartDate.Size = new System.Drawing.Size(561, 53);
+            this.dtCoverStartDate.TabIndex = 126;
+            this.dtCoverStartDate.Visible = false;
+            // 
+            // dtCoverEndDate
+            // 
+            this.dtCoverEndDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 25F);
+            this.dtCoverEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtCoverEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtCoverEndDate.Location = new System.Drawing.Point(736, 350);
+            this.dtCoverEndDate.Name = "dtCoverEndDate";
+            this.dtCoverEndDate.Size = new System.Drawing.Size(561, 53);
+            this.dtCoverEndDate.TabIndex = 127;
+            this.dtCoverEndDate.Visible = false;
             // 
             // frmQuote
             // 
@@ -4118,6 +4178,10 @@ namespace Gene
         private System.Windows.Forms.TextBox txtAdministrationAmt;
         private System.Windows.Forms.Label label98;
         private System.Windows.Forms.Label lblRtgs;
+        private System.Windows.Forms.Label lblCoverEndDate;
+        private System.Windows.Forms.Label lblCoverStartDate;
+        private System.Windows.Forms.DateTimePicker dtCoverEndDate;
+        private System.Windows.Forms.DateTimePicker dtCoverStartDate;
 
         //private System.Windows.Forms.Label lblAmountDue;
     }
